@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700&family=Anek+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#1d1a17;font-family:'Anek Devanagari',system-ui,sans-serif}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+button{font:inherit}
+[data-vbn]{--ui:'Anek Devanagari',system-ui,sans-serif;--display:'Eczar',Georgia,serif;--bg:#14100d;--bg2:#1c1712;--bg3:#272019;--line:rgba(255,236,200,.1);--line2:rgba(255,236,200,.2);--fg:#f4ecdd;--fg2:rgba(244,236,221,.72);--fg3:rgba(244,236,221,.5);--gold:#dcb257;--gold2:#f1d88e;--onGold:#221a0e;--maroon:#a0292b;--glass:rgba(20,16,13,.55);--shadow:0 24px 60px rgba(0,0,0,.55);color-scheme:dark}
+[data-vbn][data-theme="light"]{--bg:#f5efe3;--bg2:#fbf7ee;--bg3:#ffffff;--line:rgba(60,40,10,.12);--line2:rgba(60,40,10,.22);--fg:#241b12;--fg2:rgba(36,27,18,.74);--fg3:rgba(36,27,18,.52);--gold:#8a6117;--gold2:#6e4a0e;--onGold:#fffaf0;--maroon:#a0292b;--glass:rgba(250,246,238,.72);--shadow:0 24px 60px rgba(90,70,30,.22);color-scheme:light}
+[data-vbn] [lang="en"]{display:none!important}
+[data-vbn][data-lang="en"] [lang="en"]{display:inline!important}
+[data-vbn][data-lang="en"] [lang="hi"]{display:none!important}
+[data-vbn][data-theme="light"] [data-on="dark"]{display:none!important}
+[data-vbn]:not([data-theme="light"]) [data-on="light"]{display:none!important}
+[data-vbn]:not([data-lang="en"]) [data-lk="hi"],[data-vbn][data-lang="en"] [data-lk="en"]{background:var(--gold);color:var(--onGold)}
+[data-rail]{scrollbar-width:none}[data-rail]::-webkit-scrollbar{display:none}
+[data-qa="true"]{outline:2px solid var(--gold2);outline-offset:2px;opacity:1!important}
+[data-bead][data-active="true"]{background:var(--gold)!important;color:var(--onGold)!important;border-color:var(--gold)!important;transform:scale(1.32);box-shadow:0 0 0 7px color-mix(in oklab,var(--gold) 22%,transparent)}
+[data-tab][data-active="true"]{color:var(--fg)!important;box-shadow:inset 0 -2px 0 var(--gold)}
+[data-ch][data-active="true"]{background:color-mix(in oklab,var(--gold) 14%,transparent)!important}
+[data-ch][data-active="true"] [data-chn]{background:var(--gold)!important;color:var(--onGold)!important}
+[data-play="true"] [data-ic="play"]{display:none}[data-play="false"] [data-ic="pause"]{display:none}
+@keyframes glow{0%,100%{opacity:.55}50%{opacity:.9}}
+</style>
+</helmet>
+
+<section id="t1" style="padding:44px 48px 80px;display:flex;flex-direction:column;gap:64px">
+
+<!-- ROW 1 : HOME -->
+<div style="display:flex;gap:56px;align-items:flex-start">
+
+<!-- 1a HOME DESKTOP -->
+<div id="1a" style="display:flex;flex-direction:column;gap:10px;flex:none;scroll-margin-top:16px">
+<div style="display:flex;gap:8px;align-items:baseline;font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)"><a href="#1a" style="padding:2px 7px;border-radius:5px;background:rgba(255,255,255,.1);color:#fff">1a</a><span>मुख्य पृष्ठ · 1440</span></div>
+<div data-vbn data-lang="{{ hd.lang }}" data-theme="{{ hd.theme }}" data-screen-label="Home desktop" style="width:1440px;background:var(--bg);color:var(--fg);font-family:var(--ui);border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);position:relative;line-height:1.5">
+
+  <!-- header -->
+  <div style="position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:36px;height:76px;padding:0 72px;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,0))">
+    <a href="#1a" style="display:flex;align-items:center;height:58px;flex:none"><img src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:58px;display:block"></a>
+    <nav style="display:flex;align-items:center;gap:28px;font-size:16px;font-weight:500;color:rgba(255,255,255,.82)">
+      <a href="#1a" style="color:#fff;font-weight:600"><span lang="hi">मुख्य पृष्ठ</span><span lang="en">Home</span></a>
+      <a href="#1c"><span lang="hi">श्रृंखलाएँ</span><span lang="en">Series</span></a>
+      <a href="#1e"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></a>
+      <a href="#1a"><span lang="hi">पॉडकास्ट</span><span lang="en">Podcast</span></a>
+      <a href="#1a"><span lang="hi">आयोजन</span><span lang="en">Events</span></a>
+      <a href="#1a"><span lang="hi">प्रकाशन</span><span lang="en">Books</span></a>
+    </nav>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:10px;color:#fff">
+      <button aria-label="Search" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+      <button onClick="{{ hd.toggleLang }}" aria-label="Language" style="display:flex;align-items:center;gap:2px;height:40px;padding:0 5px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;cursor:pointer">
+        <span data-lk="hi" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;font-family:var(--display);font-size:15px;font-weight:600">अ</span>
+        <span data-lk="en" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;font-family:var(--display);font-size:15px;font-weight:600">A</span>
+      </button>
+      <button onClick="{{ hd.toggleTheme }}" aria-label="Theme" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;cursor:pointer">
+        <svg data-on="dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg data-on="light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+      </button>
+      <button aria-label="Profile" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></button>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <div ref="{{ heroRef }}" style="position:relative;height:760px;margin-top:-76px;overflow:hidden;background:#000">
+    <div data-depth="0.5" style="position:absolute;inset:-48px;transition:transform .7s cubic-bezier(.2,.7,.2,1)">
+      <img src="art/16x9/mahadev.jpg" alt="महादेव" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:1;transition:opacity 1.4s ease" data-hs="d" data-hi="0" data-x="">
+      <img src="art/16x9/geeta-amrit.jpg" alt="गीता अमृत" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0;transition:opacity 1.4s ease" data-hs="d" data-hi="1" data-x="">
+      <img src="art/16x9/hamare-ram.jpg" alt="हमारे राम" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0;transition:opacity 1.4s ease" data-hs="d" data-hi="2" data-x="">
+      <img src="art/16x9/sadanira.jpg" alt="सदानीरा" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0;transition:opacity 1.4s ease" data-hs="d" data-hi="3" data-x="">
+      <img src="art/16x9/mahajanpad.jpg" alt="महाजनपद" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0;transition:opacity 1.4s ease" data-hs="d" data-hi="4" data-x="">
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,color-mix(in oklab,var(--bg) 70%,transparent) 14%,transparent 42%)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.62) 0%,rgba(0,0,0,.25) 38%,transparent 62%)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.5),transparent 24%)"></div>
+
+    <div data-depth="-0.3" style="position:absolute;left:72px;bottom:84px;width:560px;color:#fff;transition:transform .7s cubic-bezier(.2,.7,.2,1)">
+      <div style="display:grid;min-height:150px;align-items:end">
+        <div style="grid-area:1/1;opacity:1;transition:opacity .9s ease" data-hs="d" data-hi="0" data-x=";display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:var(--display);font-size:18px;color:#f1d88e;letter-spacing:.01em"><span lang="hi">84 महादेव · प्रत्येक के अनेक एपिसोड</span><span lang="en">The 84 Mahadev, several episodes each</span></div>
+          <p style="margin:0;font-size:18px;line-height:1.55;color:rgba(255,255,255,.9);text-wrap:pretty"><span lang="hi">84 महादेव और सृष्टि तथा प्रलय की कथा। शिव केवल संहार के देवता नहीं, अपितु सृजन, तप, करुणा और अनंत चेतना का संतुलन।</span><span lang="en">The 84 Mahadev and the story of creation and dissolution. Shiv not only as the lord of destruction but as the balance of creation, tapas, compassion and infinite consciousness.</span></p>
+        </div>
+        <div style="grid-area:1/1;opacity:0;transition:opacity .9s ease" data-hs="d" data-hi="1" data-x=";display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:var(--display);font-size:18px;color:#f1d88e"><span lang="hi">जीवन के प्रश्नों पर आधारित · हिन्दी, संस्कृत श्लोक सहित</span><span lang="en">Built on life's questions · Hindi, with the Sanskrit shlokas</span></div>
+          <p style="margin:0;font-size:18px;line-height:1.55;color:rgba(255,255,255,.9);text-wrap:pretty"><span lang="hi">सनातन ज्ञान परंपरा को आधुनिक दृश्य भाषा में प्रस्तुत करने का सृजनात्मक प्रयास। आरंभ श्रीमद्भगवद्गीता से।</span><span lang="en">A creative effort to present the Sanatan tradition of knowledge in a modern visual language. It begins with the Shrimad Bhagavad Geeta.</span></p>
+        </div>
+        <div style="grid-area:1/1;opacity:0;transition:opacity .9s ease" data-hs="d" data-hi="2" data-x=";display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:var(--display);font-size:18px;color:#f1d88e"><span lang="hi">रामायण के प्रत्येक काण्ड से</span><span lang="en">By each kaand of the Ramayan</span></div>
+          <p style="margin:0;font-size:18px;line-height:1.55;color:rgba(255,255,255,.9);text-wrap:pretty"><span lang="hi">जन्म से रामराज्य तक, अयोध्या से रामेश्वरम तक श्री राम का जीवन, वाल्मीकि रामायण, पुराणों, इतिहास और शोध के माध्यम से।</span><span lang="en">The life of Shri Ram from his birth, from Ayodhya to Rameshwaram and from vanvas to Ramrajya, through the Valmiki Ramayan, the Puranas, history and research.</span></p>
+        </div>
+        <div style="grid-area:1/1;opacity:0;transition:opacity .9s ease" data-hs="d" data-hi="3" data-x=";display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:var(--display);font-size:18px;color:#f1d88e"><span lang="hi">प्रत्येक नदी · 3D भू-दृश्य</span><span lang="en">By each river · 3D landscape</span></div>
+          <p style="margin:0;font-size:18px;line-height:1.55;color:rgba(255,255,255,.9);text-wrap:pretty"><span lang="hi">भारत की पवित्र नदियों, तीर्थों और उनसे जुड़ी परंपराओं की यात्रा। नदियाँ केवल जल नहीं, सभ्यता, आस्था और जीवन की सतत धारा।</span><span lang="en">A journey through Bharat's sacred rivers and tirthas and the traditions around them. Rivers not as mere water, but as the ever-flowing current of civilisation, faith and life.</span></p>
+        </div>
+        <div style="grid-area:1/1;opacity:0;transition:opacity .9s ease" data-hs="d" data-hi="4" data-x=";display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:var(--display);font-size:18px;color:#f1d88e"><span lang="hi">सोलह जनपद · 3D मानचित्र</span><span lang="en">Sixteen janapadas · 3D map</span></div>
+          <p style="margin:0;font-size:18px;line-height:1.55;color:rgba(255,255,255,.9);text-wrap:pretty"><span lang="hi">प्राचीन भारत के सोलह महाजनपद: उनके शासक, संस्कृति और राजनीतिक व्यवस्थाएँ। आरंभ अवंतिका से।</span><span lang="en">The sixteen great states of ancient Bharat: their rulers, culture and political systems. Beginning with Avantika.</span></p>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:26px">
+        <a href="#1e" style="display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px 0 20px;border-radius:999px;background:#dcb257;color:#221a0e;font-weight:600;font-size:17px;box-shadow:0 10px 30px rgba(220,178,87,.25);transition:transform .35s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg><span lang="hi">देखें</span><span lang="en">Watch</span></a>
+        <a href="#1c" style="display:inline-flex;align-items:center;height:50px;padding:0 24px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#fff;font-weight:500;font-size:17px"><span lang="hi">विवरण</span><span lang="en">Details</span></a>
+        <button aria-label="Add to watchlist" style="display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#fff;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></button>
+      </div>
+    </div>
+
+    <div data-depth="-0.18" style="position:absolute;right:72px;bottom:84px;display:flex;gap:12px;transition:transform .7s cubic-bezier(.2,.7,.2,1)">
+      <button data-i="0" data-qa="true" data-hs="d" data-ht="0" onClick="{{ goHero }}" style="width:132px;padding:0;border:0;background:transparent;cursor:pointer;color:#fff;text-align:left;opacity:.72;transition:opacity .3s"><img src="art/16x9/mahadev.jpg" alt="" style="display:block;width:132px;height:74px;object-fit:cover;border-radius:8px"><div style="margin-top:7px;font-size:13px;font-weight:500"><span lang="hi">महादेव</span><span lang="en">Mahadev</span></div></button>
+      <button data-i="1" data-qa="false" data-hs="d" data-ht="1" onClick="{{ goHero }}" style="width:132px;padding:0;border:0;background:transparent;cursor:pointer;color:#fff;text-align:left;opacity:.72;transition:opacity .3s"><img src="art/16x9/geeta-amrit.jpg" alt="" style="display:block;width:132px;height:74px;object-fit:cover;border-radius:8px"><div style="margin-top:7px;font-size:13px;font-weight:500"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></div></button>
+      <button data-i="2" data-qa="false" data-hs="d" data-ht="2" onClick="{{ goHero }}" style="width:132px;padding:0;border:0;background:transparent;cursor:pointer;color:#fff;text-align:left;opacity:.72;transition:opacity .3s"><img src="art/16x9/hamare-ram.jpg" alt="" style="display:block;width:132px;height:74px;object-fit:cover;border-radius:8px"><div style="margin-top:7px;font-size:13px;font-weight:500"><span lang="hi">हमारे राम</span><span lang="en">Hamare Ram</span></div></button>
+      <button data-i="3" data-qa="false" data-hs="d" data-ht="3" onClick="{{ goHero }}" style="width:132px;padding:0;border:0;background:transparent;cursor:pointer;color:#fff;text-align:left;opacity:.72;transition:opacity .3s"><img src="art/16x9/sadanira.jpg" alt="" style="display:block;width:132px;height:74px;object-fit:cover;border-radius:8px"><div style="margin-top:7px;font-size:13px;font-weight:500"><span lang="hi">सदानीरा</span><span lang="en">Sadanira</span></div></button>
+      <button data-i="4" data-qa="false" data-hs="d" data-ht="4" onClick="{{ goHero }}" style="width:132px;padding:0;border:0;background:transparent;cursor:pointer;color:#fff;text-align:left;opacity:.72;transition:opacity .3s"><img src="art/16x9/mahajanpad.jpg" alt="" style="display:block;width:132px;height:74px;object-fit:cover;border-radius:8px"><div style="margin-top:7px;font-size:13px;font-weight:500"><span lang="hi">महाजनपद</span><span lang="en">Mahajanpad</span></div></button>
+    </div>
+  </div>
+
+  <!-- continue watching -->
+  <div style="padding:8px 72px 0;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:26px;line-height:1.3"><span lang="hi">देखना जारी रखें</span><span lang="en">Continue watching</span></h2>
+      <a href="#1a" style="font-size:14px;font-weight:500;color:var(--gold)"><span lang="hi">इतिहास</span><span lang="en">History</span></a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <a href="#1e" style="display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) scale(1.025)">
+        <div style="position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)"><img src="art/16x9/geeta-amrit.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.25)"><div style="width:38%;height:100%;background:#dcb257"></div></div></div>
+        <div><div style="font-weight:600;font-size:15px"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">एपिसोड 1 · प्रश्न: अर्जुन का संशय</span><span lang="en">Episode 1 · Question: Arjun's doubt</span></div></div>
+      </a>
+      <a href="#1c" style="display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) scale(1.025)">
+        <div style="position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)"><img src="art/16x9/mahadev.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:60% 30%;display:block"><div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.25)"><div style="width:72%;height:100%;background:#dcb257"></div></div></div>
+        <div><div style="font-weight:600;font-size:15px"><span lang="hi">महादेव</span><span lang="en">Mahadev</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">भाग 1 · एपिसोड 2</span><span lang="en">Part 1 · Episode 2</span></div></div>
+      </a>
+      <a href="#1a" style="display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) scale(1.025)">
+        <div style="position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)"><img src="art/16x9/sadanira.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;display:block"><div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.25)"><div style="width:15%;height:100%;background:#dcb257"></div></div></div>
+        <div><div style="font-weight:600;font-size:15px"><span lang="hi">सदानीरा</span><span lang="en">Sadanira</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">एपिसोड 1</span><span lang="en">Episode 1</span></div></div>
+      </a>
+      <a href="#1a" style="display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) scale(1.025)">
+        <div style="position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35)"><img src="art/16x9/podcast-sadanira-samagam.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.25)"><div style="width:55%;height:100%;background:#dcb257"></div></div></div>
+        <div><div style="font-weight:600;font-size:15px"><span lang="hi">वीर भारत पॉडकास्ट · सदानीरा समागम</span><span lang="en">Veer Bharat Podcast · Sadanira Samagam</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">एपिसोड 1</span><span lang="en">Episode 1</span></div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- geeta amrit spotlight -->
+  <div style="margin:64px 72px 0;display:grid;grid-template-columns:600px 1fr;gap:48px;align-items:center;padding:36px;border-radius:20px;background:linear-gradient(135deg,color-mix(in oklab,var(--gold) 12%,var(--bg2)),var(--bg2) 60%);border:1px solid var(--line)">
+    <a href="#1e" style="display:block;position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);transition:transform .6s cubic-bezier(.2,.7,.2,1)" style-hover="transform:perspective(1200px) rotateY(-4deg) translateZ(14px)">
+      <img src="art/16x9/geeta-amrit.jpg" alt="गीता अमृत" style="width:100%;height:100%;object-fit:cover;display:block">
+      <div style="position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px 0 14px;border-radius:999px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:14px;font-weight:500"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg><span lang="hi">टीज़र</span><span lang="en">Teaser</span></div>
+    </a>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div style="font-size:14px;font-weight:500;color:var(--gold)"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></div>
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:34px;line-height:1.25;text-wrap:pretty"><span lang="hi">जीवन के प्रश्नों से देखें</span><span lang="en">Browse by life's questions</span></h2>
+      <p style="margin:0;font-size:16px;color:var(--fg2);max-width:520px;text-wrap:pretty"><span lang="hi">श्रृंखला प्रश्नों पर बनी है। आज जिस भय या क्रोध से आप जूझ रहे हैं, सीधे उस एपिसोड तक जाइए जो उसी पर बोलता है।</span><span lang="en">The series is built on questions. A viewer facing fear or anger today goes straight to the episode that speaks to it.</span></p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">अर्जुन का संशय</span><span lang="en">Arjun's doubt</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">कर्म और फल</span><span lang="en">Karma and its fruit</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">कर्तव्य</span><span lang="en">Duty</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">स्वधर्म</span><span lang="en">Swadharma</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">मन</span><span lang="en">The mind</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">क्रोध</span><span lang="en">Anger</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">मोह</span><span lang="en">Moha</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">भय</span><span lang="en">Fear</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">इच्छा</span><span lang="en">Desire</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">समत्व</span><span lang="en">Equanimity</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">मृत्यु</span><span lang="en">Death</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-size:15px;transition:all .3s" style-hover="border-color:var(--gold);color:var(--gold)"><span lang="hi">कठिन समय में निर्णय</span><span lang="en">Decisions in hard times</span></a>
+        <a href="#1e" style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 16px;border-radius:999px;font-size:15px;color:var(--gold);font-weight:500"><span lang="hi">सभी प्रश्न</span><span lang="en">All questions</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- all series -->
+  <div style="padding:64px 0 0;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 72px">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:26px;line-height:1.3"><span lang="hi">श्रृंखलाएँ</span><span lang="en">Series</span></h2>
+      <a href="#1a" style="font-size:14px;font-weight:500;color:var(--gold)"><span lang="hi">सभी श्रृंखलाएँ</span><span lang="en">All series</span></a>
+    </div>
+    <div data-rail style="display:flex;gap:20px;overflow-x:auto;padding:12px 72px 24px">
+      <a href="#1e" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/9x16/geeta-amrit.jpg" alt="गीता अमृत" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></div></a>
+      <a href="#1c" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/1x1/mahadev.jpg" alt="महादेव" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">महादेव</span><span lang="en">Mahadev</span></div></a>
+      <a href="#1a" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/1x1/mahakal.jpg" alt="महाकाल" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">महाकाल : सृष्टि का समय</span><span lang="en">Mahakal</span></div></a>
+      <a href="#1a" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/1x1/mahagatha.jpg" alt="महागाथा" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">महागाथा</span><span lang="en">Mahagatha</span></div></a>
+      <a href="#1a" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/9x16/yugyugin-bharatvanshi.jpg" alt="युगयुगीन भारतवंश" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">युगयुगीन भारतवंश</span><span lang="en">Yugyugin Bharatvanshi</span></div></a>
+      <a href="#1a" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/9x16/mahajanpad.jpg" alt="महाजनपद" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">महाजनपद</span><span lang="en">Mahajanpad</span></div></a>
+      <a href="#1a" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/9x16/sadanira.jpg" alt="सदानीरा" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">सदानीरा</span><span lang="en">Sadanira</span></div></a>
+      <a href="#1a" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/9x16/purvaj-shri-ram-ke.jpg" alt="पूर्वज श्री राम के" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">पूर्वज श्री राम के</span><span lang="en">Purvaj Shri Ram Ke</span></div></a>
+      <a href="#1a" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/9x16/hamare-ram.jpg" alt="हमारे राम" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">हमारे राम</span><span lang="en">Hamare Ram</span></div></a>
+      <a href="#1a" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/9x16/mahaganadhipati-ganesh.jpg" alt="महागणाधिपति गणेश" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">महागणाधिपति गणेश</span><span lang="en">Mahaganadhipati Ganesh</span></div></a>
+      <a href="#1a" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/9x16/mahamaya.jpg" alt="महामाया" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">महामाया</span><span lang="en">Mahamaya</span></div></a>
+      <a href="#1a" style="flex:none;width:196px;display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) scale(1.04)"><div style="aspect-ratio:2/3;border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/9x16/podcast.jpg" alt="वीर भारत पॉडकास्ट" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:15px;font-weight:500"><span lang="hi">वीर भारत पॉडकास्ट</span><span lang="en">Veer Bharat Podcast</span></div></a>
+    </div>
+  </div>
+
+  <!-- upcoming premiere -->
+  <div style="margin:40px 72px 0;position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:radial-gradient(900px 320px at 18% 50%,color-mix(in oklab,var(--maroon) 30%,var(--bg2)),var(--bg2) 70%);display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px;padding:44px 48px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font-size:14px;font-weight:500;color:var(--gold)"><span lang="hi">आगामी श्रृंखला · प्रीमियर</span><span lang="en">Upcoming series · Premiere</span></div>
+      <div style="font-family:var(--display);font-weight:600;font-size:64px;line-height:1.35;padding-top:4px;background:linear-gradient(180deg,#fcefc2,#e8c46a 40%,#c9962e 65%,#f1d88e 85%,#b07f22);-webkit-background-clip:text;background-clip:text;color:transparent;width:fit-content"><span lang="hi">तपोधरा</span><span lang="en">Tapodhara</span></div>
+      <p style="margin:0;font-size:16px;color:var(--fg2);max-width:560px;text-wrap:pretty"><span lang="hi">नई श्रृंखला निर्धारित प्रीमियर के रूप में आएगी, उलटी गिनती और टीज़र के साथ। स्मरण सेट कीजिए और प्रीमियर से पूर्व सूचना पाइए।</span><span lang="en">New series arrive as scheduled premieres with a countdown and teaser. Set a reminder to be told before it begins.</span></p>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <button style="display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 24px 0 18px;border-radius:999px;border:0;background:var(--gold);color:var(--onGold);font-weight:600;font-size:16px;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg><span lang="hi">स्मरण कराएँ</span><span lang="en">Remind me</span></button>
+      <a href="#1a" style="display:inline-flex;align-items:center;height:50px;padding:0 22px;border-radius:999px;border:1px solid var(--line2);font-weight:500;font-size:16px"><span lang="hi">प्रीमियर पृष्ठ</span><span lang="en">Premiere page</span></a>
+    </div>
+  </div>
+
+  <!-- podcast -->
+  <div style="padding:64px 72px 0;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:26px;line-height:1.3"><span lang="hi">वीर भारत पॉडकास्ट</span><span lang="en">Veer Bharat Podcast</span></h2>
+      <a href="#1a" style="font-size:14px;font-weight:500;color:var(--gold)"><span lang="hi">सभी संस्करण</span><span lang="en">All editions</span></a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <a href="#1a" style="display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) scale(1.025)"><div style="aspect-ratio:1;border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/1x1/podcast-mahabharat.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div><div><div style="font-weight:600;font-size:15px"><span lang="hi">महाभारत</span><span lang="en">Mahabharat</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">आयोजन संस्करण · देखें अथवा सुनें</span><span lang="en">Event edition · Watch or listen</span></div></div></a>
+      <a href="#1a" style="display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) scale(1.025)"><div style="aspect-ratio:1;border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/1x1/podcast-sadanira-samagam.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div><div><div style="font-weight:600;font-size:15px"><span lang="hi">सदानीरा समागम</span><span lang="en">Sadanira Samagam</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">आयोजन संस्करण · देखें अथवा सुनें</span><span lang="en">Event edition · Watch or listen</span></div></div></a>
+      <a href="#1a" style="display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) scale(1.025)"><div style="aspect-ratio:1;border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/1x1/podcast-udant-martand.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div><div><div style="font-weight:600;font-size:15px"><span lang="hi">उदन्त मार्तण्ड</span><span lang="en">Udant Martand</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">आयोजन संस्करण · देखें अथवा सुनें</span><span lang="en">Event edition · Watch or listen</span></div></div></a>
+      <a href="#1a" style="display:flex;flex-direction:column;gap:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) scale(1.025)"><div style="aspect-ratio:1;border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.4)"><img src="art/1x1/podcast-yuva-samvad.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div><div><div style="font-weight:600;font-size:15px"><span lang="hi">युवा संवाद</span><span lang="en">Yuva Samvad</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">आयोजन संस्करण · देखें अथवा सुनें</span><span lang="en">Event edition · Watch or listen</span></div></div></a>
+    </div>
+  </div>
+
+  <!-- books -->
+  <div style="padding:64px 72px 0;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:26px;line-height:1.3"><span lang="hi">नए प्रकाशन</span><span lang="en">New books</span></h2>
+      <a href="#1a" style="font-size:14px;font-weight:500;color:var(--gold)"><span lang="hi">पुस्तकालय</span><span lang="en">Library</span></a>
+    </div>
+    <div style="display:flex;gap:28px;align-items:flex-end">
+      <a href="#1a" style="display:flex;flex-direction:column;gap:12px;width:232px;transition:transform .5s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) rotateY(-5deg)"><img src="art/books/prithvi-pani-ka-desh-hai.jpg" alt="पृथ्वी पानी का देश है" style="display:block;width:232px;height:232px;object-fit:cover;border-radius:6px;box-shadow:var(--shadow)"><div style="font-size:14px;font-weight:500"><span lang="hi">पृथ्वी पानी का देश है</span><span lang="en">Prithvi Pani Ka Desh Hai</span></div></a>
+      <a href="#1a" style="display:flex;flex-direction:column;gap:12px;width:300px;transition:transform .5s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) rotateY(-4deg)"><div style="position:relative;height:232px"><img src="art/books/amrit-jaldhara-2.jpg" alt="" style="position:absolute;left:28px;bottom:14px;width:272px;aspect-ratio:3/2;object-fit:cover;border-radius:6px;box-shadow:var(--shadow);opacity:.9"><img src="art/books/amrit-jaldhara-1.jpg" alt="अमृत जलधारा" style="position:absolute;left:0;bottom:0;width:272px;aspect-ratio:3/2;object-fit:cover;border-radius:6px;box-shadow:var(--shadow)"></div><div style="font-size:14px;font-weight:500"><span lang="hi">अमृत जलधारा · भाग प्रथम से चतुर्थ</span><span lang="en">Amrit Jaldhara · Volumes one to four</span></div></a>
+      <a href="#1a" style="display:flex;flex-direction:column;gap:12px;width:236px;transition:transform .5s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) rotateY(-4deg)"><img src="art/books/sadanira.jpg" alt="सदानीरा" style="display:block;width:236px;height:232px;object-fit:cover;border-radius:6px;box-shadow:var(--shadow)"><div style="font-size:14px;font-weight:500"><span lang="hi">सदानीरा</span><span lang="en">Sadanira</span></div></a>
+      <a href="#1a" style="display:flex;flex-direction:column;gap:12px;width:232px;transition:transform .5s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px) rotateY(-4deg)"><img src="art/books/tapodhara-madhyapradesh.jpg" alt="तपोधरा मध्यप्रदेश" style="display:block;width:232px;height:232px;object-fit:cover;border-radius:6px;box-shadow:var(--shadow)"><div style="font-size:14px;font-weight:500"><span lang="hi">तपोधरा मध्यप्रदेश</span><span lang="en">Tapodhara Madhya Pradesh</span></div></a>
+    </div>
+  </div>
+
+  <!-- personalities -->
+  <div style="padding:64px 72px 0;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:26px;line-height:1.3"><span lang="hi">व्यक्तित्व</span><span lang="en">Personalities</span></h2>
+      <a href="#1a" style="font-size:14px;font-weight:500;color:var(--gold)"><span lang="hi">सभी व्यक्तित्व</span><span lang="en">All personalities</span></a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:16px">
+      <a href="#1a" style="display:flex;align-items:center;justify-content:center;height:120px;border-radius:16px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:28px;font-weight:500;transition:all .4s" style-hover="border-color:var(--gold);color:var(--gold);transform:translateY(-4px)"><span lang="hi">ऋषि</span><span lang="en">Rishis</span></a>
+      <a href="#1a" style="display:flex;align-items:center;justify-content:center;height:120px;border-radius:16px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:28px;font-weight:500;transition:all .4s" style-hover="border-color:var(--gold);color:var(--gold);transform:translateY(-4px)"><span lang="hi">संत</span><span lang="en">Saints</span></a>
+      <a href="#1a" style="display:flex;align-items:center;justify-content:center;height:120px;border-radius:16px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:28px;font-weight:500;transition:all .4s" style-hover="border-color:var(--gold);color:var(--gold);transform:translateY(-4px)"><span lang="hi">योद्धा</span><span lang="en">Warriors</span></a>
+      <a href="#1a" style="display:flex;align-items:center;justify-content:center;height:120px;border-radius:16px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:28px;font-weight:500;transition:all .4s" style-hover="border-color:var(--gold);color:var(--gold);transform:translateY(-4px)"><span lang="hi">कवि</span><span lang="en">Poets</span></a>
+      <a href="#1a" style="display:flex;align-items:center;justify-content:center;height:120px;border-radius:16px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:28px;font-weight:500;transition:all .4s" style-hover="border-color:var(--gold);color:var(--gold);transform:translateY(-4px)"><span lang="hi">चिंतक</span><span lang="en">Thinkers</span></a>
+      <a href="#1a" style="display:flex;align-items:center;justify-content:center;height:120px;border-radius:16px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:28px;font-weight:500;transition:all .4s" style-hover="border-color:var(--gold);color:var(--gold);transform:translateY(-4px)"><span lang="hi">वैज्ञानिक</span><span lang="en">Scientists</span></a>
+    </div>
+  </div>
+
+  <!-- creators -->
+  <div style="margin:64px 72px 0;display:flex;align-items:center;justify-content:space-between;gap:40px;padding:32px 40px;border-radius:20px;border:1px solid var(--line);background:var(--bg2)">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="font-family:var(--display);font-weight:600;font-size:24px;line-height:1.3"><span lang="hi">रचनाकारों एवं संस्थानों के लिए खुला</span><span lang="en">Open to creators and institutions</span></div>
+      <div style="font-size:15px;color:var(--fg2);max-width:640px;text-wrap:pretty"><span lang="hi">भारत की संस्कृति, इतिहास और आध्यात्मिक परंपरा पर गंभीर कार्य करने वाले रचनाकार, न्यास के फेलो और संस्थान, न्यास द्वारा सत्यापन के पश्चात् अपने स्थान पर प्रकाशित करते हैं।</span><span lang="en">Creators, VBN fellows and institutions doing serious work on Bharat's culture, history and spiritual tradition publish in their own spaces, after verification by the Nyas.</span></div>
+    </div>
+    <a href="#1a" style="flex:none;display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:999px;border:1px solid var(--gold);color:var(--gold);font-weight:600;font-size:15px"><span lang="hi">रचनाकार पंजीयन</span><span lang="en">Creator sign-up</span></a>
+  </div>
+
+  <!-- footer -->
+  <div style="margin-top:80px;padding:48px 72px 44px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start">
+    <div style="display:flex;gap:28px;align-items:center">
+      <img src="assets/gov-mp.png" alt="मध्यप्रदेश शासन" style="width:84px;height:84px;object-fit:contain;display:block">
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:16px;font-weight:600"><span lang="hi">वीर भारत न्यास</span><span lang="en">Veer Bharat Nyas</span></div>
+        <div style="font-size:14px;color:var(--fg2)"><span lang="hi">संस्कृति विभाग, मध्यप्रदेश शासन का अधिष्ठान</span><span lang="en">An adhishthan of the Culture Department, Government of Madhya Pradesh</span></div>
+        <div style="font-size:14px;color:var(--fg3)"><span lang="hi">सभी के लिए निःशुल्क</span><span lang="en">Free for everyone</span></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:auto auto;gap:10px 48px;font-size:14px;color:var(--fg2)">
+      <a href="#1a"><span lang="hi">न्यास परिचय</span><span lang="en">About the Nyas</span></a>
+      <a href="#1a"><span lang="hi">उपयोग की शर्तें</span><span lang="en">Terms of use</span></a>
+      <a href="#1a"><span lang="hi">संपर्क</span><span lang="en">Contact</span></a>
+      <a href="#1a"><span lang="hi">सुलभता विवरण</span><span lang="en">Accessibility statement</span></a>
+      <a href="#1a"><span lang="hi">गोपनीयता एवं सहमति</span><span lang="en">Privacy and consent</span></a>
+      <a href="#1a"><span lang="hi">सामग्री दिशानिर्देश</span><span lang="en">Content guidelines</span></a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 1b HOME MOBILE -->
+<div id="1b" style="display:flex;flex-direction:column;gap:10px;flex:none;scroll-margin-top:16px">
+<div style="display:flex;gap:8px;align-items:baseline;font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)"><a href="#1b" style="padding:2px 7px;border-radius:5px;background:rgba(255,255,255,.1);color:#fff">1b</a><span>मुख्य पृष्ठ · 390</span></div>
+<div data-vbn data-lang="{{ hm.lang }}" data-theme="{{ hm.theme }}" data-screen-label="Home mobile" style="width:390px;background:var(--bg);color:var(--fg);font-family:var(--ui);border-radius:32px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);position:relative;line-height:1.5">
+
+  <div style="position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;height:64px;padding:8px 14px 0 18px;background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,0))">
+    <img src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:46px;display:block">
+    <div style="display:flex;align-items:center;gap:8px;color:#fff">
+      <button onClick="{{ hm.toggleLang }}" aria-label="Language" style="display:flex;align-items:center;gap:2px;height:36px;padding:0 4px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:#fff;cursor:pointer">
+        <span data-lk="hi" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;font-family:var(--display);font-size:14px;font-weight:600">अ</span>
+        <span data-lk="en" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;font-family:var(--display);font-size:14px;font-weight:600">A</span>
+      </button>
+      <button onClick="{{ hm.toggleTheme }}" aria-label="Theme" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:#fff;cursor:pointer">
+        <svg data-on="dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg data-on="light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <div style="position:relative;height:560px;margin-top:-64px;overflow:hidden;background:#000">
+    <img src="art/1x1/mahadev.jpg" alt="महादेव" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:1;transition:opacity 1.2s ease" data-hs="m" data-hi="0" data-x="">
+    <img src="art/9x16/geeta-amrit.jpg" alt="गीता अमृत" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:0;transition:opacity 1.2s ease" data-hs="m" data-hi="1" data-x="">
+    <img src="art/9x16/hamare-ram.jpg" alt="हमारे राम" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;opacity:0;transition:opacity 1.2s ease" data-hs="m" data-hi="2" data-x="">
+    <img src="art/9x16/sadanira.jpg" alt="सदानीरा" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0;transition:opacity 1.2s ease" data-hs="m" data-hi="3" data-x="">
+    <img src="art/9x16/mahajanpad.jpg" alt="महाजनपद" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0;transition:opacity 1.2s ease" data-hs="m" data-hi="4" data-x="">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,color-mix(in oklab,var(--bg) 75%,transparent) 18%,transparent 48%)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 22%)"></div>
+    <div style="position:absolute;left:20px;right:20px;bottom:22px;color:#fff;display:flex;flex-direction:column;gap:14px">
+      <div style="display:grid;align-items:end">
+        <div style="grid-area:1/1;opacity:1;transition:opacity .8s" data-hs="m" data-hi="0" data-x=""><div style="font-family:var(--display);font-size:15px;color:#f1d88e"><span lang="hi">84 महादेव · प्रत्येक के अनेक एपिसोड</span><span lang="en">The 84 Mahadev, several episodes each</span></div></div>
+        <div style="grid-area:1/1;opacity:0;transition:opacity .8s" data-hs="m" data-hi="1" data-x=""><div style="font-family:var(--display);font-size:15px;color:#f1d88e"><span lang="hi">जीवन के प्रश्नों पर आधारित</span><span lang="en">Built on life's questions</span></div></div>
+        <div style="grid-area:1/1;opacity:0;transition:opacity .8s" data-hs="m" data-hi="2" data-x=""><div style="font-family:var(--display);font-size:15px;color:#f1d88e"><span lang="hi">रामायण के प्रत्येक काण्ड से</span><span lang="en">By each kaand of the Ramayan</span></div></div>
+        <div style="grid-area:1/1;opacity:0;transition:opacity .8s" data-hs="m" data-hi="3" data-x=""><div style="font-family:var(--display);font-size:15px;color:#f1d88e"><span lang="hi">प्रत्येक नदी · 3D भू-दृश्य</span><span lang="en">By each river · 3D landscape</span></div></div>
+        <div style="grid-area:1/1;opacity:0;transition:opacity .8s" data-hs="m" data-hi="4" data-x=""><div style="font-family:var(--display);font-size:15px;color:#f1d88e"><span lang="hi">सोलह जनपद · 3D मानचित्र</span><span lang="en">Sixteen janapadas · 3D map</span></div></div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <a href="#1f" style="flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:999px;background:#dcb257;color:#221a0e;font-weight:600;font-size:16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg><span lang="hi">देखें</span><span lang="en">Watch</span></a>
+        <a href="#1d" style="flex:1;display:inline-flex;align-items:center;justify-content:center;height:48px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;font-weight:500;font-size:16px"><span lang="hi">विवरण</span><span lang="en">Details</span></a>
+        <button aria-label="Add to watchlist" style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></button>
+      </div>
+      <div style="display:flex;justify-content:center;gap:8px;padding-top:4px">
+        <button data-i="0" data-qa="true" data-hs="m" data-ht="0" onClick="{{ goMHero }}" aria-label="महादेव" style="width:44px;height:26px;padding:0;border:0;border-radius:6px;overflow:hidden;cursor:pointer;opacity:.55;transition:opacity .3s"><img src="art/16x9/mahadev.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></button>
+        <button data-i="1" data-qa="false" data-hs="m" data-ht="1" onClick="{{ goMHero }}" aria-label="गीता अमृत" style="width:44px;height:26px;padding:0;border:0;border-radius:6px;overflow:hidden;cursor:pointer;opacity:.55;transition:opacity .3s"><img src="art/16x9/geeta-amrit.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></button>
+        <button data-i="2" data-qa="false" data-hs="m" data-ht="2" onClick="{{ goMHero }}" aria-label="हमारे राम" style="width:44px;height:26px;padding:0;border:0;border-radius:6px;overflow:hidden;cursor:pointer;opacity:.55;transition:opacity .3s"><img src="art/16x9/hamare-ram.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></button>
+        <button data-i="3" data-qa="false" data-hs="m" data-ht="3" onClick="{{ goMHero }}" aria-label="सदानीरा" style="width:44px;height:26px;padding:0;border:0;border-radius:6px;overflow:hidden;cursor:pointer;opacity:.55;transition:opacity .3s"><img src="art/16x9/sadanira.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></button>
+        <button data-i="4" data-qa="false" data-hs="m" data-ht="4" onClick="{{ goMHero }}" aria-label="महाजनपद" style="width:44px;height:26px;padding:0;border:0;border-radius:6px;overflow:hidden;cursor:pointer;opacity:.55;transition:opacity .3s"><img src="art/16x9/mahajanpad.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- continue watching -->
+  <div style="padding:20px 0 0;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 20px">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:21px;line-height:1.3"><span lang="hi">देखना जारी रखें</span><span lang="en">Continue watching</span></h2>
+      <a href="#1b" style="font-size:13px;font-weight:500;color:var(--gold)"><span lang="hi">इतिहास</span><span lang="en">History</span></a>
+    </div>
+    <div data-rail style="display:flex;gap:12px;overflow-x:auto;padding:0 20px 4px">
+      <a href="#1f" style="flex:none;width:236px;display:flex;flex-direction:column;gap:8px"><div style="position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden"><img src="art/16x9/geeta-amrit.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.25)"><div style="width:38%;height:100%;background:#dcb257"></div></div></div><div><div style="font-weight:600;font-size:14px"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></div><div style="font-size:12px;color:var(--fg3)"><span lang="hi">एपिसोड 1 · अर्जुन का संशय</span><span lang="en">Episode 1 · Arjun's doubt</span></div></div></a>
+      <a href="#1d" style="flex:none;width:236px;display:flex;flex-direction:column;gap:8px"><div style="position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden"><img src="art/16x9/mahadev.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:60% 30%;display:block"><div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.25)"><div style="width:72%;height:100%;background:#dcb257"></div></div></div><div><div style="font-weight:600;font-size:14px"><span lang="hi">महादेव</span><span lang="en">Mahadev</span></div><div style="font-size:12px;color:var(--fg3)"><span lang="hi">भाग 1 · एपिसोड 2</span><span lang="en">Part 1 · Episode 2</span></div></div></a>
+      <a href="#1b" style="flex:none;width:236px;display:flex;flex-direction:column;gap:8px"><div style="position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden"><img src="art/16x9/sadanira.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;display:block"><div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.25)"><div style="width:15%;height:100%;background:#dcb257"></div></div></div><div><div style="font-weight:600;font-size:14px"><span lang="hi">सदानीरा</span><span lang="en">Sadanira</span></div><div style="font-size:12px;color:var(--fg3)"><span lang="hi">एपिसोड 1</span><span lang="en">Episode 1</span></div></div></a>
+    </div>
+  </div>
+
+  <!-- geeta amrit questions -->
+  <div style="margin:32px 20px 0;padding:20px;border-radius:18px;background:linear-gradient(160deg,color-mix(in oklab,var(--gold) 12%,var(--bg2)),var(--bg2) 70%);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px">
+    <div style="font-size:13px;font-weight:500;color:var(--gold)"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></div>
+    <div style="font-family:var(--display);font-weight:600;font-size:24px;line-height:1.25"><span lang="hi">जीवन के प्रश्नों से देखें</span><span lang="en">Browse by life's questions</span></div>
+    <div data-rail style="display:flex;gap:8px;overflow-x:auto;margin:0 -20px;padding:0 20px">
+      <a href="#1f" style="flex:none;display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);font-size:14px"><span lang="hi">अर्जुन का संशय</span><span lang="en">Arjun's doubt</span></a>
+      <a href="#1f" style="flex:none;display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);font-size:14px"><span lang="hi">कर्म और फल</span><span lang="en">Karma and its fruit</span></a>
+      <a href="#1f" style="flex:none;display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);font-size:14px"><span lang="hi">क्रोध</span><span lang="en">Anger</span></a>
+      <a href="#1f" style="flex:none;display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);font-size:14px"><span lang="hi">भय</span><span lang="en">Fear</span></a>
+      <a href="#1f" style="flex:none;display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);font-size:14px"><span lang="hi">मन</span><span lang="en">The mind</span></a>
+      <a href="#1f" style="flex:none;display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);font-size:14px"><span lang="hi">समत्व</span><span lang="en">Equanimity</span></a>
+      <a href="#1f" style="flex:none;display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);font-size:14px"><span lang="hi">मृत्यु</span><span lang="en">Death</span></a>
+    </div>
+    <a href="#1f" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--gold)"><span lang="hi">सभी प्रश्न</span><span lang="en">All questions</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+  </div>
+
+  <!-- series -->
+  <div style="padding:36px 0 0;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 20px">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:21px;line-height:1.3"><span lang="hi">श्रृंखलाएँ</span><span lang="en">Series</span></h2>
+      <a href="#1b" style="font-size:13px;font-weight:500;color:var(--gold)"><span lang="hi">सभी</span><span lang="en">All</span></a>
+    </div>
+    <div data-rail style="display:flex;gap:12px;overflow-x:auto;padding:0 20px 4px">
+      <a href="#1f" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/9x16/geeta-amrit.jpg" alt="गीता अमृत" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></div></a>
+      <a href="#1d" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/1x1/mahadev.jpg" alt="महादेव" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">महादेव</span><span lang="en">Mahadev</span></div></a>
+      <a href="#1b" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/1x1/mahakal.jpg" alt="महाकाल" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">महाकाल : सृष्टि का समय</span><span lang="en">Mahakal</span></div></a>
+      <a href="#1b" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/1x1/mahagatha.jpg" alt="महागाथा" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">महागाथा</span><span lang="en">Mahagatha</span></div></a>
+      <a href="#1b" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/9x16/yugyugin-bharatvanshi.jpg" alt="युगयुगीन भारतवंश" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">युगयुगीन भारतवंश</span><span lang="en">Yugyugin Bharatvanshi</span></div></a>
+      <a href="#1b" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/9x16/mahajanpad.jpg" alt="महाजनपद" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">महाजनपद</span><span lang="en">Mahajanpad</span></div></a>
+      <a href="#1b" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/9x16/sadanira.jpg" alt="सदानीरा" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">सदानीरा</span><span lang="en">Sadanira</span></div></a>
+      <a href="#1b" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/9x16/purvaj-shri-ram-ke.jpg" alt="पूर्वज श्री राम के" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">पूर्वज श्री राम के</span><span lang="en">Purvaj Shri Ram Ke</span></div></a>
+      <a href="#1b" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/9x16/hamare-ram.jpg" alt="हमारे राम" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">हमारे राम</span><span lang="en">Hamare Ram</span></div></a>
+      <a href="#1b" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/9x16/mahaganadhipati-ganesh.jpg" alt="महागणाधिपति गणेश" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">महागणाधिपति गणेश</span><span lang="en">Mahaganadhipati Ganesh</span></div></a>
+      <a href="#1b" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/9x16/mahamaya.jpg" alt="महामाया" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">महामाया</span><span lang="en">Mahamaya</span></div></a>
+      <a href="#1b" style="flex:none;width:132px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:2/3;border-radius:10px;overflow:hidden"><img src="art/9x16/podcast.jpg" alt="वीर भारत पॉडकास्ट" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:13px;font-weight:500"><span lang="hi">वीर भारत पॉडकास्ट</span><span lang="en">Veer Bharat Podcast</span></div></a>
+    </div>
+  </div>
+
+  <!-- upcoming -->
+  <div style="margin:32px 20px 0;padding:24px 22px;border-radius:18px;border:1px solid var(--line);background:radial-gradient(380px 220px at 10% 30%,color-mix(in oklab,var(--maroon) 32%,var(--bg2)),var(--bg2) 75%);display:flex;flex-direction:column;gap:10px">
+    <div style="font-size:13px;font-weight:500;color:var(--gold)"><span lang="hi">आगामी श्रृंखला · प्रीमियर</span><span lang="en">Upcoming series · Premiere</span></div>
+    <div style="font-family:var(--display);font-weight:600;font-size:44px;line-height:1.35;padding-top:4px;background:linear-gradient(180deg,#fcefc2,#e8c46a 40%,#c9962e 65%,#f1d88e 85%,#b07f22);-webkit-background-clip:text;background-clip:text;color:transparent;width:fit-content"><span lang="hi">तपोधरा</span><span lang="en">Tapodhara</span></div>
+    <p style="margin:0;font-size:14px;color:var(--fg2);text-wrap:pretty"><span lang="hi">उलटी गिनती और टीज़र के साथ निर्धारित प्रीमियर। स्मरण सेट कीजिए।</span><span lang="en">A scheduled premiere with countdown and teaser. Set a reminder.</span></p>
+    <button style="margin-top:6px;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:999px;border:0;background:var(--gold);color:var(--onGold);font-weight:600;font-size:15px;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg><span lang="hi">स्मरण कराएँ</span><span lang="en">Remind me</span></button>
+  </div>
+
+  <!-- podcast -->
+  <div style="padding:36px 0 0;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 20px">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:21px;line-height:1.3"><span lang="hi">वीर भारत पॉडकास्ट</span><span lang="en">Veer Bharat Podcast</span></h2>
+      <a href="#1b" style="font-size:13px;font-weight:500;color:var(--gold)"><span lang="hi">सभी संस्करण</span><span lang="en">All editions</span></a>
+    </div>
+    <div data-rail style="display:flex;gap:12px;overflow-x:auto;padding:0 20px 4px">
+      <a href="#1b" style="flex:none;width:160px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:1;border-radius:12px;overflow:hidden"><img src="art/1x1/podcast-mahabharat.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:14px;font-weight:600"><span lang="hi">महाभारत</span><span lang="en">Mahabharat</span></div></a>
+      <a href="#1b" style="flex:none;width:160px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:1;border-radius:12px;overflow:hidden"><img src="art/1x1/podcast-sadanira-samagam.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:14px;font-weight:600"><span lang="hi">सदानीरा समागम</span><span lang="en">Sadanira Samagam</span></div></a>
+      <a href="#1b" style="flex:none;width:160px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:1;border-radius:12px;overflow:hidden"><img src="art/1x1/podcast-udant-martand.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:14px;font-weight:600"><span lang="hi">उदन्त मार्तण्ड</span><span lang="en">Udant Martand</span></div></a>
+      <a href="#1b" style="flex:none;width:160px;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:1;border-radius:12px;overflow:hidden"><img src="art/1x1/podcast-yuva-samvad.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div><div style="font-size:14px;font-weight:600"><span lang="hi">युवा संवाद</span><span lang="en">Yuva Samvad</span></div></a>
+    </div>
+  </div>
+
+  <!-- books -->
+  <div style="padding:36px 0 0;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 20px">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:21px;line-height:1.3"><span lang="hi">नए प्रकाशन</span><span lang="en">New books</span></h2>
+      <a href="#1b" style="font-size:13px;font-weight:500;color:var(--gold)"><span lang="hi">पुस्तकालय</span><span lang="en">Library</span></a>
+    </div>
+    <div data-rail style="display:flex;gap:16px;overflow-x:auto;padding:0 20px 4px;align-items:flex-end">
+      <a href="#1b" style="flex:none;display:flex;flex-direction:column;gap:8px;width:150px"><img src="art/books/prithvi-pani-ka-desh-hai.jpg" alt="" style="display:block;width:150px;height:150px;object-fit:cover;border-radius:5px;box-shadow:0 10px 24px rgba(0,0,0,.35)"><div style="font-size:13px;font-weight:500"><span lang="hi">पृथ्वी पानी का देश है</span><span lang="en">Prithvi Pani Ka Desh Hai</span></div></a>
+      <a href="#1b" style="flex:none;display:flex;flex-direction:column;gap:8px;width:200px"><img src="art/books/amrit-jaldhara-1.jpg" alt="" style="display:block;width:200px;height:133px;object-fit:cover;border-radius:5px;box-shadow:0 10px 24px rgba(0,0,0,.35)"><div style="font-size:13px;font-weight:500"><span lang="hi">अमृत जलधारा · भाग प्रथम से चतुर्थ</span><span lang="en">Amrit Jaldhara · Volumes one to four</span></div></a>
+      <a href="#1b" style="flex:none;display:flex;flex-direction:column;gap:8px;width:150px"><img src="art/books/sadanira.jpg" alt="" style="display:block;width:150px;height:150px;object-fit:cover;border-radius:5px;box-shadow:0 10px 24px rgba(0,0,0,.35)"><div style="font-size:13px;font-weight:500"><span lang="hi">सदानीरा</span><span lang="en">Sadanira</span></div></a>
+      <a href="#1b" style="flex:none;display:flex;flex-direction:column;gap:8px;width:150px"><img src="art/books/tapodhara-madhyapradesh.jpg" alt="" style="display:block;width:150px;height:150px;object-fit:cover;border-radius:5px;box-shadow:0 10px 24px rgba(0,0,0,.35)"><div style="font-size:13px;font-weight:500"><span lang="hi">तपोधरा मध्यप्रदेश</span><span lang="en">Tapodhara Madhya Pradesh</span></div></a>
+    </div>
+  </div>
+
+  <!-- personalities -->
+  <div style="padding:36px 20px 0;display:flex;flex-direction:column;gap:12px">
+    <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:21px;line-height:1.3"><span lang="hi">व्यक्तित्व</span><span lang="en">Personalities</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+      <a href="#1b" style="display:flex;align-items:center;justify-content:center;height:72px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:20px;font-weight:500"><span lang="hi">ऋषि</span><span lang="en">Rishis</span></a>
+      <a href="#1b" style="display:flex;align-items:center;justify-content:center;height:72px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:20px;font-weight:500"><span lang="hi">संत</span><span lang="en">Saints</span></a>
+      <a href="#1b" style="display:flex;align-items:center;justify-content:center;height:72px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:20px;font-weight:500"><span lang="hi">योद्धा</span><span lang="en">Warriors</span></a>
+      <a href="#1b" style="display:flex;align-items:center;justify-content:center;height:72px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:20px;font-weight:500"><span lang="hi">कवि</span><span lang="en">Poets</span></a>
+      <a href="#1b" style="display:flex;align-items:center;justify-content:center;height:72px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:20px;font-weight:500"><span lang="hi">चिंतक</span><span lang="en">Thinkers</span></a>
+      <a href="#1b" style="display:flex;align-items:center;justify-content:center;height:72px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);font-family:var(--display);font-size:20px;font-weight:500"><span lang="hi">वैज्ञानिक</span><span lang="en">Scientists</span></a>
+    </div>
+  </div>
+
+  <!-- creators -->
+  <div style="margin:32px 20px 0;padding:22px;border-radius:18px;border:1px solid var(--line);background:var(--bg2);display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:var(--display);font-weight:600;font-size:20px;line-height:1.3"><span lang="hi">रचनाकारों एवं संस्थानों के लिए खुला</span><span lang="en">Open to creators and institutions</span></div>
+    <div style="font-size:14px;color:var(--fg2);text-wrap:pretty"><span lang="hi">न्यास द्वारा सत्यापन के पश्चात् रचनाकार, फेलो और संस्थान अपने स्थान पर प्रकाशित करते हैं।</span><span lang="en">After verification by the Nyas, creators, fellows and institutions publish in their own spaces.</span></div>
+    <a href="#1b" style="display:inline-flex;align-items:center;justify-content:center;height:44px;border-radius:999px;border:1px solid var(--gold);color:var(--gold);font-weight:600;font-size:15px"><span lang="hi">रचनाकार पंजीयन</span><span lang="en">Creator sign-up</span></a>
+  </div>
+
+  <!-- footer -->
+  <div style="margin-top:44px;padding:28px 20px 28px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;gap:16px;align-items:center">
+      <img src="assets/gov-mp.png" alt="मध्यप्रदेश शासन" style="width:60px;height:60px;object-fit:contain;display:block">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <div style="font-size:15px;font-weight:600"><span lang="hi">वीर भारत न्यास</span><span lang="en">Veer Bharat Nyas</span></div>
+        <div style="font-size:13px;color:var(--fg2)"><span lang="hi">संस्कृति विभाग, मध्यप्रदेश शासन</span><span lang="en">Culture Department, Government of Madhya Pradesh</span></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;color:var(--fg2)">
+      <a href="#1b"><span lang="hi">न्यास परिचय</span><span lang="en">About the Nyas</span></a>
+      <a href="#1b"><span lang="hi">संपर्क</span><span lang="en">Contact</span></a>
+      <a href="#1b"><span lang="hi">गोपनीयता एवं सहमति</span><span lang="en">Privacy and consent</span></a>
+      <a href="#1b"><span lang="hi">उपयोग की शर्तें</span><span lang="en">Terms of use</span></a>
+      <a href="#1b"><span lang="hi">सुलभता विवरण</span><span lang="en">Accessibility statement</span></a>
+    </div>
+  </div>
+
+  <!-- bottom bar -->
+  <div style="position:sticky;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);height:82px;padding:6px 6px 18px;background:var(--glass);backdrop-filter:blur(18px);border-top:1px solid var(--line)">
+    <a href="#1b" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--gold);font-size:11px;font-weight:600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"></path></svg><span lang="hi">मुख्य</span><span lang="en">Home</span></a>
+    <a href="#1b" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span lang="hi">खोज</span><span lang="en">Search</span></a>
+    <a href="#1b" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M4 10h16M8 3v4M16 3v4"></path></svg><span lang="hi">आयोजन</span><span lang="en">Events</span></a>
+    <a href="#1b" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M8 11l4 4 4-4"></path><path d="M5 19h14"></path></svg><span lang="hi">डाउनलोड</span><span lang="en">Downloads</span></a>
+    <a href="#1b" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg><span lang="hi">मेरा खाता</span><span lang="en">My Account</span></a>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ROW 2 : SERIES -->
+<div style="display:flex;gap:56px;align-items:flex-start">
+
+<!-- 1c SERIES DESKTOP -->
+<div id="1c" style="display:flex;flex-direction:column;gap:10px;flex:none;scroll-margin-top:16px">
+<div style="display:flex;gap:8px;align-items:baseline;font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)"><a href="#1c" style="padding:2px 7px;border-radius:5px;background:rgba(255,255,255,.1);color:#fff">1c</a><span>श्रृंखला पृष्ठ · महादेव · 1440</span></div>
+<div data-vbn data-lang="{{ sd.lang }}" data-theme="{{ sd.theme }}" data-screen-label="Series desktop" style="width:1440px;background:var(--bg);color:var(--fg);font-family:var(--ui);border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);position:relative;line-height:1.5">
+
+  <div style="position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:36px;height:76px;padding:0 72px;background:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,0))">
+    <a href="#1a" style="display:flex;align-items:center;height:58px;flex:none"><img src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:58px;display:block"></a>
+    <nav style="display:flex;align-items:center;gap:28px;font-size:16px;font-weight:500;color:rgba(255,255,255,.82)">
+      <a href="#1a"><span lang="hi">मुख्य पृष्ठ</span><span lang="en">Home</span></a>
+      <a href="#1c" style="color:#fff;font-weight:600"><span lang="hi">श्रृंखलाएँ</span><span lang="en">Series</span></a>
+      <a href="#1e"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></a>
+      <a href="#1a"><span lang="hi">पॉडकास्ट</span><span lang="en">Podcast</span></a>
+      <a href="#1a"><span lang="hi">आयोजन</span><span lang="en">Events</span></a>
+      <a href="#1a"><span lang="hi">प्रकाशन</span><span lang="en">Books</span></a>
+    </nav>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:10px;color:#fff">
+      <button aria-label="Search" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+      <button onClick="{{ sd.toggleLang }}" aria-label="Language" style="display:flex;align-items:center;gap:2px;height:40px;padding:0 5px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;cursor:pointer">
+        <span data-lk="hi" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;font-family:var(--display);font-size:15px;font-weight:600">अ</span>
+        <span data-lk="en" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;font-family:var(--display);font-size:15px;font-weight:600">A</span>
+      </button>
+      <button onClick="{{ sd.toggleTheme }}" aria-label="Theme" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;cursor:pointer">
+        <svg data-on="dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg data-on="light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+      </button>
+      <button aria-label="Profile" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></button>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <div ref="{{ sheroRef }}" style="position:relative;height:680px;margin-top:-76px;overflow:hidden;background:#000">
+    <div data-depth="0.5" style="position:absolute;inset:-48px;transition:transform .7s cubic-bezier(.2,.7,.2,1)"><img src="art/16x9/mahadev.jpg" alt="महादेव" style="width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,color-mix(in oklab,var(--bg) 72%,transparent) 16%,transparent 46%)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.6) 0%,rgba(0,0,0,.2) 40%,transparent 64%)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.5),transparent 24%)"></div>
+    <div data-depth="-0.3" style="position:absolute;left:72px;bottom:72px;width:600px;color:#fff;display:flex;flex-direction:column;gap:14px;transition:transform .7s cubic-bezier(.2,.7,.2,1)">
+      <div style="font-family:var(--display);font-size:18px;color:#f1d88e"><span lang="hi">84 महादेव · प्रत्येक के अनेक एपिसोड · हिन्दी</span><span lang="en">The 84 Mahadev · Several episodes each · Hindi</span></div>
+      <p style="margin:0;font-size:18px;line-height:1.55;color:rgba(255,255,255,.9);text-wrap:pretty"><span lang="hi">84 महादेव और सृष्टि तथा प्रलय की कथा। शिव केवल संहार के देवता नहीं, अपितु सृजन, तप, करुणा और अनंत चेतना का संतुलन।</span><span lang="en">The 84 Mahadev and the story of creation and dissolution. Shiv not only as the lord of destruction but as the balance of creation, tapas, compassion and infinite consciousness.</span></p>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:10px">
+        <a href="#1e" style="display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px 0 20px;border-radius:999px;background:#dcb257;color:#221a0e;font-weight:600;font-size:17px;box-shadow:0 10px 30px rgba(220,178,87,.25)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg><span lang="hi">भाग 1 से देखें</span><span lang="en">Watch from part 1</span></a>
+        <a href="#1c" style="display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 24px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#fff;font-weight:500;font-size:17px"><span lang="hi">टीज़र</span><span lang="en">Teaser</span></a>
+        <button aria-label="Add to watchlist" style="display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#fff;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></button>
+        <button aria-label="Share" style="display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#fff;cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M8 8l4-4 4 4"></path><path d="M5 13v6h14v-6"></path></svg></button>
+      </div>
+    </div>
+    <div data-depth="-0.18" style="position:absolute;right:72px;bottom:80px;text-align:right;color:rgba(255,255,255,.85);font-size:15px;line-height:1.6;transition:transform .7s cubic-bezier(.2,.7,.2,1)">
+      <div style="color:#f1d88e;font-family:var(--display);font-size:16px"><span lang="hi">पर्व</span><span lang="en">Moments</span></div>
+      <div><span lang="hi">महाशिवरात्रि · श्रावण मास</span><span lang="en">Mahashivratri · The month of Shravan</span></div>
+    </div>
+  </div>
+
+  <!-- tabs -->
+  <div style="display:flex;gap:36px;padding:0 72px;border-bottom:1px solid var(--line);font-size:16px;font-weight:500;color:var(--fg3)">
+    <a href="#1c" data-tab data-active="true" style="padding:14px 2px"><span lang="hi">भाग</span><span lang="en">Parts</span></a>
+    <a href="#1c" data-tab data-active="false" style="padding:14px 2px"><span lang="hi">शोध सामग्री</span><span lang="en">Research</span></a>
+    <a href="#1c" data-tab data-active="false" style="padding:14px 2px"><span lang="hi">संबद्ध सामग्री</span><span lang="en">Related</span></a>
+  </div>
+
+  <!-- 84 parts as a mala -->
+  <div style="padding:36px 0 0;display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 72px">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:26px;line-height:1.3"><span lang="hi">84 महादेव</span><span lang="en">The 84 Mahadev</span></h2>
+      <div style="font-size:14px;color:var(--fg3)"><span lang="hi">प्रत्येक महादेव एक भाग, प्रत्येक भाग में अनेक एपिसोड</span><span lang="en">Each Mahadev is a part, each part holds several episodes</span></div>
+    </div>
+    <div style="position:relative">
+      <div style="position:absolute;left:72px;right:72px;top:50%;height:1px;background:linear-gradient(to right,transparent,var(--gold) 12%,var(--gold) 88%,transparent);opacity:.45"></div>
+      <div data-rail style="position:relative;display:flex;gap:14px;overflow-x:auto;padding:16px 72px">
+        <sc-for list="{{ beads }}" as="b" hint-placeholder-count="24">
+          <button data-bead data-i="{{ b.i }}" data-active="{{ b.active }}" onClick="{{ pickPart }}" style="flex:none;width:46px;height:46px;border-radius:999px;border:1px solid var(--line2);background:var(--bg2);color:var(--fg2);font-family:var(--display);font-size:16px;font-weight:500;cursor:pointer;transition:all .35s cubic-bezier(.2,.7,.2,1)" style-hover="border-color:var(--gold);color:var(--gold)">{{ b.n }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- selected part -->
+    <div style="margin:12px 72px 0;display:grid;grid-template-columns:600px 1fr;gap:40px;align-items:start">
+      <div style="position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)">
+        <img src="art/16x9/mahadev.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:70% 20%;display:block">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 50%)"></div>
+        <div style="position:absolute;left:20px;bottom:18px;color:#fff;font-family:var(--display);font-size:30px;font-weight:600;line-height:1.2"><span lang="hi">महादेव {{ partN }}</span><span lang="en">Mahadev {{ partN }}</span></div>
+        <button aria-label="Play" style="position:absolute;right:20px;bottom:18px;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:999px;border:0;background:#dcb257;color:#221a0e;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.4)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg></button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between">
+          <h3 style="margin:0;font-family:var(--display);font-weight:600;font-size:24px;line-height:1.3"><span lang="hi">भाग {{ partN }} के एपिसोड</span><span lang="en">Episodes in part {{ partN }}</span></h3>
+          <a href="#1c" style="font-size:14px;color:var(--gold);font-weight:500"><span lang="hi">भाग की शोध सामग्री</span><span lang="en">Research for this part</span></a>
+        </div>
+        <a href="#1e" style="display:grid;grid-template-columns:168px 1fr auto;gap:18px;align-items:center;padding:10px;border-radius:14px;transition:background .3s" style-hover="background:var(--bg2)"><div style="aspect-ratio:16/9;border-radius:10px;overflow:hidden"><img src="art/16x9/mahadev.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:0% 60%;display:block"></div><div><div style="font-weight:600;font-size:16px"><span lang="hi">एपिसोड 1</span><span lang="en">Episode 1</span></div><div style="font-size:14px;color:var(--fg3)"><span lang="hi">शोध सामग्री सहित · सुनें अथवा देखें</span><span lang="en">With research material · Watch or listen</span></div></div><div style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line2);color:var(--fg2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg></div></a>
+        <a href="#1e" style="display:grid;grid-template-columns:168px 1fr auto;gap:18px;align-items:center;padding:10px;border-radius:14px;transition:background .3s" style-hover="background:var(--bg2)"><div style="aspect-ratio:16/9;border-radius:10px;overflow:hidden"><img src="art/16x9/mahadev.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:100% 30%;display:block"></div><div><div style="font-weight:600;font-size:16px"><span lang="hi">एपिसोड 2</span><span lang="en">Episode 2</span></div><div style="font-size:14px;color:var(--fg3)"><span lang="hi">शोध सामग्री सहित · सुनें अथवा देखें</span><span lang="en">With research material · Watch or listen</span></div></div><div style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line2);color:var(--fg2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg></div></a>
+        <a href="#1e" style="display:grid;grid-template-columns:168px 1fr auto;gap:18px;align-items:center;padding:10px;border-radius:14px;transition:background .3s" style-hover="background:var(--bg2)"><div style="aspect-ratio:16/9;border-radius:10px;overflow:hidden"><img src="art/1x1/mahadev.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 80%;display:block"></div><div><div style="font-weight:600;font-size:16px"><span lang="hi">एपिसोड 3</span><span lang="en">Episode 3</span></div><div style="font-size:14px;color:var(--fg3)"><span lang="hi">शोध सामग्री सहित · सुनें अथवा देखें</span><span lang="en">With research material · Watch or listen</span></div></div><div style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line2);color:var(--fg2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg></div></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- about -->
+  <div style="margin:72px 72px 0;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:40px;padding-top:40px;border-top:1px solid var(--line)">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:24px;line-height:1.3"><span lang="hi">श्रृंखला के विषय में</span><span lang="en">About the series</span></h2>
+      <p style="margin:0;font-size:15px;color:var(--fg2);text-wrap:pretty"><span lang="hi">84 महादेव और सृष्टि तथा प्रलय की कथा। शिव केवल संहार के देवता नहीं, अपितु सृजन, तप, करुणा और अनंत चेतना का संतुलन।</span><span lang="en">The 84 Mahadev and the story of creation and dissolution. Shiv not only as the lord of destruction but as the balance of creation, tapas, compassion and infinite consciousness.</span></p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:14px;color:var(--gold);font-weight:500"><span lang="hi">विभाजन</span><span lang="en">Divided by</span></div><div style="font-size:15px;color:var(--fg2)"><span lang="hi">प्रत्येक महादेव, प्रत्येक के अनेक एपिसोड</span><span lang="en">Each of the 84 Mahadev, several episodes each</span></div></div>
+    <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:14px;color:var(--gold);font-weight:500"><span lang="hi">पर्व</span><span lang="en">Moments</span></div><div style="font-size:15px;color:var(--fg2)"><span lang="hi">महाशिवरात्रि, श्रावण मास</span><span lang="en">Mahashivratri, the month of Shravan</span></div></div>
+    <div style="display:flex;flex-direction:column;gap:6px"><div style="font-size:14px;color:var(--gold);font-weight:500"><span lang="hi">3D संसार</span><span lang="en">3D world</span></div><div style="font-size:15px;color:var(--fg2)"><span lang="hi">आगामी चरण में</span><span lang="en">In a later round</span></div></div>
+  </div>
+
+  <!-- footer -->
+  <div style="margin-top:80px;padding:48px 72px 44px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start">
+    <div style="display:flex;gap:28px;align-items:center">
+      <img src="assets/gov-mp.png" alt="मध्यप्रदेश शासन" style="width:84px;height:84px;object-fit:contain;display:block">
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div style="font-size:16px;font-weight:600"><span lang="hi">वीर भारत न्यास</span><span lang="en">Veer Bharat Nyas</span></div>
+        <div style="font-size:14px;color:var(--fg2)"><span lang="hi">संस्कृति विभाग, मध्यप्रदेश शासन का अधिष्ठान</span><span lang="en">An adhishthan of the Culture Department, Government of Madhya Pradesh</span></div>
+        <div style="font-size:14px;color:var(--fg3)"><span lang="hi">सभी के लिए निःशुल्क</span><span lang="en">Free for everyone</span></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:auto auto;gap:10px 48px;font-size:14px;color:var(--fg2)">
+      <a href="#1a"><span lang="hi">न्यास परिचय</span><span lang="en">About the Nyas</span></a>
+      <a href="#1a"><span lang="hi">उपयोग की शर्तें</span><span lang="en">Terms of use</span></a>
+      <a href="#1a"><span lang="hi">संपर्क</span><span lang="en">Contact</span></a>
+      <a href="#1a"><span lang="hi">सुलभता विवरण</span><span lang="en">Accessibility statement</span></a>
+      <a href="#1a"><span lang="hi">गोपनीयता एवं सहमति</span><span lang="en">Privacy and consent</span></a>
+      <a href="#1a"><span lang="hi">सामग्री दिशानिर्देश</span><span lang="en">Content guidelines</span></a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 1d SERIES MOBILE -->
+<div id="1d" style="display:flex;flex-direction:column;gap:10px;flex:none;scroll-margin-top:16px">
+<div style="display:flex;gap:8px;align-items:baseline;font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)"><a href="#1d" style="padding:2px 7px;border-radius:5px;background:rgba(255,255,255,.1);color:#fff">1d</a><span>श्रृंखला पृष्ठ · महादेव · 390</span></div>
+<div data-vbn data-lang="{{ sm.lang }}" data-theme="{{ sm.theme }}" data-screen-label="Series mobile" style="width:390px;background:var(--bg);color:var(--fg);font-family:var(--ui);border-radius:32px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);position:relative;line-height:1.5">
+
+  <div style="position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;height:64px;padding:8px 14px 0 10px;background:linear-gradient(to bottom,rgba(0,0,0,.6),rgba(0,0,0,0))">
+    <div style="display:flex;align-items:center;gap:4px">
+      <a href="#1b" aria-label="Back" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;color:#fff"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg></a>
+      <img src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:46px;display:block">
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;color:#fff">
+      <button onClick="{{ sm.toggleLang }}" aria-label="Language" style="display:flex;align-items:center;gap:2px;height:36px;padding:0 4px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:#fff;cursor:pointer">
+        <span data-lk="hi" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;font-family:var(--display);font-size:14px;font-weight:600">अ</span>
+        <span data-lk="en" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;font-family:var(--display);font-size:14px;font-weight:600">A</span>
+      </button>
+      <button onClick="{{ sm.toggleTheme }}" aria-label="Theme" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);color:#fff;cursor:pointer">
+        <svg data-on="dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg data-on="light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="position:relative;height:500px;margin-top:-64px;overflow:hidden;background:#000">
+    <img src="art/1x1/mahadev.jpg" alt="महादेव" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,color-mix(in oklab,var(--bg) 75%,transparent) 20%,transparent 50%)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.55),transparent 22%)"></div>
+    <div style="position:absolute;left:20px;right:20px;bottom:20px;color:#fff;display:flex;flex-direction:column;gap:12px">
+      <div style="font-family:var(--display);font-size:15px;color:#f1d88e"><span lang="hi">84 महादेव · प्रत्येक के अनेक एपिसोड</span><span lang="en">The 84 Mahadev · Several episodes each</span></div>
+      <div style="display:flex;gap:10px">
+        <a href="#1f" style="flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;border-radius:999px;background:#dcb257;color:#221a0e;font-weight:600;font-size:16px"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg><span lang="hi">भाग 1 से देखें</span><span lang="en">Watch from part 1</span></a>
+        <a href="#1d" style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff" aria-label="Teaser"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M10 9.5v5l4-2.5z" fill="currentColor"></path></svg></a>
+        <button aria-label="Add to watchlist" style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:14px 20px 0;display:flex;flex-direction:column;gap:12px">
+    <p style="margin:0;font-size:15px;color:var(--fg2);text-wrap:pretty"><span lang="hi">84 महादेव और सृष्टि तथा प्रलय की कथा। शिव केवल संहार के देवता नहीं, अपितु सृजन, तप, करुणा और अनंत चेतना का संतुलन।</span><span lang="en">The 84 Mahadev and the story of creation and dissolution. Shiv not only as the lord of destruction but as the balance of creation, tapas, compassion and infinite consciousness.</span></p>
+    <div style="font-size:13px;color:var(--fg3)"><span lang="hi">पर्व: महाशिवरात्रि · श्रावण मास</span><span lang="en">Moments: Mahashivratri · The month of Shravan</span></div>
+  </div>
+
+  <div style="margin-top:18px;display:flex;gap:24px;padding:0 20px;border-bottom:1px solid var(--line);font-size:15px;font-weight:500;color:var(--fg3)">
+    <a href="#1d" data-tab data-active="true" style="padding:12px 2px"><span lang="hi">भाग</span><span lang="en">Parts</span></a>
+    <a href="#1d" data-tab data-active="false" style="padding:12px 2px"><span lang="hi">शोध सामग्री</span><span lang="en">Research</span></a>
+    <a href="#1d" data-tab data-active="false" style="padding:12px 2px"><span lang="hi">संबद्ध</span><span lang="en">Related</span></a>
+  </div>
+
+  <div style="padding:22px 0 0;display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 20px">
+      <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:21px;line-height:1.3"><span lang="hi">84 महादेव</span><span lang="en">The 84 Mahadev</span></h2>
+      <div style="font-size:12px;color:var(--fg3)"><span lang="hi">भाग {{ partN }}</span><span lang="en">Part {{ partN }}</span></div>
+    </div>
+    <div style="position:relative">
+      <div style="position:absolute;left:20px;right:20px;top:50%;height:1px;background:linear-gradient(to right,transparent,var(--gold) 10%,var(--gold) 90%,transparent);opacity:.45"></div>
+      <div data-rail style="position:relative;display:flex;gap:10px;overflow-x:auto;padding:12px 20px">
+        <sc-for list="{{ beads }}" as="b" hint-placeholder-count="10">
+          <button data-bead data-i="{{ b.i }}" data-active="{{ b.active }}" onClick="{{ pickPart }}" style="flex:none;width:40px;height:40px;border-radius:999px;border:1px solid var(--line2);background:var(--bg2);color:var(--fg2);font-family:var(--display);font-size:15px;font-weight:500;cursor:pointer;transition:all .35s cubic-bezier(.2,.7,.2,1)">{{ b.n }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="margin:6px 20px 0;position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)">
+      <img src="art/16x9/mahadev.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:70% 20%;display:block">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 55%)"></div>
+      <div style="position:absolute;left:16px;bottom:12px;color:#fff;font-family:var(--display);font-size:22px;font-weight:600"><span lang="hi">महादेव {{ partN }}</span><span lang="en">Mahadev {{ partN }}</span></div>
+      <button aria-label="Play" style="position:absolute;right:14px;bottom:12px;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:0;background:#dcb257;color:#221a0e;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px;padding:0 12px">
+      <a href="#1f" style="display:grid;grid-template-columns:128px 1fr;gap:12px;align-items:center;padding:8px;border-radius:12px"><div style="aspect-ratio:16/9;border-radius:8px;overflow:hidden"><img src="art/16x9/mahadev.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:0% 60%;display:block"></div><div><div style="font-weight:600;font-size:15px"><span lang="hi">एपिसोड 1</span><span lang="en">Episode 1</span></div><div style="font-size:12px;color:var(--fg3)"><span lang="hi">देखें अथवा सुनें</span><span lang="en">Watch or listen</span></div></div></a>
+      <a href="#1f" style="display:grid;grid-template-columns:128px 1fr;gap:12px;align-items:center;padding:8px;border-radius:12px"><div style="aspect-ratio:16/9;border-radius:8px;overflow:hidden"><img src="art/16x9/mahadev.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:100% 30%;display:block"></div><div><div style="font-weight:600;font-size:15px"><span lang="hi">एपिसोड 2</span><span lang="en">Episode 2</span></div><div style="font-size:12px;color:var(--fg3)"><span lang="hi">देखें अथवा सुनें</span><span lang="en">Watch or listen</span></div></div></a>
+      <a href="#1f" style="display:grid;grid-template-columns:128px 1fr;gap:12px;align-items:center;padding:8px;border-radius:12px"><div style="aspect-ratio:16/9;border-radius:8px;overflow:hidden"><img src="art/1x1/mahadev.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 80%;display:block"></div><div><div style="font-weight:600;font-size:15px"><span lang="hi">एपिसोड 3</span><span lang="en">Episode 3</span></div><div style="font-size:12px;color:var(--fg3)"><span lang="hi">देखें अथवा सुनें</span><span lang="en">Watch or listen</span></div></div></a>
+    </div>
+  </div>
+
+  <div style="margin:28px 20px 0;padding-top:22px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div style="display:flex;flex-direction:column;gap:4px"><div style="font-size:13px;color:var(--gold);font-weight:500"><span lang="hi">विभाजन</span><span lang="en">Divided by</span></div><div style="font-size:14px;color:var(--fg2)"><span lang="hi">प्रत्येक महादेव</span><span lang="en">Each of the 84 Mahadev</span></div></div>
+    <div style="display:flex;flex-direction:column;gap:4px"><div style="font-size:13px;color:var(--gold);font-weight:500"><span lang="hi">3D संसार</span><span lang="en">3D world</span></div><div style="font-size:14px;color:var(--fg2)"><span lang="hi">आगामी चरण में</span><span lang="en">In a later round</span></div></div>
+  </div>
+
+  <div style="margin-top:36px;padding:24px 20px;border-top:1px solid var(--line);display:flex;gap:14px;align-items:center">
+    <img src="assets/gov-mp.png" alt="मध्यप्रदेश शासन" style="width:52px;height:52px;object-fit:contain;display:block">
+    <div style="font-size:13px;color:var(--fg2)"><span lang="hi">वीर भारत न्यास · संस्कृति विभाग, मध्यप्रदेश शासन</span><span lang="en">Veer Bharat Nyas · Culture Department, Government of Madhya Pradesh</span></div>
+  </div>
+
+  <div style="position:sticky;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);height:82px;padding:6px 6px 18px;background:var(--glass);backdrop-filter:blur(18px);border-top:1px solid var(--line)">
+    <a href="#1b" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"></path></svg><span lang="hi">मुख्य</span><span lang="en">Home</span></a>
+    <a href="#1d" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span lang="hi">खोज</span><span lang="en">Search</span></a>
+    <a href="#1d" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M4 10h16M8 3v4M16 3v4"></path></svg><span lang="hi">आयोजन</span><span lang="en">Events</span></a>
+    <a href="#1d" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M8 11l4 4 4-4"></path><path d="M5 19h14"></path></svg><span lang="hi">डाउनलोड</span><span lang="en">Downloads</span></a>
+    <a href="#1d" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg><span lang="hi">मेरा खाता</span><span lang="en">My Account</span></a>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ROW 3 : PLAYER -->
+<div style="display:flex;gap:56px;align-items:flex-start">
+
+<!-- 1e PLAYER DESKTOP -->
+<div id="1e" style="display:flex;flex-direction:column;gap:10px;flex:none;scroll-margin-top:16px">
+<div style="display:flex;gap:8px;align-items:baseline;font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)"><a href="#1e" style="padding:2px 7px;border-radius:5px;background:rgba(255,255,255,.1);color:#fff">1e</a><span>एपिसोड Player · गीता अमृत · 1440</span></div>
+<div data-vbn data-lang="{{ pd.lang }}" data-theme="{{ pd.theme }}" data-screen-label="Player desktop" style="width:1440px;background:var(--bg);color:var(--fg);font-family:var(--ui);border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);position:relative;line-height:1.5">
+
+  <div style="position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:36px;height:76px;padding:0 72px;background:var(--bg);border-bottom:1px solid var(--line)">
+    <a href="#1a" style="display:flex;align-items:center;height:58px;flex:none"><img data-on="dark" src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:58px;display:block"><img data-on="light" src="assets/wordmark-deepgold.svg" alt="वीर भारत न्यास" style="height:58px;display:block"></a>
+    <nav style="display:flex;align-items:center;gap:28px;font-size:16px;font-weight:500;color:var(--fg2)">
+      <a href="#1a"><span lang="hi">मुख्य पृष्ठ</span><span lang="en">Home</span></a>
+      <a href="#1c"><span lang="hi">श्रृंखलाएँ</span><span lang="en">Series</span></a>
+      <a href="#1e" style="color:var(--fg);font-weight:600"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></a>
+      <a href="#1a"><span lang="hi">पॉडकास्ट</span><span lang="en">Podcast</span></a>
+      <a href="#1a"><span lang="hi">आयोजन</span><span lang="en">Events</span></a>
+      <a href="#1a"><span lang="hi">प्रकाशन</span><span lang="en">Books</span></a>
+    </nav>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:10px">
+      <button aria-label="Search" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--fg);cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+      <button onClick="{{ pd.toggleLang }}" aria-label="Language" style="display:flex;align-items:center;gap:2px;height:40px;padding:0 5px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--fg);cursor:pointer">
+        <span data-lk="hi" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;font-family:var(--display);font-size:15px;font-weight:600">अ</span>
+        <span data-lk="en" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;font-family:var(--display);font-size:15px;font-weight:600">A</span>
+      </button>
+      <button onClick="{{ pd.toggleTheme }}" aria-label="Theme" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--fg);cursor:pointer">
+        <svg data-on="dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg data-on="light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+      </button>
+      <button aria-label="Profile" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--fg);cursor:pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></button>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:912px 360px;gap:24px;padding:28px 72px 0;align-items:start">
+    <!-- video + details -->
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <div data-play="{{ playing }}" style="position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:var(--shadow);color:#fff">
+        <img src="art/16x9/geeta-amrit.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 32%),linear-gradient(to bottom,rgba(0,0,0,.45),transparent 22%)"></div>
+        <div style="position:absolute;left:22px;top:18px;display:flex;flex-direction:column;gap:2px"><div style="font-size:13px;color:rgba(255,255,255,.75)"><span lang="hi">गीता अमृत · एपिसोड 1</span><span lang="en">Geeta Amrit · Episode 1</span></div><div style="font-family:var(--display);font-size:18px"><span lang="hi">प्रश्न: अर्जुन का संशय</span><span lang="en">Question: Arjun's doubt</span></div></div>
+        <canvas data-emblem width="88" height="88" aria-label="वीर भारत न्यास" style="position:absolute;right:18px;top:14px;width:44px;height:44px;opacity:.85"></canvas>
+        <button onClick="{{ togglePlay }}" aria-label="Play" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:84px;height:84px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.4);color:#fff;cursor:pointer"><svg data-ic="play" width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4.5v15l12-7.5z"></path></svg><svg data-ic="pause" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"></path></svg></button>
+        <!-- context layer card -->
+        <div style="position:absolute;right:22px;bottom:96px;display:flex;align-items:center;gap:10px;padding:10px 14px 10px 12px;border-radius:12px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2);font-size:13px;color:rgba(255,255,255,.85)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f1d88e" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg><span lang="hi">संदर्भ परत: किसी संस्कृत शब्द, स्थान या नाम का अर्थ एक स्पर्श पर</span><span lang="en">Context layer: the meaning of a Sanskrit term, place or name on one tap</span></div>
+        <!-- controls -->
+        <div style="position:absolute;left:22px;right:22px;bottom:16px;display:flex;flex-direction:column;gap:10px">
+          <div style="position:relative;display:flex;gap:4px;height:18px;align-items:center">
+            <div style="flex:1.2;height:4px;border-radius:2px;background:rgba(255,255,255,.3)"></div>
+            <div style="flex:2.2;height:4px;border-radius:2px;background:rgba(255,255,255,.3)"></div>
+            <div style="flex:1.6;height:4px;border-radius:2px;background:rgba(255,255,255,.3)"></div>
+            <div style="flex:1.6;height:4px;border-radius:2px;background:rgba(255,255,255,.3)"></div>
+            <div style="flex:.7;height:4px;border-radius:2px;background:rgba(255,255,255,.3)"></div>
+            <div style="position:absolute;left:0;top:50%;width:14px;height:14px;border-radius:999px;background:#f1d88e;transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(241,216,142,.25)"></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <button onClick="{{ togglePlay }}" aria-label="Play" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:0;background:transparent;color:#fff;cursor:pointer"><svg data-ic="play" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"></path></svg><svg data-ic="pause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"></path></svg></button>
+            <button aria-label="Back 10 seconds" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:0;background:transparent;color:#fff;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.3-5.6"></path><path d="M4 4v5h5"></path></svg></button>
+            <button aria-label="Forward 10 seconds" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:0;background:transparent;color:#fff;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"></path><path d="M20 4v5h-5"></path></svg></button>
+            <button aria-label="Volume" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:0;background:transparent;color:#fff;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h4l5 4V6l-5 4z"></path><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"></path></svg></button>
+            <div style="font-size:13px;color:rgba(255,255,255,.8);font-variant-numeric:tabular-nums;margin-left:4px">0:00 / 20:00</div>
+            <div style="margin-left:14px;font-size:13px;color:#f1d88e"><span lang="hi">अध्याय 1 · प्रश्न</span><span lang="en">Chapter 1 · Prashna</span></div>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:4px">
+              <button aria-label="Shloka read-along" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;font-size:13px;font-weight:500"><span style="font-family:var(--display)">श्लो</span><span lang="hi">श्लोक</span><span lang="en">Shloka</span></button>
+              <button aria-label="Listen mode" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;font-size:13px;font-weight:500"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"></path><rect x="4" y="14" width="4" height="6" rx="1.5"></rect><rect x="16" y="14" width="4" height="6" rx="1.5"></rect></svg><span lang="hi">सुनें</span><span lang="en">Listen</span></button>
+              <button aria-label="Subtitles" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:0;background:transparent;color:#fff;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M10 10.5a2 2 0 1 0 0 3M16.5 10.5a2 2 0 1 0 0 3"></path></svg></button>
+              <button aria-label="Quality and data saver" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:0;background:transparent;color:#fff;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h8M18 7h2M4 17h4M14 17h6"></path><circle cx="15" cy="7" r="2.2"></circle><circle cx="11" cy="17" r="2.2"></circle></svg></button>
+              <button aria-label="Cast" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:0;background:transparent;color:#fff;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5h18v14h-7"></path><path d="M3 12a8 8 0 0 1 8 8M3 16a4 4 0 0 1 4 4M3 20h.01"></path></svg></button>
+              <button aria-label="Picture in picture" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:0;background:transparent;color:#fff;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"></rect><rect x="12" y="12" width="7" height="5" rx="1" fill="currentColor"></rect></svg></button>
+              <button aria-label="Fullscreen" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:0;background:transparent;color:#fff;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"></path></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <a href="#1e" style="font-size:14px;font-weight:500;color:var(--gold)"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></a>
+            <h1 style="margin:0;font-family:var(--display);font-weight:600;font-size:32px;line-height:1.25"><span lang="hi">एपिसोड 1 · प्रश्न: अर्जुन का संशय</span><span lang="en">Episode 1 · Question: Arjun's doubt</span></h1>
+            <div style="font-size:14px;color:var(--fg3)"><span lang="hi">हिन्दी · संस्कृत श्लोक सहित · लगभग 20 मिनट · उपशीर्षक</span><span lang="en">Hindi · With Sanskrit shlokas · About 20 minutes · Subtitles</span></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;flex:none">
+            <button style="display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--fg);cursor:pointer;font-size:14px;font-weight:500"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"></path><rect x="4" y="14" width="4" height="6" rx="1.5"></rect><rect x="16" y="14" width="4" height="6" rx="1.5"></rect></svg><span lang="hi">सुनें</span><span lang="en">Listen</span></button>
+            <button style="display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--fg);cursor:pointer;font-size:14px;font-weight:500"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg><span lang="hi">सूची</span><span lang="en">Watchlist</span></button>
+            <button style="display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--fg);cursor:pointer;font-size:14px;font-weight:500"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M8 8l4-4 4 4"></path><path d="M5 13v6h14v-6"></path></svg><span lang="hi">साझा करें</span><span lang="en">Share</span></button>
+          </div>
+        </div>
+        <p style="margin:0;font-size:16px;color:var(--fg2);max-width:760px;text-wrap:pretty"><span lang="hi">एक जिज्ञासु सूत्रधार आज के जीवन के एक प्रश्न से आरंभ करता है, जिसका कोई तैयार उत्तर नहीं। शिष्य आज की बेचैनी को स्वर देता है और गुरु उसे गीता तथा सनातन चिंतन से जोड़ते हैं। विद्वान संदर्भ, अर्थ और आज के जीवन में उसका स्थान बताते हैं। अंत में सूत्रधार नई दृष्टि के साथ उसी प्रश्न पर लौटता है और एपिसोड एक अमृत-सूत्र पर पूर्ण होता है।</span><span lang="en">A curious sutradhar opens with a question from today's life, without a ready answer. The shishya voices today's unease and the guru connects it to the Geeta and Sanatan thought. A scholar gives the context, the meaning and its place in life today. The sutradhar returns to the opening question with new sight, and the episode closes on a short amrit-sutra.</span></p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;padding-top:4px">
+          <a href="#1e" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;background:var(--bg2);border:1px solid var(--line);font-size:14px;font-weight:500"><span style="font-family:var(--display);color:var(--gold)">श्लो</span><span lang="hi">श्लोक, पाठ एवं अर्थ · Read-along</span><span lang="en">Shlokas, recitation and meaning · Read-along</span></a>
+          <a href="#1e" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;background:var(--bg2);border:1px solid var(--line);font-size:14px;font-weight:500"><span lang="hi">इस एपिसोड की शोध सामग्री</span><span lang="en">Research material for this episode</span></a>
+          <a href="#1e" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;background:var(--bg2);border:1px solid var(--line);font-size:14px;font-weight:500"><span lang="hi">आज का अमृत-सूत्र साझा करें</span><span lang="en">Share today's amrit-sutra</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- side panel -->
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="border-radius:16px;border:1px solid var(--line);background:var(--bg2);overflow:hidden">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;padding:18px 20px 10px">
+          <h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:20px"><span lang="hi">अध्याय</span><span lang="en">Chapters</span></h2>
+          <div style="font-size:12px;color:var(--fg3)"><span lang="hi">विज्ञापन विराम भागों के बीच</span><span lang="en">Ad breaks between parts</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 8px 8px">
+          <a href="#1e" data-ch data-active="true" style="display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;padding:10px 12px;border-radius:12px"><div data-chn style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line2);font-family:var(--display);font-size:15px">1</div><div><div style="font-weight:600;font-size:15px"><span lang="hi">प्रश्न</span><span lang="en">Prashna</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">आज के जीवन से एक प्रश्न, बिना तैयार उत्तर के</span><span lang="en">A question from today's life, without a ready answer</span></div></div></a>
+          <a href="#1e" data-ch data-active="false" style="display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;padding:10px 12px;border-radius:12px" style-hover="background:var(--bg3)"><div data-chn style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line2);font-family:var(--display);font-size:15px">2</div><div><div style="font-weight:600;font-size:15px"><span lang="hi">गुरु-शिष्य संवाद</span><span lang="en">Guru-shishya samvad</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">शिष्य की बेचैनी, गुरु का गीता से संबंध</span><span lang="en">The shishya's unease, the guru's link to the Geeta</span></div></div></a>
+          <a href="#1e" data-ch data-active="false" style="display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;padding:10px 12px;border-radius:12px" style-hover="background:var(--bg3)"><div data-chn style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line2);font-family:var(--display);font-size:15px">3</div><div><div style="font-weight:600;font-size:15px"><span lang="hi">दृश्य</span><span lang="en">Visuals</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">विचार को देखना और अनुभव करना</span><span lang="en">The idea seen and felt</span></div></div></a>
+          <a href="#1e" data-ch data-active="false" style="display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;padding:10px 12px;border-radius:12px" style-hover="background:var(--bg3)"><div data-chn style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line2);font-family:var(--display);font-size:15px">4</div><div><div style="font-weight:600;font-size:15px"><span lang="hi">विद्वान</span><span lang="en">Vidwan</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">संदर्भ, अर्थ और आज के जीवन में स्थान</span><span lang="en">The context, the meaning and its place in life today</span></div></div></a>
+          <a href="#1e" data-ch data-active="false" style="display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;padding:10px 12px;border-radius:12px" style-hover="background:var(--bg3)"><div data-chn style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;border:1px solid var(--line2);font-family:var(--display);font-size:15px">5</div><div><div style="font-weight:600;font-size:15px"><span lang="hi">अमृत-सूत्र</span><span lang="en">Amrit-sutra</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">नई दृष्टि के साथ उसी प्रश्न पर वापसी</span><span lang="en">Back to the opening question with new sight</span></div></div></a>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:20px"><span lang="hi">अगला एपिसोड</span><span lang="en">Next episode</span></h2><a href="#1e" style="font-size:13px;color:var(--gold);font-weight:500"><span lang="hi">सभी एपिसोड</span><span lang="en">All episodes</span></a></div>
+        <a href="#1e" style="display:grid;grid-template-columns:140px 1fr;gap:14px;align-items:center;padding:8px;border-radius:14px;background:var(--bg2);border:1px solid var(--line)"><div style="aspect-ratio:16/9;border-radius:9px;overflow:hidden"><img src="art/16x9/geeta-amrit.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:20% 50%;display:block"></div><div><div style="font-weight:600;font-size:15px"><span lang="hi">एपिसोड 2</span><span lang="en">Episode 2</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">प्रश्न: कर्म और फल</span><span lang="en">Question: Karma and its fruit</span></div></div></a>
+        <a href="#1e" style="display:grid;grid-template-columns:140px 1fr;gap:14px;align-items:center;padding:8px;border-radius:14px" style-hover="background:var(--bg2)"><div style="aspect-ratio:16/9;border-radius:9px;overflow:hidden"><img src="art/16x9/geeta-amrit.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:80% 50%;display:block"></div><div><div style="font-weight:600;font-size:15px"><span lang="hi">एपिसोड 3</span><span lang="en">Episode 3</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">प्रश्न: कर्तव्य</span><span lang="en">Question: Duty</span></div></div></a>
+        <a href="#1e" style="display:grid;grid-template-columns:140px 1fr;gap:14px;align-items:center;padding:8px;border-radius:14px" style-hover="background:var(--bg2)"><div style="aspect-ratio:16/9;border-radius:9px;overflow:hidden"><img src="art/1x1/geeta-amrit.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 70%;display:block"></div><div><div style="font-weight:600;font-size:15px"><span lang="hi">एपिसोड 4</span><span lang="en">Episode 4</span></div><div style="font-size:13px;color:var(--fg3)"><span lang="hi">प्रश्न: स्वधर्म</span><span lang="en">Question: Swadharma</span></div></div></a>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:64px;padding:36px 72px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:40px">
+    <div style="display:flex;gap:20px;align-items:center">
+      <img src="assets/gov-mp.png" alt="मध्यप्रदेश शासन" style="width:60px;height:60px;object-fit:contain;display:block">
+      <div style="font-size:14px;color:var(--fg2)"><span lang="hi">वीर भारत न्यास · संस्कृति विभाग, मध्यप्रदेश शासन का अधिष्ठान</span><span lang="en">Veer Bharat Nyas · An adhishthan of the Culture Department, Government of Madhya Pradesh</span></div>
+    </div>
+    <div style="display:flex;gap:28px;font-size:14px;color:var(--fg2)">
+      <a href="#1a"><span lang="hi">न्यास परिचय</span><span lang="en">About the Nyas</span></a>
+      <a href="#1a"><span lang="hi">संपर्क</span><span lang="en">Contact</span></a>
+      <a href="#1a"><span lang="hi">गोपनीयता एवं सहमति</span><span lang="en">Privacy and consent</span></a>
+      <a href="#1a"><span lang="hi">उपयोग की शर्तें</span><span lang="en">Terms of use</span></a>
+      <a href="#1a"><span lang="hi">सुलभता विवरण</span><span lang="en">Accessibility statement</span></a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 1f PLAYER MOBILE -->
+<div id="1f" style="display:flex;flex-direction:column;gap:10px;flex:none;scroll-margin-top:16px">
+<div style="display:flex;gap:8px;align-items:baseline;font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)"><a href="#1f" style="padding:2px 7px;border-radius:5px;background:rgba(255,255,255,.1);color:#fff">1f</a><span>एपिसोड Player · गीता अमृत · 390</span></div>
+<div data-vbn data-lang="{{ pm.lang }}" data-theme="{{ pm.theme }}" data-screen-label="Player mobile" style="width:390px;background:var(--bg);color:var(--fg);font-family:var(--ui);border-radius:32px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);position:relative;line-height:1.5">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;height:64px;padding:8px 14px 0 10px">
+    <div style="display:flex;align-items:center;gap:4px">
+      <a href="#1d" aria-label="Back" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;color:var(--fg)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg></a>
+      <img data-on="dark" src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:46px;display:block"><img data-on="light" src="assets/wordmark-deepgold.svg" alt="वीर भारत न्यास" style="height:46px;display:block">
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <button onClick="{{ pm.toggleLang }}" aria-label="Language" style="display:flex;align-items:center;gap:2px;height:36px;padding:0 4px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--fg);cursor:pointer">
+        <span data-lk="hi" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;font-family:var(--display);font-size:14px;font-weight:600">अ</span>
+        <span data-lk="en" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:999px;font-family:var(--display);font-size:14px;font-weight:600">A</span>
+      </button>
+      <button onClick="{{ pm.toggleTheme }}" aria-label="Theme" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--fg);cursor:pointer">
+        <svg data-on="dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg data-on="light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <div data-play="{{ mplaying }}" style="position:relative;aspect-ratio:16/9;background:#000;color:#fff;overflow:hidden">
+    <img src="art/16x9/geeta-amrit.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 45%),linear-gradient(to bottom,rgba(0,0,0,.4),transparent 30%)"></div>
+    <canvas data-emblem width="64" height="64" aria-label="वीर भारत न्यास" style="position:absolute;right:10px;top:8px;width:32px;height:32px;opacity:.85"></canvas>
+    <button onClick="{{ toggleMPlay }}" aria-label="Play" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.4);color:#fff;cursor:pointer"><svg data-ic="play" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4.5v15l12-7.5z"></path></svg><svg data-ic="pause" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"></path></svg></button>
+    <div style="position:absolute;left:12px;right:12px;bottom:8px;display:flex;flex-direction:column;gap:4px">
+      <div style="position:relative;display:flex;gap:3px;height:14px;align-items:center">
+        <div style="flex:1.2;height:3px;border-radius:2px;background:rgba(255,255,255,.35)"></div><div style="flex:2.2;height:3px;border-radius:2px;background:rgba(255,255,255,.35)"></div><div style="flex:1.6;height:3px;border-radius:2px;background:rgba(255,255,255,.35)"></div><div style="flex:1.6;height:3px;border-radius:2px;background:rgba(255,255,255,.35)"></div><div style="flex:.7;height:3px;border-radius:2px;background:rgba(255,255,255,.35)"></div>
+        <div style="position:absolute;left:0;top:50%;width:11px;height:11px;border-radius:999px;background:#f1d88e;transform:translate(-50%,-50%)"></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.8)">
+        <div style="font-variant-numeric:tabular-nums">0:00 / 20:00</div>
+        <div style="display:flex;align-items:center;gap:2px">
+          <button aria-label="Subtitles" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:0;background:transparent;color:#fff;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M10 10.5a2 2 0 1 0 0 3M16.5 10.5a2 2 0 1 0 0 3"></path></svg></button>
+          <button aria-label="Cast" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:0;background:transparent;color:#fff;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8V5h18v14h-7"></path><path d="M3 12a8 8 0 0 1 8 8M3 16a4 4 0 0 1 4 4M3 20h.01"></path></svg></button>
+          <button aria-label="Fullscreen" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:0;background:transparent;color:#fff;cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"></path></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:18px 20px 0;display:flex;flex-direction:column;gap:6px">
+    <a href="#1f" style="font-size:13px;font-weight:500;color:var(--gold)"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></a>
+    <h1 style="margin:0;font-family:var(--display);font-weight:600;font-size:23px;line-height:1.25"><span lang="hi">एपिसोड 1 · प्रश्न: अर्जुन का संशय</span><span lang="en">Episode 1 · Question: Arjun's doubt</span></h1>
+    <div style="font-size:13px;color:var(--fg3)"><span lang="hi">हिन्दी · संस्कृत श्लोक सहित · लगभग 20 मिनट</span><span lang="en">Hindi · With Sanskrit shlokas · About 20 minutes</span></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:16px 20px 0">
+    <button style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);color:var(--fg);cursor:pointer;font-size:12px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"></path><rect x="4" y="14" width="4" height="6" rx="1.5"></rect><rect x="16" y="14" width="4" height="6" rx="1.5"></rect></svg><span lang="hi">सुनें</span><span lang="en">Listen</span></button>
+    <button style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);color:var(--fg);cursor:pointer;font-size:12px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M8 11l4 4 4-4"></path><path d="M5 19h14"></path></svg><span lang="hi">डाउनलोड</span><span lang="en">Download</span></button>
+    <button style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);color:var(--fg);cursor:pointer;font-size:12px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg><span lang="hi">सूची</span><span lang="en">Watchlist</span></button>
+    <button style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);color:var(--fg);cursor:pointer;font-size:12px;font-weight:500"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M8 8l4-4 4 4"></path><path d="M5 13v6h14v-6"></path></svg><span lang="hi">साझा करें</span><span lang="en">Share</span></button>
+  </div>
+
+  <div style="padding:24px 0 0;display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 20px"><h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:19px"><span lang="hi">अध्याय</span><span lang="en">Chapters</span></h2><div style="font-size:12px;color:var(--fg3)"><span lang="hi">विराम भागों के बीच</span><span lang="en">Breaks between parts</span></div></div>
+    <div data-rail style="display:flex;gap:8px;overflow-x:auto;padding:0 20px 4px">
+      <a href="#1f" data-ch data-active="true" style="flex:none;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 6px;border-radius:999px;border:1px solid var(--line2)"><span data-chn style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;font-family:var(--display);font-size:14px">1</span><span style="font-size:14px;font-weight:500"><span lang="hi">प्रश्न</span><span lang="en">Prashna</span></span></a>
+      <a href="#1f" data-ch data-active="false" style="flex:none;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 6px;border-radius:999px;border:1px solid var(--line2)"><span data-chn style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;font-family:var(--display);font-size:14px;border:1px solid var(--line2)">2</span><span style="font-size:14px;font-weight:500"><span lang="hi">गुरु-शिष्य संवाद</span><span lang="en">Guru-shishya samvad</span></span></a>
+      <a href="#1f" data-ch data-active="false" style="flex:none;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 6px;border-radius:999px;border:1px solid var(--line2)"><span data-chn style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;font-family:var(--display);font-size:14px;border:1px solid var(--line2)">3</span><span style="font-size:14px;font-weight:500"><span lang="hi">दृश्य</span><span lang="en">Visuals</span></span></a>
+      <a href="#1f" data-ch data-active="false" style="flex:none;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 6px;border-radius:999px;border:1px solid var(--line2)"><span data-chn style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;font-family:var(--display);font-size:14px;border:1px solid var(--line2)">4</span><span style="font-size:14px;font-weight:500"><span lang="hi">विद्वान</span><span lang="en">Vidwan</span></span></a>
+      <a href="#1f" data-ch data-active="false" style="flex:none;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 6px;border-radius:999px;border:1px solid var(--line2)"><span data-chn style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;font-family:var(--display);font-size:14px;border:1px solid var(--line2)">5</span><span style="font-size:14px;font-weight:500"><span lang="hi">अमृत-सूत्र</span><span lang="en">Amrit-sutra</span></span></a>
+    </div>
+  </div>
+
+  <div style="padding:22px 20px 0;display:flex;flex-direction:column;gap:12px">
+    <p style="margin:0;font-size:14px;color:var(--fg2);text-wrap:pretty"><span lang="hi">एक जिज्ञासु सूत्रधार आज के जीवन के एक प्रश्न से आरंभ करता है। शिष्य आज की बेचैनी को स्वर देता है और गुरु उसे गीता तथा सनातन चिंतन से जोड़ते हैं। विद्वान संदर्भ और अर्थ बताते हैं, और एपिसोड एक अमृत-सूत्र पर पूर्ण होता है।</span><span lang="en">A curious sutradhar opens with a question from today's life. The shishya voices today's unease and the guru connects it to the Geeta and Sanatan thought. A scholar gives the context and meaning, and the episode closes on an amrit-sutra.</span></p>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <a href="#1f" style="display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 16px;border-radius:14px;background:var(--bg2);border:1px solid var(--line);font-size:14px;font-weight:500"><span style="display:flex;align-items:center;gap:10px"><span style="font-family:var(--display);color:var(--gold)">श्लो</span><span lang="hi">श्लोक, पाठ एवं अर्थ</span><span lang="en">Shlokas, recitation and meaning</span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+      <a href="#1f" style="display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 16px;border-radius:14px;background:var(--bg2);border:1px solid var(--line);font-size:14px;font-weight:500"><span lang="hi">इस एपिसोड की शोध सामग्री</span><span lang="en">Research material for this episode</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+      <a href="#1f" style="display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 16px;border-radius:14px;background:var(--bg2);border:1px solid var(--line);font-size:14px;font-weight:500"><span lang="hi">संदर्भ परत</span><span lang="en">Context layer</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></a>
+    </div>
+  </div>
+
+  <div style="padding:28px 0 0;display:flex;flex-direction:column;gap:10px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 20px"><h2 style="margin:0;font-family:var(--display);font-weight:600;font-size:19px"><span lang="hi">अगला एपिसोड</span><span lang="en">Next episode</span></h2><a href="#1f" style="font-size:13px;color:var(--gold);font-weight:500"><span lang="hi">सभी</span><span lang="en">All</span></a></div>
+    <div style="display:flex;flex-direction:column;gap:4px;padding:0 12px">
+      <a href="#1f" style="display:grid;grid-template-columns:128px 1fr;gap:12px;align-items:center;padding:8px;border-radius:12px;background:var(--bg2)"><div style="aspect-ratio:16/9;border-radius:8px;overflow:hidden"><img src="art/16x9/geeta-amrit.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:20% 50%;display:block"></div><div><div style="font-weight:600;font-size:14px"><span lang="hi">एपिसोड 2</span><span lang="en">Episode 2</span></div><div style="font-size:12px;color:var(--fg3)"><span lang="hi">प्रश्न: कर्म और फल</span><span lang="en">Question: Karma and its fruit</span></div></div></a>
+      <a href="#1f" style="display:grid;grid-template-columns:128px 1fr;gap:12px;align-items:center;padding:8px;border-radius:12px"><div style="aspect-ratio:16/9;border-radius:8px;overflow:hidden"><img src="art/16x9/geeta-amrit.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:80% 50%;display:block"></div><div><div style="font-weight:600;font-size:14px"><span lang="hi">एपिसोड 3</span><span lang="en">Episode 3</span></div><div style="font-size:12px;color:var(--fg3)"><span lang="hi">प्रश्न: कर्तव्य</span><span lang="en">Question: Duty</span></div></div></a>
+      <a href="#1f" style="display:grid;grid-template-columns:128px 1fr;gap:12px;align-items:center;padding:8px;border-radius:12px"><div style="aspect-ratio:16/9;border-radius:8px;overflow:hidden"><img src="art/1x1/geeta-amrit.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 70%;display:block"></div><div><div style="font-weight:600;font-size:14px"><span lang="hi">एपिसोड 4</span><span lang="en">Episode 4</span></div><div style="font-size:12px;color:var(--fg3)"><span lang="hi">प्रश्न: स्वधर्म</span><span lang="en">Question: Swadharma</span></div></div></a>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;padding:22px 20px;border-top:1px solid var(--line);display:flex;gap:14px;align-items:center">
+    <img src="assets/gov-mp.png" alt="मध्यप्रदेश शासन" style="width:52px;height:52px;object-fit:contain;display:block">
+    <div style="font-size:13px;color:var(--fg2)"><span lang="hi">वीर भारत न्यास · संस्कृति विभाग, मध्यप्रदेश शासन</span><span lang="en">Veer Bharat Nyas · Culture Department, Government of Madhya Pradesh</span></div>
+  </div>
+
+  <div style="position:sticky;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);height:82px;padding:6px 6px 18px;background:var(--glass);backdrop-filter:blur(18px);border-top:1px solid var(--line)">
+    <a href="#1b" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"></path></svg><span lang="hi">मुख्य</span><span lang="en">Home</span></a>
+    <a href="#1f" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span lang="hi">खोज</span><span lang="en">Search</span></a>
+    <a href="#1f" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M4 10h16M8 3v4M16 3v4"></path></svg><span lang="hi">आयोजन</span><span lang="en">Events</span></a>
+    <a href="#1f" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M8 11l4 4 4-4"></path><path d="M5 19h14"></path></svg><span lang="hi">डाउनलोड</span><span lang="en">Downloads</span></a>
+    <a href="#1f" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--fg3);font-size:11px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg><span lang="hi">मेरा खाता</span><span lang="en">My Account</span></a>
+  </div>
+</div>
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;hi&quot;,&quot;en&quot;],&quot;default&quot;:&quot;hi&quot;,&quot;tsType&quot;:&quot;'hi' | 'en'&quot;,&quot;section&quot;:&quot;Defaults&quot;},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;'dark' | 'light'&quot;,&quot;section&quot;:&quot;Defaults&quot;},&quot;autoCycle&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;parallax&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    const lang = p.defaultLang ?? 'hi', theme = p.defaultTheme ?? 'dark';
+    const mk = () => ({ lang, theme });
+    this.state = { b: { hd: mk(), hm: mk(), sd: mk(), sm: mk(), pd: mk(), pm: mk() }, part: 0, playing: false, mplaying: false };
+    this.hero = { d: 0, m: 0 };
+    this.heroRef = React.createRef(); this.sheroRef = React.createRef();
+  }
+  board(k) {
+    const s = this.state.b[k];
+    const set = patch => this.setState(st => ({ b: { ...st.b, [k]: { ...st.b[k], ...patch } } }));
+    return { lang: s.lang, theme: s.theme, toggleLang: () => set({ lang: s.lang === 'hi' ? 'en' : 'hi' }), toggleTheme: () => set({ theme: s.theme === 'dark' ? 'light' : 'dark' }) };
+  }
+  componentDidMount() {
+    this.startCycle();
+    if (this.props.parallax ?? true) { this.bind(this.heroRef.current); this.bind(this.sheroRef.current); }
+    const im = new Image(); im.onload = () => document.querySelectorAll('canvas[data-emblem]').forEach(c => { const x = c.getContext('2d'); x.clearRect(0, 0, c.width, c.height); x.drawImage(im, 0, 0, c.width, c.height); }); im.src = 'assets/emblem.svg';
+  }
+  componentDidUpdate(prev) {
+    if (prev.defaultLang !== this.props.defaultLang || prev.defaultTheme !== this.props.defaultTheme) {
+      const lang = this.props.defaultLang ?? 'hi', theme = this.props.defaultTheme ?? 'dark';
+      const b = {}; Object.keys(this.state.b).forEach(k => b[k] = { lang, theme });
+      this.setState({ b });
+    }
+    if (prev.autoCycle !== this.props.autoCycle) this.startCycle();
+  }
+  componentWillUnmount() { clearInterval(this.t); }
+  startCycle() {
+    clearInterval(this.t);
+    if (this.props.autoCycle ?? true) this.t = setInterval(() => { this.showHero('d', (this.hero.d + 1) % 5); this.showHero('m', (this.hero.m + 1) % 5); }, 7000);
+  }
+  showHero(set, i) {
+    this.hero[set] = i;
+    document.querySelectorAll(`[data-hs="${set}"][data-hi]`).forEach(el => { el.style.opacity = +el.dataset.hi === i ? 1 : 0; });
+    document.querySelectorAll(`[data-hs="${set}"][data-ht]`).forEach(el => { el.dataset.qa = String(+el.dataset.ht === i); });
+  }
+  bind(el) {
+    if (!el || el.__px) return; el.__px = true;
+    let raf;
+    const layers = () => el.querySelectorAll('[data-depth]');
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => layers().forEach(l => { const d = parseFloat(l.dataset.depth); l.style.transform = `translate3d(${(x * 44 * d).toFixed(1)}px,${(y * 26 * d).toFixed(1)}px,0)`; }));
+    });
+    el.addEventListener('mouseleave', () => layers().forEach(l => l.style.transform = ''));
+  }
+  renderVals() {
+    const { part, playing, mplaying } = this.state;
+    const v = { hd: this.board('hd'), hm: this.board('hm'), sd: this.board('sd'), sm: this.board('sm'), pd: this.board('pd'), pm: this.board('pm') };
+    v.goHero = e => { clearInterval(this.t); this.showHero('d', +e.currentTarget.dataset.i); };
+    v.goMHero = e => { clearInterval(this.t); this.showHero('m', +e.currentTarget.dataset.i); };
+    v.beads = Array.from({ length: 84 }, (_, i) => ({ i, n: i + 1, active: i === part }));
+    v.pickPart = e => this.setState({ part: +e.currentTarget.dataset.i });
+    v.partN = part + 1;
+    v.playing = playing; v.togglePlay = () => this.setState(s => ({ playing: !s.playing }));
+    v.mplaying = mplaying; v.toggleMPlay = () => this.setState(s => ({ mplaying: !s.mplaying }));
+    return v;
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Anek+Devanagari:wght@300..700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0d0b09}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+button,input{font:inherit;color:inherit}
+[data-vbn]{--dsp:'Tiro Devanagari Hindi',Georgia,serif;--ui:'Anek Devanagari',system-ui,sans-serif;--pad:clamp(20px,5vw,80px);--bg:#0d0b09;--bg2:#16120e;--bg3:#211a14;--fg:#f3eadb;--fg2:#cbbfad;--fg3:#9a8e7d;--ac:#dcb562;--aci:#17110a;--ln:rgba(243,234,219,.12);--ln2:rgba(243,234,219,.26);--orn:#dcb562;--archLine:0 solid transparent;--archOff:0px;--archGlow:0 60px 160px -70px rgba(232,160,70,.5);--shadow:0 24px 70px rgba(0,0,0,.6);--halo:radial-gradient(55% 60% at 50% 0%,rgba(220,160,80,.13),transparent 72%);color-scheme:dark}
+[data-vbn][data-theme="light"]{--bg:#f2ebdf;--bg2:#e8ddcb;--bg3:#fbf7f0;--fg:#2a1a13;--fg2:#523e31;--fg3:#6f5747;--ac:#8e1f1c;--aci:#fbf3e6;--ln:rgba(42,26,19,.13);--ln2:rgba(42,26,19,.3);--orn:#a8792a;--archLine:1px solid #b08640;--archOff:10px;--archGlow:0 34px 60px -44px rgba(90,50,20,.45);--shadow:0 22px 54px rgba(80,50,20,.2);--halo:none;color-scheme:light}
+[data-vbn]:not([data-lang="en"]) [lang="en"],[data-vbn][data-lang="en"] [lang="hi"]{display:none!important}
+[data-vbn][data-theme="light"] [data-on="dark"],[data-vbn]:not([data-theme="light"]) [data-on="light"]{display:none!important}
+@media (max-width:820px){[data-vbn] [data-desk]{display:none!important}}
+@media (min-width:821px){[data-vbn] [data-mob]{display:none!important}}
+[data-rail]{scrollbar-width:none}[data-rail]::-webkit-scrollbar{display:none}
+[data-vbn] input::placeholder{color:var(--fg3)}
+</style>
+</helmet>
+
+<div data-vbn data-theme="{{ theme }}" data-lang="{{ lang }}" ref="{{ rootRef }}" style="min-height:100vh;background:var(--bg);color:var(--fg);font-family:var(--ui);font-size:17px;line-height:1.6;transition:background-color .5s ease,color .5s ease">
+
+<header style="position:sticky;top:0;z-index:40;background:color-mix(in oklab,var(--bg) 90%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
+  <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:20px;height:clamp(66px,6.4vw,88px);padding:0 var(--pad);max-width:1600px;margin:0 auto;box-sizing:border-box">
+    <button onClick="{{ goHome }}" aria-label="वीर भारत न्यास" style="display:flex;align-items:center;height:clamp(52px,4.6vw,66px);padding:0;border:0;background:none;cursor:pointer">
+      <img data-on="dark" src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:100%;display:block">
+      <img data-on="light" src="assets/wordmark-maroon.svg" alt="वीर भारत न्यास" style="height:100%;display:block">
+    </button>
+    <div data-desk style="justify-self:center;font-size:15px;color:var(--fg3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%"><span lang="hi">शनिवार, आश्विन अमावस्या · विक्रम संवत २०८३</span><span lang="en">Saturday, Ashwin Amavasya · Vikram Samvat 2083</span></div>
+    <div style="display:flex;align-items:center;gap:2px;justify-self:end">
+      <button data-desk onClick="{{ openSearch }}" aria-label="खोजें" style="display:flex;align-items:center;justify-content:center;width:46px;height:46px;border:0;border-radius:50%;background:none;cursor:pointer;transition:background .3s" style-hover="background:var(--bg2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4 4"></path></svg></button>
+      <button onClick="{{ toggleLang }}" aria-label="भाषा / Language" style="display:flex;align-items:center;justify-content:center;width:46px;height:46px;border:0;border-radius:50%;background:none;cursor:pointer;font:400 21px/1 var(--dsp);padding-top:3px;transition:background .3s" style-hover="background:var(--bg2)"><span lang="hi">A</span><span lang="en">अ</span></button>
+      <button onClick="{{ toggleTheme }}" aria-label="थीम" style="display:flex;align-items:center;justify-content:center;width:46px;height:46px;border:0;border-radius:50%;background:none;cursor:pointer;transition:background .3s" style-hover="background:var(--bg2)">
+        <svg data-on="dark" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></svg>
+        <svg data-on="light" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M19.5 14.5A7.5 7.5 0 0 1 9.5 4.5a7.5 7.5 0 1 0 10 10z"></path></svg>
+      </button>
+      <button data-desk onClick="{{ openAccount }}" aria-label="खाता" style="display:flex;align-items:center;justify-content:center;width:46px;height:46px;border:0;border-radius:50%;background:none;cursor:pointer;transition:background .3s" style-hover="background:var(--bg2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.8"></circle><path d="M4.8 20a7.2 7.2 0 0 1 14.4 0"></path></svg></button>
+      <button onClick="{{ openIndex }}" aria-label="अनुक्रम" style="display:flex;align-items:center;gap:10px;height:46px;padding:0 6px 0 10px;margin-left:6px;border:0;background:none;cursor:pointer;color:var(--ac)">
+        <span data-desk style="font:400 19px/1 var(--dsp);padding-top:4px;color:var(--fg)"><span lang="hi">अनुक्रम</span><span lang="en">Index</span></span>
+        <svg width="30" height="30" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 19a9 9 0 0 1 18 0"></path><path d="M2.5 23h23"></path><path d="M14 4v3M6.2 7.8l2 2M21.8 7.8l-2 2M2.6 14.5h2.6M22.8 14.5h2.6"></path></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main ref="{{ mainRef }}">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div data-screen-label="01 Home">
+
+  <section style="position:relative;max-width:1600px;margin:0 auto;padding:clamp(6px,1.2vw,18px) var(--pad) 0;box-sizing:border-box">
+    <div style="position:absolute;inset:0 0 auto 0;height:80%;background:var(--halo);pointer-events:none"></div>
+    <div ref="{{ heroRef }}" style="position:relative;border-radius:50% 50% 8px 8px / 34% 34% 8px 8px;outline:var(--archLine);outline-offset:var(--archOff);box-shadow:var(--archGlow)">
+      <div data-desk style="position:relative;height:clamp(340px,min(64vh,50vw),760px);border-radius:inherit;overflow:hidden;background:#000">
+        <div data-par="-18" data-sc="1.06" style="position:absolute;inset:0;transform:scale(1.06)">
+          <sc-for list="{{ hero }}" as="h" hint-placeholder-count="1">
+            <img data-hs="{{ h.i }}" src="{{ h.d }}" alt="{{ h.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ h.pos }};opacity:{{ h.op }};transition:opacity 1.6s ease">
+          </sc-for>
+        </div>
+      </div>
+      <div data-mob style="position:relative;aspect-ratio:4/5;border-radius:inherit;overflow:hidden;background:#000">
+        <sc-for list="{{ hero }}" as="h" hint-placeholder-count="1">
+          <img data-hs="{{ h.i }}" src="{{ h.m }}" alt="{{ h.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:{{ h.op }};transition:opacity 1.6s ease">
+        </sc-for>
+      </div>
+    </div>
+
+    <div data-par="6" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:22px 48px;padding-top:clamp(26px,3vw,40px)">
+      <div style="flex:1 1 440px;display:grid;min-width:0">
+        <sc-for list="{{ hero }}" as="h" hint-placeholder-count="1">
+          <div data-hs="{{ h.i }}" style="grid-area:1/1;display:flex;flex-direction:column;gap:8px;opacity:{{ h.op }};transition:opacity .9s ease;pointer-events:none">
+            <div style="font:400 clamp(36px,4.2vw,62px)/1.3 var(--dsp);padding-top:.08em">{{ h.name }}</div>
+            <p style="margin:0;font-size:clamp(16px,1.25vw,19px);line-height:1.65;color:var(--fg2);max-width:54ch;text-wrap:pretty">{{ h.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:clamp(20px,2.6vw,36px);flex-wrap:wrap">
+        <button onClick="{{ heroWatch }}" style="display:flex;align-items:center;gap:16px;padding:0;border:0;background:none;cursor:pointer">
+          <span style="flex:none;display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;background:var(--ac);color:var(--aci);box-shadow:0 0 0 7px color-mix(in oklab,var(--ac) 16%,transparent);transition:box-shadow .45s cubic-bezier(.2,.7,.2,1)" style-hover="box-shadow:0 0 0 13px color-mix(in oklab,var(--ac) 20%,transparent)"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M7.5 5.5v13l11-6.5z" fill="currentColor"></path></svg></span>
+          <span style="font:400 22px/1 var(--dsp);padding-top:4px"><span lang="hi">देखें</span><span lang="en">Watch</span></span>
+        </button>
+        <button onClick="{{ heroDetails }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-size:17px;font-weight:500;text-decoration:underline;text-decoration-color:var(--ln2);text-underline-offset:8px" style-hover="color:var(--ac);text-decoration-color:var(--ac)"><span lang="hi">श्रृंखला देखें</span><span lang="en">The series</span></button>
+        <button onClick="{{ nextHero }}" aria-label="अगली श्रृंखला" style="display:flex;align-items:center;gap:12px;padding:0;border:0;background:none;cursor:pointer;text-align:left">
+          <svg width="46" height="46" viewBox="0 0 46 46" style="flex:none"><circle cx="23" cy="23" r="18" fill="none" stroke="var(--ln2)" stroke-width="1.5"></circle><circle data-ring cx="23" cy="23" r="18" fill="none" stroke="var(--ac)" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="113.1" transform="rotate(-90 23 23)"></circle></svg>
+          <span style="display:flex;flex-direction:column;line-height:1.25">
+            <span style="font-size:14px;color:var(--fg3)"><span lang="hi">आगे</span><span lang="en">Up next</span></span>
+            <span style="display:grid">
+              <sc-for list="{{ hero }}" as="h" hint-placeholder-count="1"><span data-hs="{{ h.i }}" style="grid-area:1/1;font:400 19px/1.35 var(--dsp);white-space:nowrap;opacity:{{ h.op }};transition:opacity .9s ease">{{ h.next }}</span></sc-for>
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:1600px;margin:0 auto;padding:0 var(--pad);box-sizing:border-box">
+
+    <section style="margin-top:clamp(72px,8vw,128px)">
+      <h2 style="margin:0 0 26px;font:400 clamp(28px,3vw,42px)/1.3 var(--dsp)"><span lang="hi">जहाँ छोड़ा था</span><span lang="en">Where you left off</span></h2>
+      <div data-rail style="display:flex;gap:clamp(20px,2.6vw,40px);overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--pad));padding:0 var(--pad)">
+        <sc-for list="{{ cont }}" as="c" hint-placeholder-count="2">
+          <button onClick="{{ c.go }}" style="flex:none;width:clamp(270px,34vw,540px);scroll-snap-align:start;display:flex;flex-direction:column;gap:14px;padding:0;border:0;background:none;cursor:pointer;text-align:left">
+            <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--bg2)"><img src="{{ c.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.4);transform-origin:{{ c.pos }};transition:transform .9s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.48)"></div>
+            <div style="height:2px;background:var(--ln)"><div style="height:100%;width:{{ c.pct }};background:var(--ac)"></div></div>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font:400 clamp(20px,1.6vw,24px)/1.4 var(--dsp)">{{ c.title }}</span>
+              <span style="font-size:15px;color:var(--fg3)">{{ c.meta }}</span>
+            </div>
+          </button>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+
+  <section style="margin-top:clamp(80px,9vw,140px);background:var(--bg2);transition:background-color .5s ease">
+    <div style="max-width:1600px;margin:0 auto;padding:clamp(56px,7vw,112px) var(--pad);box-sizing:border-box;display:flex;flex-wrap:wrap;gap:clamp(36px,5vw,88px);align-items:center">
+      <button onClick="{{ openGeeta }}" aria-label="गीता अमृत" style="flex:0 1 340px;min-width:220px;padding:0;border:0;background:none;cursor:pointer">
+        <div style="aspect-ratio:3/4;border-radius:50% 50% 6px 6px / 30% 30% 6px 6px;overflow:hidden;outline:var(--archLine);outline-offset:var(--archOff);box-shadow:var(--archGlow)"><img src="art/9x16/geeta-amrit.jpg" alt="गीता अमृत" style="width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)"></div>
+      </button>
+      <div style="flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:clamp(28px,3vw,44px)">
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <h2 style="margin:0;font:400 clamp(40px,4.4vw,64px)/1.3 var(--dsp);padding-top:.08em"><span lang="hi">गीता अमृत</span><span lang="en">Geeta Amrit</span></h2>
+            <p style="margin:0;color:var(--fg2);max-width:46ch;text-wrap:pretty"><span lang="hi">गीता जयंती, २० दिसम्बर को प्रीमियर। पायलट एपिसोड अभी देखें।</span><span lang="en">Premieres on Geeta Jayanti, 20 December. The pilot is here now.</span></p>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:14px;color:var(--ac)">
+            <span style="font:400 clamp(64px,7vw,104px)/1 var(--dsp)">{{ cd.days }}</span>
+            <span style="display:flex;flex-direction:column;line-height:1.3;font-size:15px;color:var(--fg2)"><span><span lang="hi">दिन शेष</span><span lang="en">days to go</span></span><span>{{ cd.hours }}</span></span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;padding:clamp(24px,2.6vw,36px) 0;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln)">
+          <div style="font-size:15px;color:var(--fg3)"><span lang="hi">आज का अमृत-सूत्र</span><span lang="en">Today's amrit-sutra</span></div>
+          <div style="font:400 clamp(19px,1.6vw,23px)/1.7 var(--dsp);color:var(--orn)">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।</div>
+          <div style="font:400 clamp(26px,2.5vw,38px)/1.45 var(--dsp);text-wrap:balance"><span lang="hi">कर्म पर तुम्हारा अधिकार है, फल पर कभी नहीं।</span><span lang="en">Your right is to the action alone, never to its fruit.</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;padding-top:6px">
+            <button onClick="{{ shareSutra }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500;text-decoration:underline;text-decoration-color:var(--ln2);text-underline-offset:8px" style-hover="color:var(--ac);text-decoration-color:var(--ac)"><span lang="hi">कार्ड साझा करें</span><span lang="en">Share as a card</span></button>
+            <span style="font-size:15px;color:var(--fg3)"><span lang="hi">श्रीमद्भगवद्गीता २.४७</span><span lang="en">Shrimad Bhagavad Geeta 2.47</span></span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-size:15px;color:var(--fg3)"><span lang="hi">आज मन में कौन-सा प्रश्न है?</span><span lang="en">What question is on your mind today?</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px 0;align-items:baseline">
+            <sc-for list="{{ qs }}" as="q" hint-placeholder-count="10">
+              <span style="display:inline-flex;align-items:baseline">
+                <button onClick="{{ q.go }}" style="padding:2px 0;border:0;background:none;cursor:pointer;font:400 clamp(20px,1.9vw,27px)/1.6 var(--dsp);transition:color .25s" style-hover="color:var(--ac)">{{ q.name }}</button>
+                <span style="padding:0 .5em;color:var(--orn);font:400 clamp(20px,1.9vw,27px)/1.6 var(--dsp);opacity:.7">।</span>
+              </span>
+            </sc-for>
+          </div>
+        </div>
+        <button onClick="{{ playPilot }}" style="align-self:flex-start;display:flex;align-items:center;gap:16px;padding:0;border:0;background:none;cursor:pointer">
+          <span style="flex:none;display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;background:var(--ac);color:var(--aci);box-shadow:0 0 0 7px color-mix(in oklab,var(--ac) 16%,transparent);transition:box-shadow .45s cubic-bezier(.2,.7,.2,1)" style-hover="box-shadow:0 0 0 13px color-mix(in oklab,var(--ac) 20%,transparent)"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M7.5 5.5v13l11-6.5z" fill="currentColor"></path></svg></span>
+          <span style="font:400 22px/1 var(--dsp);padding-top:4px"><span lang="hi">पायलट एपिसोड देखें</span><span lang="en">Watch the pilot</span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:1600px;margin:0 auto;padding:0 var(--pad);box-sizing:border-box">
+
+    <section id="sec-series" style="margin-top:clamp(80px,9vw,140px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:clamp(28px,3vw,44px)">
+        <h2 style="margin:0;font:400 clamp(30px,3.2vw,46px)/1.3 var(--dsp)"><span lang="hi">श्रृंखलाएँ</span><span lang="en">The series</span></h2>
+        <span style="font-size:15px;color:var(--fg3)"><span lang="hi">प्रत्येक अपनी इकाई में विभाजित</span><span lang="en">Each divided by its own unit</span></span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,44%),1fr));gap:clamp(36px,4vw,56px) clamp(16px,2vw,32px)">
+        <sc-for list="{{ grid }}" as="g" hint-placeholder-count="8">
+          <button onClick="{{ g.go }}" style="display:flex;flex-direction:column;gap:14px;padding:0;border:0;background:none;cursor:pointer;text-align:left;transition:transform .6s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px)">
+            <div style="width:100%;aspect-ratio:4/5;border-radius:50% 50% 5px 5px / 30% 30% 5px 5px;overflow:hidden;background:var(--bg2)"><img src="{{ g.img }}" alt="{{ g.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.06)"></div>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font:400 clamp(19px,1.5vw,23px)/1.4 var(--dsp)">{{ g.name }}</span>
+              <span style="font-size:15px;color:var(--fg3)">{{ g.unit }}</span>
+            </div>
+          </button>
+        </sc-for>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="width:100%;aspect-ratio:4/5;border-radius:50% 50% 5px 5px / 30% 30% 5px 5px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--ln);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-sizing:border-box;padding:20px">
+            <span style="font:400 clamp(30px,3vw,44px)/1.3 var(--dsp);color:var(--orn)"><span lang="hi">तपोधरा</span><span lang="en">Tapodhara</span></span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <span style="font:400 clamp(19px,1.5vw,23px)/1.4 var(--dsp)"><span lang="hi">तपोधरा</span><span lang="en">Tapodhara</span></span>
+            <button onClick="{{ remindTapo }}" style="align-self:flex-start;padding:0;border:0;background:none;cursor:pointer;font-size:15px;color:var(--ac);text-decoration:underline;text-underline-offset:5px">{{ tapoLabel }}</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-events" style="margin-top:clamp(80px,9vw,140px);display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,72px);align-items:center">
+      <div style="flex:1 1 520px;min-width:0;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--bg2)"><img src="art/16x9/podcast-yuva-samvad.jpg" alt="युवा संवाद" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:15px;color:var(--fg3)"><span lang="hi">अगला आयोजन</span><span lang="en">Next event</span></div>
+        <h2 style="margin:0;font:400 clamp(34px,3.6vw,54px)/1.3 var(--dsp)"><span lang="hi">युवा संवाद</span><span lang="en">Yuva Samvad</span></h2>
+        <div style="font:400 clamp(19px,1.5vw,22px)/1.5 var(--dsp);color:var(--orn)"><span lang="hi">२८ नवम्बर २०२६ · भोपाल</span><span lang="en">28 November 2026 · Bhopal</span></div>
+        <p style="margin:0;color:var(--fg2);max-width:46ch;text-wrap:pretty"><span lang="hi">युवाओं के साथ भारतीय ज्ञान परंपरा पर संवाद। आयोजन यहीं सीधा प्रसारित होगा और फिर अपने स्थायी पृष्ठ पर रहेगा।</span><span lang="en">A dialogue with young people on Bharat's tradition of knowledge. It streams live here, then stays on its own event page.</span></p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;padding-top:6px">
+          <button onClick="{{ remindEvent }}" style="display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500;color:var(--ac)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"></path><path d="M10 20.5a2 2 0 0 0 4 0"></path></svg>{{ eventLabel }}</button>
+          <button onClick="{{ openPodcast }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500;text-decoration:underline;text-decoration-color:var(--ln2);text-underline-offset:8px" style-hover="color:var(--ac);text-decoration-color:var(--ac)"><span lang="hi">पिछले आयोजनों के संवाद</span><span lang="en">Talks from past events</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec-podcast" style="margin-top:clamp(80px,9vw,140px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:26px">
+        <h2 style="margin:0;font:400 clamp(30px,3.2vw,46px)/1.3 var(--dsp)"><span lang="hi">वीर भारत पॉडकास्ट</span><span lang="en">Veer Bharat Podcast</span></h2>
+        <span style="font-size:15px;color:var(--fg3)"><span lang="hi">प्रत्येक आयोजन का अपना संस्करण</span><span lang="en">An edition for every event</span></span>
+      </div>
+      <div data-rail style="display:flex;gap:clamp(16px,2vw,28px);overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--pad));padding:0 var(--pad)">
+        <sc-for list="{{ pods }}" as="p" hint-placeholder-count="4">
+          <button onClick="{{ p.go }}" style="flex:none;width:clamp(250px,22vw,360px);scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;padding:0;border:0;background:none;cursor:pointer;text-align:left;transition:transform .6s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-6px)">
+            <div style="width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--bg2)"><img src="{{ p.img }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+            <span style="font:400 21px/1.4 var(--dsp)">{{ p.name }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="sec-books" style="margin-top:clamp(80px,9vw,140px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:30px">
+        <h2 style="margin:0;font:400 clamp(30px,3.2vw,46px)/1.3 var(--dsp)"><span lang="hi">प्रकाशन</span><span lang="en">Books</span></h2>
+        <span style="font-size:15px;color:var(--fg3)"><span lang="hi">प्रत्येक आवरण अपने आकार में</span><span lang="en">Every cover in its own shape</span></span>
+      </div>
+      <div data-rail style="--bh:clamp(170px,16vw,250px);display:flex;align-items:flex-start;gap:clamp(24px,3vw,48px);overflow-x:auto;margin:0 calc(-1 * var(--pad));padding:14px var(--pad) 4px">
+        <sc-for list="{{ books }}" as="b" hint-placeholder-count="4">
+          <div style="flex:none;display:flex;flex-direction:column;gap:14px;max-width:min(78vw,380px)">
+            <div style="position:relative;height:var(--bh);aspect-ratio:{{ b.ar }};transition:transform .6s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px) rotate(-1deg)">
+              <sc-if value="{{ b.set }}" hint-placeholder-val="{{ false }}"><img src="{{ b.img2 }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:3px;transform:translate(14px,-12px);opacity:.75;box-shadow:var(--shadow)"></sc-if>
+              <img src="{{ b.img }}" alt="{{ b.name }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:3px;box-shadow:var(--shadow)">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font:400 20px/1.4 var(--dsp)">{{ b.name }}</span>
+              <span style="font-size:15px;color:var(--fg3)">{{ b.sub }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="sec-people" style="margin-top:clamp(80px,9vw,140px)">
+      <h2 style="margin:0 0 22px;font:400 clamp(30px,3.2vw,46px)/1.3 var(--dsp)"><span lang="hi">व्यक्तित्व</span><span lang="en">Personalities</span></h2>
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;max-width:1200px">
+        <sc-for list="{{ people }}" as="n" hint-placeholder-count="8">
+          <span style="display:inline-flex;align-items:baseline">
+            <span style="font:400 clamp(24px,2.8vw,42px)/1.55 var(--dsp);cursor:default;transition:color .25s" style-hover="color:var(--ac)">{{ n.name }}</span>
+            <span style="padding:0 .45em;color:var(--orn);font:400 clamp(24px,2.8vw,42px)/1.55 var(--dsp);opacity:.6">।</span>
+          </span>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="margin-top:clamp(80px,9vw,140px);display:flex;flex-wrap:wrap;gap:16px 64px;align-items:baseline;padding-top:clamp(36px,4vw,56px);border-top:1px solid var(--ln)">
+      <h2 style="flex:0 1 auto;margin:0;font:400 clamp(26px,2.6vw,36px)/1.3 var(--dsp)"><span lang="hi">रचनाकार और संस्थान</span><span lang="en">Creators and institutions</span></h2>
+      <div style="flex:1 1 420px;display:flex;flex-direction:column;gap:12px;max-width:640px">
+        <p style="margin:0;color:var(--fg2);text-wrap:pretty"><span lang="hi">भारत की संस्कृति, इतिहास और आध्यात्मिक परंपरा पर गंभीर कार्य करने वाले सत्यापित रचनाकार, न्यास के फ़ेलो और संस्थान अपने स्थान में प्रकाशित करते हैं।</span><span lang="en">Verified creators, fellows of the Nyas and institutions doing serious work on Bharat's culture, history and spiritual tradition publish in spaces of their own.</span></p>
+        <button style="align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500;text-decoration:underline;text-decoration-color:var(--ln2);text-underline-offset:8px" style-hover="color:var(--ac);text-decoration-color:var(--ac)"><span lang="hi">रचनाकार के रूप में जुड़ें</span><span lang="en">Join as a creator</span></button>
+      </div>
+    </section>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSeries }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="02 Series" style="max-width:1600px;margin:0 auto;padding:0 var(--pad);box-sizing:border-box">
+  <section style="position:relative;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,96px);align-items:center;padding-top:clamp(12px,2.4vw,40px)">
+    <div style="flex:0 1 auto;width:min(100%,calc(74vh * .8),560px);margin:0 auto">
+      <div style="aspect-ratio:4/5;border-radius:50% 50% 6px 6px / 30% 30% 6px 6px;overflow:hidden;background:#000;outline:var(--archLine);outline-offset:var(--archOff);box-shadow:var(--archGlow)">
+        <img data-par="-14" data-sc="1.07" src="{{ S.img }}" alt="{{ S.name }}" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.07)">
+      </div>
+    </div>
+    <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:18px">
+      <h1 style="margin:0;font:400 clamp(46px,5.6vw,92px)/1.28 var(--dsp);padding-top:.1em;text-wrap:balance">{{ S.name }}</h1>
+      <div style="font:400 clamp(20px,1.6vw,24px)/1.4 var(--dsp);color:var(--orn)">{{ S.unit }}</div>
+      <p style="margin:0;font-size:clamp(17px,1.3vw,19px);color:var(--fg2);max-width:50ch;text-wrap:pretty">{{ S.desc }}</p>
+      <sc-if value="{{ S.hasMoment }}" hint-placeholder-val="{{ false }}"><div style="font-size:15px;color:var(--fg3)"><span lang="hi">विशेष अवसर : </span><span lang="en">Moments: </span>{{ S.moment }}</div></sc-if>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px clamp(20px,2.4vw,34px);padding-top:12px">
+        <button onClick="{{ S.play }}" style="display:flex;align-items:center;gap:16px;padding:0;border:0;background:none;cursor:pointer">
+          <span style="flex:none;display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;background:var(--ac);color:var(--aci);box-shadow:0 0 0 7px color-mix(in oklab,var(--ac) 16%,transparent);transition:box-shadow .45s cubic-bezier(.2,.7,.2,1)" style-hover="box-shadow:0 0 0 13px color-mix(in oklab,var(--ac) 20%,transparent)"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M7.5 5.5v13l11-6.5z" fill="currentColor"></path></svg></span>
+          <span style="font:400 21px/1.2 var(--dsp);padding-top:4px;text-align:left">{{ S.playLabel }}</span>
+        </button>
+        <button onClick="{{ S.teaser }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500;text-decoration:underline;text-decoration-color:var(--ln2);text-underline-offset:8px" style-hover="color:var(--ac);text-decoration-color:var(--ac)"><span lang="hi">टीज़र</span><span lang="en">Teaser</span></button>
+        <button onClick="{{ S.save }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500" style-hover="color:var(--ac)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="{{ S.saveIcon }}"></path></svg>{{ S.saveLabel }}</button>
+        <button onClick="{{ share }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500" style-hover="color:var(--ac)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M5 13v6.5h14V13"></path></svg><span lang="hi">साझा करें</span><span lang="en">Share</span></button>
+      </div>
+      <sc-if value="{{ S.hasWorld }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:12px;font-size:15px;color:var(--fg3);padding-top:4px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"></path><path d="M4 7.5 12 12l8-4.5M12 12v9"></path></svg>{{ S.world }}</div>
+      </sc-if>
+    </div>
+  </section>
+
+  <nav aria-label="श्रृंखला" style="display:flex;gap:clamp(24px,3vw,48px);margin-top:clamp(56px,6vw,100px);border-bottom:1px solid var(--ln);overflow-x:auto" data-rail>
+    <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+      <button onClick="{{ t.go }}" style="position:relative;flex:none;display:flex;align-items:baseline;gap:8px;height:62px;padding:0;border:0;background:none;cursor:pointer;font:400 clamp(20px,1.7vw,24px)/1 var(--dsp);color:{{ t.c }};transition:color .25s" style-hover="color:var(--ac)">
+        <span style="padding-top:22px">{{ t.label }}</span>
+        <svg width="34" height="10" viewBox="0 0 34 10" style="position:absolute;left:50%;bottom:-1px;margin-left:-17px;color:var(--ac);opacity:{{ t.arc }};transition:opacity .3s"><path d="M2 9.5Q17 -2 32 9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      </button>
+    </sc-for>
+  </nav>
+
+  <sc-if value="{{ tabParts }}" hint-placeholder-val="{{ true }}">
+    <section style="display:flex;flex-wrap:wrap;gap:clamp(36px,5vw,96px);align-items:flex-start;padding-top:clamp(36px,4vw,64px)">
+      <div style="flex:1 1 420px;min-width:0;max-width:640px">
+        <sc-if value="{{ useRing }}" hint-placeholder-val="{{ false }}">
+          <div data-desk style="position:relative;width:460px;height:460px;margin:0 auto">
+            <div style="position:absolute;inset:38px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--ln)"></div>
+            <div style="position:absolute;left:50%;top:50%;width:1px;height:160px;margin:-160px 0 0 -.5px;transform-origin:50% 100%;transform:rotate({{ handDeg }}deg);background:linear-gradient(to top,transparent,var(--ac));transition:transform .7s cubic-bezier(.3,.7,.2,1)"></div>
+            <sc-for list="{{ ticks }}" as="k" hint-placeholder-count="0">
+              <button onClick="{{ k.go }}" title="{{ k.label }}" aria-label="{{ k.label }}" style="position:absolute;left:50%;top:50%;width:18px;height:46px;margin:-23px 0 0 -9px;transform:rotate({{ k.deg }}deg) translateY(-206px);padding:0;border:0;background:none;cursor:pointer;display:flex;justify-content:center;align-items:flex-start;color:{{ k.c }};transition:color .2s" style-hover="color:var(--ac)"><span style="display:block;width:{{ k.w }};height:{{ k.h }};background:currentColor;border-radius:2px;transition:height .35s,width .35s"></span></button>
+            </sc-for>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;pointer-events:none;text-align:center">
+              <span style="font:400 112px/1.1 var(--dsp);color:var(--ac);padding-top:.12em">{{ sel.num }}</span>
+              <span style="font:400 21px/1.4 var(--dsp)">{{ sel.title }}</span>
+              <span style="font-size:15px;color:var(--fg3)">{{ sel.count }}</span>
+            </div>
+          </div>
+          <div data-mob data-rail data-strip style="display:flex;overflow-x:auto;scroll-snap-type:x proximity;margin:0 calc(-1 * var(--pad));padding:0 var(--pad);border-bottom:1px solid var(--ln)">
+            <sc-for list="{{ ticks }}" as="k" hint-placeholder-count="0">
+              <button data-sel="{{ k.sel }}" onClick="{{ k.go }}" aria-label="{{ k.label }}" style="position:relative;flex:none;width:54px;height:66px;padding:0;border:0;background:none;cursor:pointer;scroll-snap-align:center;font:400 25px/1 var(--dsp);color:{{ k.c2 }}"><span style="display:block;padding-top:10px">{{ k.num }}</span><svg width="28" height="9" viewBox="0 0 28 9" style="position:absolute;left:13px;bottom:-1px;color:var(--ac);opacity:{{ k.arc }}"><path d="M2 8.5Q14 -2 26 8.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg></button>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ useNames }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-wrap:wrap;gap:2px 26px">
+            <sc-for list="{{ chips }}" as="k" hint-placeholder-count="8">
+              <button onClick="{{ k.go }}" style="position:relative;display:flex;align-items:baseline;gap:8px;min-height:52px;padding:0 0 6px;border:0;background:none;cursor:pointer;color:{{ k.c }};transition:color .25s" style-hover="color:var(--ac)">
+                <span style="font:400 15px/1 var(--dsp);color:var(--orn)">{{ k.num }}</span>
+                <span style="font:400 clamp(21px,1.8vw,27px)/1.5 var(--dsp)">{{ k.name }}</span>
+                <svg width="28" height="9" viewBox="0 0 28 9" style="position:absolute;left:50%;bottom:0;margin-left:-14px;color:var(--ac);opacity:{{ k.arc }}"><path d="M2 8.5Q14 -2 26 8.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+      <div style="flex:1.3 1 460px;min-width:0;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:10px">
+          <h2 style="margin:0;font:400 clamp(28px,2.8vw,40px)/1.3 var(--dsp)">{{ sel.title }}</h2>
+          <span style="font-size:15px;color:var(--fg3)">{{ sel.count }}</span>
+        </div>
+        <sc-if value="{{ sel.empty }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:12px 0 0;color:var(--fg2);max-width:44ch"><span lang="hi">इस भाग के एपिसोड श्रृंखला के आगे बढ़ने के साथ जुड़ेंगे।</span><span lang="en">Episodes for this part arrive as the series grows.</span></p>
+        </sc-if>
+        <sc-for list="{{ eps }}" as="e" hint-placeholder-count="3">
+          <button onClick="{{ e.go }}" style="display:grid;grid-template-columns:minmax(118px,220px) minmax(0,1fr);gap:clamp(14px,2vw,26px);align-items:center;width:100%;padding:16px 0;border:0;border-top:1px solid var(--ln);background:none;cursor:pointer;text-align:left;transition:color .25s" style-hover="color:var(--ac)">
+            <div style="position:relative;aspect-ratio:16/9;border-radius:5px;overflow:hidden;background:var(--bg2)">
+              <img src="{{ e.img }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.6);transform-origin:{{ e.pos }}">
+              <sc-if value="{{ e.hasProg }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(0,0,0,.45)"><div style="height:100%;width:{{ e.pct }};background:#e3bd6b"></div></div></sc-if>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+              <span style="font:400 clamp(19px,1.5vw,22px)/1.4 var(--dsp)">{{ e.title }}</span>
+              <span style="font-size:15px;color:var(--fg3)">{{ e.meta }}</span>
+            </div>
+          </button>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ tabResearch }}" hint-placeholder-val="{{ false }}">
+    <section style="display:flex;flex-wrap:wrap;gap:24px 96px;padding-top:clamp(36px,4vw,64px)">
+      <p style="flex:0 1 380px;margin:0;font:400 clamp(22px,2vw,28px)/1.55 var(--dsp);color:var(--fg2);text-wrap:pretty"><span lang="hi">प्रत्येक एपिसोड के पीछे का शोध, उसके मूल स्रोतों के साथ।</span><span lang="en">The research behind every episode, with its sources.</span></p>
+      <div style="flex:1 1 480px;min-width:0">
+        <sc-for list="{{ research }}" as="r" hint-placeholder-count="3">
+          <button style="display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;padding:22px 0;border:0;border-top:1px solid var(--ln);background:none;cursor:pointer;text-align:left;transition:color .25s" style-hover="color:var(--ac)">
+            <span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:15px;color:var(--fg3)">{{ r.type }}</span><span style="font:400 clamp(21px,1.8vw,26px)/1.45 var(--dsp)">{{ r.title }}</span></span>
+            <span style="flex:none;font-weight:500;font-size:16px"><span lang="hi">पढ़ें</span><span lang="en">Read</span></span>
+          </button>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ tabRelated }}" hint-placeholder-val="{{ false }}">
+    <section style="display:flex;flex-direction:column;gap:clamp(48px,5vw,80px);padding-top:clamp(36px,4vw,64px)">
+      <sc-if value="{{ hasRelBooks }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <h3 style="margin:0 0 24px;font:400 clamp(24px,2.2vw,30px)/1.3 var(--dsp)"><span lang="hi">प्रकाशन</span><span lang="en">Books</span></h3>
+          <div style="display:flex;flex-wrap:wrap;align-items:flex-start;gap:28px clamp(24px,3vw,48px)">
+            <sc-for list="{{ relBooks }}" as="b" hint-placeholder-count="2">
+              <div style="display:flex;flex-direction:column;gap:12px;max-width:min(100%,340px)">
+                <img src="{{ b.img }}" alt="{{ b.name }}" style="height:clamp(150px,14vw,210px);aspect-ratio:{{ b.ar }};max-width:100%;object-fit:cover;border-radius:3px;box-shadow:var(--shadow);display:block">
+                <span style="font:400 20px/1.4 var(--dsp)">{{ b.name }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <div>
+        <h3 style="margin:0 0 24px;font:400 clamp(24px,2.2vw,30px)/1.3 var(--dsp)"><span lang="hi">संबद्ध श्रृंखलाएँ</span><span lang="en">Related series</span></h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(220px,44%),1fr));gap:28px clamp(16px,2vw,32px);max-width:960px">
+          <sc-for list="{{ relSeries }}" as="g" hint-placeholder-count="2">
+            <button onClick="{{ g.go }}" style="display:flex;flex-direction:column;gap:12px;padding:0;border:0;background:none;cursor:pointer;text-align:left;transition:transform .6s cubic-bezier(.2,.7,.2,1)" style-hover="transform:translateY(-8px)">
+              <div style="width:100%;aspect-ratio:4/5;border-radius:50% 50% 5px 5px / 30% 30% 5px 5px;overflow:hidden;background:var(--bg2)"><img src="{{ g.img }}" alt="{{ g.name }}" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+              <span style="display:flex;flex-direction:column;gap:2px"><span style="font:400 21px/1.4 var(--dsp)">{{ g.name }}</span><span style="font-size:15px;color:var(--fg3)">{{ g.unit }}</span></span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPlayer }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="03 Player">
+  <section style="max-width:1600px;margin:0 auto;padding:clamp(0px,1vw,16px) max(0px,calc(var(--pad) - 20px)) 0;box-sizing:border-box">
+    <div data-stage style="position:relative;width:min(100%,calc(78vh * 16 / 9));margin:0 auto;aspect-ratio:16/9;background:#000;overflow:hidden;border-radius:clamp(0px,.6vw,8px);color:#fff;user-select:none">
+      <img src="{{ P.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ P.imgOp }};transition:opacity .6s ease">
+      <button onClick="{{ togglePlay }}" aria-label="चलाएँ / रोकें" style="position:absolute;inset:0;padding:0;border:0;background:none;cursor:pointer"></button>
+      <sc-if value="{{ listen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;inset:0;background:#0b0907;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(10px,2vw,22px);pointer-events:none;text-align:center;padding:0 24px">
+          <div style="position:relative;width:clamp(96px,16vw,190px);aspect-ratio:1;border-radius:50%;box-shadow:0 0 0 1px rgba(227,189,107,.5),0 0 0 18px rgba(227,189,107,.06),0 0 0 36px rgba(227,189,107,.035);overflow:hidden"><img src="{{ P.sq }}" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+          <div style="font:400 clamp(18px,2vw,28px)/1.4 var(--dsp)"><span lang="hi">सुनने का मोड</span><span lang="en">Listen mode</span></div>
+          <div style="font-size:clamp(13px,1.1vw,16px);color:rgba(255,255,255,.72)"><span lang="hi">स्क्रीन बंद होने पर भी चलता रहेगा</span><span lang="en">Keeps playing with the screen off</span></div>
+        </div>
+      </sc-if>
+      <div style="position:absolute;left:0;right:0;top:0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:clamp(12px,2vw,26px) clamp(14px,2.4vw,32px) 40px;background:linear-gradient(to bottom,rgba(0,0,0,.55),transparent);pointer-events:none">
+        <div style="display:flex;flex-direction:column;min-width:0"><span style="font:400 clamp(15px,1.4vw,21px)/1.4 var(--dsp);text-shadow:0 1px 8px rgba(0,0,0,.5)">{{ P.title }}</span><span data-chname style="font-size:clamp(12px,1vw,15px);color:rgba(255,255,255,.75)"></span></div>
+        <img src="assets/emblem-mark.png" alt="वीर भारत न्यास" style="flex:none;width:clamp(40px,4.4vw,66px);height:auto;opacity:.92;filter:drop-shadow(0 1px 6px rgba(0,0,0,.5))">
+      </div>
+      <sc-if value="{{ paused }}" hint-placeholder-val="{{ false }}">
+        <span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:clamp(58px,7vw,92px);height:clamp(58px,7vw,92px);border-radius:50%;background:#e3bd6b;color:#17110a;box-shadow:0 0 0 10px rgba(227,189,107,.2);pointer-events:none"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M7.5 5.5v13l11-6.5z" fill="currentColor"></path></svg></span>
+      </sc-if>
+      <sc-if value="{{ showTerm }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ openCtx }}" style="position:absolute;left:clamp(14px,2.4vw,32px);bottom:clamp(64px,7vw,96px);display:flex;align-items:center;gap:10px;padding:6px 0;border:0;background:none;cursor:pointer;color:#fff;text-align:left">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e3bd6b" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5.5M12 7.6v.1" stroke-linecap="round"></path></svg>
+          <span style="font:400 clamp(16px,1.5vw,21px)/1.3 var(--dsp);text-decoration:underline dotted rgba(227,189,107,.85);text-underline-offset:6px;text-shadow:0 1px 8px rgba(0,0,0,.6)">{{ P.term }}</span>
+        </button>
+      </sc-if>
+      <sc-if value="{{ ctx }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;top:0;right:0;bottom:0;width:min(100%,380px);box-sizing:border-box;padding:clamp(18px,2.4vw,32px);background:rgba(11,9,7,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;flex-direction:column;gap:12px;overflow:auto">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><span style="font-size:14px;color:rgba(255,255,255,.7)"><span lang="hi">संदर्भ</span><span lang="en">Context</span></span><button onClick="{{ closeCtx }}" aria-label="बंद करें" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin-right:-10px;border:0;background:none;cursor:pointer;color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+          <div style="font:400 clamp(26px,2.6vw,36px)/1.3 var(--dsp);color:#e3bd6b">{{ P.term }}</div>
+          <p style="margin:0;font-size:clamp(15px,1.2vw,17px);line-height:1.65;color:rgba(255,255,255,.88)">{{ P.meaning }}</p>
+        </div>
+      </sc-if>
+      <div style="position:absolute;left:0;right:0;bottom:0;padding:40px clamp(10px,2vw,26px) clamp(4px,.8vw,12px);background:linear-gradient(to top,rgba(0,0,0,.72),transparent)">
+        <div onClick="{{ seek }}" style="position:relative;height:22px;cursor:pointer;display:flex;align-items:center;margin:0 4px">
+          <div style="position:relative;width:100%;height:4px;background:rgba(255,255,255,.28);border-radius:2px">
+            <div data-prog style="position:absolute;left:0;top:0;bottom:0;width:0;background:#e3bd6b;border-radius:2px"></div>
+            <sc-for list="{{ adMarks }}" as="a" hint-placeholder-count="0"><span title="{{ adTitle }}" style="position:absolute;left:{{ a.l }};top:-1px;bottom:-1px;width:3px;margin-left:-1.5px;background:#000"></span></sc-for>
+            <span data-knob style="position:absolute;left:0;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#e3bd6b;box-shadow:0 0 0 4px rgba(227,189,107,.25)"></span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:2px;height:46px">
+          <button onClick="{{ togglePlay }}" aria-label="चलाएँ / रोकें" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;cursor:pointer;color:#fff"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="{{ P.pIcon }}" stroke-width="{{ P.pStroke }}" fill="{{ P.pFill }}"></path></svg></button>
+          <span style="font-size:14px;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.9);white-space:nowrap;padding:0 6px"><span data-time>00:00</span> / {{ P.total }}</span>
+          <span style="flex:1"></span>
+          <button onClick="{{ toggleListen }}" aria-label="सुनें" title="सुनें" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;cursor:pointer;color:{{ P.listenC }}"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 15v-2a8 8 0 0 1 16 0v2"></path><path d="M4 15h3v5H4zM17 15h3v5h-3z"></path></svg></button>
+          <button data-desk aria-label="उपशीर्षक" title="उपशीर्षक" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;cursor:pointer;color:#fff"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3.5 6h17v12h-17z"></path><path d="M10.5 10.2a2.3 2.3 0 1 0 0 3.6M17 10.2a2.3 2.3 0 1 0 0 3.6"></path></svg></button>
+          <button onClick="{{ toggleSaver }}" title="गुणवत्ता" style="display:flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 6px;border:0;background:none;cursor:pointer;color:#fff;font-size:13px;font-weight:600;letter-spacing:.02em">{{ P.quality }}</button>
+          <button data-desk aria-label="कास्ट" title="कास्ट" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;cursor:pointer;color:#fff"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3.5 9V6h17v12h-6"></path><path d="M3.5 13a5 5 0 0 1 5 5M3.5 16.5a1.5 1.5 0 0 1 1.5 1.5"></path></svg></button>
+          <button onClick="{{ fullscreen }}" aria-label="पूर्ण स्क्रीन" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;cursor:pointer;color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:1600px;margin:0 auto;padding:clamp(28px,3vw,48px) var(--pad) 0;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:clamp(48px,5vw,96px);align-items:flex-start">
+    <div style="flex:1.6 1 560px;min-width:0;display:flex;flex-direction:column;gap:clamp(36px,4vw,56px)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h1 style="margin:0;font:400 clamp(30px,3vw,46px)/1.3 var(--dsp);padding-top:.06em;text-wrap:balance">{{ P.title }}</h1>
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;font-size:15px;color:var(--fg3)">
+          <button onClick="{{ P.goSeries }}" style="padding:0;border:0;background:none;cursor:pointer;font:400 18px/1.4 var(--dsp);color:var(--ac);text-decoration:underline;text-decoration-color:color-mix(in oklab,var(--ac) 40%,transparent);text-underline-offset:6px">{{ P.series }}</button>
+          <span>· {{ P.meta }}</span>
+        </div>
+        <p style="margin:6px 0 0;color:var(--fg2);max-width:62ch;text-wrap:pretty">{{ P.desc }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px clamp(20px,2.4vw,32px);padding-top:6px">
+          <button onClick="{{ toggleListen }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500;color:{{ P.listenC2 }}" style-hover="color:var(--ac)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 15v-2a8 8 0 0 1 16 0v2"></path><path d="M4 15h3v5H4zM17 15h3v5h-3z"></path></svg><span lang="hi">सुनें</span><span lang="en">Listen</span></button>
+          <button onClick="{{ download }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500" style-hover="color:var(--ac)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 20h14"></path></svg><span lang="hi">डाउनलोड</span><span lang="en">Download</span></button>
+          <button onClick="{{ share }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500" style-hover="color:var(--ac)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5M5 13v6.5h14V13"></path></svg><span lang="hi">साझा करें</span><span lang="en">Share</span></button>
+        </div>
+      </div>
+
+      <div>
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px;margin-bottom:10px">
+          <h2 style="margin:0;font:400 clamp(24px,2.2vw,32px)/1.3 var(--dsp)"><span lang="hi">अध्याय</span><span lang="en">Chapters</span></h2>
+          <span style="font-size:14px;color:var(--fg3)"><span lang="hi">विज्ञापन विराम केवल अध्यायों के बीच</span><span lang="en">Ad breaks fall only between chapters</span></span>
+        </div>
+        <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="4">
+          <button data-ch="{{ c.i }}" onClick="{{ c.go }}" style="display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;width:100%;min-height:60px;padding:8px 0;border:0;border-top:1px solid var(--ln);background:none;cursor:pointer;text-align:left;transition:color .25s">
+            <span style="font:400 24px/1 var(--dsp);padding-top:4px">{{ c.num }}</span>
+            <span style="display:flex;align-items:center;gap:12px;min-width:0"><span style="font:400 clamp(19px,1.5vw,22px)/1.4 var(--dsp)">{{ c.name }}</span><svg data-chm width="26" height="9" viewBox="0 0 28 9" style="flex:none;opacity:0;transition:opacity .3s"><path d="M2 8.5Q14 -2 26 8.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg></span>
+            <span style="font-size:15px;color:var(--fg3);font-variant-numeric:tabular-nums">{{ c.start }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ isGeeta }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px;padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--ln)">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px">
+            <h2 style="margin:0;font:400 clamp(24px,2.2vw,32px)/1.3 var(--dsp)"><span lang="hi">श्लोक</span><span lang="en">Shloka</span></h2>
+            <span style="font-size:14px;color:var(--fg3)"><span lang="hi">पाठ के साथ पढ़ें</span><span lang="en">Read along with the recitation</span></span>
+          </div>
+          <div data-sl data-a="520" data-b="534" style="font:400 clamp(22px,2vw,30px)/1.6 var(--dsp);transition:color .3s">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।</div>
+          <div data-sl data-a="534" data-b="548" style="font:400 clamp(22px,2vw,30px)/1.6 var(--dsp);transition:color .3s">मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥</div>
+          <p style="margin:0;color:var(--fg2);max-width:60ch;text-wrap:pretty"><span lang="hi">तुम्हारा अधिकार केवल कर्म पर है, उसके फलों पर कभी नहीं। तुम कर्मफल के हेतु मत बनो, और अकर्म में भी तुम्हारी आसक्ति न हो।</span><span lang="en">Your right is to action alone, never to its fruits. Do not let the fruit be your motive, nor be attached to inaction.</span></p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px 24px;align-items:center">
+            <button onClick="{{ jumpShloka }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;cursor:pointer;font-weight:500;text-decoration:underline;text-decoration-color:var(--ln2);text-underline-offset:8px" style-hover="color:var(--ac);text-decoration-color:var(--ac)"><span lang="hi">एपिसोड में इस श्लोक पर जाएँ · 08:40</span><span lang="en">Go to this shloka in the episode · 08:40</span></button>
+            <span style="font-size:14px;color:var(--fg3)"><span lang="hi">श्रीमद्भगवद्गीता २.४७</span><span lang="en">Shrimad Bhagavad Geeta 2.47</span></span>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+
+    <aside style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:clamp(36px,4vw,56px)">
+      <sc-if value="{{ hasNext }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <h2 style="margin:0;font:400 clamp(24px,2.2vw,32px)/1.3 var(--dsp)"><span lang="hi">अगला</span><span lang="en">Next</span></h2>
+          <button onClick="{{ N.go }}" style="display:flex;flex-direction:column;gap:12px;padding:0;border:0;background:none;cursor:pointer;text-align:left;transition:color .25s" style-hover="color:var(--ac)">
+            <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--bg2)"><img src="{{ N.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.5);transform-origin:{{ N.pos }}"></div>
+            <span style="display:flex;flex-direction:column;gap:2px"><span style="font:400 22px/1.4 var(--dsp)">{{ N.title }}</span><span style="font-size:15px;color:var(--fg3)"><span lang="hi">समाप्ति पर स्वतः आरंभ</span><span lang="en">Starts automatically at the end</span></span></span>
+          </button>
+        </div>
+      </sc-if>
+      <div>
+        <h2 style="margin:0 0 6px;font:400 clamp(24px,2.2vw,32px)/1.3 var(--dsp)"><span lang="hi">शोध सामग्री</span><span lang="en">Research</span></h2>
+        <sc-for list="{{ research }}" as="r" hint-placeholder-count="3">
+          <button style="display:flex;flex-direction:column;gap:2px;width:100%;padding:16px 0;border:0;border-top:1px solid var(--ln);background:none;cursor:pointer;text-align:left;transition:color .25s" style-hover="color:var(--ac)"><span style="font-size:14px;color:var(--fg3)">{{ r.type }}</span><span style="font:400 20px/1.45 var(--dsp)">{{ r.title }}</span></button>
+        </sc-for>
+      </div>
+    </aside>
+  </div>
+</div>
+</sc-if>
+
+</main>
+
+<footer id="sec-about" style="margin-top:clamp(96px,10vw,160px);border-top:1px solid var(--ln)">
+  <div style="max-width:1600px;margin:0 auto;padding:clamp(40px,5vw,72px) var(--pad) clamp(28px,3vw,40px);box-sizing:border-box;display:flex;flex-direction:column;gap:clamp(32px,4vw,56px)">
+    <div style="display:flex;flex-wrap:wrap;gap:36px clamp(40px,6vw,120px);align-items:flex-start;justify-content:space-between">
+      <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:18px;max-width:560px">
+        <img data-on="dark" src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:72px;width:auto;align-self:flex-start">
+        <img data-on="light" src="assets/wordmark-maroon.svg" alt="वीर भारत न्यास" style="height:72px;width:auto;align-self:flex-start">
+        <p style="margin:0;color:var(--fg2);text-wrap:pretty"><span lang="hi">वीर भारत न्यास, संस्कृति विभाग, मध्यप्रदेश शासन का अधिष्ठान, प्रागैतिहास से स्वाधीनता संग्राम तक भारत के नायकों, चिंतकों, ऋषियों, संतों, कवियों, कलाकारों और वैज्ञानिकों की परंपरा के शोध और अध्ययन को समर्पित है।</span><span lang="en">Veer Bharat Nyas, an institution of the Culture Department, Government of Madhya Pradesh, is dedicated to the study of Bharat's heroes, thinkers, rishis, saints, poets, artists and scientists, from prehistory to the struggle for freedom.</span></p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px 40px;font-size:16px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="#" style="transition:color .25s" style-hover="color:var(--ac)"><span lang="hi">न्यास परिचय</span><span lang="en">About the Nyas</span></a>
+          <a href="#" style="transition:color .25s" style-hover="color:var(--ac)"><span lang="hi">संपर्क</span><span lang="en">Contact</span></a>
+          <a href="#" style="transition:color .25s" style-hover="color:var(--ac)"><span lang="hi">रचनाकार दिशानिर्देश</span><span lang="en">Creator guidelines</span></a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="#" style="transition:color .25s" style-hover="color:var(--ac)"><span lang="hi">गोपनीयता और सहमति</span><span lang="en">Privacy and consent</span></a>
+          <a href="#" style="transition:color .25s" style-hover="color:var(--ac)"><span lang="hi">उपयोग की शर्तें</span><span lang="en">Terms of use</span></a>
+          <a href="#" style="transition:color .25s" style-hover="color:var(--ac)"><span lang="hi">सुलभता विवरण</span><span lang="en">Accessibility</span></a>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <img src="assets/gov-mp.png" alt="मध्यप्रदेश शासन" style="width:72px;height:72px;display:block">
+        <span style="font-size:15px;line-height:1.5;color:var(--fg2)"><span lang="hi">संस्कृति विभाग<br>मध्यप्रदेश शासन</span><span lang="en">Culture Department<br>Government of Madhya Pradesh</span></span>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:14px;color:var(--fg3)">
+      <span><span lang="hi">© २०२६ वीर भारत न्यास</span><span lang="en">© 2026 Veer Bharat Nyas</span></span>
+      <span data-mob><span lang="hi">शनिवार, आश्विन अमावस्या · विक्रम संवत २०८३</span><span lang="en">Saturday, Ashwin Amavasya · Vikram Samvat 2083</span></span>
+    </div>
+  </div>
+  <div data-mob style="height:84px"></div>
+</footer>
+
+<sc-if value="{{ miniShow }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;z-index:60;right:clamp(0px,2vw,24px);left:auto;bottom:clamp(76px,9vw,24px);width:min(100%,360px);display:grid;grid-template-columns:118px minmax(0,1fr) auto;align-items:center;gap:12px;background:var(--bg3);box-shadow:var(--shadow);border-radius:8px;overflow:hidden">
+    <button onClick="{{ miniOpen }}" style="padding:0;border:0;background:#000;cursor:pointer;display:block;aspect-ratio:16/9"><img src="{{ M.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></button>
+    <button onClick="{{ miniOpen }}" style="display:flex;flex-direction:column;min-width:0;padding:0;border:0;background:none;cursor:pointer;text-align:left"><span style="font:400 17px/1.35 var(--dsp);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ M.title }}</span><span style="font-size:13px;color:var(--fg3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ M.series }}</span></button>
+    <div style="display:flex;align-items:center;padding-right:4px">
+      <button onClick="{{ togglePlay }}" aria-label="चलाएँ / रोकें" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;cursor:pointer;color:var(--fg)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="{{ P.pIcon }}" stroke-width="{{ P.pStroke }}" fill="{{ P.pFill }}"></path></svg></button>
+      <button onClick="{{ miniClose }}" aria-label="बंद करें" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;cursor:pointer;color:var(--fg3)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+    </div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--ln)"><div data-prog style="height:100%;width:0;background:var(--ac)"></div></div>
+  </div>
+</sc-if>
+
+<nav data-mob aria-label="मुख्य" style="position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(5,1fr);height:70px;padding-bottom:env(safe-area-inset-bottom);background:color-mix(in oklab,var(--bg) 94%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--ln)">
+  <sc-for list="{{ dock }}" as="d" hint-placeholder-count="5">
+    <button onClick="{{ d.go }}" style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:0;border:0;background:none;cursor:pointer;color:{{ d.c }}">
+      <svg width="30" height="9" viewBox="0 0 30 9" style="position:absolute;top:2px;left:50%;margin-left:-15px;color:var(--ac);opacity:{{ d.arc }}"><path d="M2 8.5Q15 -2 28 8.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="{{ d.icon }}"></path></svg>
+      <span style="font-size:12.5px;line-height:1.2">{{ d.label }}</span>
+    </button>
+  </sc-for>
+</nav>
+
+<sc-if value="{{ indexOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-index style="position:fixed;inset:0;z-index:100;background:var(--bg);color:var(--fg);overflow:auto;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:clamp(66px,6.4vw,88px);padding:0 var(--pad);flex:none">
+      <img data-on="dark" src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:clamp(52px,4.6vw,66px)">
+      <img data-on="light" src="assets/wordmark-maroon.svg" alt="वीर भारत न्यास" style="height:clamp(52px,4.6vw,66px)">
+      <button onClick="{{ closeIndex }}" style="display:flex;align-items:center;gap:10px;height:46px;padding:0 4px 0 10px;border:0;background:none;cursor:pointer"><span data-desk style="font:400 19px/1 var(--dsp);padding-top:4px"><span lang="hi">बंद करें</span><span lang="en">Close</span></span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+    </div>
+    <div style="flex:1;display:flex;gap:clamp(40px,6vw,120px);align-items:center;padding:clamp(12px,3vw,40px) var(--pad);box-sizing:border-box">
+      <ol style="flex:1 1 auto;list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+        <sc-for list="{{ idx }}" as="x" hint-placeholder-count="8">
+          <li><button onClick="{{ x.go }}" onMouseEnter="{{ x.enter }}" onFocus="{{ x.enter }}" style="display:flex;align-items:baseline;gap:clamp(14px,1.6vw,24px);padding:2px 0;border:0;background:none;cursor:pointer;text-align:left;color:{{ x.c }};transition:color .25s,transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="color:var(--ac);transform:translateX(10px)">
+            <span style="font:400 clamp(15px,1.3vw,19px)/1 var(--dsp);color:var(--orn);min-width:1.4em">{{ x.num }}</span>
+            <span style="font:400 clamp(34px,4.6vw,68px)/1.38 var(--dsp)">{{ x.name }}</span>
+          </button></li>
+        </sc-for>
+      </ol>
+      <div data-desk style="flex:0 0 auto;width:min(34vw,calc(62vh * .8))">
+        <div style="aspect-ratio:4/5;border-radius:50% 50% 6px 6px / 30% 30% 6px 6px;overflow:hidden;background:#000;outline:var(--archLine);outline-offset:var(--archOff);box-shadow:var(--archGlow)"><img src="{{ idxArt }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 32px;padding:20px var(--pad) clamp(24px,3vw,36px);font-size:15px;color:var(--fg3);flex:none">
+      <span><span lang="hi">शनिवार, आश्विन अमावस्या · विक्रम संवत २०८३</span><span lang="en">Saturday, Ashwin Amavasya · Vikram Samvat 2083</span></span>
+      <span style="display:flex;align-items:center;gap:12px"><img src="assets/gov-mp.png" alt="" style="width:36px;height:36px"><span lang="hi">संस्कृति विभाग, मध्यप्रदेश शासन</span><span lang="en">Culture Department, Government of Madhya Pradesh</span></span>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:100;background:var(--bg);color:var(--fg);overflow:auto">
+    <div style="max-width:1100px;margin:0 auto;padding:clamp(18px,3vw,40px) var(--pad);box-sizing:border-box;display:flex;flex-direction:column;gap:clamp(24px,3vw,40px)">
+      <div style="display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--ln2)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--fg3)" stroke-width="1.5" stroke-linecap="round" style="flex:none"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4 4"></path></svg>
+        <input data-q value="{{ q }}" onChange="{{ onQ }}" placeholder="{{ qPh }}" style="flex:1;min-width:0;height:clamp(64px,7vw,96px);border:0;outline:0;background:none;font:400 clamp(26px,3.4vw,48px)/1.3 var(--dsp);padding-top:.15em">
+        <button onClick="{{ closeSearch }}" aria-label="बंद करें" style="flex:none;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border:0;background:none;cursor:pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+      </div>
+      <div style="font-size:15px;color:var(--fg3)">{{ resHead }}</div>
+      <div style="display:flex;flex-direction:column;margin-top:-16px">
+        <sc-for list="{{ results }}" as="r" hint-placeholder-count="0">
+          <button onClick="{{ r.go }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;width:100%;padding:16px 0;border:0;border-bottom:1px solid var(--ln);background:none;cursor:pointer;text-align:left;transition:color .25s" style-hover="color:var(--ac)"><span style="font:400 clamp(21px,2vw,28px)/1.4 var(--dsp)">{{ r.name }}</span><span style="flex:none;font-size:15px;color:var(--fg3)">{{ r.type }}</span></button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeSheet }}" style="position:fixed;inset:0;z-index:110;background:rgba(0,0,0,.5)"></div>
+  <div style="position:fixed;z-index:111;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,520px);box-sizing:border-box;background:var(--bg3);color:var(--fg);border-radius:16px 16px 0 0;padding:28px clamp(22px,4vw,36px) calc(28px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:16px;box-shadow:var(--shadow)">
+    <div style="display:flex;align-items:center;justify-content:space-between"><h2 style="margin:0;font:400 30px/1.3 var(--dsp)">{{ sheetTitle }}</h2><button onClick="{{ closeSheet }}" aria-label="बंद करें" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin-right:-10px;border:0;background:none;cursor:pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button></div>
+    <p style="margin:0;color:var(--fg2);text-wrap:pretty">{{ sheetText }}</p>
+    <sc-if value="{{ sheetAccount }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:10px;padding-top:6px">
+        <button style="height:54px;border:1px solid var(--ln2);border-radius:6px;background:none;cursor:pointer;font-weight:500;transition:border-color .25s,color .25s" style-hover="border-color:var(--ac);color:var(--ac)"><span lang="hi">Email से प्रवेश करें</span><span lang="en">Sign in with email</span></button>
+        <button style="height:54px;border:1px solid var(--ln2);border-radius:6px;background:none;cursor:pointer;font-weight:500;transition:border-color .25s,color .25s" style-hover="border-color:var(--ac);color:var(--ac)"><span lang="hi">Google से प्रवेश करें</span><span lang="en">Sign in with Google</span></button>
+        <button style="height:54px;border:1px solid var(--ln2);border-radius:6px;background:none;cursor:pointer;font-weight:500;transition:border-color .25s,color .25s" style-hover="border-color:var(--ac);color:var(--ac)"><span lang="hi">Apple से प्रवेश करें</span><span lang="en">Sign in with Apple</span></button>
+      </div>
+    </sc-if>
+  </div>
+</sc-if>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+  <div role="status" style="position:fixed;z-index:120;left:50%;bottom:clamp(92px,10vw,40px);transform:translateX(-50%);max-width:calc(100% - 40px);padding:14px 22px;border-radius:6px;background:var(--fg);color:var(--bg);font-size:16px;box-shadow:var(--shadow);text-align:center">{{ toast }}</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const DV='०१२३४५६७८९';
+const QS=[['अर्जुन का संशय',"Arjun's doubt"],['कर्म और फल','Karma and its fruit'],['कर्तव्य','Duty'],['स्वधर्म','Svadharma'],['मन','The mind'],['क्रोध','Anger'],['मोह','Delusion'],['भय','Fear'],['इच्छा','Desire'],['आसक्ति','Attachment'],['सफलता-असफलता','Success and failure'],['समत्व','Equanimity'],['स्थितप्रज्ञता','Steady wisdom'],['आत्मा और शरीर','Self and body'],['ज्ञान','Knowledge'],['भक्ति','Devotion'],['अहंकार','Ego'],['त्याग','Renunciation'],['योग','Yoga'],['जीवन का उद्देश्य',"Life's purpose"],['मृत्यु','Death'],['कठिन समय में निर्णय','Decisions in hard times']];
+const JP=[['अंग','Anga'],['मगध','Magadh'],['काशी','Kashi'],['कोशल','Kosala'],['वत्स','Vatsa'],['अवंति','Avanti'],['चेदि','Chedi'],['कुरु','Kuru'],['पांचाल','Panchala'],['मत्स्य','Matsya'],['शूरसेन','Shurasena'],['अश्मक','Ashmaka'],['गांधार','Gandhara'],['कम्बोज','Kamboja'],['वज्जि','Vajji'],['मल्ल','Malla']];
+const KD=[['बालकाण्ड','Bal Kaand'],['अयोध्याकाण्ड','Ayodhya Kaand'],['अरण्यकाण्ड','Aranya Kaand'],['किष्किन्धाकाण्ड','Kishkindha Kaand'],['सुन्दरकाण्ड','Sundar Kaand'],['युद्धकाण्ड','Yuddha Kaand'],['उत्तरकाण्ड','Uttar Kaand']];
+const PE=[['महाभारत','Mahabharat'],['सदानीरा समागम','Sadanira Samagam'],['उदन्त मार्तण्ड','Udant Martand'],['युवा संवाद','Yuva Samvad']];
+const PEA=['podcast-mahabharat','podcast-sadanira-samagam','podcast-udant-martand','podcast-yuva-samvad'];
+const GCH=[['प्रश्न','The question',180],['गुरु-शिष्य संवाद','Guru and shishya',360],['दृश्य','The vision',300],['विद्वान','The scholar',240],['अमृत-सूत्र','Amrit-sutra',120]];
+const POS=['50% 30%','18% 45%','82% 35%','35% 72%','65% 60%','50% 50%'];
+const V916=['geeta-amrit','hamare-ram','mahaganadhipati-ganesh','mahajanpad','podcast','purvaj-shri-ram-ke','sadanira','yugyugin-bharatvanshi'];
+const SERIES=[
+ {id:'geeta-amrit',n:['गीता अमृत','Geeta Amrit'],u:['जीवन के प्रश्न',"Life's questions"],pl:['प्रश्न','Question'],names:QS,eps:1,
+  d:['सनातन ज्ञान परंपरा को आधुनिक दृश्य भाषा में प्रस्तुत करने का सृजनात्मक प्रयास। आरंभ श्रीमद्भगवद्गीता से, जीवन के प्रश्नों के साथ।','A creative effort to present the Sanatan tradition of knowledge in a modern visual language, beginning with the Shrimad Bhagavad Geeta and the questions of life.'],
+  m:['गीता जयंती','Geeta Jayanti'],w:['3D संसार : गीता माला','3D world: the Geeta mala'],
+  term:['स्वधर्म','Svadharma','अपने स्वभाव, गुण और स्थिति के अनुरूप कर्तव्य। गीता में श्रीकृष्ण अर्जुन को उसके स्वधर्म का स्मरण कराते हैं।',"One's own duty, in keeping with one's nature and place. In the Geeta, Shri Krishna reminds Arjun of his svadharma."],
+  src:['श्रीमद्भगवद्गीता','The Shrimad Bhagavad Geeta'],rb:[],rs:['mahagatha','hamare-ram']},
+ {id:'mahadev',n:['महादेव','Mahadev'],u:['८४ महादेव','The 84 Mahadev'],pl:['महादेव','Mahadev'],parts:84,eps:3,
+  d:['८४ महादेव और सृष्टि तथा प्रलय की कथा। शिव केवल संहार के देवता नहीं, अपितु सृजन, तप, करुणा और अनंत चेतना का संतुलन।','The 84 Mahadev and the story of creation and dissolution. Shiv not only as the lord of destruction, but as the balance of creation, tapas, compassion and infinite consciousness.'],
+  m:['महाशिवरात्रि, श्रावण मास','Mahashivratri, the month of Shravan'],w:['3D संसार आगामी चरण में','3D world in a later round'],
+  term:['अवन्तिका','Avantika','उज्जैन का प्राचीन नाम, सप्त मोक्षदायिनी पुरियों में से एक। यहीं चौरासी महादेव के स्थान हैं।','The ancient name of Ujjain, one of the seven cities said to grant moksha. The 84 Mahadev are found here.'],
+  res:[[['स्कन्द पुराण, अवन्ती खण्ड','Skanda Purana, Avanti Khanda'],['मूल ग्रंथ','Source text']],[['उज्जैन के चौरासी महादेव : स्थल और परंपरा','The 84 Mahadev of Ujjain: sites and tradition'],['न्यास शोध','Nyas research']],[['शिप्रा अमरता का आह्वान','Shipra: a call to immortality'],['न्यास प्रकाशन','Nyas publication']]],
+  rb:['shipra','tapodhara'],rs:['mahakal']},
+ {id:'mahakal',n:['महाकाल : सृष्टि का समय','Mahakal: The Time of Creation'],u:['प्रत्येक पात्र का एक एपिसोड','One episode per character'],pl:['पात्र','Character'],parts:12,eps:1,
+  d:['काल का रहस्य, सृष्टि की उत्पत्ति, युग चक्र और ब्रह्मांडीय व्यवस्था। समय केवल गणना नहीं, सृष्टि, पालन और परिवर्तन का मूल।','The mystery of kaal, the origin of creation, the yuga cycle and cosmic order. Time not as mere counting, but as the root of creation, sustenance and change.'],
+  term:['युग','Yuga','काल की एक बड़ी इकाई। सत्य, त्रेता, द्वापर और कलि, चार युग मिलकर एक चक्र बनाते हैं।','A great measure of time. Satya, Treta, Dvapar and Kali, the four yugas, make one cycle.'],
+  src:['विष्णु पुराण और भागवत पुराण','The Vishnu and Bhagavata Puranas'],rb:[],rs:['mahadev']},
+ {id:'mahagatha',n:['महागाथा','Mahagatha'],u:['विष्णु के अवतार','The avatars of Vishnu'],pl:['अवतार','Avatar'],parts:10,eps:2,
+  d:['विष्णु पुराण और अन्य पुराणों की गाथाएँ : सृष्टि, देव, राजवंश और महान चरित्र, विष्णु के अवतारों के माध्यम से।','The gathas of the Vishnu Purana and other Puranas: creation, devas, dynasties and great characters, told through the avatars of Vishnu.'],
+  m:['प्रत्येक अवतार की जयंती',"Each avatar's jayanti"],
+  term:['अवतार','Avatar','दिव्य शक्ति का धरती पर अवतरण, धर्म की स्थापना के लिए।','The descent of the divine to earth, to restore dharma.'],
+  src:['विष्णु पुराण','The Vishnu Purana'],rb:[],rs:['geeta-amrit']},
+ {id:'yugyugin-bharatvanshi',n:['युगयुगीन भारतवंशी','Yugyugin Bharatvanshi'],u:['प्रत्येक समुदाय का एक एपिसोड','One episode per community'],pl:['समुदाय','Community'],parts:12,eps:1,
+  d:['भारतीय समुदायों पर वृत्तचित्र : वे नायक, वंश और घटनाएँ जिन्होंने युगों तक भारत की सभ्यता, संस्कृति और स्वाभिमान की रक्षा की।',"Documentaries on Bharat's communities: the heroes, lineages and events that protected its civilisation, culture and self-respect across the ages."],
+  term:['वंश','Vansh','कुल या परंपरा, जिससे कोई समुदाय अपनी उत्पत्ति मानता है।','The lineage or tradition from which a community traces its origin.'],
+  src:['समुदायों के अभिलेख और लोक परंपराएँ','Community records and oral traditions'],rb:[],rs:['mahajanpad']},
+ {id:'mahajanpad',n:['महाजनपद','Mahajanpad'],u:['सोलह जनपद','The sixteen janapadas'],pl:['जनपद','Janapada'],names:JP,eps:i=>i===5?12:0,def:5,
+  d:['प्राचीन भारत के सोलह महाजनपद : उनके शासक, संस्कृति और राजनीतिक व्यवस्थाएँ। आरंभ अवंति से, फिर मगध।','The sixteen great states of ancient Bharat: their rulers, culture and political systems. Beginning with Avanti, then Magadh.'],
+  w:['3D संसार : प्राचीन भारत का मानचित्र','3D world: a map of ancient Bharat'],
+  term:['जनपद','Janapada','प्राचीन भारत के राज्य और गणराज्य। बुद्ध के समय सोलह महाजनपद प्रमुख थे।','The kingdoms and republics of ancient Bharat. Sixteen great janapadas stood out in the time of the Buddha.'],
+  src:['अंगुत्तर निकाय','The Anguttara Nikaya'],rb:['tapodhara'],rs:['yugyugin-bharatvanshi']},
+ {id:'sadanira',n:['सदानीरा','Sadanira'],u:['प्रत्येक नदी','By each river'],pl:['नदी','River'],parts:8,eps:3,
+  d:['भारत की पवित्र नदियों, तीर्थों और उनसे जुड़ी परंपराओं की यात्रा। नदियाँ केवल जल नहीं, सभ्यता, आस्था और जीवन की सतत धारा।',"A journey through Bharat's sacred rivers and tirthas. Rivers not as mere water, but as the ever-flowing current of civilisation, faith and life."],
+  m:['गंगा दशहरा और नदी पर्व','Ganga Dussehra and the river parvas'],w:['3D संसार : नदियों का भू-दृश्य','3D world: a landscape of rivers'],
+  term:['सदानीरा','Sadanira','जो सदा जल से भरी रहे, बारहमासी नदी।','She who is always full of water: a river that flows all year.'],
+  src:['पुराणों के तीर्थ-माहात्म्य','The tirtha-mahatmyas of the Puranas'],rb:['sadanira-b','prithvi','amrit'],rs:['podcast']},
+ {id:'purvaj-shri-ram-ke',n:['पूर्वज श्री राम के','Purvaj Shri Ram Ke'],u:['प्रत्येक पीढ़ी','By each generation'],pl:['पीढ़ी','Generation'],parts:12,eps:2,
+  d:['इक्ष्वाकु वंश, जिसमें श्री राम का जन्म हुआ : वे राजा, ऋषि और कर्म जिन्होंने मर्यादा, धर्म, सत्य और आदर्श शासन की परंपरा गढ़ी।','The Ikshvaku lineage into which Shri Ram was born: the kings, rishis and deeds that shaped maryada, dharma, satya and ideal rule.'],
+  w:['3D संसार : श्री राम तक पहुँचता वंश','3D world: the lineage rising to Shri Ram'],
+  term:['इक्ष्वाकु','Ikshvaku','सूर्यवंश के आदि राजा, जिनके कुल में श्री राम का जन्म हुआ।','The first king of the solar dynasty, in whose line Shri Ram was born.'],
+  src:['वाल्मीकि रामायण और रघुवंशम्','The Valmiki Ramayan and Raghuvamsham'],rb:[],rs:['hamare-ram']},
+ {id:'hamare-ram',n:['हमारे राम','Hamare Ram'],u:['रामायण के काण्ड','The kaands of the Ramayan'],pl:['काण्ड','Kaand'],names:KD,eps:4,
+  d:['जन्म से रामराज्य तक, अयोध्या से रामेश्वरम तक श्री राम का जीवन, वाल्मीकि रामायण, पुराणों, इतिहास और शोध के आलोक में।','The life of Shri Ram from birth to Ramrajya, from Ayodhya to Rameshwaram, through the Valmiki Ramayan, the Puranas, history and research.'],
+  m:['रामनवमी, विवाह पंचमी, दीपावली','Ram Navami, Vivah Panchami, Deepawali'],
+  term:['काण्ड','Kaand','रामायण का एक खंड। वाल्मीकि रामायण सात काण्डों में है।','A book of the Ramayan. The Valmiki Ramayan has seven.'],
+  src:['वाल्मीकि रामायण','The Valmiki Ramayan'],rb:[],rs:['purvaj-shri-ram-ke']},
+ {id:'mahaganadhipati-ganesh',n:['महागणाधिपति गणेश','Mahaganadhipati Ganesh'],u:['गणेश के स्वरूप','The forms of Ganesh'],pl:['स्वरूप','Form'],parts:12,eps:1,
+  d:['गणेश का दिव्य स्वरूप : जन्म, लीलाएँ, रूप और प्रतीक। केवल विघ्नहर्ता नहीं, बुद्धि, ज्ञान और हर शुभ आरंभ के अधिपति।','The divine form of Ganesh: his birth, leelas, forms and symbols. Not only the remover of obstacles, but the lord of wisdom and every auspicious beginning.'],
+  m:['गणेश चतुर्थी, प्रत्येक मास संकष्टी चतुर्थी','Ganesh Chaturthi, and Sankashti Chaturthi each month'],
+  term:['गणाधिपति','Ganadhipati','गणों के अधिपति, शिव के गणों के स्वामी।','Lord of the ganas, the attendants of Shiv.'],
+  src:['मुद्गल पुराण और गणेश पुराण','The Mudgala and Ganesha Puranas'],rb:[],rs:['mahadev']},
+ {id:'podcast',n:['वीर भारत पॉडकास्ट','Veer Bharat Podcast'],u:['प्रत्येक आयोजन का संस्करण','An edition for each event'],pl:['संस्करण','Edition'],names:PE,eps:4,
+  d:['महाभारत, भारतीय सभ्यता, कला और सांस्कृतिक परंपराओं पर विद्वानों, कलाकारों और शोधकर्ताओं से गहन संवाद, न्यास के अपने आयोजनों से।',"In-depth conversations with scholars, artists and researchers on the Mahabharat, Bharatiya civilisation and its traditions, recorded at the Nyas's own events."],
+  term:['समागम','Samagam','विद्वानों और कलाकारों का एकत्र होना, संगोष्ठी।','A gathering of scholars and artists.'],
+  src:['आयोजनों की पूर्ण रिकॉर्डिंग','Full recordings of the events'],rb:['sadanira-b'],rs:['sadanira']}
+];
+const BOOKS=[
+ {id:'amrit',n:['अमृत जलधारा','Amrit Jaldhara'],s:['भाग १ और २','Volumes 1 and 2'],img:'art/books/amrit-jaldhara-1.jpg',img2:'art/books/amrit-jaldhara-2.jpg',ar:1.5},
+ {id:'shipra',n:['शिप्रा अमरता का आह्वान','Shipra: A Call to Immortality'],s:['उज्जैन की जल संरचनाएँ','The water structures of Ujjain'],img:'art/books/book-07.jpg',ar:1.5},
+ {id:'prithvi',n:['पृथ्वी पानी का देश है','Prithvi Pani ka Desh Hai'],s:['जल और परंपरा','Water and tradition'],img:'art/books/prithvi-pani-ka-desh-hai.jpg',ar:1},
+ {id:'sadanira-b',n:['सदानीरा','Sadanira'],s:['नदियाँ और तीर्थ','Rivers and tirthas'],img:'art/books/sadanira.jpg',ar:1.02},
+ {id:'tapodhara',n:['तपोधरा मध्यप्रदेश','Tapodhara Madhya Pradesh'],s:['मध्यप्रदेश की तपोभूमि','The tapobhumi of Madhya Pradesh'],img:'art/books/tapodhara-madhyapradesh.jpg',ar:1}
+];
+const HERO=[['mahadev','center 40%'],['geeta-amrit','center 28%'],['hamare-ram','center 30%'],['sadanira','center 50%'],['mahajanpad','center 35%']];
+const PEOPLE=[['वाल्मीकि','Valmiki'],['वेदव्यास','Ved Vyas'],['सम्राट विक्रमादित्य','Samrat Vikramaditya'],['कालिदास','Kalidas'],['भगीरथ','Bhagirath'],['आदि शंकराचार्य','Adi Shankaracharya'],['राजा भोज','Raja Bhoj'],['देवी अहिल्याबाई होलकर','Devi Ahilyabai Holkar']];
+const CONT=[{sid:'mahadev',pi:2,ei:1,t:610},{sid:'geeta-amrit',pi:0,ei:0,t:860}];
+const IDX=[['मुख्य पृष्ठ','Home','art/1x1/mahadev.jpg'],['श्रृंखलाएँ','The series','art/1x1/mahakal.jpg'],['गीता अमृत','Geeta Amrit','art/1x1/geeta-amrit.jpg'],['पॉडकास्ट','Podcast','art/1x1/podcast.jpg'],['आयोजन','Events','art/1x1/podcast-sadanira-samagam.jpg'],['प्रकाशन','Books','art/books/prithvi-pani-ka-desh-hai.jpg'],['व्यक्तित्व','Personalities','art/1x1/purvaj-shri-ram-ke.jpg'],['न्यास परिचय','About the Nyas','art/1x1/yugyugin-bharatvanshi.jpg']];
+const IC={home:'M3.5 11.5 12 4.5l8.5 7M6 10v9.5h12V10',search:'M10.5 17.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13zM15.5 15.5 20 20',events:'M4 6.5h16V20H4zM4 10.5h16M8.5 4v4M15.5 4v4',down:'M12 4v11M7.5 10.5 12 15l4.5-4.5M5 20h14',user:'M12 12.3a3.8 3.8 0 1 0 0-7.6 3.8 3.8 0 0 0 0 7.6zM4.8 20a7.2 7.2 0 0 1 14.4 0',plus:'M12 5v14M5 12h14',check:'M5 12.5 10 17 19 7'};
+const fmt=s=>{s=Math.max(0,Math.floor(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+
+class Component extends DCLogic {
+  state={page:'home',sid:'mahadev',part:0,ep:0,tab:'parts',lang:'hi',theme:'dark',index:false,idxH:0,search:false,q:'',sheet:null,playing:false,listen:false,ctx:false,mini:false,saver:false,saved:{},rem:{},toast:''};
+  constructor(p){super(p);this.rootRef=React.createRef();this.mainRef=React.createRef();this.heroRef=React.createRef();this.t=0;this.hi=0;this.cx=0;this.cy=0;this.tx=0;this.ty=0;}
+  ser(id){return SERIES.find(s=>s.id===(id||this.state.sid))}
+  nParts(s){return s.names?s.names.length:s.parts}
+  nEps(s,i){return typeof s.eps==='function'?s.eps(i):s.eps}
+  chaps(s){return s.id==='geeta-amrit'?GCH:[1,2,3,4].map(i=>['अध्याय '+DV[i],'Chapter '+i,360])}
+  dur(s){return this.chaps(s).reduce((a,c)=>a+c[2],0)}
+  componentDidMount(){
+    this.reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.onKey=e=>{const s=this.state;if(e.key==='Escape'){if(s.index||s.search||s.sheet)this.setState({index:false,search:false,sheet:null});else if(s.ctx)this.setState({ctx:false});}
+      else if(e.key===' '&&s.page==='player'&&!s.search&&e.target.tagName!=='INPUT'){e.preventDefault();this.togglePlay();}};
+    this.step=()=>{this.cx+=(this.tx-this.cx)*.07;this.cy+=(this.ty-this.cy)*.07;const r=this.rootRef.current;
+      if(r)r.querySelectorAll('[data-par]').forEach(el=>{const f=+el.dataset.par;el.style.transform=`translate3d(${(this.cx*f).toFixed(2)}px,${(this.cy*f*.6).toFixed(2)}px,0) scale(${el.dataset.sc||1})`});
+      this.raf=(Math.abs(this.tx-this.cx)+Math.abs(this.ty-this.cy)>.002)?requestAnimationFrame(this.step):0};
+    this.onMove=e=>{if(this.reduce||e.pointerType==='touch')return;this.tx=e.clientX/innerWidth-.5;this.ty=e.clientY/innerHeight-.5;if(!this.raf)this.raf=requestAnimationFrame(this.step)};
+    window.addEventListener('keydown',this.onKey);window.addEventListener('pointermove',this.onMove,{passive:true});
+    this.tk=setInterval(()=>this.onTick(),250);
+    this.startHero();
+  }
+  componentWillUnmount(){window.removeEventListener('keydown',this.onKey);window.removeEventListener('pointermove',this.onMove);clearInterval(this.tk);clearInterval(this.ht);clearTimeout(this.tt);document.body.style.overflow='';}
+  componentDidUpdate(pp,ps){
+    const s=this.state,r=this.rootRef.current;
+    const moved=ps.page!==s.page||ps.sid!==s.sid||(s.page==='player'&&(ps.part!==s.part||ps.ep!==s.ep));
+    if(moved){
+      const m=this.mainRef.current;if(m&&m.animate&&!this.reduce)m.animate([{opacity:0,transform:'translateY(18px)'},{opacity:1,transform:'none'}],{duration:560,easing:'cubic-bezier(.2,.7,.2,1)'});
+      if(!this.scrollTo)window.scrollTo(0,0);
+      if(s.page==='home'&&ps.page!=='home')this.startHero();
+    }
+    if(this.scrollTo){const id=this.scrollTo;this.scrollTo=null;setTimeout(()=>{const el=r&&r.querySelector('#'+id);if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-96,behavior:'smooth'})},90);}
+    if(!ps.index&&s.index&&r){const el=r.querySelector('[data-index]');if(el&&el.animate&&!this.reduce)el.animate([{clipPath:'circle(0% at calc(100% - 52px) 44px)'},{clipPath:'circle(150% at calc(100% - 52px) 44px)'}],{duration:720,easing:'cubic-bezier(.6,0,.2,1)'});}
+    if(!ps.search&&s.search&&r){setTimeout(()=>{const i=r.querySelector('[data-q]');if(i)i.focus()},40);}
+    if(ps.part!==s.part&&r){const st=r.querySelector('[data-strip]');const c=st&&st.querySelector('[data-sel="true"]');if(st&&c)st.scrollTo({left:c.offsetLeft-st.clientWidth/2+c.clientWidth/2,behavior:'smooth'});}
+    document.body.style.overflow=(s.index||s.search||s.sheet)?'hidden':'';
+    this.paint();
+  }
+  startHero(){clearInterval(this.ht);requestAnimationFrame(()=>this.applyHero(this.hi));this.ht=setInterval(()=>{if(this.state.page==='home'&&!document.hidden&&!this.state.index)this.applyHero((this.hi+1)%HERO.length)},8000);}
+  applyHero(i){this.hi=i;const r=this.rootRef.current;if(!r)return;r.querySelectorAll('[data-hs]').forEach(el=>{el.style.opacity=(+el.dataset.hs===i)?'1':'0'});
+    const ring=r.querySelector('[data-ring]');if(ring&&ring.animate){ring.getAnimations().forEach(a=>a.cancel());ring.animate([{strokeDashoffset:113.1},{strokeDashoffset:0}],{duration:8000,easing:'linear',fill:'forwards'});}}
+  onTick(){if(!this.state.playing)return;const s=this.ser();this.t+=.25;if(this.t>=this.dur(s)){this.goNext();return;}this.paint();}
+  paint(){const r=this.rootRef.current;if(!r)return;const s=this.ser(),ch=this.chaps(s),d=this.dur(s),L=this.state.lang==='hi'?0:1;
+    const p=(Math.min(1,this.t/d)*100).toFixed(3)+'%';
+    r.querySelectorAll('[data-prog]').forEach(e=>e.style.width=p);r.querySelectorAll('[data-knob]').forEach(e=>e.style.left=p);
+    const tt=fmt(this.t);r.querySelectorAll('[data-time]').forEach(e=>{if(e.textContent!==tt)e.textContent=tt});
+    let a=0,ci=0;ch.forEach((c,i)=>{if(this.t>=a)ci=i;a+=c[2]});
+    r.querySelectorAll('[data-ch]').forEach(e=>{const on=+e.dataset.ch===ci;e.style.color=on?'var(--ac)':'';const m=e.querySelector('[data-chm]');if(m)m.style.opacity=on?'1':'0'});
+    r.querySelectorAll('[data-chname]').forEach(e=>{const n=ch[ci][L];if(e.textContent!==n)e.textContent=n});
+    r.querySelectorAll('[data-sl]').forEach(e=>{const on=this.t>=+e.dataset.a&&this.t<+e.dataset.b;e.style.color=on?'var(--ac)':''});}
+  nextOf(s,pi,ei){if(ei+1<this.nEps(s,pi))return[pi,ei+1];for(let i=pi+1;i<this.nParts(s);i++)if(this.nEps(s,i)>0)return[i,0];return null;}
+  goNext(){const s=this.ser(),n=this.nextOf(s,this.state.part,this.state.ep);this.t=0;if(n)this.setState({part:n[0],ep:n[1]});else{this.setState({playing:false});this.paint();}}
+  go(page,extra){const s=this.state;const mini=(s.page==='player'&&page!=='player'&&s.playing)?true:(page==='player'?s.mini:s.mini);this.setState(Object.assign({page,index:false,search:false,sheet:null,ctx:false,mini},extra||{}));}
+  goSec(id){this.scrollTo=id;if(this.state.page==='home'){this.setState({index:false,search:false,sheet:null});}else this.go('home');}
+  goSeries(id,part){const s=this.ser(id);this.go('series',{sid:id,part:part!=null?part:(s.def||0),tab:'parts'});}
+  play(id,pi,ei,t){this.t=t||0;this.go('player',{sid:id,part:pi,ep:ei,playing:true,listen:false,mini:false});}
+  togglePlay=()=>this.setState(s=>({playing:!s.playing}));
+  say(msg){clearTimeout(this.tt);this.setState({toast:msg});this.tt=setTimeout(()=>this.setState({toast:''}),2400);}
+  renderVals(){
+    const st=this.state,L=st.lang==='hi'?0:1,tx=a=>a[L],num=n=>L?String(n):String(n).replace(/\d/g,d=>DV[d]);
+    const W=L?{ep:'Episode',eps:'episodes',min:'min',left:'left'}:{ep:'एपिसोड',eps:'एपिसोड',min:'मिनट',left:'शेष'};
+    const art=(x,pi)=>x.id==='podcast'&&pi!=null?`art/16x9/${PEA[pi]}.jpg`:`art/16x9/${x.id}.jpg`;
+    const pName=(x,i)=>x.names?tx(x.names[i]):`${tx(x.pl)} ${num(i+1)}`;
+    const eTitle=(x,pi,ei)=>{let t=pName(x,pi);if(this.nEps(x,pi)>1)t+=` · ${W.ep} ${num(ei+1)}`;if(x.id==='geeta-amrit'&&pi===0)t+=L?' · Pilot':' · पायलट';return t};
+    const total=x=>{let n=0;for(let i=0;i<this.nParts(x);i++)n+=this.nEps(x,i);return n};
+    const s=this.ser(),np=this.nParts(s),dur=this.dur(s),mins=Math.round(dur/60);
+    const cg=(id)=>this.goSeries(id);
+    const isP=st.page==='player';
+    const hero=HERO.map(([id,pos],i)=>{const x=this.ser(id),nx=this.ser(HERO[(i+1)%HERO.length][0]);return{i,name:tx(x.n),desc:tx(x.d),d:art(x),m:V916.includes(id)?`art/9x16/${id}.jpg`:`art/1x1/${id}.jpg`,pos,op:i===this.hi?'1':'0',next:tx(nx.n)}});
+    const cont=CONT.map(c=>{const x=this.ser(c.sid),d=this.dur(x);return{title:eTitle(x,c.pi,c.ei),meta:`${tx(x.n)} · ${num(Math.round((d-c.t)/60))} ${W.min} ${W.left}`,img:art(x,c.pi),pos:POS[(c.pi*3+c.ei)%6],pct:(c.t/d*100).toFixed(1)+'%',go:()=>this.play(c.sid,c.pi,c.ei,c.t)}});
+    const tgt=new Date('2026-12-20T00:00:00+05:30').getTime(),df=Math.max(0,tgt-Date.now());
+    const cd={days:num(Math.floor(df/864e5)),hours:L?`${Math.floor(df%864e5/36e5)} hours`:`${num(Math.floor(df%864e5/36e5))} घंटे`};
+    const grid=SERIES.map(x=>({name:tx(x.n),unit:tx(x.u),img:`art/1x1/${x.id}.jpg`,go:()=>cg(x.id)}));
+    const bk=b=>({name:tx(b.n),sub:tx(b.s),img:b.img,img2:b.img2||'',set:!!b.img2,ar:b.ar});
+    const seriesP=st.page==='series';
+    const saved=!!st.saved[s.id];
+    const S={name:tx(s.n),unit:`${tx(s.u)} · ${num(total(s))} ${W.eps}`,desc:tx(s.d),img:`art/1x1/${s.id}.jpg`,hasMoment:!!s.m,moment:s.m?tx(s.m):'',hasWorld:!!s.w,world:s.w?tx(s.w):'',
+      playLabel:(L?'Watch ':'')+pName(s,s.def||0)+(L?'':' देखें'),play:()=>this.play(s.id,s.def||0,0),teaser:()=>this.play(s.id,s.def||0,0),
+      save:()=>{this.setState(p=>({saved:Object.assign({},p.saved,{[s.id]:!p.saved[s.id]})}));this.say(saved?(L?'Removed from your list':'सूची से हटाया'):(L?'Added to your list':'सूची में जोड़ा'))},
+      saveIcon:saved?IC.check:IC.plus,saveLabel:saved?(L?'In your list':'सूची में है'):(L?'Add to list':'सूची में जोड़ें')};
+    const tabs=[['parts',tx(s.u)],['research',L?'Research':'शोध'],['related',L?'Related':'संबद्ध']].map(([k,l])=>({label:l,c:st.tab===k?'var(--fg)':'var(--fg3)',arc:st.tab===k?'1':'0',go:()=>this.setState({tab:k})}));
+    const useRing=np>=40;
+    const ticks=useRing?Array.from({length:np},(_,i)=>{const sel=i===st.part;return{deg:(i*360/np).toFixed(3),label:pName(s,i),num:num(i+1),sel:sel?'true':'false',c:sel?'var(--ac)':(i%7===0?'var(--fg3)':'var(--ln2)'),c2:sel?'var(--ac)':'var(--fg2)',arc:sel?'1':'0',w:sel?'3px':'2px',h:sel?'32px':(i%7===0?'20px':'12px'),go:()=>this.setState({part:i})}}):[];
+    const chips=!useRing?Array.from({length:np},(_,i)=>{const sel=i===st.part,n=this.nEps(s,i);return{num:num(i+1),name:pName(s,i),c:sel?'var(--ac)':(n?'var(--fg)':'var(--fg3)'),arc:sel?'1':'0',go:()=>this.setState({part:i})}}):[];
+    const ne=this.nEps(s,st.part);
+    const sel={num:num(st.part+1),title:pName(s,st.part),count:ne?`${num(ne)} ${W.eps}`:(L?'Episodes coming':'एपिसोड शीघ्र'),empty:ne===0};
+    const eps=Array.from({length:ne},(_,e)=>{const c=CONT.find(c=>c.sid===s.id&&c.pi===st.part&&c.ei===e);return{title:eTitle(s,st.part,e),meta:`${num(mins)} ${W.min}`+(c?` · ${num(Math.round((dur-c.t)/60))} ${W.min} ${W.left}`:''),img:art(s,st.part),pos:POS[(st.part*3+e)%6],hasProg:!!c,pct:c?(c.t/dur*100).toFixed(1)+'%':'0%',go:()=>this.play(s.id,st.part,e,c?c.t:0)}});
+    const research=(s.res||[[s.src,['मूल ग्रंथ','Source text']],[[`${s.n[0]} : शोध टिप्पणियाँ`,`${s.n[1]}: research notes`],['न्यास शोध','Nyas research']],[['चित्र, मानचित्र और संदर्भ-सूची','Images, maps and bibliography'],['संदर्भ','Reference']]]).map(([t,y])=>({title:tx(t),type:tx(y)}));
+    const relBooks=(s.rb||[]).map(id=>bk(BOOKS.find(b=>b.id===id)));
+    const relSeries=(s.rs||[]).map(id=>{const x=this.ser(id);return{name:tx(x.n),unit:tx(x.u),img:`art/1x1/${x.id}.jpg`,go:()=>cg(id)}});
+    const ch=this.chaps(s);let acc=0;
+    const chapters=ch.map((c,i)=>{const st0=acc;acc+=c[2];return{i,num:num(i+1),name:tx(c),start:fmt(st0),go:()=>{this.t=st0+.01;if(!this.state.playing)this.setState({playing:true});this.paint();}}});
+    acc=0;const adMarks=ch.slice(0,-1).map(c=>{acc+=c[2];return{l:(acc/dur*100).toFixed(2)+'%'}});
+    const nx=this.nextOf(s,st.part,st.ep);
+    const N=nx?{title:eTitle(s,nx[0],nx[1]),img:art(s,nx[0]),pos:POS[(nx[0]*3+nx[1])%6],go:()=>this.play(s.id,nx[0],nx[1])}:{title:'',img:'',pos:'50% 50%',go:()=>{}};
+    const P={title:eTitle(s,st.part,st.ep),series:tx(s.n),meta:`${num(mins)} ${W.min} · ${L?'Hindi':'हिन्दी'}${s.id==='geeta-amrit'?(L?', Sanskrit shlokas':', संस्कृत श्लोक सहित'):''} · ${L?'Subtitles':'उपशीर्षक'}`,
+      desc:s.id==='geeta-amrit'?(L?'A curious narrator opens with a question from life today. The shishya voices its unease, the guru answers from the Geeta, and a scholar places it in our time.':'एक जिज्ञासु सूत्रधार आज के जीवन के प्रश्न से आरंभ करता है। शिष्य अपनी बेचैनी कहता है, गुरु गीता से उत्तर देते हैं, और विद्वान उसे आज के जीवन से जोड़ते हैं।'):tx(s.d),
+      img:art(s,st.part),sq:`art/1x1/${s.id}.jpg`,imgOp:st.playing?'.92':'.62',total:fmt(dur),term:s.term[L],meaning:s.term[2+L],
+      pIcon:st.playing?'M8 5v14M16 5v14':'M7.5 5.5v13l11-6.5z',pStroke:st.playing?'2.6':'0',pFill:st.playing?'none':'currentColor',
+      listenC:st.listen?'#e3bd6b':'#fff',listenC2:st.listen?'var(--ac)':'var(--fg)',quality:st.saver?(L?'Saver':'डेटा सेवर'):'HD',goSeries:()=>this.goSeries(s.id,st.part)};
+    const M={title:P.title,series:P.series,img:P.img};
+    const q=st.q.trim().toLowerCase();
+    let pool=[];SERIES.forEach(x=>{pool.push({name:tx(x.n),k:(x.n[0]+' '+x.n[1]).toLowerCase(),type:L?'Series':'श्रृंखला',go:()=>cg(x.id)});if(x.names)x.names.forEach((nm,i)=>pool.push({name:tx(nm),k:(nm[0]+' '+nm[1]).toLowerCase(),type:tx(x.n),go:()=>this.goSeries(x.id,i)}))});
+    BOOKS.forEach(b=>pool.push({name:tx(b.n),k:(b.n[0]+' '+b.n[1]).toLowerCase(),type:L?'Book':'प्रकाशन',go:()=>this.goSec('sec-books')}));
+    const results=(q?pool.filter(p=>p.k.includes(q)):pool.filter(p=>p.type===(L?'Series':'श्रृंखला')).slice(0,6)).slice(0,24);
+    const dockAct=k=>k==='home'?(st.page==='home'&&!st.search&&!st.sheet):k==='search'?st.search:k==='down'?st.sheet==='downloads':k==='user'?st.sheet==='account':false;
+    const dock=[['home',L?'Home':'मुख्य',()=>this.go('home')],['search',L?'Search':'खोज',()=>this.setState({search:true,sheet:null})],['events',L?'Events':'आयोजन',()=>this.goSec('sec-events')],['down',L?'Downloads':'डाउनलोड',()=>this.setState({sheet:'downloads',search:false})],['user',L?'Account':'खाता',()=>this.setState({sheet:'account',search:false})]].map(([k,l,g])=>{const a=dockAct(k);return{label:l,icon:IC[k],go:g,c:a?'var(--ac)':'var(--fg2)',arc:a?'1':'0'}});
+    const idxGo=[()=>this.go('home'),()=>this.goSec('sec-series'),()=>this.goSeries('geeta-amrit'),()=>this.goSeries('podcast'),()=>this.goSec('sec-events'),()=>this.goSec('sec-books'),()=>this.goSec('sec-people'),()=>this.goSec('sec-about')];
+    const idx=IDX.map((x,i)=>({num:num(i+1),name:tx(x),c:i===st.idxH?'var(--ac)':'var(--fg)',go:idxGo[i],enter:()=>{if(this.state.idxH!==i)this.setState({idxH:i})}}));
+    return {
+      lang:st.lang,theme:st.theme,rootRef:this.rootRef,mainRef:this.mainRef,heroRef:this.heroRef,
+      toggleLang:()=>this.setState(p=>({lang:p.lang==='hi'?'en':'hi'})),toggleTheme:()=>this.setState(p=>({theme:p.theme==='dark'?'light':'dark'})),
+      goHome:()=>this.go('home'),openIndex:()=>this.setState({index:true,idxH:0}),closeIndex:()=>this.setState({index:false}),indexOpen:st.index,idx,idxArt:IDX[st.idxH][2],
+      openSearch:()=>this.setState({search:true}),closeSearch:()=>this.setState({search:false}),searchOpen:st.search,q:st.q,onQ:e=>this.setState({q:e.target.value}),qPh:L?'Series, episodes, books':'श्रृंखला, एपिसोड, पुस्तक खोजें',
+      results,resHead:q?(results.length?(L?`${results.length} results`:`${num(results.length)} परिणाम`):(L?'Nothing found. Try another word.':'कुछ नहीं मिला। कोई और शब्द आज़माएँ।')):(L?'Suggested':'सुझाव'),
+      openAccount:()=>this.setState({sheet:'account'}),sheetOpen:!!st.sheet,sheetAccount:st.sheet==='account',closeSheet:()=>this.setState({sheet:null}),
+      sheetTitle:st.sheet==='account'?(L?'Your account':'खाता'):(L?'Downloads':'डाउनलोड'),
+      sheetText:st.sheet==='account'?(L?'No account is needed to watch. With one, your progress, downloads and preferences are saved.':'देखने के लिए खाते की आवश्यकता नहीं। खाता बनाने पर आपकी प्रगति, डाउनलोड और पसंद सहेजी जाती हैं।'):(L?'Episodes you download in the app appear here, ready to watch without the internet.':'ऐप में डाउनलोड किए गए एपिसोड यहाँ दिखेंगे, बिना इंटरनेट देखने के लिए।'),
+      dock,isHome:st.page==='home',isSeries:seriesP,isPlayer:isP,
+      hero,nextHero:()=>{this.hi=(this.hi+1)%HERO.length;this.startHero()},heroWatch:()=>{const id=HERO[this.hi][0];const x=this.ser(id);this.play(id,x.def||0,0)},heroDetails:()=>cg(HERO[this.hi][0]),
+      cont,cd,qs:QS.map((x,i)=>({name:tx(x),go:()=>this.goSeries('geeta-amrit',i)})),openGeeta:()=>cg('geeta-amrit'),playPilot:()=>this.play('geeta-amrit',0,0),
+      shareSutra:()=>this.say(L?'Card ready to share on WhatsApp and Instagram':'कार्ड WhatsApp और Instagram पर साझा करने के लिए तैयार'),
+      grid,tapoLabel:st.rem.tapo?(L?'You will be reminded':'स्मरण सेट है'):(L?'Upcoming · remind me':'आगामी · याद दिलाएँ'),remindTapo:()=>this.setState(p=>({rem:Object.assign({},p.rem,{tapo:!p.rem.tapo})})),
+      eventLabel:st.rem.ev?(L?'Reminder set':'स्मरण सेट है'):(L?'Remind me':'याद दिलाएँ'),remindEvent:()=>{this.setState(p=>({rem:Object.assign({},p.rem,{ev:!p.rem.ev})}));if(!st.rem.ev)this.say(L?'We will remind you when it goes live':'प्रसारण आरंभ होने पर याद दिलाएँगे')},
+      openPodcast:()=>this.goSeries('podcast'),
+      pods:PE.map((p,i)=>({name:tx(p),img:`art/16x9/${PEA[i]}.jpg`,go:()=>this.goSeries('podcast',i)})),
+      books:BOOKS.map(bk),people:PEOPLE.map(p=>({name:tx(p)})),
+      S,tabs,tabParts:st.tab==='parts',tabResearch:st.tab==='research',tabRelated:st.tab==='related',useRing,useNames:!useRing,ticks,chips,handDeg:(st.part*360/np).toFixed(3),sel,eps,research,relBooks,hasRelBooks:relBooks.length>0,relSeries,
+      share:()=>this.say(L?'Link copied':'लिंक कॉपी हुआ'),
+      P,N,hasNext:!!nx,chapters,adMarks,adTitle:L?'Ad break':'विज्ञापन विराम',playing:st.playing,paused:!st.playing&&!st.listen,listen:st.listen,ctx:st.ctx,showTerm:!st.ctx&&!st.listen,isGeeta:s.id==='geeta-amrit',
+      togglePlay:this.togglePlay,toggleListen:()=>this.setState(p=>({listen:!p.listen})),toggleSaver:()=>this.setState(p=>({saver:!p.saver})),
+      openCtx:()=>this.setState({ctx:true}),closeCtx:()=>this.setState({ctx:false}),
+      seek:e=>{const b=e.currentTarget.getBoundingClientRect();this.t=Math.max(0,Math.min(1,(e.clientX-b.left)/b.width))*dur;this.paint();},
+      jumpShloka:()=>{this.t=520;if(!this.state.playing)this.setState({playing:true});this.paint();},
+      fullscreen:()=>{const r=this.rootRef.current,el=r&&r.querySelector('[data-stage]');if(document.fullscreenElement)document.exitFullscreen();else if(el&&el.requestFullscreen)el.requestFullscreen();},
+      download:()=>this.say(L?'Downloads are available in the Android and iOS apps':'डाउनलोड Android और iOS ऐप में उपलब्ध'),
+      miniShow:st.mini&&!isP,M,miniOpen:()=>this.go('player',{mini:false}),miniClose:()=>this.setState({mini:false,playing:false}),
+      hasToast:!!st.toast,toast:st.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

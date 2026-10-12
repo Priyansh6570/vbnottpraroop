@@ -1,0 +1,504 @@
+Veer Bharat Nyas OTT
+Platform concept, pages and series plan
+Swarndesh Media · October 2026
+
+-- 1 of 17 --
+
+The Concept
+Veer Bharat Nyas, an अधिष् ठान of the Culture Department, Government of Madhya
+Pradesh, is dedicated to research, fellowships and study of Bharat's long
+tradition: its heroes, thinkers, philosophers, rishis, saints, poets, writers, artists,
+scientists and entrepreneurs, from prehistory to the struggle against foreign rule.
+The platform brings the Nyas's series, events, podcasts and books into one home
+of its own. It is free for everyone, supported by advertising that VBN controls,
+bilingual throughout, and open to verified creators and institutions. It streams
+from high-quality masters on the web and on mobile, with TV apps to follow.
+Each series, its own world
+Every series is different material, so each is presented on its own terms. Each is
+divided by its own natural unit (a महादे व, a river, a generation, a kaand), and its
+page is built around that unit. Selected series open into an interactive 3D world
+of their own.
+An experience with depth
+The interface uses depth as well as width and height: layered key art that moves
+with the viewer, scenes that come forward on focus, and smooth transitions from
+page to page. Browsing and playback stay light and fast, so the platform runs
+smoothly on ordinary phones and connections.
+What sets it apart
+• VBN always in view. The Veer Bharat Nyas logo stays in the header on
+every page and sits as a small mark in the corner of the video player, even in
+full screen.
+• Each series, its own world. Series are explored through their own parts,
+and selected series through their own 3D worlds.
+• A home that follows the panchang. The home screen follows the Vikram
+Samvat, the tithi and the festival calendar, bringing the right series forward
+on Mahashivratri, Ram Navami, Ganesh Chaturthi and other days.
+• Research alongside. Every series has its own research material, presented
+beside its episodes.
+• Personalities. Every rishi, saint, warrior, poet, thinker and scientist has a
+page with images, short videos and a brief introduction.
+• Listen mode. Any episode plays as audio with the screen off.
+2
+
+-- 2 of 17 --
+
+• Context layer. A light tap mid-episode reveals the meaning of a Sanskrit
+term, or the background of a place or name.
+• Premieres. New series arrive as scheduled premieres with a countdown and
+teaser.
+• Live events. VBN's own events stream live, then stay on as permanent
+event pages.
+• Open to creators. Verified creators and institutions publish in their own
+spaces.
+Reach
+• Free for everyone. No paywall and no sign-in needed to watch. An optional
+account saves progress, downloads and preferences.
+• Bilingual. Every page in Hindi or English, one language at a time, with
+subtitles in Indian and diaspora languages to follow.
+• Every screen. Desktop first, fully responsive on mobile, with apps for
+Android and iOS, and TV apps to follow.
+• Any connection. Adaptive streaming from the high-quality masters down to
+a data-saver setting, with offline downloads.
+• Accessible by default. Captions, adjustable text size, and navigation that
+older viewers find easy.
+Why an owned platform
+• Ownership. VBN owns its audience and its viewing data.
+• Revenue and control. The advertising revenue is VBN's, and so is every
+decision about which ads run, where and when.
+• No distraction. No recommendations that lead viewers away to other
+channels.
+• Connection. The only place where VBN's series, events, podcasts and books
+come together.
+YouTube stays useful as the free front door that brings people to the platform.
+3
+
+-- 3 of 17 --
+
+Platform Pages
+Navigation
+• Desktop header. VBN logo, then मख् य	 पृ	 ष्	 ठा, श्रृं 	 	 खलाएँ  , गीता अमता, पृ  डकास्ट , आय"जन and
+ पृ
+$
+काशन, with search, language, theme and profile on the right.
+• Mobile. A top bar with the VBN logo, and a bottom bar with Home, Search,
+Events, Downloads and My Account.
+On every page
+• Hindi or English, one language at a time, switched with a toggle. No English
+placed beside Hindi as a translation.
+• Light and dark themes.
+• A mini player that keeps playing while the viewer browses.
+• A footer with the Government of Madhya Pradesh logo, About, contact and
+legal links.
+Viewer pages
+• Home. A layered 3D hero cycling the series teasers; continue watching; गीता
+अमता spotlight; all series; upcoming premiere; live or next event; latest
+podcasts; new books; personalities; featured creators; festival moments on
+the right days.
+• Series page. One template, filled differently for each series: teaser in the
+hero; about the series; its parts in its own unit, with the episodes inside each
+part; a research tab; related personalities and books; and its 3D world where
+it has one.
+• गीता अमृ  ता. The series page with the Geeta mala, the life's questions, shlokas
+and the daily अमता-सू 'त्र	 .
+• Episode player. Chapters; the episode's research material; shloka read-
+along where the series has shlokas; listen mode; next episode; ad breaks;
+and the VBN mark in the corner.
+• All series. The full catalogue, with upcoming series such as तापृ" रा.
+• Podcast. Editions by event, each with its episodes and guests.
+• Events. Every event with its posters, photos and videos, arranged on a
+timeline with a switch to calendar view, and a page for each event.
+• Live. The live player with the event schedule, or a countdown when nothing
+is live.
+4
+
+-- 4 of 17 --
+
+• Premiere. Countdown and teaser for an upcoming series.
+• Books (प्र काशन). The library and a page for each book. See Books.
+• Personalities. An index and a page for each, with images, short videos, a
+brief introduction and related episodes.
+• Creators. A directory of verified creators and institutions, and a channel
+page for each.
+• Search. Results across series, episodes, books, events, personalities and
+creators.
+• About VBN. The Nyas, its mandate, the Culture Department, and contact.
+Account
+• Sign in. Email, Google or Apple. No mobile OTP.
+• Create account. Name, email, mobile, state or country, preferred language
+and interests.
+• Profile. Watchlist, continue watching and history.
+• Downloads. In the mobile apps.
+• Settings. Language, theme, subtitles and notifications.
+Creator side
+• Creator sign-up. A separate path: individual or institution, identity and
+organisation details, portfolio, and agreement to the guidelines.
+• Creator studio. Dashboard, upload with guided details, review status,
+channel settings and viewing figures.
+Admin side
+• Review queue. Approve or return contributions.
+• Content manager. Series, parts, episodes, books, events and personalities.
+• Ad console. Placements, scheduling, private ads and reports.
+• Live control. Start a stream and trigger ad breaks.
+• Analytics. Views, audience, countries and languages.
+Supporting pages
+Privacy and consent, terms, accessibility statement, page not found, and offline.
+5
+
+-- 5 of 17 --
+
+The Series
+Eleven series and one upcoming. Each is divided by its own unit, and four open
+into 3D worlds in the first round. If they work well, the rest follow.
+Series Divided by 3D world in the first
+round
+गीता अमृ  ता Life's questions, beginning
+with the Shrimad Bhagavad
+Geeta
+The Geeta mala
+मृ
+हादे व Each of the 84 महादे व, with
+several episodes each
+Later round
+मृ
+हाकाल : सृ ष्टि	  का सृ	मृ	 य One episode per character Later round
+मृ
+हागीथा Each avatar of Vishnu Later round
+यगीयगीन भारतावश One episode per सू मदे  य Later round
+मृ
+हाजनप्रदे Each janapada: Avantika (12
+episodes), then Magadh
+The janapadas on a 3D
+map
+सृ	दे
+ नर Each river Rivers across a 3D
+landscape
+प्र
+
+वज श्री  रमृ का Each generation The generations as a
+3D lineage
+हामृ  र रमृ Each kaand of the Ramayan Later round
+मृ
+हागीणाष्टि"प्रष्टि	 ता गीणाश One episode per form of
+Ganesh
+Later round
+Veer Bharat
+Podcast
+Each event Later round
+ताप्र # "र Upcoming To follow
+6
+
+-- 6 of 17 --
+
+Flagship: गीता अमता
+गीता अमता is the Nyas's most important current project and the heart of the
+platform: a creative effort to present the Sanatan tradition of knowledge in a
+modern visual language. Traditional sources speak of around 108 or more Geetas
+and dialogues of wisdom, and the Mahabharat alone holds many, with 18 Geeta-
+prasangs traditionally discussed. In every age, whenever people were in doubt
+about their purpose, their karma or the direction of their life, Bhagwan Shri
+Krishna gave knowledge through many forms and dialogues.
+The series begins with the Shrimad Bhagavad Geeta and grows to include the
+wider tradition of Geeta dialogues. Each episode runs about 20 minutes, in Hindi
+with the original shlokas in Sanskrit, with a special focus on India's young
+generation.
+The episode
+• Prashna. A curious सू 'त्र	 रा opens with a question from today's life, without a
+ready answer.
+• Guru-shishya samvad. The shishya voices today's unease, and the guru
+connects it to the Geeta and Sanatan thought.
+• AI cinematic visuals. The idea is seen and felt, with a fixed character
+design for Shri Krishna and Arjun across the series.
+• Shloka, voice and music. Sanskrit shlokas, Hindi voiceover and original
+music.
+• Vidwan. A scholar or गीता-मम*ज्ञ gives the context, the meaning and its place in
+life today.
+• अमृ  ता-सृ त्र	 . The सू 'त्र	 रा returns to the opening question with new sight, and the
+episode closes on a short अमता-सू 'त्र	 .
+On the platform, each part is a marked chapter in the player, so viewers can
+return to any part directly. Ad breaks fall between parts, never within them.
+Browse by life's questions
+The series is built on questions, so its home opens with them: अज*न का सू 	 शय, काम* औरा
+फला, काता*व्य , स् व म*, मन, क्रो " , म"हा, भय, इच् छा, आसू धि4ता, सू फलाता-असू फलाता, सू मत्व , धिस्6 तापृ $ज्ञ ता, आत् म औरा
+शरारा, ज्ञ  न, भधि4ता, अहाकारा, त् यगी, य"गी, जवन का उद्दे श् य , मत् य and काधिठान सू मय म  धिनर्ण * य. A viewer facing
+fear or anger today goes straight to the episode that speaks to it.
+7
+
+-- 7 of 17 --
+
+The Geeta mala in 3D
+The Geetas of the tradition appear as a mala in three dimensions. The Shrimad
+Bhagavad Geeta is the first bead, lit at launch. The Geeta-prasangs of the
+Mahabharat and the other Geeta dialogues follow as the series grows, so the
+mala fills over time and shows the full scope of the project from the first day.
+Shloka-level depth
+• Shlokas with recitation and their meaning in the viewer's language.
+• Read-along text synced to the recitation.
+• A jump from any shloka to the moment it is discussed in the episode.
+An अमृ 	 ता-सृ त्र	 every day
+Every episode's अमता-सू 'त्र	 is gathered on the platform. One opens the app each day,
+and each can be shared as a vertical card on WhatsApp and Instagram.
+Short formats
+The short formats made from each episode live on the platform too, in a vertical
+feed that leads into the full episode: अमता-सू 'त्र	 , एँ का श् ला"का एँ का धिवचारा, आज का पृ $श्	 न , गीरु -धिशष्य सू 	 वदे
+का अश, धिवद्वा  न सू	एँ	 का धिमनट, AI Cinematic Gita and गीता औरा आज का जवन.
+A digital knowledge archive
+गीता अमता is meant to grow beyond a programme into a digital knowledge platform
+and archive: episodes, shlokas, scholars' explanations, guru-shishya dialogues,
+life's questions and AI cinematic stories, kept for generations to come. This
+platform is that home, with subtitles and dubbing carrying it from India to
+audiences around the world.
+Launch
+• Pilot first. A pilot episode tests the full format, and the series develops from
+what it shows.
+• Premiere on Geeta Jayanti. Launch गीता अमता, and ideally the platform with
+it, on Geeta Jayanti.
+• Listen anywhere. Every episode is also available as audio for daily
+listening.
+8
+
+-- 8 of 17 --
+
+Series Plans
+मृ	
+हादे व
+The 84 महादे व and the story of creation and dissolution. Shiv not only as the lord of
+destruction but as the balance of creation, tapas, compassion and infinite
+consciousness.
+Divided by: each of the 84 महादे व, with several episodes for each.
+On the platform: the 84 महादे व as the series' parts; its 3D world follows in a later
+round.
+Moments: Mahashivratri, and the month of Shravan.
+मृ	
+हाकाल : सृ ष्टि	  का सृ	मृ	 य
+The mystery of kaal, the origin of creation, the yuga cycle and cosmic order,
+drawn from Indian philosophy and the Puranas. Time not as mere counting, but
+as the root of creation, sustenance and change.
+Divided by: one episode for each character.
+On the platform: a character for each part, each opening its episode.
+मृ	
+हागीथा
+The gathas of the Vishnu Purana and other Puranas: creation, devas, dynasties
+and great characters, told through the avatars of Vishnu.
+Divided by: each avatar of Vishnu.
+On the platform: the avatars as the series' parts, in their order.
+Moments: each avatar's jayanti.
+यगीयगीन भारतावश
+Documentaries on Bharatiya communities: the heroes, lineages and events that
+protected Bharat's civilisation, culture and self-respect across the ages.
+Divided by: one episode for each सू मदे  य.
+On the platform: each सू मदे  य as a part, so viewers in India and abroad can find
+their own community's story. Each community page is reviewed and approved by
+VBN before it goes live.
+9
+
+-- 9 of 17 --
+
+मृ	हाजनप्र	दे
+The sixteen great states of ancient Bharat (अगी, मगी, काश, का"शला, वत्सू , अवधिता, चाधिदे , कारु ,
+ पृ
+  चाला, मत्स्य , श'रासू न, अश्म का, गीरा, काम् बो"ज, वधि@ज and मल् ला): their rulers, culture and political
+systems.
+Divided by: each janapada, beginning with Avantika (12 episodes), then
+Magadh.
+3D world: the sixteen janapadas rising from a 3D map of ancient Bharat.
+Janapadas with episodes are lit and open their parts; the rest wait to be lit as the
+series grows.
+सृ	दे
+ नर
+A journey through Bharat's sacred rivers and tirthas and the traditions around
+them. Rivers not as mere water, but as the ever-flowing current of civilisation,
+faith and life.
+Divided by: each river.
+3D world: the rivers flowing across a 3D landscape. Each river opens its
+episodes, placed along its course.
+Moments: river parvas such as Ganga Dussehra.
+प्र
+	
+वज श्री  रमृ का
+The Ikshvaku lineage from which Shri Ram was born: the kings, rishis and deeds
+that shaped the tradition of maryada, dharma, satya and ideal rule.
+Divided by: each generation.
+3D world: the generations as a 3D lineage rising toward Shri Ram. Each
+generation opens its episodes, and the lineage leads into हामरा राम.
+हामृ र रमृ
+The life of Shri Ram from his birth, from Ayodhya to Rameshwaram and from
+vanvas to Ramrajya, explored through the Valmiki Ramayan, the Puranas, history
+and research. It asks whether Shri Ram is faith alone, or history too.
+Divided by: each kaand of the Ramayan.
+On the platform: the kaands as the series' parts, continuing from पृ '	 व*ज श्रृं  राम का.
+Moments: Ram Navami, Vivah Panchami, Deepawali.
+10
+
+-- 10 of 17 --
+
+मृ	हागीणाष्टि "प्र	ष्टि	 ता गीणाश
+The divine form of Ganesh: his birth, leelas, forms and symbols. Not only the
+remover of obstacles, but the lord of wisdom, knowledge and every auspicious
+beginning.
+Divided by: one episode for each form of Ganesh.
+On the platform: each form as a part.
+Moments: Ganesh Chaturthi, and Sankashti Chaturthi every month.
+Veer Bharat Podcast
+In-depth conversations with scholars, artists, theatre practitioners and
+researchers on the Mahabharat, Bharatiya civilisation, art and cultural traditions,
+recorded with the guests of VBN's own events.
+Divided by: each event, with an edition and poster for each.
+On the platform: editions by event, each linked to its event page; a page for
+each guest; full episodes in video and audio, with short clips for sharing.
+ताप्र# "र
+Upcoming. Shown in the catalogue as an upcoming series, with its plan to follow.
+11
+
+-- 11 of 17 --
+
+Creators and Institutions
+The platform is VBN's, and it is also open to anyone creating serious work on
+Bharat's culture, history and spiritual tradition. VBN Originals always keep pride
+of place, and every contribution is verified before it is published.
+Who can contribute
+• Creators. Individual creators, influencers, filmmakers and scholars.
+• VBN fellows. Fellows of the Nyas publish their research and films in their
+own spaces.
+• Institutions. Universities, research bodies, museums and cultural
+organisations, including their archives.
+Joining
+• Separate sign-up. Individual or institution, identity and organisation details,
+portfolio, and agreement to the guidelines.
+• Identity check. Every creator and institution is verified before their space
+opens.
+• Review by VBN. An internal VBN team reviews every work before it goes
+live against published guidelines: accuracy, technical quality, copyright and
+content standards.
+A space of their own
+• Channel page. Each contributor gets a page with their banner, introduction,
+series and a verified mark.
+• Creator studio. Upload, guided details, review status, channel settings and
+viewing figures.
+• Rights. Contributors keep ownership and give VBN a non-exclusive licence.
+Why creators will come
+• Themed open calls. Invitations tied to the calendar and to VBN's series.
+• Featured placement. The best work features on the home screen and in
+festival programming.
+• Commissions. Outstanding creators can be commissioned for VBN projects.
+12
+
+-- 12 of 17 --
+
+Advertising
+Advertising keeps the platform free for everyone. Ads can run across all series
+and every available space, and VBN decides when, where and what runs.
+Sources
+• Private ads. Sponsorships and campaigns sold directly by VBN, to brands,
+institutions and government departments. These take priority.
+• Ad networks. Google Ad Manager as the central ad server, with Google and
+Meta ad networks and others filling the remaining space.
+Formats
+• Video ads. Before an episode and at break points within it.
+• Display ads. On the home screen, series pages and event pages.
+• Series sponsorship. A series presented by a sponsor, with a "सू B जन्य सू "
+credit.
+• Festival sponsorship. Festival programmes and home screen takeovers on
+festival days.
+• Live ad breaks. Inserted during VBN's live events at moments the
+production team chooses.
+VBN in control
+A VBN ad console, part of the platform's admin, gives the team full control:
+• Where. Choose placements by series, episode, page or live event.
+• When. Schedule campaigns by date and festival, and set exactly where the
+breaks fall within each episode.
+• What. Approve every private ad before it runs, and block categories of
+network ads.
+• Who. Target by language, region and device.
+• How often. Set frequency caps so viewers don't see the same ad
+repeatedly.
+• Reports. Impressions and revenue by series, placement and campaign.
+Personalised advertising in India requires viewer consent under the Digital
+Personal Data Protection Act, so consent is built in from the start.
+13
+
+-- 13 of 17 --
+
+Events and Live
+VBN's own events stream live on the platform, and only VBN's events. Every
+event keeps a permanent page with its posters, photos, videos, podcasts and
+recordings.
+The events page
+• Timeline. All events arranged in order, past and upcoming.
+• Calendar. A switch to calendar view, following VBN's own calendar of
+events.
+• Event page. Posters, photos and videos from the event, its podcasts, and
+the live stream when it is on.
+How live works
+• At the venue. Cameras and sound are mixed into a single programme feed
+with VBN's on-screen graphics.
+• To the cloud. An encoder sends the feed over a dedicated internet line, with
+a backup connection, to a live streaming service.
+• To every screen. The service prepares the stream in several qualities, and a
+global delivery network carries it to viewers. Each viewer's app picks the best
+quality their connection allows.
+• Ad breaks. The production team triggers ad breaks at natural pauses in the
+event.
+• After the event. The recording is saved automatically and goes on the
+event page.
+• Wider reach. The same stream can go out to YouTube and Facebook at the
+same time, pointing viewers back to the platform.
+14
+
+-- 14 of 17 --
+
+Books
+VBN publishes widely: research books, monographs, journals and collections.
+Many stand on their own rather than alongside a series, so the books have a
+library of their own.
+The library
+• Every cover as designed. Covers come in portrait, square and landscape
+formats, and the library shows each in its own shape.
+• Volumes together. Books in parts, such as अमता जलारा भगी पृ $	 6म to चाता6*, are
+grouped as one set.
+• Partners credited. Co-publishing institutions, such as the M.P. Council of
+Science & Technology, appear with their books.
+The book page
+• Cover, title and description.
+• Volumes in the set, where there are several.
+• Partner institution, where there is one.
+• Related series and episodes, where there are any.
+• How to read or get the book.
+15
+
+-- 15 of 17 --
+
+Design Principles
+• Bilingual. Every page in Hindi or English, one language at a time, switched
+with a toggle. No English placed beside Hindi as a translation.
+• VBN always in view. The logo is visible on every page and in the player.
+• Modern and professional first. Contemporary, polished and structured.
+• Depth. Layered, three-dimensional motion and transitions, with 3D worlds
+for selected series.
+• Easy on the eye. An experience viewers do not forget.
+• No em dashes.
+• No emojis.
+• No boxy design.
+• No common AI components. No dot pills, no eyebrow text, no boxes with a
+coloured left border.
+16
+
+-- 16 of 17 --
+
+Open Decisions
+• The platform's name.
+• The incentive model for creators.
+• Which Geeta dialogues follow the Shrimad Bhagavad Geeta in गीता अमता.
+• Whether VBN publishes a companion text for गीता अमता.
+• Whether books are readable inside the platform or shown with a link to get
+them.
+• The concept for तापृ" रा.
+• Which series get 3D worlds after the first round.
+• The order in which subtitle languages are added.
+To confirm with the Culture Department
+• Security audit requirements before launch.
+• Hosting of data within India.
+• Accessibility standards for government platforms (GIGW).
+• Approval for running advertising on the platform.
+17
+
+-- 17 of 17 --
+
