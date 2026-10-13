@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@500;600;700;800&amp;family=Mukta:wght@400;500;600;700;800&amp;family=Tiro+Devanagari+Sanskrit&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0B0806;color:#fff}
+body{-webkit-font-smoothing:antialiased;font-family:'Mukta',sans-serif}
+a{color:#F2BC4F;text-decoration:none}a:hover{color:#FFFFFF}
+[data-noscroll]{scrollbar-width:none}[data-noscroll]::-webkit-scrollbar{display:none}
+input::placeholder{color:#8F8371;opacity:1}
+@keyframes vbnRing{0%{stroke-dashoffset:302;transform:rotate(-90deg)}100%{stroke-dashoffset:0;transform:rotate(270deg)}}
+@keyframes vbnPop{0%{opacity:0;transform:scale(.86)}40%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1)}}
+@keyframes vbnFade{0%{opacity:1}75%{opacity:1}100%{opacity:0}}
+@keyframes vbnLive{0%,100%{opacity:1}50%{opacity:.35}}
+</style>
+<script src="vbn3/data.js"></script>
+<script src="vbn3/app.js"></script>
+<script src="./image-slot.js"></script>
+</helmet>
+<div data-root="" style="--px:{{ px }};min-height:100vh;background:#0B0806;color:#FFFFFF;font-family:'Mukta',sans-serif">
+<sc-if value="{{ notReady }}" hint-placeholder-val="{{ true }}"><div style="height:100vh;display:flex;align-items:center;justify-content:center"><img src="assets/emblem-mark.png" alt="वीर भारत न्यास" style="width:84px;height:84px;object-fit:contain;opacity:.9"></div></sc-if>
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;min-height:100vh">
+
+<sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+<aside data-noscroll="" style="position:sticky;top:0;flex:none;width:{{ sideW }};height:100vh;overflow-y:auto;box-sizing:border-box;background:#0E0A07;border-right:1px solid rgba(242,200,120,.12);display:flex;flex-direction:column;z-index:50;transition:width .25s ease">
+  <sc-if value="{{ full }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:16px 12px 10px 18px">
+      <button onClick="{{ goHome }}" aria-label="वीर भारत न्यास, Home" style="height:52px;padding:0;border:0;background:none;cursor:pointer"><img src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:100%;width:auto;display:block"></button>
+      <button onClick="{{ toggleRail }}" aria-label="Collapse sidebar" style="flex:none;width:34px;height:34px;border:1px solid rgba(242,200,120,.16);border-radius:8px;background:none;color:#A99C88;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="color:#FFFFFF;border-color:rgba(242,200,120,.4)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM9 4v16M15.5 9.5 13 12l2.5 2.5"></path></svg></button>
+    </div>
+    <nav style="display:flex;flex-direction:column;padding:0 12px 10px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="12">
+        <sc-if value="{{ n.isHead }}" hint-placeholder-val="{{ false }}"><div style="padding:18px 12px 8px;font:700 11px/1 'Mukta',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8A7D6A">{{ n.label }}</div></sc-if>
+        <sc-if value="{{ n.isItem }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ n.go }}" style="position:relative;display:flex;align-items:center;gap:14px;height:44px;padding:0 12px;border:0;border-radius:10px;background:{{ n.bg }};color:{{ n.col }};cursor:pointer;text-align:left;font-family:'Mukta',sans-serif;font-size:15px;font-weight:{{ n.fw }};line-height:1" style-hover="background:rgba(255,255,255,.05);color:#FFFFFF">
+            <span style="position:absolute;left:-12px;top:10px;bottom:10px;width:3px;border-radius:0 3px 3px 0;background:{{ n.bar }}"></span>
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:{{ n.icol }}"><path d="{{ n.ic }}"></path></svg>
+            <span style="flex:1;min-width:0">{{ n.label }}</span>
+            <span style="font:600 13px/1 'Eczar',serif;color:#8A7D6A">{{ n.sub }}</span>
+            <sc-if value="{{ n.live }}" hint-placeholder-val="{{ false }}"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#E5372B;box-shadow:0 0 0 3px rgba(229,55,43,.25);animation:vbnLive 1.6s ease-in-out infinite"></span></sc-if>
+          </button>
+        </sc-if>
+      </sc-for>
+    </nav>
+    <div style="margin-top:auto;padding:14px 16px 20px;display:flex;flex-direction:column;gap:14px;border-top:1px solid rgba(242,200,120,.1)">
+      <sc-if value="{{ notSigned }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:14px;border-radius:12px;background:#17110C;border:1px solid rgba(242,188,79,.28);display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:8px;font:800 14px/1.2 'Mukta',sans-serif;color:#F2BC4F"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"></path></svg>Premium is free</div>
+          <div style="font:500 13px/1.45 'Mukta',sans-serif;color:#C9BCA6">Sign in to unlock director’s cuts, 4K documentaries and full event recordings.</div>
+          <button onClick="{{ openAuth }}" style="height:36px;border:0;border-radius:8px;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 14px/1 'Mukta',sans-serif" style-hover="background:#F8CB68">Sign in</button>
+        </div>
+      </sc-if>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <a href="VBN Creator Studio.dc.html" style="display:flex;align-items:center;justify-content:center;gap:6px;height:34px;border:1px solid rgba(242,200,120,.18);border-radius:8px;color:#EADFCB;font:700 12.5px/1 'Mukta',sans-serif" style-hover="border-color:#F2BC4F;color:#FFFFFF">Creator Studio</a>
+        <a href="VBN Admin Console.dc.html" style="display:flex;align-items:center;justify-content:center;gap:6px;height:34px;border:1px solid rgba(242,200,120,.18);border-radius:8px;color:#EADFCB;font:700 12.5px/1 'Mukta',sans-serif" style-hover="border-color:#F2BC4F;color:#FFFFFF">Admin Console</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px 14px;font:600 12.5px/1.2 'Mukta',sans-serif">
+        <button onClick="{{ goHelp }}" style="padding:0;border:0;background:none;color:#A99C88;cursor:pointer;font:inherit" style-hover="color:#FFFFFF">Help</button>
+        <button onClick="{{ goContact }}" style="padding:0;border:0;background:none;color:#A99C88;cursor:pointer;font:inherit" style-hover="color:#FFFFFF">Contact</button>
+        <button onClick="{{ goPrivacy }}" style="padding:0;border:0;background:none;color:#A99C88;cursor:pointer;font:inherit" style-hover="color:#FFFFFF">Privacy</button>
+        <button onClick="{{ goTerms }}" style="padding:0;border:0;background:none;color:#A99C88;cursor:pointer;font:inherit" style-hover="color:#FFFFFF">Terms</button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ rail }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:16px 0 8px">
+      <button onClick="{{ goHome }}" aria-label="Home" style="width:52px;height:52px;padding:0;border:0;background:none;cursor:pointer"><img src="assets/emblem-mark.png" alt="वीर भारत न्यास" style="width:100%;height:100%;object-fit:contain"></button>
+      <button onClick="{{ toggleRail }}" aria-label="Expand sidebar" style="width:34px;height:30px;border:1px solid rgba(242,200,120,.16);border-radius:8px;background:none;color:#A99C88;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="color:#FFFFFF"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM9 4v16M13 9.5l2.5 2.5-2.5 2.5"></path></svg></button>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:2px;padding:4px 8px 16px">
+      <sc-for list="{{ navRail }}" as="n" hint-placeholder-count="12">
+        <button onClick="{{ n.go }}" style="position:relative;display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 2px 8px;border:0;border-radius:10px;background:{{ n.bg }};color:{{ n.col }};cursor:pointer;font:700 11px/1.1 'Mukta',sans-serif;text-align:center" style-hover="background:rgba(255,255,255,.05);color:#FFFFFF">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="color:{{ n.icol }}"><path d="{{ n.ic }}"></path></svg>
+          <span>{{ n.label }}</span>
+          <sc-if value="{{ n.live }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:8px;right:20px;width:7px;height:7px;border-radius:50%;background:#E5372B"></span></sc-if>
+        </button>
+      </sc-for>
+    </nav>
+  </sc-if>
+</aside>
+</sc-if>
+
+<div style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column">
+<header style="position:sticky;top:0;z-index:40;height:68px;box-sizing:border-box;padding:0 var(--px);display:flex;align-items:center;gap:12px;background:{{ topBg }};border-bottom:1px solid {{ topBd }};backdrop-filter:{{ topBlur }};-webkit-backdrop-filter:{{ topBlur }};transition:background .3s">
+  <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ openDrawer }}" aria-label="Menu" style="flex:none;width:40px;height:40px;margin-left:-8px;border:0;background:none;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6.5h16M4 12h16M4 17.5h11"></path></svg></button>
+    <button onClick="{{ goHome }}" aria-label="Home" style="flex:none;height:42px;padding:0;border:0;background:none;cursor:pointer"><img src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:100%;width:auto;display:block"></button>
+  </sc-if>
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+    <button onClick="{{ goSearch }}" style="display:flex;align-items:center;gap:10px;width:min(440px,38vw);height:42px;padding:0 14px;border:1px solid rgba(242,200,120,.16);border-radius:10px;background:rgba(20,15,11,.7);color:#8F8371;cursor:pointer;text-align:left;font:500 14.5px/1 'Mukta',sans-serif" style-hover="border-color:rgba(242,200,120,.4)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none"><path d="M10.5 17.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13zM15.5 15.5 20 20"></path></svg><span style="flex:1">Search series, podcasts, books, events</span><span style="padding:3px 6px;border:1px solid rgba(242,200,120,.18);border-radius:5px;font:700 11px/1 'Mukta',sans-serif">/</span></button>
+  </sc-if>
+  <span style="flex:1"></span>
+  <button onClick="{{ goLive }}" style="flex:none;display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;border:1px solid rgba(229,55,43,.5);border-radius:999px;background:rgba(229,55,43,.12);color:#FFFFFF;cursor:pointer;font:800 13px/1 'Mukta',sans-serif;letter-spacing:.06em" style-hover="background:rgba(229,55,43,.22)"><span style="width:8px;height:8px;border-radius:50%;background:#E5372B;animation:vbnLive 1.6s ease-in-out infinite"></span>LIVE</button>
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+    <button onClick="{{ goPremium }}" style="flex:none;display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;border:1px solid rgba(242,188,79,.45);border-radius:999px;background:rgba(242,188,79,.1);color:#F2BC4F;cursor:pointer;font:800 13px/1 'Mukta',sans-serif;white-space:nowrap" style-hover="background:rgba(242,188,79,.18)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"></path></svg>Premium · Free</button>
+  </sc-if>
+  <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}"><button onClick="{{ goSearch }}" aria-label="Search" style="flex:none;width:40px;height:40px;border:0;background:none;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M10.5 17.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13zM15.5 15.5 20 20"></path></svg></button></sc-if>
+  <sc-if value="{{ signed }}" hint-placeholder-val="{{ false }}"><button onClick="{{ goLib }}" aria-label="My Library" style="flex:none;width:38px;height:38px;border:0;border-radius:50%;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 15px/1 'Mukta',sans-serif">A</button></sc-if>
+  <sc-if value="{{ notSigned }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openAuth }}" style="flex:none;height:38px;padding:0 16px;border:0;border-radius:10px;background:#FFFFFF;color:#120D09;cursor:pointer;font:800 14px/1 'Mukta',sans-serif" style-hover="background:#F2BC4F">Sign in</button></sc-if>
+</header>
+
+<main data-screen-label="{{ screenLabel }}" style="flex:1 0 auto;display:block;padding-bottom:40px">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<section style="position:relative;height:{{ heroH }};min-height:620px;margin-top:-68px;overflow:hidden;background:#0B0806">
+  <sc-for list="{{ slides }}" as="s" hint-placeholder-count="1">
+    <div style="position:absolute;inset:0;opacity:{{ s.op }};transition:opacity 1.2s ease"><img src="{{ s.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:{{ s.kb }};transform-origin:62% 40%;transition:{{ s.tr }}"></div>
+  </sc-for>
+  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,8,6,.92) 0%,rgba(11,8,6,.6) 28%,rgba(11,8,6,0) 58%),linear-gradient(0deg,#0B0806 0%,rgba(11,8,6,.82) 20%,rgba(11,8,6,0) 52%),linear-gradient(180deg,rgba(11,8,6,.55) 0%,rgba(11,8,6,0) 16%)"></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:{{ heroInfoB }};max-width:640px;display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;font:700 13px/1 'Mukta',sans-serif;color:#EADFCB">
+      <span style="padding:6px 9px;border-radius:5px;background:#F2BC4F;color:#1A1107;font-weight:800;letter-spacing:.08em">VBN ORIGINAL</span>
+      <sc-if value="{{ hero.pre }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:5px;padding:5px 8px;border:1px solid rgba(242,188,79,.6);border-radius:5px;color:#F2BC4F"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"></path></svg>PREMIUM</span></sc-if>
+      <span>{{ hero.g }}</span><span style="opacity:.5">•</span><span>{{ hero.eps }}</span><span style="opacity:.5">•</span><span>हिन्दी</span>
+    </div>
+    <h1 style="margin:0;font-family:'Eczar',serif;font-weight:700;font-size:{{ heroTitle }};line-height:1.12;color:#FFFFFF;text-wrap:balance;text-shadow:0 2px 24px rgba(0,0,0,.5)">{{ hero.tag }}</h1>
+    <p style="margin:0;max-width:560px;font:500 17px/1.6 'Mukta',sans-serif;color:#EADFCB;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ hero.d }}</p>
+    <div style="display:flex;align-items:center;gap:8px;font:700 14px/1 'Mukta',sans-serif;color:#F2BC4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16v15H4zM4 10h16M8 3v4M16 3v4"></path></svg>{{ hero.day }}</div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:4px">
+      <button onClick="{{ hero.play }}" style="display:flex;align-items:center;gap:10px;height:52px;padding:0 28px 0 22px;border:0;border-radius:10px;background:#FFFFFF;color:#120D09;cursor:pointer;font:800 17px/1 'Mukta',sans-serif" style-hover="background:#F2BC4F"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"></path></svg>Watch now</button>
+      <button onClick="{{ hero.info }}" style="display:flex;align-items:center;gap:10px;height:52px;padding:0 22px;border:0;border-radius:10px;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#FFFFFF;cursor:pointer;font:700 16px/1 'Mukta',sans-serif" style-hover="background:rgba(255,255,255,.26)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18zM12 11v6M12 7.5v.5"></path></svg>Episodes &amp; info</button>
+      <button onClick="{{ hero.toggle }}" aria-label="My List" style="width:52px;height:52px;border:1.5px solid rgba(255,255,255,.5);border-radius:50%;background:rgba(11,8,6,.3);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="border-color:#FFFFFF">
+        <sc-if value="{{ hero.notInList }}" hint-placeholder-val="{{ true }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></sc-if>
+        <sc-if value="{{ hero.inList }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
+      </button>
+    </div>
+  </div>
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;left:var(--px);right:var(--px);bottom:28px;display:grid;grid-template-columns:repeat(6,minmax(0,150px));justify-content:end;gap:10px">
+      <sc-for list="{{ heroThumbs }}" as="t" hint-placeholder-count="6">
+        <button onClick="{{ t.go }}" style="display:flex;flex-direction:column;gap:7px;padding:0;border:0;background:none;cursor:pointer;opacity:{{ t.op }};transition:opacity .3s" style-hover="opacity:1">
+          <span style="display:block;width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;box-shadow:0 0 0 1.5px {{ t.bd }}"><img src="{{ t.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span>
+          <span style="display:block;height:3px;border-radius:2px;background:rgba(255,255,255,.18);overflow:hidden"><span style="display:block;height:100%;width:{{ t.bw }};background:#F2BC4F;transition:{{ t.btr }}"></span></span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="position:absolute;right:var(--px);bottom:150px;display:flex;align-items:center;gap:10px;font:800 14px/1 'Mukta',sans-serif;color:#EADFCB">
+      <span style="font:700 34px/1 'Eczar',serif;color:#FFFFFF">{{ hero.num }}</span><span style="opacity:.6">/ 06</span>
+      <button onClick="{{ heroPrev }}" aria-label="Previous" style="width:38px;height:38px;margin-left:8px;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:rgba(11,8,6,.35);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="border-color:#FFFFFF"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button>
+      <button onClick="{{ heroNext }}" aria-label="Next" style="width:38px;height:38px;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:rgba(11,8,6,.35);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="border-color:#FFFFFF"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button>
+    </div>
+  </sc-if>
+  <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;left:0;right:0;bottom:28px;display:flex;justify-content:center;gap:6px"><sc-for list="{{ heroDots }}" as="d" hint-placeholder-count="6"><button onClick="{{ d.go }}" aria-label="Slide" style="width:{{ d.w }};height:8px;padding:0;border:0;border-radius:4px;background:{{ d.bg }};cursor:pointer;transition:width .3s"></button></sc-for></div>
+  </sc-if>
+</section>
+
+<div style="position:relative;z-index:2;padding:0 var(--px);margin-top:4px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:14px">
+  <button onClick="{{ goLive }}" style="display:flex;align-items:center;gap:16px;padding:12px;border:1px solid rgba(229,55,43,.35);border-radius:14px;background:#160E0B;cursor:pointer;text-align:left;color:#FFFFFF" style-hover="border-color:#E5372B">
+    <span style="position:relative;flex:none;width:132px;aspect-ratio:16/9;border-radius:8px;overflow:hidden"><img src="{{ liveImg }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;left:6px;top:6px;display:flex;align-items:center;gap:5px;padding:3px 6px;border-radius:4px;background:#E5372B;font:800 10.5px/1 'Mukta',sans-serif;letter-spacing:.08em"><span style="width:6px;height:6px;border-radius:50%;background:#fff;animation:vbnLive 1.6s ease-in-out infinite"></span>LIVE</span></span>
+    <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><span style="font:700 12px/1 'Mukta',sans-serif;letter-spacing:.1em;color:#FF8A7E">VBN TV · ON AIR NOW</span><span style="font:700 17px/1.3 'Mukta',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ liveNowT }}</span><span style="font:500 13.5px/1.5 'Mukta',sans-serif;color:#A99C88;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Next at {{ liveNextTime }} · {{ liveNextT }}</span></span>
+    <span style="flex:none;display:flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:8px;background:#E5372B;font:800 14px/1 'Mukta',sans-serif">Watch live</span>
+  </button>
+  <button onClick="{{ goPremium }}" style="display:flex;align-items:center;gap:16px;padding:12px 16px;border:1px solid rgba(242,188,79,.32);border-radius:14px;background:#17110B;cursor:pointer;text-align:left;color:#FFFFFF" style-hover="border-color:#F2BC4F">
+    <span style="flex:none;width:52px;height:52px;border-radius:12px;background:rgba(242,188,79,.14);color:#F2BC4F;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"></path></svg></span>
+    <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><span style="font:700 12px/1 'Mukta',sans-serif;letter-spacing:.1em;color:#F2BC4F">PREMIUM · FREE FOR EVERYONE</span><span style="font:700 17px/1.3 'Mukta',sans-serif">Director’s cuts, 4K films and full event recordings</span></span>
+    <span style="flex:none;height:38px;padding:0 14px;border-radius:8px;background:#F2BC4F;color:#1A1107;display:flex;align-items:center;font:800 14px/1 'Mukta',sans-serif">Explore</span>
+  </button>
+</div>
+
+<section style="margin-top:44px">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 var(--px);margin-bottom:14px"><h2 style="margin:0;font:700 22px/1.2 'Mukta',sans-serif">Continue watching</h2></div>
+  <div data-noscroll="" style="display:flex;gap:14px;overflow-x:auto;padding:0 var(--px) 6px;scroll-padding:0 var(--px);scroll-snap-type:x mandatory">
+    <sc-for list="{{ cont }}" as="c" hint-placeholder-count="3">
+      <button onClick="{{ c.go }}" style="flex:none;width:clamp(260px,24vw,340px);scroll-snap-align:start;padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:10px" style-hover="opacity:.92">
+        <span style="position:relative;display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#1C1510"><img src="{{ c.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(0deg,rgba(0,0,0,.5),rgba(0,0,0,0) 50%)"><span style="width:48px;height:48px;border-radius:50%;background:rgba(11,8,6,.6);border:1.5px solid rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l12.5-7.5z"></path></svg></span></span><span style="position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.25)"><span style="display:block;height:100%;width:{{ c.pct }};background:#F2BC4F"></span></span></span>
+        <span style="display:flex;flex-direction:column;gap:4px"><span style="font:700 16px/1.25 'Mukta',sans-serif">{{ c.n }}</span><span style="font:500 13.5px/1.25 'Mukta',sans-serif;color:#A99C88">{{ c.ep }} · {{ c.left }}</span></span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<section style="margin-top:44px">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 var(--px);margin-bottom:6px">
+    <h2 style="margin:0;font:700 22px/1.2 'Mukta',sans-serif">Top picks in Madhya Pradesh this week</h2>
+    <div style="display:flex;gap:6px"><button data-row="r-top" data-dir="-1" onClick="{{ rowScroll }}" aria-label="Scroll left" style="width:36px;height:36px;border:1px solid rgba(242,200,120,.2);border-radius:50%;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="border-color:#F2BC4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button><button data-row="r-top" data-dir="1" onClick="{{ rowScroll }}" aria-label="Scroll right" style="width:36px;height:36px;border:1px solid rgba(242,200,120,.2);border-radius:50%;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="border-color:#F2BC4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button></div>
+  </div>
+  <div id="r-top" data-noscroll="" style="display:flex;gap:6px;overflow-x:auto;padding:0 var(--px) 6px;scroll-padding:0 var(--px);scroll-snap-type:x mandatory">
+    <sc-for list="{{ top }}" as="t" hint-placeholder-count="6">
+      <button onClick="{{ t.go }}" style="flex:none;scroll-snap-align:start;display:flex;align-items:flex-end;padding:0;border:0;background:none;cursor:pointer;color:#FFFFFF" style-hover="transform:translateY(-4px)">
+        <span style="font:800 clamp(110px,9vw,150px)/.8 'Eczar',serif;color:#0B0806;-webkit-text-stroke:2px rgba(242,188,79,.75);margin-right:-22px;position:relative;z-index:0">{{ t.num }}</span>
+        <span style="position:relative;z-index:1;display:block;width:clamp(140px,11vw,180px);aspect-ratio:2/3;border-radius:10px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.5)"><img src="{{ t.img }}" alt="{{ t.n }}" style="width:100%;height:100%;object-fit:cover;display:block"></span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<section style="margin-top:44px">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 var(--px);margin-bottom:14px">
+    <h2 style="margin:0;display:flex;align-items:baseline;gap:10px;font:700 22px/1.2 'Mukta',sans-serif">Series<span style="font:600 17px/1 'Eczar',serif;color:#F2BC4F">शृंखला</span></h2>
+    <div style="display:flex;align-items:center;gap:6px"><button onClick="{{ goSeries }}" style="height:36px;padding:0 12px;border:0;background:none;color:#F2BC4F;cursor:pointer;font:700 14px/1 'Mukta',sans-serif" style-hover="color:#FFFFFF">See all</button><button data-row="r-series" data-dir="-1" onClick="{{ rowScroll }}" aria-label="Scroll left" style="width:36px;height:36px;border:1px solid rgba(242,200,120,.2);border-radius:50%;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="border-color:#F2BC4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button><button data-row="r-series" data-dir="1" onClick="{{ rowScroll }}" aria-label="Scroll right" style="width:36px;height:36px;border:1px solid rgba(242,200,120,.2);border-radius:50%;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="border-color:#F2BC4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button></div>
+  </div>
+  <div id="r-series" data-noscroll="" style="display:flex;gap:14px;overflow-x:auto;padding:0 var(--px) 6px;scroll-padding:0 var(--px);scroll-snap-type:x mandatory">
+    <sc-for list="{{ seriesRow }}" as="s" hint-placeholder-count="4">
+      <button onClick="{{ s.go }}" style="flex:none;width:clamp(260px,24vw,340px);scroll-snap-align:start;padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:10px" style-hover="transform:translateY(-4px)">
+        <span style="position:relative;display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#1C1510"><img src="{{ s.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><sc-if value="{{ s.pre }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;right:8px;top:8px;display:flex;align-items:center;gap:4px;padding:4px 7px;border-radius:5px;background:rgba(11,8,6,.75);color:#F2BC4F;font:800 10.5px/1 'Mukta',sans-serif;letter-spacing:.08em"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"></path></svg>PREMIUM</span></sc-if></span>
+        <span style="display:flex;flex-direction:column;gap:4px"><span style="font:700 17px/1.25 'Mukta',sans-serif">{{ s.n }}</span><span style="font:500 13.5px/1.3 'Mukta',sans-serif;color:#A99C88">{{ s.g }} · {{ s.meta }} · New {{ s.day }}</span></span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<section style="margin:44px var(--px) 0;padding:clamp(20px,2.4vw,32px);border-radius:18px;background:#15100B;border:1px solid rgba(242,188,79,.22)">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="display:flex;align-items:center;gap:8px;font:800 12.5px/1 'Mukta',sans-serif;letter-spacing:.12em;color:#F2BC4F"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"></path></svg>PREMIUM</span><h2 style="margin:0;font:700 24px/1.2 'Mukta',sans-serif">Free with sign-in. No subscription, ever.</h2></div>
+    <button onClick="{{ goPremium }}" style="height:40px;padding:0 16px;border:1px solid rgba(242,188,79,.5);border-radius:10px;background:none;color:#F2BC4F;cursor:pointer;font:800 14px/1 'Mukta',sans-serif" style-hover="background:rgba(242,188,79,.1)">View all Premium</button>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:14px">
+    <sc-for list="{{ premRow }}" as="x" hint-placeholder-count="4">
+      <button onClick="{{ x.go }}" style="padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:10px" style-hover="transform:translateY(-3px)">
+        <span style="position:relative;display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px rgba(242,188,79,.3)"><img src="{{ x.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;left:8px;top:8px;padding:4px 7px;border-radius:5px;background:#F2BC4F;color:#1A1107;font:800 10.5px/1 'Mukta',sans-serif;letter-spacing:.06em">{{ x.k }}</span><sc-if value="{{ x.locked }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;right:8px;bottom:8px;width:30px;height:30px;border-radius:50%;background:rgba(11,8,6,.75);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="2.2" stroke-linecap="round"><path d="M6 11h12v10H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3"></path></svg></span></sc-if></span>
+        <span style="font:700 15.5px/1.3 'Mukta',sans-serif">{{ x.t }}</span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<section style="margin-top:44px">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 var(--px);margin-bottom:14px">
+    <h2 style="margin:0;font:700 22px/1.2 'Mukta',sans-serif">New episodes</h2>
+    <div style="display:flex;gap:6px"><button data-row="r-new" data-dir="-1" onClick="{{ rowScroll }}" aria-label="Scroll left" style="width:36px;height:36px;border:1px solid rgba(242,200,120,.2);border-radius:50%;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="border-color:#F2BC4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button><button data-row="r-new" data-dir="1" onClick="{{ rowScroll }}" aria-label="Scroll right" style="width:36px;height:36px;border:1px solid rgba(242,200,120,.2);border-radius:50%;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="border-color:#F2BC4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button></div>
+  </div>
+  <div id="r-new" data-noscroll="" style="display:flex;gap:14px;overflow-x:auto;padding:0 var(--px) 6px;scroll-padding:0 var(--px);scroll-snap-type:x mandatory">
+    <sc-for list="{{ newEps }}" as="e" hint-placeholder-count="4">
+      <button onClick="{{ e.go }}" style="flex:none;width:clamp(240px,20vw,300px);scroll-snap-align:start;padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:10px" style-hover="transform:translateY(-4px)">
+        <span style="position:relative;display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden"><img src="{{ e.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;left:8px;top:8px;padding:4px 7px;border-radius:5px;background:#FFFFFF;color:#120D09;font:800 10.5px/1 'Mukta',sans-serif;letter-spacing:.06em">NEW EPISODE</span><span style="position:absolute;right:8px;bottom:8px;padding:3px 6px;border-radius:4px;background:rgba(11,8,6,.8);font:700 12px/1 'Mukta',sans-serif">{{ e.m }}</span></span>
+        <span style="display:flex;flex-direction:column;gap:4px"><span style="font:700 16px/1.25 'Mukta',sans-serif">{{ e.t }}</span><span style="font:500 13.5px/1.25 'Mukta',sans-serif;color:#A99C88">{{ e.n }}</span></span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<section style="margin-top:44px">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 var(--px);margin-bottom:14px">
+    <h2 style="margin:0;font:700 22px/1.2 'Mukta',sans-serif">Shorts</h2>
+    <button onClick="{{ goShorts }}" style="height:36px;padding:0 12px;border:0;background:none;color:#F2BC4F;cursor:pointer;font:700 14px/1 'Mukta',sans-serif" style-hover="color:#FFFFFF">Open Shorts</button>
+  </div>
+  <div data-noscroll="" style="display:flex;gap:12px;overflow-x:auto;padding:0 var(--px) 6px;scroll-padding:0 var(--px);scroll-snap-type:x mandatory">
+    <sc-for list="{{ shortsRow }}" as="x" hint-placeholder-count="6">
+      <button onClick="{{ x.go }}" style="position:relative;flex:none;width:clamp(150px,12vw,190px);aspect-ratio:9/16;scroll-snap-align:start;padding:0;border:0;border-radius:12px;overflow:hidden;background:#1C1510;cursor:pointer;text-align:left;color:#FFFFFF" style-hover="transform:translateY(-4px)">
+        <img src="{{ x.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <span style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,0) 50%)"></span>
+        <span style="position:absolute;left:10px;right:10px;bottom:10px;display:flex;flex-direction:column;gap:6px"><span style="font:700 14px/1.3 'Mukta',sans-serif">{{ x.t }}</span><span style="display:flex;align-items:center;gap:5px;font:600 12px/1 'Mukta',sans-serif;color:#EADFCB"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"></path></svg>{{ x.l }} views</span></span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<section style="margin-top:44px;padding:0 var(--px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:32px">
+  <div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px"><h2 style="margin:0;display:flex;align-items:baseline;gap:10px;font:700 22px/1.2 'Mukta',sans-serif">Podcasts<span style="font:600 17px/1 'Eczar',serif;color:#F2BC4F">पॉडकास्ट</span></h2><button onClick="{{ goPods }}" style="height:36px;padding:0;border:0;background:none;color:#F2BC4F;cursor:pointer;font:700 14px/1 'Mukta',sans-serif" style-hover="color:#FFFFFF">See all</button></div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+      <sc-for list="{{ podsRow }}" as="x" hint-placeholder-count="4">
+        <button onClick="{{ x.go }}" style="display:flex;align-items:center;gap:12px;padding:10px;border:1px solid rgba(242,200,120,.12);border-radius:12px;background:#140F0B;cursor:pointer;text-align:left;color:#FFFFFF" style-hover="border-color:rgba(242,188,79,.5)">
+          <img src="{{ x.img }}" alt="" style="flex:none;width:72px;height:72px;border-radius:8px;object-fit:cover">
+          <span style="min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font:700 16px/1.25 'Mukta',sans-serif">{{ x.n }}</span><span style="font:500 13px/1.3 'Mukta',sans-serif;color:#A99C88">{{ x.sub }}</span><span style="font:600 12px/1 'Mukta',sans-serif;color:#F2BC4F">{{ x.cnt }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+  <div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px"><h2 style="margin:0;font:700 22px/1.2 'Mukta',sans-serif">Audiobooks</h2><button onClick="{{ goAB }}" style="height:36px;padding:0;border:0;background:none;color:#F2BC4F;cursor:pointer;font:700 14px/1 'Mukta',sans-serif" style-hover="color:#FFFFFF">See all</button></div>
+    <div data-noscroll="" style="display:flex;gap:12px;overflow-x:auto">
+      <sc-for list="{{ abRow }}" as="x" hint-placeholder-count="4">
+        <button onClick="{{ x.go }}" style="flex:none;width:150px;padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:8px" style-hover="transform:translateY(-3px)">
+          <span style="position:relative;display:block;width:150px;height:150px;border-radius:10px;overflow:hidden;background:#1C1510"><img src="{{ x.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;right:6px;bottom:6px;width:30px;height:30px;border-radius:50%;background:rgba(11,8,6,.8);color:#F2BC4F;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3M4 15h3v6H4zM17 15h3v6h-3z"></path></svg></span></span>
+          <span style="font:700 14.5px/1.3 'Mukta',sans-serif">{{ x.n }}</span><span style="margin-top:-4px;font:500 12.5px/1 'Mukta',sans-serif;color:#A99C88">{{ x.hrs }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top:44px">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 var(--px);margin-bottom:14px">
+    <h2 style="margin:0;display:flex;align-items:baseline;gap:10px;font:700 22px/1.2 'Mukta',sans-serif">Events<span style="font:600 17px/1 'Eczar',serif;color:#F2BC4F">आयोजन</span></h2>
+    <button onClick="{{ goEvents }}" style="height:36px;padding:0 12px;border:0;background:none;color:#F2BC4F;cursor:pointer;font:700 14px/1 'Mukta',sans-serif" style-hover="color:#FFFFFF">All events</button>
+  </div>
+  <div data-noscroll="" style="display:flex;gap:14px;overflow-x:auto;padding:0 var(--px) 6px;scroll-padding:0 var(--px);scroll-snap-type:x mandatory">
+    <sc-for list="{{ evRow }}" as="e" hint-placeholder-count="3">
+      <button onClick="{{ e.go }}" style="position:relative;flex:none;width:clamp(300px,30vw,440px);aspect-ratio:16/10;scroll-snap-align:start;padding:0;border:0;border-radius:14px;overflow:hidden;cursor:pointer;text-align:left;color:#FFFFFF;background:#1C1510" style-hover="transform:translateY(-4px)">
+        <img src="{{ e.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <span style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,8,6,.95) 0%,rgba(11,8,6,.4) 55%,rgba(11,8,6,0) 100%)"></span>
+        <span style="position:absolute;left:16px;right:16px;bottom:16px;display:flex;flex-direction:column;gap:6px"><span style="font:800 12px/1 'Mukta',sans-serif;letter-spacing:.08em;color:#F2BC4F">{{ e.dates }}</span><span style="font:700 22px/1.2 'Eczar',serif">{{ e.n }}</span><span style="font:500 13.5px/1.2 'Mukta',sans-serif;color:#EADFCB">{{ e.where }}</span></span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<section style="margin-top:44px;padding:0 var(--px)">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px"><h2 style="margin:0;font:700 22px/1.2 'Mukta',sans-serif">This week on VBN</h2><button onClick="{{ goSched }}" style="height:36px;padding:0;border:0;background:none;color:#F2BC4F;cursor:pointer;font:700 14px/1 'Mukta',sans-serif" style-hover="color:#FFFFFF">Full schedule</button></div>
+  <div data-noscroll="" style="display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);gap:10px;overflow-x:auto">
+    <sc-for list="{{ weekStrip }}" as="d" hint-placeholder-count="7">
+      <button onClick="{{ d.go }}" style="display:flex;flex-direction:column;gap:10px;padding:12px;border:1px solid {{ d.bd }};border-radius:12px;background:{{ d.bg }};cursor:pointer;text-align:left;color:#FFFFFF" style-hover="border-color:rgba(242,188,79,.5)">
+        <span style="display:flex;align-items:baseline;justify-content:space-between"><span style="font:700 13px/1 'Mukta',sans-serif;color:#A99C88;text-transform:uppercase;letter-spacing:.08em">{{ d.dn }}</span><span style="font:700 22px/1 'Eczar',serif">{{ d.dd }}</span></span>
+        <sc-if value="{{ d.has }}" hint-placeholder-val="{{ true }}"><span style="display:block;aspect-ratio:16/9;border-radius:7px;overflow:hidden"><img src="{{ d.first.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span><span style="display:flex;flex-direction:column;gap:3px"><span style="font:700 14px/1.25 'Mukta',sans-serif">{{ d.first.n }}</span><span style="font:500 12.5px/1.2 'Mukta',sans-serif;color:#A99C88">{{ d.first.time }} {{ d.cnt }}</span></span></sc-if>
+        <sc-if value="{{ d.none }}" hint-placeholder-val="{{ false }}"><span style="flex:1;display:flex;align-items:center;justify-content:center;min-height:80px;font:500 13px/1.3 'Mukta',sans-serif;color:#8A7D6A">No new release</span></sc-if>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<section style="margin-top:44px">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 var(--px);margin-bottom:14px"><h2 style="margin:0;display:flex;align-items:baseline;gap:10px;font:700 22px/1.2 'Mukta',sans-serif">Books<span style="font:600 17px/1 'Eczar',serif;color:#F2BC4F">पुस्तकें</span></h2><button onClick="{{ goBooks }}" style="height:36px;padding:0 12px;border:0;background:none;color:#F2BC4F;cursor:pointer;font:700 14px/1 'Mukta',sans-serif" style-hover="color:#FFFFFF">Browse library</button></div>
+  <div data-noscroll="" style="display:flex;gap:18px;overflow-x:auto;padding:4px var(--px) 8px;scroll-padding:0 var(--px)">
+    <sc-for list="{{ booksRow }}" as="b" hint-placeholder-count="6">
+      <button onClick="{{ b.go }}" style="flex:none;max-width:260px;padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:10px" style-hover="transform:translateY(-4px)">
+        <span style="position:relative;display:block;height:170px;border-radius:3px 8px 8px 3px;overflow:hidden;box-shadow:0 14px 28px rgba(0,0,0,.55)">
+          <sc-if value="{{ b.hasImg }}" hint-placeholder-val="{{ true }}"><img src="{{ b.img }}" alt="" style="height:100%;width:auto;display:block"></sc-if>
+          <sc-if value="{{ b.noImg }}" hint-placeholder-val="{{ false }}"><span style="width:128px;height:100%;background:{{ b.c0 }};display:flex;flex-direction:column;justify-content:space-between;padding:16px 12px;box-sizing:border-box;box-shadow:inset 0 0 0 6px rgba(0,0,0,.15),inset 0 0 0 7px {{ b.c1 }}"><span style="font:700 10px/1 'Mukta',sans-serif;letter-spacing:.14em;color:{{ b.c1 }}">VEER BHARAT NYAS</span><span style="font:700 20px/1.2 'Eczar',serif;color:{{ b.c1 }};text-wrap:balance">{{ b.n }}</span><img src="assets/emblem-mark.png" alt="" style="width:28px;height:28px;object-fit:contain;opacity:.85"></span></sc-if>
+        </span>
+        <span style="font:700 14.5px/1.3 'Mukta',sans-serif">{{ b.n }}</span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<section style="margin:44px var(--px) 0;display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:clamp(20px,2.4vw,32px);border-radius:18px;background:#140F0B;border:1px solid rgba(242,200,120,.14)">
+  <span style="flex:none;width:64px;height:64px;border-radius:16px;background:rgba(242,188,79,.12);color:#F2BC4F;display:flex;align-items:center;justify-content:center"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.5M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18z"></path></svg></span>
+  <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:6px"><span style="font:800 12.5px/1 'Mukta',sans-serif;letter-spacing:.12em;color:#F2BC4F">QUIZ · ज्ञान परीक्षा</span><span style="font:700 21px/1.3 'Mukta',sans-serif">Five questions from Gita, Ramayana, Mahajanpad and more. How much do you know?</span></div>
+  <button onClick="{{ goQuiz }}" style="height:46px;padding:0 22px;border:0;border-radius:10px;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 15px/1 'Mukta',sans-serif" style-hover="background:#F8CB68">Take the quiz</button>
+</section>
+</sc-if>
+
+<sc-if value="{{ isSeries }}" hint-placeholder-val="{{ false }}">
+<div style="padding:28px var(--px) 0;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:8px"><h1 style="margin:0;font:800 clamp(28px,2.6vw,40px)/1.15 'Mukta',sans-serif">Series</h1><p style="margin:0;font:500 16px/1.5 'Mukta',sans-serif;color:#A99C88">Original series produced by Veer Bharat Nyas. New episodes every week.</p></div>
+  <span style="font:700 14px/1 'Mukta',sans-serif;color:#A99C88">{{ seriesCount }}</span>
+</div>
+<div style="position:sticky;top:68px;z-index:20;margin-top:18px;padding:12px var(--px);background:rgba(11,8,6,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(242,200,120,.1)">
+  <div data-noscroll="" style="display:flex;gap:8px;overflow-x:auto"><sc-for list="{{ sfChips }}" as="c" hint-placeholder-count="7"><button onClick="{{ c.go }}" style="flex:none;height:38px;padding:0 16px;border:1px solid {{ c.bd }};border-radius:999px;background:{{ c.bg }};color:{{ c.col }};cursor:pointer;font:700 14px/1 'Mukta',sans-serif;white-space:nowrap">{{ c.l }}</button></sc-for></div>
+</div>
+<div style="padding:24px var(--px) 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:28px 18px">
+  <sc-for list="{{ seriesGrid }}" as="s" hint-placeholder-count="8">
+    <button onClick="{{ s.go }}" style="padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:12px" style-hover="transform:translateY(-4px)">
+      <span style="position:relative;display:block;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#1C1510;box-shadow:0 10px 24px rgba(0,0,0,.35)"><img src="{{ s.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><sc-if value="{{ s.pre }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;right:8px;top:8px;display:flex;align-items:center;gap:4px;padding:4px 7px;border-radius:5px;background:rgba(11,8,6,.78);color:#F2BC4F;font:800 10.5px/1 'Mukta',sans-serif;letter-spacing:.08em"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"></path></svg>PREMIUM</span></sc-if></span>
+      <span style="display:flex;flex-direction:column;gap:5px"><span style="font:700 18px/1.25 'Mukta',sans-serif">{{ s.n }}</span><span style="font:500 14px/1.35 'Mukta',sans-serif;color:#C9BCA6">{{ s.tag }}</span><span style="display:flex;flex-wrap:wrap;gap:6px 10px;font:600 12.5px/1 'Mukta',sans-serif;color:#A99C88"><span>{{ s.g }}</span><span>·</span><span>{{ s.meta }}</span><span>·</span><span style="color:#F2BC4F">New {{ s.day }}</span></span><span style="font:600 12.5px/1 'Mukta',sans-serif;color:#8A7D6A">वीर भारत न्यास</span></span>
+    </button>
+  </sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSeriesD }}" hint-placeholder-val="{{ false }}">
+<div style="padding:24px var(--px) 0;display:grid;grid-template-columns:{{ cols2 }};gap:clamp(20px,3vw,44px);align-items:start">
+  <div style="position:relative;width:100%;max-width:760px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#1C1510;box-shadow:0 20px 50px rgba(0,0,0,.5)">
+    <img src="{{ sd.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+    <button onClick="{{ sd.play }}" style="position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border:0;border-radius:8px;background:rgba(11,8,6,.78);color:#FFFFFF;cursor:pointer;font:700 14px/1 'Mukta',sans-serif" style-hover="background:#0B0806"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"></path></svg>Trailer · 1:30</button>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;font:700 12.5px/1 'Mukta',sans-serif"><span style="padding:6px 9px;border-radius:5px;background:#F2BC4F;color:#1A1107;letter-spacing:.08em;font-weight:800">VBN ORIGINAL</span><sc-if value="{{ sd.pre }}" hint-placeholder-val="{{ false }}"><span style="padding:5px 8px;border:1px solid rgba(242,188,79,.6);border-radius:5px;color:#F2BC4F">PREMIUM EXTRAS</span></sc-if><span style="padding:5px 8px;border:1px solid rgba(242,200,120,.22);border-radius:5px;color:#EADFCB">{{ sd.g }}</span><span style="padding:5px 8px;border:1px solid rgba(242,200,120,.22);border-radius:5px;color:#EADFCB">U · हिन्दी</span></div>
+    <h1 style="margin:0;font:700 clamp(34px,3.4vw,52px)/1.1 'Eczar',serif">{{ sd.n }}</h1>
+    <span style="font:600 19px/1.35 'Mukta',sans-serif;color:#F2BC4F">{{ sd.tag }}</span>
+    <p style="margin:0;font:500 16.5px/1.65 'Mukta',sans-serif;color:#EADFCB">{{ sd.d }}</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <button onClick="{{ sd.play }}" style="display:flex;align-items:center;gap:10px;height:50px;padding:0 24px 0 20px;border:0;border-radius:10px;background:#FFFFFF;color:#120D09;cursor:pointer;font:800 16px/1 'Mukta',sans-serif" style-hover="background:#F2BC4F"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"></path></svg>Play episode 1</button>
+      <button onClick="{{ sd.toggle }}" style="display:flex;align-items:center;gap:8px;height:50px;padding:0 18px;border:1px solid rgba(242,200,120,.3);border-radius:10px;background:none;color:#FFFFFF;cursor:pointer;font:700 15px/1 'Mukta',sans-serif" style-hover="border-color:#F2BC4F"><sc-if value="{{ sd.notInList }}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>My List</sc-if><sc-if value="{{ sd.inList }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>In My List</sc-if></button>
+      <button onClick="{{ sd.share }}" aria-label="Share" style="width:50px;height:50px;border:1px solid rgba(242,200,120,.3);border-radius:10px;background:none;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="border-color:#F2BC4F"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path></svg></button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid rgba(242,200,120,.14);border-radius:12px;overflow:hidden">
+      <div style="padding:14px;display:flex;flex-direction:column;gap:6px;border-right:1px solid rgba(242,200,120,.14)"><span style="font:600 12px/1 'Mukta',sans-serif;color:#A99C88">Episodes</span><span style="font:800 18px/1 'Mukta',sans-serif">{{ sd.rel }} / {{ sd.total }}</span></div>
+      <div style="padding:14px;display:flex;flex-direction:column;gap:6px;border-right:1px solid rgba(242,200,120,.14)"><span style="font:600 12px/1 'Mukta',sans-serif;color:#A99C88">New episode</span><span style="font:800 15px/1.2 'Mukta',sans-serif;color:#F2BC4F">{{ sd.day }}</span></div>
+      <div style="padding:14px;display:flex;flex-direction:column;gap:6px"><span style="font:600 12px/1 'Mukta',sans-serif;color:#A99C88">Produced by</span><span style="font:800 15px/1.2 'Mukta',sans-serif">वीर भारत न्यास</span></div>
+    </div>
+  </div>
+</div>
+<section style="padding:44px var(--px) 0">
+  <h2 style="margin:0 0 16px;font:700 22px/1.2 'Mukta',sans-serif">Episodes</h2>
+  <div style="display:flex;flex-direction:column;border-top:1px solid rgba(242,200,120,.1)">
+    <sc-for list="{{ sd.eps }}" as="e" hint-placeholder-count="5">
+      <button onClick="{{ e.go }}" style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding:16px 0;border:0;border-bottom:1px solid rgba(242,200,120,.1);background:none;cursor:{{ e.cur }};text-align:left;color:#FFFFFF;opacity:{{ e.op }}" style-hover="background:rgba(255,255,255,.02)">
+        <span style="flex:none;width:30px;font:700 22px/1 'Eczar',serif;color:#A99C88;text-align:center">{{ e.num }}</span>
+        <span style="position:relative;flex:none;width:clamp(180px,18vw,240px);aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#1C1510"><img src="{{ e.img }}" alt="" style="width:100%;height:100%;object-fit:cover;object-position:{{ e.pos }};display:block"><sc-if value="{{ e.on }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="width:42px;height:42px;border-radius:50%;background:rgba(11,8,6,.6);border:1.5px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l12.5-7.5z"></path></svg></span></span></sc-if><sc-if value="{{ e.off }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:0;background:rgba(11,8,6,.55);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EADFCB" stroke-width="2" stroke-linecap="round"><path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18zM12 7v5l3 2"></path></svg></span></sc-if></span>
+        <span style="flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:6px"><span style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><span style="font:700 18px/1.3 'Mukta',sans-serif">{{ e.t }}</span><span style="flex:none;font:600 13.5px/1 'Mukta',sans-serif;color:#A99C88">{{ e.m }}</span></span><span style="font:500 14.5px/1.5 'Mukta',sans-serif;color:#C9BCA6">{{ e.d }}</span><sc-if value="{{ e.off }}" hint-placeholder-val="{{ false }}"><span style="font:700 13px/1 'Mukta',sans-serif;color:#7FC79A">{{ e.when }}</span></sc-if></span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+<section style="padding:44px var(--px) 0">
+  <h2 style="margin:0 0 16px;font:700 22px/1.2 'Mukta',sans-serif">More like this</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:18px">
+    <sc-for list="{{ sd.more }}" as="s" hint-placeholder-count="4"><button onClick="{{ s.go }}" style="padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:10px" style-hover="transform:translateY(-3px)"><span style="display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden"><img src="{{ s.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span><span style="font:700 16px/1.25 'Mukta',sans-serif">{{ s.n }}</span><span style="margin-top:-6px;font:500 13px/1.3 'Mukta',sans-serif;color:#A99C88">{{ s.g }} · {{ s.meta }}</span></button></sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isWatch }}" hint-placeholder-val="{{ false }}">
+<div style="padding:20px var(--px) 0;display:grid;grid-template-columns:{{ colsW }};gap:24px;align-items:start">
+  <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+    <div style="position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000">
+      <img src="{{ wv.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+      <sc-if value="{{ wv.paused }}" hint-placeholder-val="{{ true }}"><button onClick="{{ wv.toggle }}" aria-label="Play" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.28);cursor:pointer;display:flex;align-items:center;justify-content:center"><span style="width:84px;height:84px;border-radius:50%;background:rgba(11,8,6,.6);border:2px solid #FFFFFF;display:flex;align-items:center;justify-content:center"><svg width="34" height="34" viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l12.5-7.5z"></path></svg></span></button></sc-if>
+      <div style="position:absolute;left:0;right:0;bottom:0;padding:40px 16px 12px;background:linear-gradient(0deg,rgba(0,0,0,.85),rgba(0,0,0,0));display:flex;flex-direction:column;gap:10px">
+        <div style="position:relative;height:5px;border-radius:3px;background:rgba(255,255,255,.25)"><div style="height:100%;width:{{ wv.pct }};border-radius:3px;background:#F2BC4F;transition:width 1s linear"></div></div>
+        <div style="display:flex;align-items:center;gap:14px;color:#FFFFFF;font:700 13.5px/1 'Mukta',sans-serif">
+          <button onClick="{{ wv.toggle }}" aria-label="Play or pause" style="width:34px;height:34px;padding:0;border:0;background:none;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center"><sc-if value="{{ wv.playing }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"></path></svg></sc-if><sc-if value="{{ wv.paused }}" hint-placeholder-val="{{ true }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"></path></svg></sc-if></button>
+          <span>{{ wv.pos }} / {{ wv.dur }}</span><span style="flex:1"></span><span style="padding:3px 6px;border:1px solid rgba(255,255,255,.5);border-radius:4px;font-size:11px">HD</span><span style="font-size:12.5px">हिन्दी · CC</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path></svg>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:16px">
+      <div style="display:flex;flex-direction:column;gap:8px;min-width:0"><button onClick="{{ wv.series }}" style="align-self:flex-start;padding:0;border:0;background:none;color:#F2BC4F;cursor:pointer;font:700 15px/1 'Mukta',sans-serif" style-hover="color:#FFFFFF">{{ wv.sn }}</button><h1 style="margin:0;font:700 clamp(24px,2.2vw,32px)/1.25 'Mukta',sans-serif">{{ wv.t }}</h1><span style="font:500 15px/1.5 'Mukta',sans-serif;color:#C9BCA6">{{ wv.d }}</span></div>
+      <div style="display:flex;gap:8px">
+        <button onClick="{{ wv.toggleList }}" style="display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border:1px solid rgba(242,200,120,.26);border-radius:10px;background:none;color:#FFFFFF;cursor:pointer;font:700 14px/1 'Mukta',sans-serif"><sc-if value="{{ wv.notInList }}" hint-placeholder-val="{{ true }}">+ My List</sc-if><sc-if value="{{ wv.inList }}" hint-placeholder-val="{{ false }}">✓ In My List</sc-if></button>
+        <sc-if value="{{ wv.hasNext }}" hint-placeholder-val="{{ false }}"><button onClick="{{ wv.next }}" style="display:flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:0;border-radius:10px;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 14px/1 'Mukta',sans-serif">Next episode<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button></sc-if>
+      </div>
+    </div>
+    <div>
+      <h2 style="margin:6px 0 12px;font:700 18px/1.2 'Mukta',sans-serif">Chapters</h2>
+      <div data-noscroll="" style="display:flex;gap:12px;overflow-x:auto">
+        <sc-for list="{{ wv.chapters }}" as="c" hint-placeholder-count="5"><div style="flex:none;width:180px;display:flex;flex-direction:column;gap:8px"><span style="display:block;aspect-ratio:16/9;border-radius:8px;overflow:hidden;box-shadow:0 0 0 2px {{ c.bd }}"><img src="{{ c.img }}" alt="" style="width:100%;height:100%;object-fit:cover;object-position:{{ c.pos }};display:block"></span><span style="display:flex;justify-content:space-between;gap:8px;font:700 14px/1.2 'Mukta',sans-serif"><span>{{ c.n }}</span><span style="color:#A99C88;font-weight:600">{{ c.t }}</span></span></div></sc-for>
+      </div>
+    </div>
+  </div>
+  <aside style="display:flex;flex-direction:column;border:1px solid rgba(242,200,120,.12);border-radius:14px;background:#120D09;overflow:hidden">
+    <div style="padding:16px 16px 12px;border-bottom:1px solid rgba(242,200,120,.1);display:flex;flex-direction:column;gap:4px"><span style="font:800 12px/1 'Mukta',sans-serif;letter-spacing:.1em;color:#A99C88">UP NEXT</span><span style="font:700 17px/1.2 'Mukta',sans-serif">{{ wv.sn }}</span></div>
+    <div data-noscroll="" style="max-height:640px;overflow-y:auto;padding:6px">
+      <sc-for list="{{ wv.queue }}" as="q" hint-placeholder-count="6"><button onClick="{{ q.go }}" style="width:100%;display:flex;align-items:center;gap:12px;padding:8px;border:0;border-radius:10px;background:{{ q.bg }};cursor:pointer;text-align:left;color:#FFFFFF;opacity:{{ q.op }}" style-hover="background:rgba(255,255,255,.04)"><span style="position:relative;flex:none;width:128px;aspect-ratio:16/9;border-radius:7px;overflow:hidden"><img src="{{ q.img }}" alt="" style="width:100%;height:100%;object-fit:cover;object-position:{{ q.pos }};display:block"><sc-if value="{{ q.off }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:0;background:rgba(11,8,6,.6);display:flex;align-items:center;justify-content:center;font:700 11px/1 'Mukta',sans-serif;color:#EADFCB">SOON</span></sc-if></span><span style="min-width:0;display:flex;flex-direction:column;gap:5px"><span style="font:700 14.5px/1.3 'Mukta',sans-serif">{{ q.t }}</span><span style="font:500 12.5px/1 'Mukta',sans-serif;color:#A99C88">{{ q.m }}</span></span></button></sc-for>
+    </div>
+  </aside>
+</div>
+</sc-if>
+
+<sc-if value="{{ isShorts }}" hint-placeholder-val="{{ false }}">
+<div style="padding:16px var(--px) 0;display:grid;grid-template-columns:{{ shGrid }};gap:24px;align-items:start">
+  <sc-if value="{{ showShList }}" hint-placeholder-val="{{ true }}">
+    <div style="position:sticky;top:84px;display:flex;flex-direction:column;gap:10px">
+      <h1 style="margin:0 0 4px;font:800 26px/1.2 'Mukta',sans-serif">Shorts</h1>
+      <span style="font:500 13.5px/1.4 'Mukta',sans-serif;color:#A99C88">Use ↑ ↓ keys to move between shorts.</span>
+      <div data-noscroll="" style="max-height:calc(100vh - 190px);overflow-y:auto;display:flex;flex-direction:column;gap:4px">
+        <sc-for list="{{ shortList }}" as="x" hint-placeholder-count="6"><button onClick="{{ x.go }}" style="display:flex;align-items:center;gap:10px;padding:6px;border:0;border-radius:10px;background:{{ x.bg }};cursor:pointer;text-align:left;color:#FFFFFF" style-hover="background:rgba(255,255,255,.04)"><img src="{{ x.img }}" alt="" style="flex:none;width:48px;height:76px;border-radius:6px;object-fit:cover;box-shadow:0 0 0 2px {{ x.bd }}"><span style="font:600 13.5px/1.35 'Mukta',sans-serif">{{ x.t }}</span></button></sc-for>
+      </div>
+    </div>
+  </sc-if>
+  <div style="display:flex;justify-content:center;align-items:center;gap:18px">
+    <div style="position:relative;height:min(calc(100vh - 110px),860px);aspect-ratio:9/16;max-width:100%;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 30px 60px rgba(0,0,0,.6)">
+      <img src="{{ short.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;left:10px;right:10px;top:10px;height:3px;border-radius:2px;background:rgba(255,255,255,.3)"><div style="height:100%;width:{{ short.pct }};border-radius:2px;background:#FFFFFF;transition:width 1s linear"></div></div>
+      <span style="position:absolute;right:14px;top:22px;padding:4px 8px;border-radius:5px;background:rgba(0,0,0,.5);font:700 12px/1 'Mukta',sans-serif">{{ short.idx }}</span>
+      <div style="position:absolute;inset:auto 0 0 0;padding:80px 16px 18px;background:linear-gradient(0deg,rgba(0,0,0,.9),rgba(0,0,0,0));display:flex;flex-direction:column;gap:10px">
+        <span style="font:700 18px/1.35 'Mukta',sans-serif">{{ short.t }}</span>
+        <button onClick="{{ short.sgo }}" style="align-self:flex-start;display:flex;align-items:center;gap:8px;height:34px;padding:0 12px 0 4px;border:0;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#FFFFFF;cursor:pointer;font:700 13px/1 'Mukta',sans-serif"><img src="assets/emblem-mark.png" alt="" style="width:26px;height:26px;border-radius:50%;background:#0B0806;object-fit:contain">From {{ short.sn }}</button>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;align-self:flex-end;padding-bottom:20px">
+      <button onClick="{{ short.prev }}" aria-label="Previous short" style="width:50px;height:50px;border:0;border-radius:50%;background:rgba(255,255,255,.1);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(255,255,255,.2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15l7-7 7 7"></path></svg></button>
+      <button onClick="{{ short.next }}" aria-label="Next short" style="width:50px;height:50px;border:0;border-radius:50%;background:rgba(255,255,255,.1);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-bottom:24px" style-hover="background:rgba(255,255,255,.2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l7 7 7-7"></path></svg></button>
+      <button onClick="{{ short.like }}" aria-label="Like" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:0;border:0;background:none;color:{{ short.likeCol }};cursor:pointer;font:700 12px/1 'Mukta',sans-serif"><span style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7.3 4.5 4.5 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"></path></svg></span><span style="color:#EADFCB">{{ short.l }}</span></button>
+      <button onClick="{{ short.share }}" aria-label="Share" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:0;border:0;background:none;color:#FFFFFF;cursor:pointer;font:700 12px/1 'Mukta',sans-serif"><span style="width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path></svg></span><span style="color:#EADFCB">Share</span></button>
+    </div>
+  </div>
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+    <div style="position:sticky;top:84px;display:flex;flex-direction:column;gap:14px;padding:18px;border:1px solid rgba(242,200,120,.12);border-radius:14px;background:#120D09">
+      <span style="font:800 12px/1 'Mukta',sans-serif;letter-spacing:.1em;color:#A99C88">WATCH THE FULL STORY</span>
+      <span style="display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden"><img src="{{ short.simg }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span>
+      <span style="font:700 20px/1.25 'Eczar',serif">{{ short.sn }}</span>
+      <span style="margin-top:-6px;font:500 14px/1.45 'Mukta',sans-serif;color:#C9BCA6">{{ short.stag }}</span>
+      <button onClick="{{ short.sgo }}" style="height:44px;border:0;border-radius:10px;background:#FFFFFF;color:#120D09;cursor:pointer;font:800 15px/1 'Mukta',sans-serif" style-hover="background:#F2BC4F">Go to series</button>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPods }}" hint-placeholder-val="{{ false }}">
+<div style="padding:28px var(--px) 0;display:flex;flex-direction:column;gap:8px"><h1 style="margin:0;display:flex;align-items:baseline;gap:12px;font:800 clamp(28px,2.6vw,40px)/1.15 'Mukta',sans-serif">Podcasts<span style="font:700 .8em/1 'Eczar',serif;color:#F2BC4F">पॉडकास्ट</span></h1><p style="margin:0;font:500 16px/1.5 'Mukta',sans-serif;color:#A99C88">Conversations recorded at Nyas events, one show per edition.</p></div>
+<div style="padding:20px var(--px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px">
+  <sc-for list="{{ podTabs }}" as="t" hint-placeholder-count="4"><button onClick="{{ t.go }}" style="display:flex;align-items:center;gap:12px;padding:10px;border:1.5px solid {{ t.bd }};border-radius:14px;background:{{ t.bg }};cursor:pointer;text-align:left;color:#FFFFFF"><img src="{{ t.img }}" alt="" style="flex:none;width:64px;height:64px;border-radius:9px;object-fit:cover"><span style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font:700 16px/1.2 'Mukta',sans-serif">{{ t.n }}</span><span style="font:500 12.5px/1.3 'Mukta',sans-serif;color:#A99C88">{{ t.sub }}</span></span></button></sc-for>
+</div>
+<div style="padding:28px var(--px) 0;display:grid;grid-template-columns:{{ colsAB }};gap:clamp(20px,3vw,40px);align-items:start">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <img src="{{ pod.img }}" alt="" style="width:100%;max-width:420px;aspect-ratio:1;border-radius:16px;object-fit:cover;box-shadow:0 24px 50px rgba(0,0,0,.5)">
+    <h2 style="margin:4px 0 0;font:700 34px/1.15 'Eczar',serif">{{ pod.n }}</h2>
+    <span style="font:500 16px/1.45 'Mukta',sans-serif;color:#C9BCA6">{{ pod.sub }} · {{ pod.cnt }}</span>
+    <div style="display:flex;flex-wrap:wrap;gap:10px"><button onClick="{{ pod.playAll }}" style="display:flex;align-items:center;gap:8px;height:46px;padding:0 20px;border:0;border-radius:999px;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 15px/1 'Mukta',sans-serif" style-hover="background:#F8CB68"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"></path></svg>Play latest</button>
+      <sc-if value="{{ pod.hasEv }}" hint-placeholder-val="{{ false }}"><button onClick="{{ pod.evGo }}" style="display:flex;align-items:center;gap:8px;height:46px;padding:0 16px;border:1px solid rgba(242,200,120,.3);border-radius:999px;background:none;color:#FFFFFF;cursor:pointer;font:700 14px/1 'Mukta',sans-serif" style-hover="border-color:#F2BC4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="#F2BC4F"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"></path></svg>Recorded at {{ pod.evN }}</button></sc-if>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;border-top:1px solid rgba(242,200,120,.1)">
+    <sc-for list="{{ pod.list }}" as="e" hint-placeholder-count="4">
+      <button onClick="{{ e.go }}" style="display:flex;align-items:center;gap:16px;padding:16px 12px;border:0;border-bottom:1px solid rgba(242,200,120,.1);background:{{ e.bg }};cursor:pointer;text-align:left;color:#FFFFFF" style-hover="background:rgba(255,255,255,.03)">
+        <span style="flex:none;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(242,188,79,.6);color:#F2BC4F;display:flex;align-items:center;justify-content:center"><sc-if value="{{ e.off }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"></path></svg></sc-if><sc-if value="{{ e.on }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 10v4M10 7v10M14 5v14M18 9v6"></path></svg></sc-if></span>
+        <span style="flex:none;font:700 14px/1 'Mukta',sans-serif;color:#8A7D6A">{{ e.num }}</span>
+        <span style="flex:1;min-width:0;font:700 17px/1.35 'Mukta',sans-serif;color:{{ e.col }}">{{ e.t }}</span>
+        <span style="flex:none;font:600 13.5px/1 'Mukta',sans-serif;color:#A99C88">{{ e.m }}</span>
+      </button>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAB }}" hint-placeholder-val="{{ false }}">
+<div style="padding:28px var(--px) 0;display:flex;flex-direction:column;gap:8px"><h1 style="margin:0;font:800 clamp(28px,2.6vw,40px)/1.15 'Mukta',sans-serif">Audiobooks</h1><p style="margin:0;font:500 16px/1.5 'Mukta',sans-serif;color:#A99C88">Nyas publications, read aloud in Hindi. Chapter by chapter, at your pace.</p></div>
+<div style="margin:22px var(--px) 0;padding:clamp(18px,2.4vw,32px);border-radius:20px;background:#15100B;border:1px solid rgba(242,200,120,.14);display:grid;grid-template-columns:{{ colsAB }};gap:clamp(20px,3vw,44px)">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:18px">
+    <img src="{{ ab.img }}" alt="" style="width:100%;max-width:340px;aspect-ratio:1;border-radius:14px;object-fit:cover;box-shadow:0 24px 50px rgba(0,0,0,.55)">
+    <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:6px;text-align:center"><span style="font:700 22px/1.25 'Eczar',serif">{{ ab.n }}</span><span style="font:500 14px/1.4 'Mukta',sans-serif;color:#A99C88">{{ ab.sub }}</span></div>
+    <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:8px">
+      <span style="font:700 14.5px/1.3 'Mukta',sans-serif;color:#F2BC4F;text-align:center">{{ ab.chN }}</span>
+      <div style="height:5px;border-radius:3px;background:rgba(255,255,255,.14)"><div style="height:100%;width:{{ ab.pct }};border-radius:3px;background:#F2BC4F;transition:width 1s linear"></div></div>
+      <div style="display:flex;justify-content:space-between;font:600 12.5px/1 'Mukta',sans-serif;color:#A99C88"><span>{{ ab.pos }}</span><span>{{ ab.dur }}</span></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:18px">
+      <button onClick="{{ ab.prev }}" aria-label="Previous chapter" style="width:44px;height:44px;border:0;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM19 5v14L9 12z"></path></svg></button>
+      <button aria-label="Back 15 seconds" style="position:relative;width:44px;height:44px;border:0;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center;font:800 10px/1 'Mukta',sans-serif"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4"></path></svg><span style="position:absolute;top:17px">15</span></button>
+      <button onClick="{{ ab.toggle }}" aria-label="Play or pause" style="width:68px;height:68px;border:0;border-radius:50%;background:#F2BC4F;color:#1A1107;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#F8CB68"><sc-if value="{{ ab.playing }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"></path></svg></sc-if><sc-if value="{{ ab.paused }}" hint-placeholder-val="{{ true }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"></path></svg></sc-if></button>
+      <button aria-label="Forward 15 seconds" style="position:relative;width:44px;height:44px;border:0;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center;font:800 10px/1 'Mukta',sans-serif"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"></path></svg><span style="position:absolute;top:17px">15</span></button>
+      <button onClick="{{ ab.next }}" aria-label="Next chapter" style="width:44px;height:44px;border:0;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM5 5v14l10-7z"></path></svg></button>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:20px;min-width:0">
+    <div style="display:flex;flex-wrap:wrap;gap:24px">
+      <div style="display:flex;flex-direction:column;gap:8px"><span style="font:800 11.5px/1 'Mukta',sans-serif;letter-spacing:.1em;color:#A99C88">SPEED</span><div style="display:flex;gap:4px;padding:3px;border:1px solid rgba(242,200,120,.18);border-radius:10px"><sc-for list="{{ ab.speeds }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.go }}" style="height:30px;padding:0 10px;border:0;border-radius:7px;background:{{ s.bg }};color:{{ s.col }};cursor:pointer;font:700 13px/1 'Mukta',sans-serif">{{ s.l }}</button></sc-for></div></div>
+      <div style="display:flex;flex-direction:column;gap:8px"><span style="font:800 11.5px/1 'Mukta',sans-serif;letter-spacing:.1em;color:#A99C88">SLEEP TIMER</span><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ ab.sleeps }}" as="s" hint-placeholder-count="4"><button onClick="{{ s.go }}" style="height:36px;padding:0 12px;border:1px solid {{ s.bd }};border-radius:999px;background:{{ s.bg }};color:{{ s.col }};cursor:pointer;font:700 13px/1 'Mukta',sans-serif">{{ s.l }}</button></sc-for></div></div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><h2 style="margin:0;font:700 19px/1.2 'Mukta',sans-serif">Chapters</h2><button onClick="{{ ab.book }}" style="display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid rgba(242,200,120,.26);border-radius:8px;background:none;color:#EADFCB;cursor:pointer;font:700 13px/1 'Mukta',sans-serif" style-hover="border-color:#F2BC4F"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"></path></svg>Read the book</button></div>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <sc-for list="{{ ab.chs }}" as="c" hint-placeholder-count="5"><button onClick="{{ c.go }}" style="display:flex;align-items:center;gap:14px;padding:12px;border:0;border-radius:10px;background:{{ c.bg }};cursor:pointer;text-align:left;color:{{ c.col }}" style-hover="background:rgba(255,255,255,.04)"><span style="flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(242,200,120,.3);display:flex;align-items:center;justify-content:center;font:700 12.5px/1 'Mukta',sans-serif;color:#EADFCB"><sc-if value="{{ c.done }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7FC79A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>{{ c.num }}</span><span style="flex:1;font:700 16px/1.3 'Mukta',sans-serif">{{ c.t }}</span><span style="flex:none;font:600 13px/1 'Mukta',sans-serif;color:#A99C88">{{ c.m }}</span></button></sc-for>
+    </div>
+  </div>
+</div>
+<section style="padding:40px var(--px) 0">
+  <h2 style="margin:0 0 16px;font:700 22px/1.2 'Mukta',sans-serif">Library</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr));gap:20px">
+    <sc-for list="{{ ab.shelf }}" as="x" hint-placeholder-count="5"><button onClick="{{ x.go }}" style="padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:10px" style-hover="transform:translateY(-3px)"><span style="display:block;aspect-ratio:1;border-radius:12px;overflow:hidden;box-shadow:0 0 0 2px {{ x.bd }}"><img src="{{ x.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span><span style="font:700 15px/1.3 'Mukta',sans-serif">{{ x.n }}</span><span style="margin-top:-6px;font:500 12.5px/1 'Mukta',sans-serif;color:#A99C88">{{ x.hrs }}</span></button></sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isBooks }}" hint-placeholder-val="{{ false }}">
+<div style="padding:28px var(--px) 0;display:flex;flex-direction:column;gap:8px"><h1 style="margin:0;display:flex;align-items:baseline;gap:12px;font:800 clamp(28px,2.6vw,40px)/1.15 'Mukta',sans-serif">Books<span style="font:700 .8em/1 'Eczar',serif;color:#F2BC4F">पुस्तकें</span></h1><p style="margin:0;font:500 16px/1.5 'Mukta',sans-serif;color:#A99C88">Publications of Veer Bharat Nyas, research volumes, anthologies and journals. Open any book for details and sample pages.</p></div>
+<div style="padding:18px var(--px) 0"><div data-noscroll="" style="display:flex;gap:8px;overflow-x:auto"><sc-for list="{{ bkChips }}" as="c" hint-placeholder-count="6"><button onClick="{{ c.go }}" style="flex:none;height:38px;padding:0 16px;border:1px solid {{ c.bd }};border-radius:999px;background:{{ c.bg }};color:{{ c.col }};cursor:pointer;font:700 14px/1 'Mukta',sans-serif;white-space:nowrap">{{ c.l }}</button></sc-for></div></div>
+<div style="margin:24px var(--px) 0;padding:34px clamp(20px,3vw,40px) 0;border-radius:18px;background:linear-gradient(180deg,#1A120C,#120D09);border:1px solid rgba(242,200,120,.1)">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:40px 28px;align-items:end">
+    <sc-for list="{{ booksGrid }}" as="b" hint-placeholder-count="8">
+      <button onClick="{{ b.go }}" style="padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:12px" style-hover="transform:translateY(-6px)">
+        <span style="position:relative;display:block;width:100%;border-radius:3px 8px 8px 3px;overflow:hidden;box-shadow:0 18px 30px rgba(0,0,0,.6)">
+          <sc-if value="{{ b.hasImg }}" hint-placeholder-val="{{ true }}"><img src="{{ b.img }}" alt="" style="width:100%;height:auto;display:block"></sc-if>
+          <sc-if value="{{ b.noImg }}" hint-placeholder-val="{{ false }}"><span style="aspect-ratio:3/4;background:{{ b.c0 }};display:flex;flex-direction:column;justify-content:space-between;padding:20px 16px;box-sizing:border-box;box-shadow:inset 0 0 0 7px rgba(0,0,0,.15),inset 0 0 0 8px {{ b.c1 }}"><span style="font:700 10px/1 'Mukta',sans-serif;letter-spacing:.14em;color:{{ b.c1 }}">VEER BHARAT NYAS</span><span style="font:700 22px/1.2 'Eczar',serif;color:{{ b.c1 }};text-wrap:balance">{{ b.n }}</span><img src="assets/emblem-mark.png" alt="" style="width:30px;height:30px;object-fit:contain"></span></sc-if>
+          <span style="position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(90deg,rgba(0,0,0,.4),rgba(255,255,255,.08),rgba(0,0,0,0))"></span>
+        </span>
+        <span style="min-height:78px;display:flex;flex-direction:column;gap:4px"><span style="font:700 15.5px/1.3 'Mukta',sans-serif">{{ b.n }}</span><span style="font:500 12.5px/1.35 'Mukta',sans-serif;color:#A99C88;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ b.s }}</span><span style="display:flex;gap:6px;margin-top:2px"><sc-if value="{{ b.hasAb }}" hint-placeholder-val="{{ false }}"><span style="padding:3px 6px;border-radius:4px;background:rgba(242,188,79,.12);color:#F2BC4F;font:700 10.5px/1 'Mukta',sans-serif">AUDIOBOOK</span></sc-if><sc-if value="{{ b.fromEv }}" hint-placeholder-val="{{ false }}"><span style="padding:3px 6px;border-radius:4px;background:rgba(127,199,154,.12);color:#7FC79A;font:700 10.5px/1 'Mukta',sans-serif">EVENT RELEASE</span></sc-if></span></span>
+      </button>
+    </sc-for>
+  </div>
+  <div style="height:22px;margin:30px calc(-1 * clamp(20px,3vw,40px)) 0;background:linear-gradient(180deg,#5A3D22,#2E1F12);box-shadow:0 10px 20px rgba(0,0,0,.5)"></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isEvents }}" hint-placeholder-val="{{ false }}">
+<div style="padding:28px var(--px) 0;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:8px"><h1 style="margin:0;display:flex;align-items:baseline;gap:12px;font:800 clamp(28px,2.6vw,40px)/1.15 'Mukta',sans-serif">Events<span style="font:700 .8em/1 'Eczar',serif;color:#F2BC4F">आयोजन</span></h1><p style="margin:0;max-width:680px;font:500 16px/1.5 'Mukta',sans-serif;color:#A99C88">Samagams, national discourses and conferences organised by Veer Bharat Nyas, with recordings, podcasts, books released and press coverage.</p></div>
+  <div style="display:flex;gap:8px"><sc-for list="{{ evYears }}" as="y" hint-placeholder-count="3"><button onClick="{{ y.go }}" style="height:38px;padding:0 16px;border:1px solid {{ y.bd }};border-radius:999px;background:{{ y.bg }};color:{{ y.col }};cursor:pointer;font:700 14px/1 'Mukta',sans-serif;white-space:nowrap">{{ y.l }}</button></sc-for></div>
+</div>
+<button onClick="{{ evFeat.go }}" style="margin:24px var(--px) 0;width:calc(100% - 2 * var(--px));display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));padding:0;border:1px solid rgba(242,200,120,.14);border-radius:18px;overflow:hidden;background:#140F0B;cursor:pointer;text-align:left;color:#FFFFFF" style-hover="border-color:rgba(242,188,79,.5)">
+  <span style="position:relative;display:block;min-height:260px"><img src="{{ evFeat.img }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></span>
+  <span style="display:flex;flex-direction:column;justify-content:center;gap:14px;padding:clamp(20px,3vw,40px)">
+    <span style="font:800 12px/1 'Mukta',sans-serif;letter-spacing:.12em;color:#F2BC4F">LATEST · {{ evFeat.dates }}</span>
+    <span style="font:700 clamp(30px,3vw,44px)/1.1 'Eczar',serif">{{ evFeat.n }}</span>
+    <span style="display:flex;align-items:center;gap:8px;font:600 15px/1.2 'Mukta',sans-serif;color:#EADFCB"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path></svg>{{ evFeat.where }} · {{ evFeat.days }}</span>
+    <span style="font:500 15.5px/1.6 'Mukta',sans-serif;color:#C9BCA6">{{ evFeat.sum }}</span>
+    <span style="display:flex;flex-wrap:wrap;gap:8px;font:700 12.5px/1 'Mukta',sans-serif"><span style="padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06)">Photos &amp; videos</span><span style="padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06)">Podcast</span><span style="padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06)">{{ evFeat.nb }} released</span><span style="padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06)">Press coverage</span></span>
+  </span>
+</button>
+<section style="padding:36px var(--px) 0">
+  <h2 style="margin:0 0 6px;font:700 22px/1.2 'Mukta',sans-serif">All events</h2>
+  <div style="display:flex;flex-direction:column">
+    <sc-for list="{{ evList }}" as="e" hint-placeholder-count="5">
+      <button onClick="{{ e.go }}" style="display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:20px 0;border:0;border-bottom:1px solid rgba(242,200,120,.1);background:none;cursor:pointer;text-align:left;color:#FFFFFF" style-hover="background:rgba(255,255,255,.02)">
+        <span style="flex:none;width:92px;display:flex;flex-direction:column;gap:6px"><span style="font:700 30px/1 'Eczar',serif;color:#F2BC4F">{{ e.yr }}</span><span style="font:600 12.5px/1.3 'Mukta',sans-serif;color:#A99C88">{{ e.days }}</span></span>
+        <span style="flex:none;width:clamp(200px,20vw,280px);aspect-ratio:16/9;border-radius:12px;overflow:hidden"><img src="{{ e.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span>
+        <span style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:8px"><span style="font:700 24px/1.2 'Eczar',serif">{{ e.n }}</span><span style="font:600 14px/1.3 'Mukta',sans-serif;color:#EADFCB">{{ e.dates }} · {{ e.where }}</span><span style="font:500 14.5px/1.55 'Mukta',sans-serif;color:#A99C88;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ e.sum }}</span><span style="display:flex;flex-wrap:wrap;gap:6px;font:700 11.5px/1 'Mukta',sans-serif"><sc-if value="{{ e.hasPod }}" hint-placeholder-val="{{ false }}"><span style="padding:4px 8px;border-radius:4px;background:rgba(242,188,79,.12);color:#F2BC4F">PODCAST</span></sc-if><sc-if value="{{ e.hasBooks }}" hint-placeholder-val="{{ false }}"><span style="padding:4px 8px;border-radius:4px;background:rgba(127,199,154,.12);color:#7FC79A">BOOKS RELEASED</span></sc-if><span style="padding:4px 8px;border-radius:4px;background:rgba(255,255,255,.06);color:#EADFCB">GALLERY</span></span></span>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A99C88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M9 5l7 7-7 7"></path></svg>
+      </button>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isEvent }}" hint-placeholder-val="{{ false }}">
+<div style="padding:24px var(--px) 0;display:grid;grid-template-columns:{{ colsEvHead }};gap:clamp(20px,3vw,44px);align-items:center">
+  <div style="width:100%;max-width:640px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.5)"><img src="{{ ev.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <button onClick="{{ goEvents }}" style="align-self:flex-start;display:flex;align-items:center;gap:6px;padding:0;border:0;background:none;color:#A99C88;cursor:pointer;font:700 13.5px/1 'Mukta',sans-serif" style-hover="color:#FFFFFF"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>All events</button>
+    <h1 style="margin:0;font:700 clamp(32px,3.4vw,50px)/1.1 'Eczar',serif">{{ ev.n }}</h1>
+    <div style="display:flex;flex-wrap:wrap;gap:8px 18px;font:600 15px/1.3 'Mukta',sans-serif;color:#EADFCB">
+      <span style="display:flex;align-items:center;gap:8px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="2" stroke-linecap="round"><path d="M4 6h16v15H4zM4 10h16M8 3v4M16 3v4"></path></svg>{{ ev.dates }}</span>
+      <span style="display:flex;align-items:center;gap:8px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path></svg>{{ ev.where }}</span>
+    </div>
+    <p style="margin:0;font:500 16.5px/1.65 'Mukta',sans-serif;color:#C9BCA6">{{ ev.sum }}</p>
+    <span style="font:600 13px/1 'Mukta',sans-serif;color:#8A7D6A">Organised by वीर भारत न्यास, संस्कृति विभाग, मध्यप्रदेश शासन</span>
+  </div>
+</div>
+<div style="position:sticky;top:68px;z-index:20;margin-top:28px;padding:0 var(--px);background:rgba(11,8,6,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(242,200,120,.12)">
+  <div data-noscroll="" style="display:flex;gap:28px;overflow-x:auto"><sc-for list="{{ ev.tabs }}" as="t" hint-placeholder-count="6"><button onClick="{{ t.go }}" style="flex:none;height:52px;padding:0;border:0;background:none;color:{{ t.col }};box-shadow:inset 0 -2px 0 {{ t.ul }};cursor:pointer;font:700 15px/1 'Mukta',sans-serif" style-hover="color:#FFFFFF">{{ t.l }}</button></sc-for></div>
+</div>
+<div style="padding:28px var(--px) 0">
+  <sc-if value="{{ ev.tOverview }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px">
+      <div style="display:flex;flex-direction:column;gap:14px"><h2 style="margin:0;font:700 20px/1.2 'Mukta',sans-serif">Highlights</h2>
+        <sc-for list="{{ ev.high }}" as="h" hint-placeholder-count="4"><div style="display:flex;gap:14px;padding:16px;border:1px solid rgba(242,200,120,.12);border-radius:12px;background:#140F0B"><svg width="20" height="20" viewBox="0 0 24 24" fill="#F2BC4F" style="flex:none;margin-top:2px"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"></path></svg><span style="font:600 16px/1.5 'Mukta',sans-serif">{{ h.h }}</span></div></sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px"><h2 style="margin:0;font:700 20px/1.2 'Mukta',sans-serif">Event promotion</h2>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:12px">
+          <div style="display:flex;flex-direction:column;gap:8px"><span style="display:block;aspect-ratio:1;border-radius:12px;overflow:hidden"><img src="{{ ev.img1 }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span><span style="font:600 13px/1.2 'Mukta',sans-serif;color:#A99C88">Official poster</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px"><span style="position:relative;display:block;aspect-ratio:1;border-radius:12px;overflow:hidden;background:#000"><img src="{{ ev.img }}" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.75;display:block"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="width:64px;height:64px;border-radius:50%;background:rgba(11,8,6,.6);border:2px solid #fff;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l12.5-7.5z"></path></svg></span></span><span style="position:absolute;left:10px;top:10px;padding:4px 8px;border-radius:5px;background:#F2BC4F;color:#1A1107;font:800 11px/1 'Mukta',sans-serif">PROMO FILM</span></span><span style="font:600 13px/1.2 'Mukta',sans-serif;color:#A99C88">Event advertisement · 0:45</span></div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ ev.tSchedule }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;max-width:900px">
+      <sc-for list="{{ ev.sched }}" as="s" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:150px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid rgba(242,200,120,.1)"><span style="font:700 15px/1.3 'Mukta',sans-serif;color:#F2BC4F">{{ s.when }}</span><span style="display:flex;flex-direction:column;gap:6px"><span style="font:700 17px/1.35 'Mukta',sans-serif">{{ s.t }}</span><span style="align-self:flex-start;padding:4px 8px;border-radius:4px;background:rgba(255,255,255,.06);font:700 12px/1 'Mukta',sans-serif;color:#EADFCB">{{ s.k }}</span></span></div></sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ ev.tGallery }}" hint-placeholder-val="{{ false }}">
+    <h2 style="margin:0 0 14px;font:700 20px/1.2 'Mukta',sans-serif">Videos</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:16px">
+      <sc-for list="{{ ev.videos }}" as="v" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:8px"><span style="position:relative;display:block;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000"><img src="{{ v.img }}" alt="" style="width:100%;height:100%;object-fit:cover;object-position:{{ v.pos }};opacity:.8;display:block"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="width:52px;height:52px;border-radius:50%;background:rgba(11,8,6,.6);border:1.5px solid #fff;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l12.5-7.5z"></path></svg></span></span><span style="position:absolute;right:8px;bottom:8px;padding:3px 6px;border-radius:4px;background:rgba(0,0,0,.75);font:700 12px/1 'Mukta',sans-serif">{{ v.d }}</span></span><span style="font:700 15px/1.3 'Mukta',sans-serif">{{ v.t }}</span></div></sc-for>
+    </div>
+    <h2 style="margin:32px 0 6px;font:700 20px/1.2 'Mukta',sans-serif">Photos</h2>
+    <p style="margin:0 0 14px;font:500 14px/1.5 'Mukta',sans-serif;color:#A99C88">Drop official event photographs into each frame.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));grid-auto-rows:180px;gap:12px">
+      <sc-for list="{{ ev.gallery }}" as="g" hint-placeholder-count="8"><div style="grid-column:{{ g.span }};border-radius:12px;overflow:hidden;background:#1C1510"><image-slot id="{{ g.id }}" shape="rect" placeholder="{{ g.ph }}"></image-slot></div></sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ ev.tPodcast }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:28px;align-items:start">
+      <div style="display:flex;gap:18px;align-items:center"><img src="{{ ev.podImg }}" alt="" style="flex:none;width:140px;height:140px;border-radius:14px;object-fit:cover"><div style="display:flex;flex-direction:column;gap:8px"><span style="font:800 12px/1 'Mukta',sans-serif;letter-spacing:.1em;color:#F2BC4F">PODCAST FROM THIS EVENT</span><span style="font:700 28px/1.15 'Eczar',serif">{{ ev.podN }}</span><span style="font:500 14.5px/1.4 'Mukta',sans-serif;color:#A99C88">{{ ev.podSub }}</span><button onClick="{{ ev.podGo }}" style="align-self:flex-start;height:38px;padding:0 14px;border:1px solid rgba(242,200,120,.3);border-radius:8px;background:none;color:#FFFFFF;cursor:pointer;font:700 13.5px/1 'Mukta',sans-serif">Open podcast</button></div></div>
+      <div style="display:flex;flex-direction:column;border-top:1px solid rgba(242,200,120,.1)"><sc-for list="{{ ev.podList }}" as="e" hint-placeholder-count="4"><button onClick="{{ e.go }}" style="display:flex;align-items:center;gap:14px;padding:14px 4px;border:0;border-bottom:1px solid rgba(242,200,120,.1);background:none;cursor:pointer;text-align:left;color:#FFFFFF" style-hover="background:rgba(255,255,255,.03)"><span style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(242,188,79,.6);color:#F2BC4F;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"></path></svg></span><span style="flex:1;font:700 16px/1.35 'Mukta',sans-serif">{{ e.t }}</span><span style="font:600 13px/1 'Mukta',sans-serif;color:#A99C88">{{ e.m }}</span></button></sc-for></div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ ev.tBooks }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:28px;align-items:end">
+      <sc-for list="{{ ev.books }}" as="b" hint-placeholder-count="2"><button onClick="{{ b.go }}" style="padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:10px" style-hover="transform:translateY(-4px)"><span style="position:relative;display:block;border-radius:3px 8px 8px 3px;overflow:hidden;box-shadow:0 16px 28px rgba(0,0,0,.55)"><sc-if value="{{ b.hasImg }}" hint-placeholder-val="{{ true }}"><img src="{{ b.img }}" alt="" style="width:100%;height:auto;display:block"></sc-if><sc-if value="{{ b.noImg }}" hint-placeholder-val="{{ false }}"><span style="aspect-ratio:3/4;background:{{ b.c0 }};display:flex;flex-direction:column;justify-content:space-between;padding:20px 16px;box-sizing:border-box;box-shadow:inset 0 0 0 7px rgba(0,0,0,.15),inset 0 0 0 8px {{ b.c1 }}"><span style="font:700 10px/1 'Mukta',sans-serif;letter-spacing:.14em;color:{{ b.c1 }}">VEER BHARAT NYAS</span><span style="font:700 22px/1.2 'Eczar',serif;color:{{ b.c1 }}">{{ b.n }}</span><img src="assets/emblem-mark.png" alt="" style="width:30px;height:30px;object-fit:contain"></span></sc-if></span><span style="font:700 15.5px/1.3 'Mukta',sans-serif">{{ b.n }}</span><span style="margin-top:-6px;font:500 12.5px/1.35 'Mukta',sans-serif;color:#A99C88">{{ b.s }}</span></button></sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ ev.tSocial }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px;align-items:start">
+      <sc-for list="{{ ev.social }}" as="s" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;border:1px solid rgba(242,200,120,.14);border-radius:14px;overflow:hidden;background:#140F0B">
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 14px"><sc-if value="{{ s.isVbn }}" hint-placeholder-val="{{ true }}"><img src="assets/emblem-mark.png" alt="" style="width:36px;height:36px;border-radius:50%;background:#0B0806;object-fit:contain"></sc-if><sc-if value="{{ s.real }}" hint-placeholder-val="{{ false }}"><span style="width:36px;height:36px;border-radius:50%;background:#2A211A;display:flex;align-items:center;justify-content:center;font:800 14px/1 'Mukta',sans-serif;color:#EADFCB">@</span></sc-if><span style="flex:1;display:flex;flex-direction:column;gap:3px"><span style="font:700 14.5px/1.2 'Mukta',sans-serif">{{ s.who }}</span><span style="font:600 12px/1 'Mukta',sans-serif;color:#A99C88">{{ s.pf }}</span></span><span style="width:28px;height:28px;border-radius:7px;background:#FFFFFF;color:#120D09;display:flex;align-items:center;justify-content:center;font:800 12px/1 'Mukta',sans-serif">{{ s.pfl }}</span></div>
+          <div style="aspect-ratio:1;background:#1C1510"><image-slot id="{{ s.id }}" shape="rect" placeholder="Drop post image"></image-slot></div>
+          <div style="padding:12px 14px 14px;display:flex;flex-direction:column;gap:10px"><span style="font:500 14.5px/1.5 'Mukta',sans-serif;color:#EADFCB">{{ s.txt }}</span><sc-if value="{{ s.real }}" hint-placeholder-val="{{ false }}"><a href="{{ s.url }}" target="_blank" rel="noopener" style="font:700 13px/1 'Mukta',sans-serif">View original post ↗</a></sc-if><sc-if value="{{ s.demo }}" hint-placeholder-val="{{ true }}"><span style="font:600 12px/1 'Mukta',sans-serif;color:#8A7D6A">Sample layout, link the official post</span></sc-if></div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ ev.tPress }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;max-width:900px;border-top:1px solid rgba(242,200,120,.1)">
+      <sc-for list="{{ ev.press }}" as="x" hint-placeholder-count="3"><a href="{{ x.url }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:16px;padding:18px 4px;border-bottom:1px solid rgba(242,200,120,.1);color:#FFFFFF" style-hover="background:rgba(255,255,255,.03)"><span style="flex:none;width:44px;height:44px;border-radius:10px;background:#1C1510;display:flex;align-items:center;justify-content:center;color:#F2BC4F"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h13v16H6a2 2 0 0 1-2-2zM17 8h3v10a2 2 0 0 1-2 2M8 8h5M8 12h5M8 16h3"></path></svg></span><span style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font:700 16px/1.2 'Mukta',sans-serif">{{ x.o }}</span><span style="font:500 13px/1 'Mukta',sans-serif;color:#A99C88">{{ x.host }}</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A99C88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"></path></svg></a></sc-for>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPremium }}" hint-placeholder-val="{{ false }}">
+<div style="margin:24px var(--px) 0;padding:clamp(24px,3.4vw,52px);border-radius:22px;background:#17110B;border:1px solid rgba(242,188,79,.3);display:flex;flex-direction:column;gap:22px">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
+      <span style="display:flex;align-items:center;gap:10px;font:800 13px/1 'Mukta',sans-serif;letter-spacing:.14em;color:#F2BC4F"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"></path></svg>VBN PREMIUM</span>
+      <h1 style="margin:0;font:800 clamp(30px,3.2vw,48px)/1.12 'Mukta',sans-serif">The finest of the Nyas, free for every citizen.</h1>
+      <p style="margin:0;font:500 16.5px/1.6 'Mukta',sans-serif;color:#C9BCA6">No subscription, no payment. Sign in once to unlock director’s cuts, 4K documentaries, early episodes and complete recordings of Nyas events.</p>
+    </div>
+    <sc-if value="{{ notSigned }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openReg }}" style="height:52px;padding:0 26px;border:0;border-radius:12px;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 16px/1 'Mukta',sans-serif" style-hover="background:#F8CB68">Unlock free</button></sc-if>
+    <sc-if value="{{ signed }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:8px;height:48px;padding:0 18px;border-radius:12px;background:rgba(127,199,154,.12);color:#7FC79A;font:800 15px/1 'Mukta',sans-serif"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Premium unlocked</span></sc-if>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px">
+    <sc-for list="{{ premPerks }}" as="k" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:5px;padding:14px;border-radius:12px;background:rgba(242,188,79,.06);border:1px solid rgba(242,188,79,.16)"><span style="font:800 15px/1.2 'Mukta',sans-serif;color:#FFFFFF">{{ k.t }}</span><span style="font:500 13px/1.35 'Mukta',sans-serif;color:#A99C88">{{ k.s }}</span></div></sc-for>
+  </div>
+</div>
+<section style="padding:36px var(--px) 0">
+  <h2 style="margin:0 0 16px;font:700 22px/1.2 'Mukta',sans-serif">Premium collection</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:24px 18px">
+    <sc-for list="{{ premRow }}" as="x" hint-placeholder-count="6"><button onClick="{{ x.go }}" style="padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:12px" style-hover="transform:translateY(-4px)"><span style="position:relative;display:block;aspect-ratio:16/9;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px rgba(242,188,79,.35)"><img src="{{ x.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;left:10px;top:10px;padding:5px 8px;border-radius:5px;background:#F2BC4F;color:#1A1107;font:800 11px/1 'Mukta',sans-serif">{{ x.k }}</span><sc-if value="{{ x.locked }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;inset:0;background:rgba(11,8,6,.35);display:flex;align-items:center;justify-content:center"><span style="display:flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:999px;background:rgba(11,8,6,.82);color:#F2BC4F;font:800 13px/1 'Mukta',sans-serif"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 11h12v10H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3"></path></svg>Sign in to watch</span></span></sc-if></span><span style="font:700 17px/1.3 'Mukta',sans-serif">{{ x.t }}</span></button></sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isSched }}" hint-placeholder-val="{{ false }}">
+<div style="padding:28px var(--px) 0;display:flex;flex-direction:column;gap:8px"><h1 style="margin:0;font:800 clamp(28px,2.6vw,40px)/1.15 'Mukta',sans-serif">Release schedule</h1><p style="margin:0;font:500 16px/1.5 'Mukta',sans-serif;color:#A99C88">When every new episode lands. Set a reminder and we’ll notify you on release.</p></div>
+<div style="margin-top:18px;padding:0 var(--px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(242,200,120,.12)">
+  <div style="display:flex;gap:28px"><sc-for list="{{ svTabs }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.go }}" style="height:50px;padding:0;border:0;background:none;color:{{ t.col }};box-shadow:inset 0 -2px 0 {{ t.ul }};cursor:pointer;font:700 15.5px/1 'Mukta',sans-serif">{{ t.l }}</button></sc-for></div>
+  <sc-if value="{{ vWeek }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;gap:8px;padding-bottom:6px"><button onClick="{{ wkPrev }}" aria-label="Previous week" style="width:36px;height:36px;border:1px solid rgba(242,200,120,.2);border-radius:8px;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button><span style="min-width:150px;text-align:center;font:700 14.5px/1 'Mukta',sans-serif">{{ weekLabel }}</span><button onClick="{{ wkNext }}" aria-label="Next week" style="width:36px;height:36px;border:1px solid rgba(242,200,120,.2);border-radius:8px;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button><button onClick="{{ wkNow }}" style="height:36px;padding:0 12px;border:1px solid rgba(242,200,120,.2);border-radius:8px;background:none;color:#EADFCB;cursor:pointer;font:700 13px/1 'Mukta',sans-serif">Today</button></div></sc-if>
+  <sc-if value="{{ vMonth }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:8px;padding-bottom:6px"><button onClick="{{ moPrev }}" aria-label="Previous month" style="width:36px;height:36px;border:1px solid rgba(242,200,120,.2);border-radius:8px;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg></button><span style="min-width:130px;text-align:center;font:700 14.5px/1 'Mukta',sans-serif">{{ monthLabel }}</span><button onClick="{{ moNext }}" aria-label="Next month" style="width:36px;height:36px;border:1px solid rgba(242,200,120,.2);border-radius:8px;background:none;color:#EADFCB;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></button></div></sc-if>
+</div>
+<sc-if value="{{ vFest }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:24px var(--px) 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:16px">
+    <sc-for list="{{ fest }}" as="f" hint-placeholder-count="6"><button onClick="{{ f.go }}" style="display:flex;gap:14px;align-items:center;padding:12px;border:1px solid rgba(242,200,120,.14);border-radius:14px;background:#140F0B;cursor:pointer;text-align:left;color:#FFFFFF" style-hover="border-color:rgba(242,188,79,.5)"><span style="flex:none;width:130px;aspect-ratio:16/9;border-radius:9px;overflow:hidden"><img src="{{ f.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span><span style="display:flex;flex-direction:column;gap:5px;min-width:0"><span style="font:800 12px/1 'Mukta',sans-serif;letter-spacing:.08em;color:#F2BC4F">{{ f.when }}</span><span style="font:700 19px/1.2 'Eczar',serif">{{ f.n }}</span><span style="font:500 13.5px/1.35 'Mukta',sans-serif;color:#A99C88">{{ f.sub }}</span></span></button></sc-for>
+  </div>
+  <p style="margin:16px var(--px) 0;font:500 13px/1.5 'Mukta',sans-serif;color:#8A7D6A">Exact festival dates follow the Panchang and will be announced closer to each festival.</p>
+</sc-if>
+<sc-if value="{{ vWeek }}" hint-placeholder-val="{{ true }}">
+  <div style="padding:16px var(--px) 0"><div data-noscroll="" style="display:flex;gap:8px;overflow-x:auto"><sc-for list="{{ ssChips }}" as="c" hint-placeholder-count="8"><button onClick="{{ c.go }}" style="flex:none;height:34px;padding:0 14px;border:1px solid {{ c.bd }};border-radius:999px;background:{{ c.bg }};color:{{ c.col }};cursor:pointer;font:700 13px/1 'Mukta',sans-serif;white-space:nowrap">{{ c.n }}</button></sc-for></div></div>
+  <div data-noscroll="" style="padding:16px var(--px) 0;display:grid;grid-template-columns:{{ colsWeek }};gap:10px;align-items:stretch;overflow-x:auto">
+    <sc-for list="{{ week }}" as="d" hint-placeholder-count="7">
+      <div style="display:flex;flex-direction:column;gap:10px;min-height:260px;padding:12px;border:1px solid {{ d.bd }};border-radius:14px;background:{{ d.bg }}">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font:800 12.5px/1 'Mukta',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:{{ d.hc }}">{{ d.dn }}</span><span style="font:700 24px/1 'Eczar',serif;color:{{ d.hc }}">{{ d.dd }}</span></div>
+        <sc-for list="{{ d.items }}" as="i" hint-placeholder-count="1">
+          <div style="display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:10px;background:rgba(255,255,255,.035)">
+            <button onClick="{{ i.go }}" style="padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:8px"><span style="display:block;aspect-ratio:16/9;border-radius:7px;overflow:hidden"><img src="{{ i.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span><span style="font:800 12px/1 'Mukta',sans-serif;color:{{ i.stc }}">{{ i.time }} · {{ i.st }}</span><span style="font:700 14px/1.3 'Mukta',sans-serif">{{ i.n }}</span><span style="margin-top:-4px;font:500 12.5px/1.3 'Mukta',sans-serif;color:#A99C88">{{ i.ep }}</span></button>
+            <sc-if value="{{ i.canRem }}" hint-placeholder-val="{{ false }}"><button onClick="{{ i.toggle }}" style="display:flex;align-items:center;justify-content:center;gap:6px;height:30px;border:1px solid rgba(242,200,120,.22);border-radius:7px;background:none;color:#EADFCB;cursor:pointer;font:700 12px/1 'Mukta',sans-serif;white-space:nowrap"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2H4.5zM10 20.5a2 2 0 0 0 4 0"></path></svg><sc-if value="{{ i.notRem }}" hint-placeholder-val="{{ true }}">Remind me</sc-if><sc-if value="{{ i.rem }}" hint-placeholder-val="{{ false }}">Reminder set</sc-if></button></sc-if>
+          </div>
+        </sc-for>
+        <sc-if value="{{ d.empty }}" hint-placeholder-val="{{ false }}"><span style="flex:1;display:flex;align-items:center;justify-content:center;font:500 13px/1.3 'Mukta',sans-serif;color:#8A7D6A;text-align:center">No releases</span></sc-if>
+      </div>
+    </sc-for>
+  </div>
+</sc-if>
+<sc-if value="{{ vMonth }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:16px var(--px) 0"><div data-noscroll="" style="display:flex;gap:8px;overflow-x:auto"><sc-for list="{{ ssChips }}" as="c" hint-placeholder-count="8"><button onClick="{{ c.go }}" style="flex:none;height:34px;padding:0 14px;border:1px solid {{ c.bd }};border-radius:999px;background:{{ c.bg }};color:{{ c.col }};cursor:pointer;font:700 13px/1 'Mukta',sans-serif;white-space:nowrap">{{ c.n }}</button></sc-for></div></div>
+  <div style="padding:16px var(--px) 0;overflow-x:auto">
+    <div style="min-width:760px;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px">
+      <span style="padding:6px;font:800 12px/1 'Mukta',sans-serif;letter-spacing:.08em;color:#A99C88">MON</span><span style="padding:6px;font:800 12px/1 'Mukta',sans-serif;letter-spacing:.08em;color:#A99C88">TUE</span><span style="padding:6px;font:800 12px/1 'Mukta',sans-serif;letter-spacing:.08em;color:#A99C88">WED</span><span style="padding:6px;font:800 12px/1 'Mukta',sans-serif;letter-spacing:.08em;color:#A99C88">THU</span><span style="padding:6px;font:800 12px/1 'Mukta',sans-serif;letter-spacing:.08em;color:#A99C88">FRI</span><span style="padding:6px;font:800 12px/1 'Mukta',sans-serif;letter-spacing:.08em;color:#A99C88">SAT</span><span style="padding:6px;font:800 12px/1 'Mukta',sans-serif;letter-spacing:.08em;color:#A99C88">SUN</span>
+      <sc-for list="{{ month }}" as="d" hint-placeholder-count="35">
+        <div style="min-height:112px;padding:8px;border:1px solid {{ d.bd }};border-radius:10px;background:#120D09;opacity:{{ d.op }};display:flex;flex-direction:column;gap:5px">
+          <span style="align-self:flex-start;min-width:24px;height:24px;padding:0 4px;box-sizing:border-box;border-radius:6px;background:{{ d.dbg }};color:{{ d.dc }};display:flex;align-items:center;justify-content:center;font:800 13px/1 'Mukta',sans-serif">{{ d.dd }}</span>
+          <sc-for list="{{ d.items }}" as="i" hint-placeholder-count="1"><button onClick="{{ i.go }}" style="display:flex;align-items:center;gap:5px;padding:4px 6px;border:0;border-radius:5px;background:rgba(242,188,79,.1);color:#FFFFFF;cursor:pointer;text-align:left;font:700 11.5px/1.2 'Mukta',sans-serif;overflow:hidden;white-space:nowrap"><span style="flex:none;width:6px;height:6px;border-radius:50%;background:{{ i.stc }}"></span><span style="overflow:hidden;text-overflow:ellipsis">{{ i.n }}</span></button></sc-for>
+          <sc-if value="{{ d.hasMore }}" hint-placeholder-val="{{ false }}"><span style="font:700 11px/1 'Mukta',sans-serif;color:#A99C88;padding-left:4px">{{ d.more }}</span></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ isLive }}" hint-placeholder-val="{{ false }}">
+<div style="padding:20px var(--px) 0;display:grid;grid-template-columns:{{ epgCols }};gap:24px;align-items:start">
+  <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+    <div style="position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000">
+      <img src="{{ liveImg }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+      <span style="position:absolute;left:14px;top:14px;display:flex;align-items:center;gap:7px;padding:6px 10px;border-radius:6px;background:#E5372B;font:800 12.5px/1 'Mukta',sans-serif;letter-spacing:.08em"><span style="width:8px;height:8px;border-radius:50%;background:#fff;animation:vbnLive 1.6s ease-in-out infinite"></span>LIVE</span>
+      <img src="assets/emblem-mark.png" alt="" style="position:absolute;right:16px;top:14px;width:46px;height:46px;object-fit:contain;opacity:.85">
+      <div style="position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(0deg,rgba(0,0,0,.85),rgba(0,0,0,0));display:flex;align-items:center;gap:14px;font:700 13.5px/1 'Mukta',sans-serif"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"></path></svg><span style="flex:1;height:5px;border-radius:3px;background:#E5372B"></span><span>LIVE</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:800 12.5px/1 'Mukta',sans-serif;letter-spacing:.1em;color:#FF8A7E">VBN TV · ON AIR · {{ liveNowTime }}</span><h1 style="margin:0;font:700 clamp(24px,2.2vw,32px)/1.25 'Mukta',sans-serif">{{ liveNowT }}</h1><span style="font:500 15px/1.5 'Mukta',sans-serif;color:#C9BCA6">24×7 channel of Veer Bharat Nyas, series, podcasts and live coverage of Nyas events.</span></div>
+  </div>
+  <aside style="border:1px solid rgba(242,200,120,.12);border-radius:14px;background:#120D09;overflow:hidden">
+    <div style="padding:16px;border-bottom:1px solid rgba(242,200,120,.1);display:flex;justify-content:space-between;align-items:baseline"><span style="font:700 17px/1 'Mukta',sans-serif">Today’s programme</span><span style="font:600 12.5px/1 'Mukta',sans-serif;color:#A99C88">IST</span></div>
+    <div data-noscroll="" style="max-height:620px;overflow-y:auto;padding:8px;display:flex;flex-direction:column;gap:4px">
+      <sc-for list="{{ epg }}" as="g" hint-placeholder-count="8"><button onClick="{{ g.go }}" style="display:flex;align-items:center;gap:12px;padding:8px;border:0;border-left:3px solid {{ g.bd }};border-radius:8px;background:{{ g.bg }};cursor:pointer;text-align:left;color:#FFFFFF;opacity:{{ g.op }}" style-hover="background:rgba(255,255,255,.04)"><span style="flex:none;width:48px;font:800 14px/1 'Mukta',sans-serif;color:#EADFCB">{{ g.time }}</span><span style="flex:none;width:84px;aspect-ratio:16/9;border-radius:6px;overflow:hidden"><img src="{{ g.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px"><sc-if value="{{ g.now }}" hint-placeholder-val="{{ false }}"><span style="font:800 10.5px/1 'Mukta',sans-serif;letter-spacing:.1em;color:#FF8A7E">NOW</span></sc-if><span style="font:700 14px/1.3 'Mukta',sans-serif">{{ g.t }}</span></span></button></sc-for>
+    </div>
+  </aside>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+<section style="position:relative;padding:clamp(48px,7vw,110px) var(--px) clamp(40px,5vw,80px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;overflow:hidden">
+  <img src="assets/emblem-mark.png" alt="" style="position:absolute;left:50%;top:50%;width:min(720px,110vw);transform:translate(-50%,-50%);opacity:.05;pointer-events:none">
+  <img src="assets/emblem-mark.png" alt="वीर भारत न्यास" style="position:relative;width:96px;height:96px;object-fit:contain">
+  <span style="position:relative;font:800 12.5px/1 'Mukta',sans-serif;letter-spacing:.18em;color:#F2BC4F">ABOUT VEER BHARAT NYAS</span>
+  <h1 style="position:relative;margin:0;max-width:900px;font:400 clamp(36px,4.6vw,72px)/1.25 'Tiro Devanagari Sanskrit',serif;color:#FFFFFF;text-wrap:balance">भारत की स्मृति को आज की भाषा में</h1>
+  <p style="position:relative;margin:0;max-width:680px;font:500 clamp(16px,1.3vw,19px)/1.65 'Mukta',sans-serif;color:#C9BCA6">Veer Bharat Nyas is a trust of the Department of Culture, Government of Madhya Pradesh. It brings India’s history, knowledge traditions and living heritage to the public, through festivals, research, publications and now, a free streaming platform.</p>
+</section>
+<section style="padding:0 var(--px)">
+  <div style="display:grid;grid-template-columns:{{ colsAbout }};gap:1px;border-radius:18px;overflow:hidden;background:rgba(242,200,120,.14);border:1px solid rgba(242,200,120,.14)">
+    <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4"><div style="display:flex;flex-direction:column;gap:12px;padding:clamp(20px,2.4vw,32px);background:#120D09"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="{{ p.ic }}"></path></svg><span style="display:flex;align-items:baseline;gap:10px"><span style="font:700 26px/1 'Eczar',serif">{{ p.hi }}</span><span style="font:700 13px/1 'Mukta',sans-serif;letter-spacing:.08em;color:#A99C88;text-transform:uppercase">{{ p.en }}</span></span><span style="font:500 15px/1.6 'Mukta',sans-serif;color:#C9BCA6">{{ p.d }}</span></div></sc-for>
+  </div>
+</section>
+<section style="padding:clamp(48px,6vw,90px) var(--px) 0">
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:28px"><span style="font:800 12.5px/1 'Mukta',sans-serif;letter-spacing:.14em;color:#F2BC4F">RECENT WORK</span><h2 style="margin:0;font:800 clamp(26px,2.4vw,36px)/1.2 'Mukta',sans-serif">A year of samagams, discourses and conferences</h2></div>
+  <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px">
+    <div style="position:absolute;left:0;right:0;top:9px;height:1px;background:rgba(242,188,79,.35)"></div>
+    <sc-for list="{{ miles }}" as="m" hint-placeholder-count="5"><button onClick="{{ m.go }}" style="position:relative;display:flex;flex-direction:column;gap:10px;padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF" style-hover="opacity:.85"><span style="width:19px;height:19px;border-radius:50%;background:#0B0806;border:2px solid #F2BC4F;box-sizing:border-box"></span><span style="font:800 13px/1 'Mukta',sans-serif;color:#F2BC4F">{{ m.when }}</span><span style="font:700 21px/1.2 'Eczar',serif">{{ m.n }}</span><span style="font:500 14px/1.4 'Mukta',sans-serif;color:#A99C88">{{ m.s }}</span></button></sc-for>
+  </div>
+</section>
+<section style="padding:clamp(48px,6vw,90px) var(--px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(24px,4vw,60px);align-items:center">
+  <div style="aspect-ratio:4/5;max-height:520px;border-radius:18px;overflow:hidden;background:#1C1510"><image-slot id="about-leader" shape="rect" placeholder="Photo, न्यासी सचिव"></image-slot></div>
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <span style="font:800 12.5px/1 'Mukta',sans-serif;letter-spacing:.14em;color:#F2BC4F">LEADERSHIP</span>
+    <span style="font:400 clamp(24px,2.4vw,34px)/1.45 'Tiro Devanagari Sanskrit',serif;color:#FFFFFF">“संदेश का पाठ यहाँ आएगा, न्यास के उद्देश्य पर न्यासी सचिव का वक्तव्य।”</span>
+    <div style="display:flex;flex-direction:column;gap:4px"><span style="font:700 20px/1.2 'Mukta',sans-serif">श्रीराम तिवारी</span><span style="font:500 14.5px/1.4 'Mukta',sans-serif;color:#A99C88">न्यासी सचिव, वीर भारत न्यास · Cultural Advisor to the Chief Minister, Madhya Pradesh</span></div>
+    <span style="font:500 12.5px/1.4 'Mukta',sans-serif;color:#8A7D6A">Quote is a placeholder, to be supplied by the Nyas.</span>
+  </div>
+</section>
+<section style="padding:clamp(48px,6vw,90px) var(--px) 0">
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:22px"><span style="font:800 12.5px/1 'Mukta',sans-serif;letter-spacing:.14em;color:#F2BC4F">PARTNERS &amp; VENUES</span><h2 style="margin:0;font:800 clamp(24px,2.2vw,32px)/1.2 'Mukta',sans-serif">Working together</h2></div>
+  <div style="display:flex;flex-wrap:wrap;gap:12px"><sc-for list="{{ partners }}" as="p" hint-placeholder-count="5"><span style="padding:14px 18px;border:1px solid rgba(242,200,120,.16);border-radius:12px;background:#120D09;font:600 15.5px/1.3 'Mukta',sans-serif">{{ p.n }}</span></sc-for></div>
+</section>
+<section style="margin:clamp(48px,6vw,90px) var(--px) 0;padding:clamp(24px,3vw,44px);border-radius:20px;background:#17110B;border:1px solid rgba(242,188,79,.25);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
+  <div style="display:flex;flex-direction:column;gap:8px;max-width:620px"><span style="font:800 24px/1.25 'Mukta',sans-serif">Start with a series, or come to our next event.</span><span style="font:500 15.5px/1.5 'Mukta',sans-serif;color:#C9BCA6">Everything on VBN OTT is free. Creators and institutions can publish through Creator Studio.</span></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px"><button onClick="{{ goSeries }}" style="height:48px;padding:0 22px;border:0;border-radius:10px;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 15px/1 'Mukta',sans-serif">Browse series</button><button onClick="{{ goEvents }}" style="height:48px;padding:0 20px;border:1px solid rgba(242,200,120,.3);border-radius:10px;background:none;color:#FFFFFF;cursor:pointer;font:700 15px/1 'Mukta',sans-serif">See events</button><button onClick="{{ goContact }}" style="height:48px;padding:0 20px;border:1px solid rgba(242,200,120,.3);border-radius:10px;background:none;color:#FFFFFF;cursor:pointer;font:700 15px/1 'Mukta',sans-serif">Contact</button></div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isSearch }}" hint-placeholder-val="{{ false }}">
+<div style="padding:28px var(--px) 0;display:flex;flex-direction:column;gap:16px;max-width:980px">
+  <div style="position:relative"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A99C88" stroke-width="2.1" stroke-linecap="round" style="position:absolute;left:18px;top:19px"><path d="M10.5 17.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13zM15.5 15.5 20 20"></path></svg><input value="{{ q }}" onChange="{{ onQ }}" autoFocus="" placeholder="Search series, episodes, podcasts, books, events" style="width:100%;height:60px;box-sizing:border-box;padding:0 18px 0 54px;border:1px solid rgba(242,200,120,.24);border-radius:14px;background:#140F0B;color:#FFFFFF;font:600 18px/1 'Mukta',sans-serif;outline:none" style-focus="border-color:#F2BC4F"></div>
+  <sc-if value="{{ noQ }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:10px"><span style="font:700 13px/1 'Mukta',sans-serif;letter-spacing:.08em;color:#A99C88">TRY</span><div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ sugg }}" as="s" hint-placeholder-count="6"><button onClick="{{ s.go }}" style="height:38px;padding:0 16px;border:1px solid rgba(242,200,120,.2);border-radius:999px;background:none;color:#EADFCB;cursor:pointer;font:600 15px/1 'Mukta',sans-serif" style-hover="border-color:#F2BC4F;color:#FFFFFF">{{ s.l }}</button></sc-for></div></div></sc-if>
+  <sc-if value="{{ hasRes }}" hint-placeholder-val="{{ false }}"><span style="font:600 14px/1 'Mukta',sans-serif;color:#A99C88">{{ resCount }}</span><div style="display:flex;flex-direction:column"><sc-for list="{{ res }}" as="r" hint-placeholder-count="5"><button onClick="{{ r.go }}" style="display:flex;align-items:center;gap:14px;padding:10px 4px;border:0;border-bottom:1px solid rgba(242,200,120,.08);background:none;cursor:pointer;text-align:left;color:#FFFFFF" style-hover="background:rgba(255,255,255,.03)"><img src="{{ r.img }}" alt="" style="flex:none;width:96px;aspect-ratio:16/9;border-radius:7px;object-fit:cover;background:#1C1510"><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font:700 16px/1.3 'Mukta',sans-serif">{{ r.t }}</span><span style="font:500 13px/1.3 'Mukta',sans-serif;color:#A99C88">{{ r.sub }}</span></span><span style="flex:none;padding:4px 8px;border-radius:4px;background:rgba(255,255,255,.06);font:700 11.5px/1 'Mukta',sans-serif;color:#EADFCB">{{ r.k }}</span></button></sc-for></div></sc-if>
+  <sc-if value="{{ noRes }}" hint-placeholder-val="{{ false }}"><div style="padding:40px 0;font:600 16px/1.5 'Mukta',sans-serif;color:#A99C88">No results. Try a Hindi word such as गीता or नर्मदा.</div></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isLib }}" hint-placeholder-val="{{ false }}">
+<div style="padding:28px var(--px) 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+  <div style="display:flex;align-items:center;gap:16px"><span style="width:64px;height:64px;border-radius:50%;background:#F2BC4F;color:#1A1107;display:flex;align-items:center;justify-content:center;font:800 26px/1 'Mukta',sans-serif">A</span><div style="display:flex;flex-direction:column;gap:6px"><h1 style="margin:0;font:800 28px/1.15 'Mukta',sans-serif">My Library</h1><sc-if value="{{ signed }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:6px;font:700 13.5px/1 'Mukta',sans-serif;color:#F2BC4F"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"></path></svg>Premium member · free</span></sc-if><sc-if value="{{ notSigned }}" hint-placeholder-val="{{ true }}"><span style="font:500 14px/1.3 'Mukta',sans-serif;color:#A99C88">Sign in to sync your library across devices.</span></sc-if></div></div>
+  <sc-if value="{{ notSigned }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openAuth }}" style="height:44px;padding:0 20px;border:0;border-radius:10px;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 15px/1 'Mukta',sans-serif">Sign in</button></sc-if>
+  <sc-if value="{{ signed }}" hint-placeholder-val="{{ false }}"><button onClick="{{ signOut }}" style="height:40px;padding:0 16px;border:1px solid rgba(242,200,120,.26);border-radius:10px;background:none;color:#EADFCB;cursor:pointer;font:700 14px/1 'Mukta',sans-serif">Sign out</button></sc-if>
+</div>
+<div style="margin-top:20px;padding:0 var(--px);border-bottom:1px solid rgba(242,200,120,.12)"><div data-noscroll="" style="display:flex;gap:28px;overflow-x:auto"><sc-for list="{{ libTabs }}" as="t" hint-placeholder-count="4"><button onClick="{{ t.go }}" style="flex:none;height:50px;padding:0;border:0;background:none;color:{{ t.col }};box-shadow:inset 0 -2px 0 {{ t.ul }};cursor:pointer;font:700 15px/1 'Mukta',sans-serif">{{ t.l }}</button></sc-for></div></div>
+<div style="padding:24px var(--px) 0">
+  <sc-if value="{{ lList }}" hint-placeholder-val="{{ true }}">
+    <sc-if value="{{ listEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:40px 0;font:600 16px/1.5 'Mukta',sans-serif;color:#A99C88">Nothing saved yet. Tap “My List” on any series.</div></sc-if>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:20px"><sc-for list="{{ listItems }}" as="s" hint-placeholder-count="2"><button onClick="{{ s.go }}" style="padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:10px"><span style="display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden"><img src="{{ s.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></span><span style="font:700 16px/1.25 'Mukta',sans-serif">{{ s.n }}</span><span style="margin-top:-6px;font:500 13px/1.3 'Mukta',sans-serif;color:#A99C88">{{ s.meta }} · New {{ s.day }}</span></button></sc-for></div>
+  </sc-if>
+  <sc-if value="{{ lCont }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:20px"><sc-for list="{{ cont }}" as="c" hint-placeholder-count="3"><button onClick="{{ c.go }}" style="padding:0;border:0;background:none;cursor:pointer;text-align:left;color:#FFFFFF;display:flex;flex-direction:column;gap:10px"><span style="position:relative;display:block;aspect-ratio:16/9;border-radius:10px;overflow:hidden"><img src="{{ c.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><span style="position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.25)"><span style="display:block;height:100%;width:{{ c.pct }};background:#F2BC4F"></span></span></span><span style="font:700 16px/1.25 'Mukta',sans-serif">{{ c.n }}</span><span style="margin-top:-6px;font:500 13px/1.3 'Mukta',sans-serif;color:#A99C88">{{ c.ep }} · {{ c.left }}</span></button></sc-for></div></sc-if>
+  <sc-if value="{{ lRem }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ remEmpty }}" hint-placeholder-val="{{ true }}"><div style="padding:40px 0;display:flex;flex-direction:column;align-items:flex-start;gap:14px;font:600 16px/1.5 'Mukta',sans-serif;color:#A99C88">No reminders. Set one from the release schedule.<button onClick="{{ goSched }}" style="height:40px;padding:0 16px;border:1px solid rgba(242,200,120,.3);border-radius:10px;background:none;color:#FFFFFF;cursor:pointer;font:700 14px/1 'Mukta',sans-serif">Open schedule</button></div></sc-if>
+    <div style="display:flex;flex-direction:column"><sc-for list="{{ remItems }}" as="r" hint-placeholder-count="2"><button onClick="{{ r.go }}" style="display:flex;align-items:center;gap:14px;padding:12px 0;border:0;border-bottom:1px solid rgba(242,200,120,.1);background:none;cursor:pointer;text-align:left;color:#FFFFFF"><img src="{{ r.img }}" alt="" style="width:110px;aspect-ratio:16/9;border-radius:8px;object-fit:cover"><span style="display:flex;flex-direction:column;gap:4px"><span style="font:700 16px/1.25 'Mukta',sans-serif">{{ r.n }}</span><span style="font:500 13.5px/1.3 'Mukta',sans-serif;color:#A99C88">{{ r.ep }}</span></span></button></sc-for></div>
+  </sc-if>
+  <sc-if value="{{ lDl }}" hint-placeholder-val="{{ false }}"><div style="padding:40px 0;font:600 16px/1.5 'Mukta',sans-serif;color:#A99C88">Downloads are available in the mobile app. Saved episodes and audiobooks will appear here.</div></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
+<div style="padding:clamp(28px,4vw,56px) var(--px) 0;display:flex;justify-content:center">
+  <div style="width:min(760px,100%);display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:800 12.5px/1 'Mukta',sans-serif;letter-spacing:.14em;color:#F2BC4F">QUIZ · ज्ञान परीक्षा</span><div style="height:5px;border-radius:3px;background:rgba(255,255,255,.1)"><div style="height:100%;width:{{ quiz.pct }};border-radius:3px;background:#F2BC4F;transition:width .4s ease"></div></div></div>
+    <sc-if value="{{ quiz.notDone }}" hint-placeholder-val="{{ true }}">
+      <span style="font:700 14px/1 'Mukta',sans-serif;color:#A99C88">{{ quiz.n }}</span>
+      <h1 style="margin:0;font:700 clamp(26px,2.6vw,38px)/1.3 'Eczar',serif">{{ quiz.q }}</h1>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px">
+        <sc-for list="{{ quiz.opts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.go }}" style="display:flex;align-items:center;gap:14px;min-height:62px;padding:12px 16px;border:1.5px solid {{ o.bd }};border-radius:12px;background:{{ o.bg }};cursor:pointer;text-align:left;color:#FFFFFF;font:700 18px/1.3 'Mukta',sans-serif" style-hover="border-color:#F2BC4F"><span style="flex:none;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font:800 14px/1 'Mukta',sans-serif;color:#F2BC4F">{{ o.l }}</span>{{ o.o }}</button></sc-for>
+      </div>
+      <sc-if value="{{ quiz.picked }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:16px;border-radius:14px;background:#140F0B;border:1px solid rgba(242,200,120,.14)">
+          <img src="{{ quiz.simg }}" alt="" style="flex:none;width:120px;aspect-ratio:16/9;border-radius:8px;object-fit:cover">
+          <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:5px"><sc-if value="{{ quiz.right }}" hint-placeholder-val="{{ false }}"><span style="font:800 15px/1.2 'Mukta',sans-serif;color:#7FC79A">Correct!</span></sc-if><sc-if value="{{ quiz.wrong }}" hint-placeholder-val="{{ false }}"><span style="font:800 15px/1.2 'Mukta',sans-serif;color:#FF8A7E">The answer is {{ quiz.ans }}</span></sc-if><span style="font:500 14px/1.4 'Mukta',sans-serif;color:#C9BCA6">Learn more in <button onClick="{{ quiz.sgo }}" style="padding:0;border:0;background:none;color:#F2BC4F;cursor:pointer;font:700 14px/1 'Mukta',sans-serif">{{ quiz.sn }}</button></span></div>
+          <button onClick="{{ quiz.next }}" style="height:44px;padding:0 20px;border:0;border-radius:10px;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 15px/1 'Mukta',sans-serif"><sc-if value="{{ quiz.notLast }}" hint-placeholder-val="{{ true }}">Next question</sc-if><sc-if value="{{ quiz.isLast }}" hint-placeholder-val="{{ false }}">See result</sc-if></button>
+        </div>
+      </sc-if>
+    </sc-if>
+    <sc-if value="{{ quiz.done }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:40px 20px;border-radius:20px;background:#140F0B;border:1px solid rgba(242,188,79,.25);text-align:center">
+        <span style="font:700 72px/1 'Eczar',serif;color:#F2BC4F">{{ quiz.score }}/{{ quiz.total }}</span>
+        <span style="font:700 22px/1.3 'Mukta',sans-serif">{{ quiz.verdict }}</span>
+        <div style="display:flex;gap:10px"><button onClick="{{ quiz.restart }}" style="height:46px;padding:0 20px;border:1px solid rgba(242,200,120,.3);border-radius:10px;background:none;color:#FFFFFF;cursor:pointer;font:700 15px/1 'Mukta',sans-serif">Try again</button><button onClick="{{ goSeries }}" style="height:46px;padding:0 20px;border:0;border-radius:10px;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 15px/1 'Mukta',sans-serif">Explore series</button></div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDoc }}" hint-placeholder-val="{{ false }}">
+<div style="padding:clamp(28px,4vw,56px) var(--px) clamp(24px,3vw,40px);border-bottom:1px solid rgba(242,200,120,.1);display:flex;flex-direction:column;gap:10px"><span style="font:800 12.5px/1 'Mukta',sans-serif;letter-spacing:.14em;color:#F2BC4F">VEER BHARAT NYAS · VBN OTT</span><h1 style="margin:0;font:800 clamp(30px,3vw,46px)/1.15 'Mukta',sans-serif">{{ doc.t }}</h1><p style="margin:0;max-width:720px;font:500 16.5px/1.6 'Mukta',sans-serif;color:#C9BCA6">{{ doc.sub }}</p></div>
+<div style="padding:28px var(--px) 0;display:grid;grid-template-columns:{{ colsDoc }};gap:clamp(20px,4vw,60px);align-items:start">
+  <nav style="position:sticky;top:90px;display:flex;flex-direction:column;gap:2px"><sc-for list="{{ docNav }}" as="d" hint-placeholder-count="4"><button onClick="{{ d.go }}" style="height:40px;padding:0 12px;border:0;border-radius:8px;background:{{ d.bg }};color:{{ d.col }};cursor:pointer;text-align:left;font:700 14.5px/1 'Mukta',sans-serif" style-hover="background:rgba(255,255,255,.04)">{{ d.l }}</button></sc-for></nav>
+  <div style="max-width:780px;display:flex;flex-direction:column">
+    <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-bottom:24px"><div style="display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid rgba(242,200,120,.14);border-radius:12px;background:#140F0B"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3zM3 7l9 6 9-6"></path></svg><span style="font:700 15px/1 'Mukta',sans-serif">Email</span><span style="font:500 14px/1.3 'Mukta',sans-serif;color:#A99C88">To be confirmed</span></div><div style="display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid rgba(242,200,120,.14);border-radius:12px;background:#140F0B"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"></path></svg><span style="font:700 15px/1 'Mukta',sans-serif">Phone</span><span style="font:500 14px/1.3 'Mukta',sans-serif;color:#A99C88">To be confirmed</span></div><div style="display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid rgba(242,200,120,.14);border-radius:12px;background:#140F0B"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21zM12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path></svg><span style="font:700 15px/1 'Mukta',sans-serif">Office</span><span style="font:500 14px/1.3 'Mukta',sans-serif;color:#A99C88">Bhopal, Madhya Pradesh</span></div></div></sc-if>
+    <sc-for list="{{ docSecs }}" as="s" hint-placeholder-count="4"><div id="{{ s.id }}" style="display:grid;grid-template-columns:48px 1fr;gap:12px;padding:22px 0;border-top:1px solid rgba(242,200,120,.1)"><span style="font:700 20px/1.3 'Eczar',serif;color:#F2BC4F">{{ s.num }}</span><div style="display:flex;flex-direction:column;gap:8px"><h2 style="margin:0;font:700 19px/1.3 'Mukta',sans-serif">{{ s.t }}</h2><p style="margin:0;font:500 15.5px/1.7 'Mukta',sans-serif;color:#C9BCA6">{{ s.b }}</p></div></div></sc-for>
+  </div>
+</div>
+</sc-if>
+
+</main>
+
+<footer style="margin-top:40px;padding:36px var(--px) 110px;border-top:1px solid rgba(242,200,120,.1);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;background:#0E0A07">
+  <div style="display:flex;align-items:center;gap:18px"><img src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:54px;width:auto"><span style="width:1px;height:40px;background:rgba(242,200,120,.18)"></span><span style="max-width:340px;font:500 13.5px/1.5 'Mukta',sans-serif;color:#A99C88">A public cultural service of Veer Bharat Nyas, Department of Culture, Government of Madhya Pradesh.</span></div>
+  <div style="display:flex;flex-wrap:wrap;gap:8px 20px;font:600 14px/1 'Mukta',sans-serif">
+    <button onClick="{{ goAbout }}" style="padding:0;border:0;background:none;color:#EADFCB;cursor:pointer;font:inherit" style-hover="color:#F2BC4F">About the Nyas</button>
+    <button onClick="{{ goHelp }}" style="padding:0;border:0;background:none;color:#EADFCB;cursor:pointer;font:inherit" style-hover="color:#F2BC4F">Help</button>
+    <button onClick="{{ goContact }}" style="padding:0;border:0;background:none;color:#EADFCB;cursor:pointer;font:inherit" style-hover="color:#F2BC4F">Contact</button>
+    <button onClick="{{ goPrivacy }}" style="padding:0;border:0;background:none;color:#EADFCB;cursor:pointer;font:inherit" style-hover="color:#F2BC4F">Privacy</button>
+    <button onClick="{{ goTerms }}" style="padding:0;border:0;background:none;color:#EADFCB;cursor:pointer;font:inherit" style-hover="color:#F2BC4F">Terms</button>
+  </div>
+</footer>
+</div>
+</div>
+
+<sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+<nav style="position:fixed;z-index:60;left:0;right:0;bottom:0;height:64px;padding-bottom:env(safe-area-inset-bottom);display:grid;grid-template-columns:repeat(5,1fr);background:rgba(11,8,6,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(242,200,120,.14)">
+  <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4"><button onClick="{{ t.go }}" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:0;background:none;color:{{ t.col }};cursor:pointer;font:700 11px/1 'Mukta',sans-serif"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.ic }}"></path></svg>{{ t.label }}</button></sc-for>
+  <button onClick="{{ openDrawer }}" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:0;background:none;color:#A99C88;cursor:pointer;font:700 11px/1 'Mukta',sans-serif"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 6.5h16M4 12h16M4 17.5h16"></path></svg>More</button>
+</nav>
+</sc-if>
+
+<sc-if value="{{ drawer }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:90;display:flex">
+  <div data-noscroll="" style="width:min(310px,86vw);height:100%;overflow-y:auto;box-sizing:border-box;padding:16px 12px 30px;background:#0E0A07;border-right:1px solid rgba(242,200,120,.14);display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0 6px 8px"><img src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="height:46px;width:auto"><button onClick="{{ closeDrawer }}" aria-label="Close" style="width:40px;height:40px;border:0;background:none;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button></div>
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="10">
+      <sc-if value="{{ n.isHead }}" hint-placeholder-val="{{ false }}"><div style="padding:16px 12px 6px;font:700 11px/1 'Mukta',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8A7D6A">{{ n.label }}</div></sc-if>
+      <sc-if value="{{ n.isItem }}" hint-placeholder-val="{{ true }}"><button onClick="{{ n.go }}" style="display:flex;align-items:center;gap:14px;min-height:46px;padding:0 12px;border:0;border-radius:10px;background:{{ n.bg }};color:{{ n.col }};cursor:pointer;text-align:left;font:600 15.5px/1 'Mukta',sans-serif"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="color:{{ n.icol }}"><path d="{{ n.ic }}"></path></svg><span style="flex:1">{{ n.label }}</span><span style="font:600 13px/1 'Eczar',serif;color:#8A7D6A">{{ n.sub }}</span></button></sc-if>
+    </sc-for>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px;padding:0 6px"><a href="VBN Creator Studio.dc.html" style="display:flex;align-items:center;justify-content:center;height:40px;border:1px solid rgba(242,200,120,.2);border-radius:8px;color:#EADFCB;font:700 13px/1 'Mukta',sans-serif">Creator Studio</a><a href="VBN Admin Console.dc.html" style="display:flex;align-items:center;justify-content:center;height:40px;border:1px solid rgba(242,200,120,.2);border-radius:8px;color:#EADFCB;font:700 13px/1 'Mukta',sans-serif">Admin Console</a></div>
+  </div>
+  <button onClick="{{ closeDrawer }}" aria-label="Close menu" style="flex:1;border:0;background:rgba(0,0,0,.6);cursor:pointer"></button>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasMini }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;z-index:55;right:16px;bottom:80px;width:min(420px,calc(100vw - 32px));display:flex;flex-direction:column;border-radius:14px;overflow:hidden;background:#1A130E;border:1px solid rgba(242,188,79,.3);box-shadow:0 18px 40px rgba(0,0,0,.6)">
+  <div style="display:flex;align-items:center;gap:12px;padding:10px">
+    <button onClick="{{ mini.open }}" style="flex:none;padding:0;border:0;background:none;cursor:pointer"><img src="{{ mini.img }}" alt="" style="width:52px;height:52px;border-radius:8px;object-fit:cover;display:block"></button>
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font:800 11px/1 'Mukta',sans-serif;letter-spacing:.1em;color:#F2BC4F;text-transform:uppercase">{{ mini.k }} · {{ mini.s }}</span><span style="font:700 14.5px/1.25 'Mukta',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ mini.t }}</span></div>
+    <button onClick="{{ mini.toggle }}" aria-label="Play or pause" style="flex:none;width:42px;height:42px;border:0;border-radius:50%;background:#F2BC4F;color:#1A1107;cursor:pointer;display:flex;align-items:center;justify-content:center">
+      <sc-if value="{{ mini.on }}" hint-placeholder-val="{{ true }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"></path></svg></sc-if>
+      <sc-if value="{{ mini.off }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"></path></svg></sc-if>
+    </button>
+    <button onClick="{{ mini.close }}" aria-label="Close player" style="flex:none;width:34px;height:34px;border:0;background:none;color:#A99C88;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+  </div>
+  <div style="height:3px;background:rgba(255,255,255,.1)"><div style="height:100%;width:{{ mini.pct }};background:#F2BC4F;transition:width 1s linear"></div></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasBk }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:95;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(5,3,2,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">
+  <div data-noscroll="" style="position:relative;width:min(1080px,100%);max-height:calc(100vh - 40px);overflow-y:auto;border-radius:18px;background:#140F0B;border:1px solid rgba(242,200,120,.18);box-shadow:0 30px 80px rgba(0,0,0,.7)">
+    <button onClick="{{ bk.close }}" aria-label="Close" style="position:absolute;right:14px;top:14px;z-index:2;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.08);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(255,255,255,.16)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(20px,3vw,44px);padding:clamp(22px,3vw,40px)">
+      <div style="display:flex;align-items:center;justify-content:center;padding:20px;perspective:1200px">
+        <div style="position:relative;width:min(340px,72vw);transform:rotateY(-14deg);transform-style:preserve-3d;box-shadow:24px 30px 50px rgba(0,0,0,.65);border-radius:3px 8px 8px 3px">
+          <sc-if value="{{ bk.hasImg }}" hint-placeholder-val="{{ true }}"><img src="{{ bk.img }}" alt="" style="width:100%;height:auto;display:block;border-radius:3px 8px 8px 3px"></sc-if>
+          <sc-if value="{{ bk.noImg }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:3/4;border-radius:3px 8px 8px 3px;background:{{ bk.c0 }};display:flex;flex-direction:column;justify-content:space-between;padding:26px 20px;box-sizing:border-box;box-shadow:inset 0 0 0 9px rgba(0,0,0,.15),inset 0 0 0 10px {{ bk.c1 }}"><span style="font:700 11px/1 'Mukta',sans-serif;letter-spacing:.16em;color:{{ bk.c1 }}">VEER BHARAT NYAS</span><span style="font:700 30px/1.15 'Eczar',serif;color:{{ bk.c1 }}">{{ bk.n }}</span><img src="assets/emblem-mark.png" alt="" style="width:40px;height:40px;object-fit:contain"></div></sc-if>
+          <div style="position:absolute;left:0;top:0;bottom:0;width:10px;background:linear-gradient(90deg,rgba(0,0,0,.45),rgba(255,255,255,.08),rgba(0,0,0,0));border-radius:3px 0 0 3px"></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-right:30px">
+        <span style="font:800 12px/1 'Mukta',sans-serif;letter-spacing:.12em;color:#F2BC4F;text-transform:uppercase">{{ bk.subj }}</span>
+        <h2 style="margin:0;font:700 clamp(28px,3vw,40px)/1.15 'Eczar',serif">{{ bk.n }}</h2>
+        <p style="margin:0;font:500 17px/1.55 'Mukta',sans-serif;color:#EADFCB">{{ bk.s }}</p>
+        <div style="display:grid;grid-template-columns:auto 1fr;gap:10px 18px;padding:16px 0;border-top:1px solid rgba(242,200,120,.12);border-bottom:1px solid rgba(242,200,120,.12);font:500 14.5px/1.35 'Mukta',sans-serif">
+          <span style="color:#A99C88">Author / editor</span><span>{{ bk.by }}</span>
+          <span style="color:#A99C88">Publisher</span><span>वीर भारत न्यास, भोपाल</span>
+          <span style="color:#A99C88">Pages</span><span>{{ bk.pages }}</span>
+          <sc-if value="{{ bk.hasEd }}" hint-placeholder-val="{{ false }}"><span style="color:#A99C88">Volumes</span><span>{{ bk.ed }}</span></sc-if>
+          <span style="color:#A99C88">Language</span><span>हिन्दी</span>
+        </div>
+        <sc-if value="{{ bk.fromEv }}" hint-placeholder-val="{{ false }}"><button onClick="{{ bk.evGo }}" style="align-self:flex-start;display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid rgba(242,188,79,.4);border-radius:999px;background:rgba(242,188,79,.08);color:#F2BC4F;cursor:pointer;font:700 13px/1 'Mukta',sans-serif"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"></path></svg>Released at {{ bk.evN }}</button></sc-if>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <button style="display:flex;align-items:center;gap:8px;height:46px;padding:0 20px;border:0;border-radius:10px;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 15px/1 'Mukta',sans-serif" style-hover="background:#F8CB68"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"></path></svg>Read sample</button>
+          <sc-if value="{{ bk.hasAb }}" hint-placeholder-val="{{ false }}"><button onClick="{{ bk.abGo }}" style="display:flex;align-items:center;gap:8px;height:46px;padding:0 18px;border:1px solid rgba(242,200,120,.3);border-radius:10px;background:none;color:#FFFFFF;cursor:pointer;font:700 15px/1 'Mukta',sans-serif" style-hover="border-color:#F2BC4F"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3M4 15h3v6H4zM17 15h3v6h-3z"></path></svg>Listen to audiobook</button></sc-if>
+          <button style="display:flex;align-items:center;gap:8px;height:46px;padding:0 18px;border:1px solid rgba(242,200,120,.3);border-radius:10px;background:none;color:#FFFFFF;cursor:pointer;font:700 15px/1 'Mukta',sans-serif" style-hover="border-color:#F2BC4F">Where to get a copy</button>
+        </div>
+      </div>
+    </div>
+    <div style="padding:0 clamp(22px,3vw,40px) clamp(22px,3vw,40px)">
+      <div style="font:800 12px/1 'Mukta',sans-serif;letter-spacing:.12em;color:#A99C88;margin-bottom:14px">INSIDE THE BOOK · SAMPLE PAGES</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));border-radius:6px;overflow:hidden;background:#F3E7CF;box-shadow:0 20px 40px rgba(0,0,0,.4)">
+        <div style="padding:32px 34px;display:flex;flex-direction:column;gap:12px;background:linear-gradient(90deg,#F3E7CF 85%,#E3D3B4);color:#3A2716">
+          <span style="font:700 12px/1 'Mukta',sans-serif;letter-spacing:.14em;color:#8E5A0C">अनुक्रम</span>
+          <sc-for list="{{ bk.toc }}" as="t" hint-placeholder-count="5"><div style="display:flex;align-items:baseline;gap:8px;font:500 16px/1.4 'Tiro Devanagari Sanskrit',serif"><span>{{ t.t }}</span><span style="flex:1;border-bottom:1.5px dotted rgba(58,39,22,.35);transform:translateY(-4px)"></span><span style="font:600 14px/1 'Mukta',sans-serif">{{ t.pg }}</span></div></sc-for>
+        </div>
+        <div style="padding:32px 34px;display:flex;flex-direction:column;gap:10px;background:linear-gradient(270deg,#F3E7CF 85%,#E3D3B4);color:#3A2716">
+          <span style="font:700 22px/1.2 'Tiro Devanagari Sanskrit',serif">प्रस्तावना</span>
+          <sc-for list="{{ bk.lines }}" as="l" hint-placeholder-count="10"><span style="display:block;height:7px;width:{{ l.w }};border-radius:4px;background:rgba(58,39,22,.16)"></span></sc-for>
+          <span style="margin-top:auto;align-self:center;font:600 12px/1 'Mukta',sans-serif;color:#8E5A0C">नमूना पृष्ठ,</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ auth }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(5,3,2,.8);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">
+  <div style="position:relative;width:min(900px,100%);display:grid;grid-template-columns:{{ colsAuth }};border-radius:20px;overflow:hidden;background:#140F0B;border:1px solid rgba(242,200,120,.18);box-shadow:0 30px 80px rgba(0,0,0,.7)">
+    <button onClick="{{ closeAuth }}" aria-label="Close" style="position:absolute;right:12px;top:12px;z-index:2;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.08);color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+    <sc-if value="{{ authSide }}" hint-placeholder-val="{{ true }}">
+      <div style="position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:36px;background:#1C130C;overflow:hidden">
+        <img src="art/16x9/geeta-amrit.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,19,12,.4),#1C130C 85%)"></div>
+        <img src="assets/wordmark-gold.svg" alt="वीर भारत न्यास" style="position:relative;height:84px;width:auto;align-self:flex-start">
+        <div style="position:relative;display:flex;flex-direction:column;gap:14px">
+          <span style="font:700 26px/1.3 'Eczar',serif">भारत की कथाएँ, आपकी स्क्रीन पर।</span>
+          <span style="display:flex;flex-direction:column;gap:10px;font:600 14.5px/1.3 'Mukta',sans-serif;color:#EADFCB"><span style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Premium unlocked, free</span><span style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Resume on any device</span><span style="display:flex;gap:10px;align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2BC4F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Reminders for new episodes</span></span>
+        </div>
+      </div>
+    </sc-if>
+    <div style="padding:36px clamp(22px,3vw,40px);display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;gap:24px;border-bottom:1px solid rgba(242,200,120,.14)">
+        <button onClick="{{ tabIn }}" style="padding:0 0 12px;border:0;background:none;color:{{ tInCol }};box-shadow:inset 0 -2px 0 {{ tInUl }};cursor:pointer;font:800 17px/1 'Mukta',sans-serif">Sign in</button>
+        <button onClick="{{ tabUp }}" style="padding:0 0 12px;border:0;background:none;color:{{ tUpCol }};box-shadow:inset 0 -2px 0 {{ tUpUl }};cursor:pointer;font:800 17px/1 'Mukta',sans-serif">Create account</button>
+      </div>
+      <sc-if value="{{ authUp }}" hint-placeholder-val="{{ false }}">
+        <label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#EADFCB">Full name<span style="position:relative;display:block"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8F8371" stroke-width="2" stroke-linecap="round" style="position:absolute;left:14px;top:14px"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0"></path></svg><input placeholder="Your name" style="width:100%;height:46px;box-sizing:border-box;padding:0 14px 0 44px;border:1px solid rgba(242,200,120,.2);border-radius:10px;background:#0E0A07;color:#FFFFFF;font:500 15px/1 'Mukta',sans-serif;outline:none" style-focus="border-color:#F2BC4F"></span></label>
+      </sc-if>
+      <label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#EADFCB">Email or mobile number<span style="position:relative;display:block"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8F8371" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;left:14px;top:14px"><path d="M3 6h18v12H3zM3 7l9 6 9-6"></path></svg><input placeholder="name@example.com or 98XXXXXXXX" style="width:100%;height:46px;box-sizing:border-box;padding:0 14px 0 44px;border:1px solid rgba(242,200,120,.2);border-radius:10px;background:#0E0A07;color:#FFFFFF;font:500 15px/1 'Mukta',sans-serif;outline:none" style-focus="border-color:#F2BC4F"></span></label>
+      <label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#EADFCB">Password<span style="position:relative;display:block"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8F8371" stroke-width="2" stroke-linecap="round" style="position:absolute;left:14px;top:14px"><path d="M6 11h12v10H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3"></path></svg><input type="password" placeholder="••••••••" style="width:100%;height:46px;box-sizing:border-box;padding:0 14px 0 44px;border:1px solid rgba(242,200,120,.2);border-radius:10px;background:#0E0A07;color:#FFFFFF;font:500 15px/1 'Mukta',sans-serif;outline:none" style-focus="border-color:#F2BC4F"></span></label>
+      <button onClick="{{ doSign }}" style="height:48px;border:0;border-radius:10px;background:#F2BC4F;color:#1A1107;cursor:pointer;font:800 16px/1 'Mukta',sans-serif" style-hover="background:#F8CB68"><sc-if value="{{ authIn }}" hint-placeholder-val="{{ true }}">Sign in</sc-if><sc-if value="{{ authUp }}" hint-placeholder-val="{{ false }}">Create free account</sc-if></button>
+      <div style="display:flex;align-items:center;gap:12px;font:600 12.5px/1 'Mukta',sans-serif;color:#8A7D6A"><span style="flex:1;height:1px;background:rgba(242,200,120,.14)"></span>OR<span style="flex:1;height:1px;background:rgba(242,200,120,.14)"></span></div>
+      <button onClick="{{ doSign }}" style="height:46px;border:1px solid rgba(242,200,120,.24);border-radius:10px;background:none;color:#FFFFFF;cursor:pointer;font:700 15px/1 'Mukta',sans-serif" style-hover="border-color:#F2BC4F">Continue with mobile OTP</button>
+      <span style="font:500 12.5px/1.5 'Mukta',sans-serif;color:#8A7D6A">By continuing you agree to the Terms of use and Privacy policy.</span>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}"><div style="position:fixed;z-index:120;left:50%;bottom:96px;transform:translateX(-50%);padding:12px 18px;border-radius:10px;background:#FFFFFF;color:#120D09;font:700 14.5px/1.2 'Mukta',sans-serif;box-shadow:0 12px 30px rgba(0,0,0,.5)">{{ toast }}</div></sc-if>
+
+<sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:#0B0806;pointer-events:none;animation:vbnFade .55s ease forwards">
+  <div style="position:relative;width:120px;height:120px;display:flex;align-items:center;justify-content:center">
+    <svg width="120" height="120" viewBox="0 0 120 120" style="position:absolute;inset:0"><circle cx="60" cy="60" r="48" fill="none" stroke="rgba(242,188,79,.14)" stroke-width="2"></circle><circle cx="60" cy="60" r="48" fill="none" stroke="#F2BC4F" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="302" stroke-dashoffset="302" style="transform-origin:60px 60px;animation:vbnRing .9s cubic-bezier(.6,0,.3,1) forwards"></circle></svg>
+    <img src="assets/emblem-mark.png" alt="वीर भारत न्यास" style="width:64px;height:64px;object-fit:contain;animation:vbnPop .6s ease forwards"></div>
+</div>
+</sc-if>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state={page:'home',p:{},loading:true,w:typeof window!=='undefined'?window.innerWidth:1440,sc:false,hero:0,rail:false,signed:false,sf:'All',bf:'All',shortI:0,tick:0,pod:'mahabharat',ab:'ab-amrit-3',abCh:0,speed:'1x',sleep:'Off',player:null,playing:false,bk:null,evTab:'overview',evYear:'All',sv:'week',ss:'all',wk:0,mo:0,qi:0,qp:null,qs:0,q:'',libTab:'list',toast:'',list:{mahadev:1,sadanira:1},remind:{},liked:{},auth:false,authTab:'in',drawer:false};
+  componentDidMount(){
+    try{const r=JSON.parse(localStorage.getItem('vbn3.route')||'null');if(r&&r.page)this.setState({page:r.page,p:r.p||{}})}catch(e){}
+    this._t=setTimeout(()=>this.setState({loading:false}),1100);
+    this._rs=()=>this.setState({w:window.innerWidth});window.addEventListener('resize',this._rs);
+    this._sc=()=>{const y=window.scrollY>40;if(y!==this.state.sc)this.setState({sc:y})};window.addEventListener('scroll',this._sc,{passive:true});
+    this._hi=setInterval(()=>{const s=this.state;if(s.page==='home'&&!s.loading&&!s.auth)this.setState({hero:(s.hero+1)%6})},8000);
+    this._ti=setInterval(()=>{const s=this.state;const need=s.page==='shorts'||s.playing||(s.player&&s.player.on);if(!need)return;const u={tick:s.tick+1};if(s.page==='shorts'&&(s.tick+1)%15===0&&window.VBN3)u.shortI=(s.shortI+1)%window.VBN3.SH.length;this.setState(u)},1000);
+    this._kd=e=>{if(e.key==='/'&&document.activeElement.tagName!=='INPUT'){e.preventDefault();this.go('search');return}if(this.state.page!=='shorts')return;if(e.key==='ArrowDown'){e.preventDefault();this.nextShort(1)}if(e.key==='ArrowUp'){e.preventDefault();this.nextShort(-1)}};
+    window.addEventListener('keydown',this._kd);
+    const poll=()=>{if(window.VBN3&&window.VBN3APP)this.forceUpdate();else setTimeout(poll,50)};poll();
+  }
+  componentWillUnmount(){clearTimeout(this._t);clearInterval(this._hi);clearInterval(this._ti);window.removeEventListener('resize',this._rs);window.removeEventListener('scroll',this._sc);window.removeEventListener('keydown',this._kd)}
+  go(page,p){this.setState({page,p:p||{},loading:true,drawer:false,bk:null,evTab:'overview',playing:false,tick:0,qp:null});try{localStorage.setItem('vbn3.route',JSON.stringify({page,p:p||{}}))}catch(e){}window.scrollTo(0,0);clearTimeout(this._t);this._t=setTimeout(()=>this.setState({loading:false}),520)}
+  nextShort(d){const n=window.VBN3.SH.length;this.setState(s=>({shortI:(s.shortI+d+n)%n,tick:0}))}
+  play(kind,id,k){const u={player:{kind,id,k,on:true}};if(kind==='ab'){u.ab=id;u.abCh=k}if(kind==='pod')u.pod=id;this.setState(u)}
+  togglePlay(){const p=this.state.player;if(p)this.setState({player:Object.assign({},p,{on:!p.on})})}
+  toastOff(){clearTimeout(this._tt);this._tt=setTimeout(()=>this.setState({toast:''}),2200)}
+  renderVals(){if(!(window.VBN3&&window.VBN3APP))return{ready:false,notReady:true,px:'40px'};return window.VBN3APP.render(this)}
+}
+</script>
+</body>
+</html>

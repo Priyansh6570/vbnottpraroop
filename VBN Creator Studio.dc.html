@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#F6F7F9;color:#101828}
+body{-webkit-font-smoothing:antialiased;font-family:'Mukta',sans-serif}
+a{color:#7C2D12;text-decoration:none}a:hover{color:#101828}
+input::placeholder,textarea::placeholder{color:#98A2B3;opacity:1}
+</style>
+</helmet>
+<div data-screen-label="{{ label }}" style="display:flex;min-height:100vh;background:#F6F7F9;color:#101828;font-family:'Mukta',sans-serif">
+<aside style="position:sticky;top:0;flex:none;width:248px;height:100vh;box-sizing:border-box;padding:18px 14px;background:#FFFFFF;border-right:1px solid #E4E7EC;display:flex;flex-direction:column;gap:18px">
+  <div style="display:flex;align-items:center;gap:10px;padding:0 6px"><img src="assets/emblem-mark.png" alt="" style="width:38px;height:38px;object-fit:contain"><div style="display:flex;flex-direction:column;gap:3px"><span style="font:800 15px/1 'Mukta',sans-serif">Creator Studio</span><span style="font:600 12px/1 'Mukta',sans-serif;color:#667085">VBN OTT</span></div></div>
+  <nav style="display:flex;flex-direction:column;gap:2px">
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="7"><button onClick="{{ n.go }}" style="display:flex;align-items:center;gap:12px;height:40px;padding:0 12px;border:0;border-radius:8px;background:{{ n.bg }};color:{{ n.col }};cursor:pointer;text-align:left;font:700 14.5px/1 'Mukta',sans-serif" style-hover="background:#F2F4F7"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="color:{{ n.ic2 }}"><path d="{{ n.ic }}"></path></svg><span style="flex:1">{{ n.l }}</span><sc-if value="{{ n.hasB }}" hint-placeholder-val="{{ false }}"><span style="min-width:20px;height:20px;padding:0 6px;box-sizing:border-box;border-radius:10px;background:#FEF3F2;color:#B42318;font:800 11.5px/20px 'Mukta',sans-serif;text-align:center">{{ n.b }}</span></sc-if></button></sc-for>
+  </nav>
+  <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
+    <div style="padding:12px;border:1px solid #E4E7EC;border-radius:10px;display:flex;flex-direction:column;gap:6px"><span style="font:800 13px/1.2 'Mukta',sans-serif">Channel status</span><span style="display:flex;align-items:center;gap:6px;font:600 12.5px/1 'Mukta',sans-serif;color:#067647"><span style="width:7px;height:7px;border-radius:50%;background:#12B76A"></span>Verified creator</span></div>
+    <a href="VBN OTT Platform v3.dc.html" style="display:flex;align-items:center;justify-content:center;gap:8px;height:38px;border:1px solid #D0D5DD;border-radius:8px;color:#344054;font:700 13.5px/1 'Mukta',sans-serif" style-hover="background:#F9FAFB"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>Back to VBN OTT</a>
+  </div>
+</aside>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column">
+  <header style="position:sticky;top:0;z-index:10;height:64px;box-sizing:border-box;padding:0 28px;display:flex;align-items:center;gap:14px;background:#FFFFFF;border-bottom:1px solid #E4E7EC">
+    <h1 style="margin:0;font:800 19px/1 'Mukta',sans-serif">{{ title }}</h1>
+    <span style="flex:1"></span>
+    <div style="position:relative;width:min(300px,30vw)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" style="position:absolute;left:11px;top:11px"><path d="M10.5 17.5a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13zM15.5 15.5 20 20"></path></svg><input placeholder="Search your content" style="width:100%;height:38px;box-sizing:border-box;padding:0 12px 0 36px;border:1px solid #D0D5DD;border-radius:8px;background:#FFFFFF;font:500 14px/1 'Mukta',sans-serif;outline:none;color:#101828" style-focus="border-color:#7C2D12"></div>
+    <button onClick="{{ goUpload }}" style="display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;border:0;border-radius:8px;background:#7C2D12;color:#FFFFFF;cursor:pointer;font:700 14px/1 'Mukta',sans-serif;white-space:nowrap" style-hover="background:#9A3412"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Upload</button>
+    <span style="width:36px;height:36px;border-radius:50%;background:#FFF4ED;color:#9A3412;display:flex;align-items:center;justify-content:center;font:800 14px/1 'Mukta',sans-serif">DC</span>
+  </header>
+  <main style="padding:24px 28px 48px;display:flex;flex-direction:column;gap:20px">
+
+  <sc-if value="{{ isDash }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font:800 22px/1.2 'Mukta',sans-serif">Welcome back, Demo Creator Channel</span><span style="font:500 14.5px/1.4 'Mukta',sans-serif;color:#667085">Here’s how your content performed in the last 28 days.</span></div><div style="display:flex;gap:4px;padding:3px;border:1px solid #E4E7EC;border-radius:8px;background:#FFFFFF"><span style="padding:6px 10px;border-radius:6px;font:700 13px/1 'Mukta',sans-serif;color:#667085">7 days</span><span style="padding:6px 10px;border-radius:6px;background:#F2F4F7;font:700 13px/1 'Mukta',sans-serif">28 days</span><span style="padding:6px 10px;border-radius:6px;font:700 13px/1 'Mukta',sans-serif;color:#667085">90 days</span></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+      <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4"><div style="padding:18px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;display:flex;flex-direction:column;gap:8px"><span style="font:600 13.5px/1 'Mukta',sans-serif;color:#667085">{{ k.l }}</span><span style="font:800 28px/1 'Mukta',sans-serif">{{ k.v }}</span><span style="font:700 12.5px/1 'Mukta',sans-serif;color:{{ k.dc }}">{{ k.d }} vs previous period</span></div></sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+      <div style="padding:18px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;display:flex;flex-direction:column;gap:14px"><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:800 16px/1 'Mukta',sans-serif">Daily views</span><span style="font:600 12.5px/1 'Mukta',sans-serif;color:#667085">Last 28 days</span></div>
+        <div style="height:180px;display:flex;align-items:flex-end;gap:4px;padding-bottom:4px;border-bottom:1px solid #E4E7EC"><sc-for list="{{ bars }}" as="b" hint-placeholder-count="28"><span style="flex:1;height:{{ b.h }};border-radius:3px 3px 0 0;background:{{ b.c }}"></span></sc-for></div>
+        <div style="display:flex;justify-content:space-between;font:600 12px/1 'Mukta',sans-serif;color:#98A2B3"><span>16 Sep</span><span>30 Sep</span><span>13 Oct</span></div>
+      </div>
+      <div style="padding:18px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;display:flex;flex-direction:column;gap:12px"><span style="font:800 16px/1 'Mukta',sans-serif">Editorial feedback</span>
+        <sc-for list="{{ feedback }}" as="f" hint-placeholder-count="3"><div style="display:flex;gap:12px;padding:12px;border-radius:10px;background:#F9FAFB"><span style="flex:none;height:22px;padding:0 8px;border-radius:11px;background:{{ f.bg }};color:{{ f.c }};font:700 12px/22px 'Mukta',sans-serif">{{ f.s }}</span><div style="display:flex;flex-direction:column;gap:4px"><span style="font:700 14.5px/1.3 'Mukta',sans-serif">{{ f.t }}</span><span style="font:500 13.5px/1.45 'Mukta',sans-serif;color:#475467">{{ f.m }}</span></div></div></sc-for>
+      </div>
+    </div>
+    <div style="border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;overflow:hidden"><div style="padding:16px 18px;display:flex;justify-content:space-between;align-items:center"><span style="font:800 16px/1 'Mukta',sans-serif">Recent uploads</span><button onClick="{{ goContent }}" style="padding:0;border:0;background:none;color:#7C2D12;cursor:pointer;font:700 13.5px/1 'Mukta',sans-serif">View all</button></div>
+      <sc-for list="{{ recent }}" as="r" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:72px minmax(0,1fr) 120px 110px;gap:14px;align-items:center;padding:10px 18px;border-top:1px solid #F2F4F7"><img src="{{ r.img }}" alt="" style="width:72px;aspect-ratio:16/9;border-radius:6px;object-fit:cover"><div style="min-width:0;display:flex;flex-direction:column;gap:3px"><span style="font:700 14.5px/1.3 'Mukta',sans-serif">{{ r.t }}</span><span style="font:500 12.5px/1 'Mukta',sans-serif;color:#667085">{{ r.k }} · {{ r.d }}</span></div><span style="justify-self:start;height:24px;padding:0 9px;border-radius:12px;background:{{ r.bg }};color:{{ r.c }};font:700 12px/24px 'Mukta',sans-serif">{{ r.s }}</span><span style="font:700 14px/1 'Mukta',sans-serif;text-align:right">{{ r.v }}</span></div></sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isContent }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;gap:24px;border-bottom:1px solid #E4E7EC"><sc-for list="{{ ctabs }}" as="t" hint-placeholder-count="5"><button onClick="{{ t.go }}" style="display:flex;align-items:center;gap:6px;height:42px;padding:0;border:0;background:none;color:{{ t.col }};box-shadow:inset 0 -2px 0 {{ t.ul }};cursor:pointer;font:700 14.5px/1 'Mukta',sans-serif">{{ t.l }}<span style="padding:2px 7px;border-radius:10px;background:#F2F4F7;color:#475467;font:700 11.5px/1.4 'Mukta',sans-serif">{{ t.n }}</span></button></sc-for></div>
+    <div style="border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;overflow-x:auto">
+      <div style="min-width:820px;display:grid;grid-template-columns:minmax(0,2.4fr) 1fr 1.3fr 1fr 1fr .8fr;gap:14px;padding:12px 18px;background:#F9FAFB;border-bottom:1px solid #E4E7EC;font:700 12.5px/1 'Mukta',sans-serif;color:#667085"><span>Title</span><span>Type</span><span>Series</span><span>Status</span><span>Release</span><span style="text-align:right">Views</span></div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8"><div style="min-width:820px;display:grid;grid-template-columns:minmax(0,2.4fr) 1fr 1.3fr 1fr 1fr .8fr;gap:14px;align-items:center;padding:10px 18px;border-bottom:1px solid #F2F4F7;font:500 14px/1.3 'Mukta',sans-serif"><span style="display:flex;align-items:center;gap:12px;min-width:0"><img src="{{ r.img }}" alt="" style="flex:none;width:64px;aspect-ratio:16/9;border-radius:5px;object-fit:cover"><span style="font-weight:700">{{ r.t }}</span></span><span style="color:#475467">{{ r.k }}</span><span style="color:#475467">{{ r.sr }}</span><span><span style="display:inline-block;height:24px;padding:0 9px;border-radius:12px;background:{{ r.bg }};color:{{ r.c }};font:700 12px/24px 'Mukta',sans-serif">{{ r.s }}</span></span><span style="color:#475467">{{ r.d }}</span><span style="text-align:right;font-weight:700">{{ r.v }}</span></div></sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isUpload }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ steps }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.go }}" style="display:flex;align-items:center;gap:8px;height:38px;padding:0 14px 0 6px;border:1px solid {{ s.bd }};border-radius:999px;background:#FFFFFF;cursor:pointer;color:{{ s.col }};font:700 13.5px/1 'Mukta',sans-serif"><span style="width:26px;height:26px;border-radius:50%;background:{{ s.nbg }};color:{{ s.nc }};display:flex;align-items:center;justify-content:center;font:800 12.5px/1 'Mukta',sans-serif">{{ s.n }}</span>{{ s.l }}</button></sc-for></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:18px;align-items:start">
+      <div style="padding:22px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;flex-direction:column;gap:7px"><span style="font:700 13.5px/1 'Mukta',sans-serif;color:#344054">Content type</span><div style="display:flex;flex-wrap:wrap;gap:4px;padding:3px;border:1px solid #E4E7EC;border-radius:9px;align-self:flex-start"><sc-for list="{{ types }}" as="t" hint-placeholder-count="4"><button onClick="{{ t.go }}" style="height:32px;padding:0 12px;border:0;border-radius:6px;background:{{ t.bg }};color:{{ t.col }};cursor:pointer;font:700 13.5px/1 'Mukta',sans-serif">{{ t.l }}</button></sc-for></div></div>
+        <label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#344054">Title (Hindi)<input value="नर्मदा : उद्गम से सागर तक" style="height:42px;padding:0 12px;border:1px solid #D0D5DD;border-radius:8px;font:500 15px/1 'Mukta',sans-serif;color:#101828;outline:none" style-focus="border-color:#7C2D12"></label>
+        <label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#344054">Description<textarea rows="4" style="padding:10px 12px;border:1px solid #D0D5DD;border-radius:8px;font:500 15px/1.5 'Mukta',sans-serif;color:#101828;outline:none;resize:vertical" style-focus="border-color:#7C2D12">अमरकंटक से भरूच तक नर्मदा की यात्रा, तीर्थ, घाट और परंपराएँ।</textarea></label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#344054">Series<select style="height:42px;padding:0 10px;border:1px solid #D0D5DD;border-radius:8px;background:#FFFFFF;font:500 14.5px/1 'Mukta',sans-serif;color:#101828"><option>सदानीरा</option><option>महाजनपद</option><option>New series…</option></select></label><label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#344054">Language<select style="height:42px;padding:0 10px;border:1px solid #D0D5DD;border-radius:8px;background:#FFFFFF;font:500 14.5px/1 'Mukta',sans-serif;color:#101828"><option>Hindi</option><option>English</option></select></label></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:28px;border:1.5px dashed #D0D5DD;border-radius:12px;background:#F9FAFB;text-align:center"><span style="width:44px;height:44px;border-radius:50%;background:#FFF4ED;color:#9A3412;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"></path></svg></span><span style="font:700 15px/1.3 'Mukta',sans-serif">Drag your video file here</span><span style="font:500 13px/1.3 'Mukta',sans-serif;color:#667085">MP4 or MOV · up to 20 GB · 1080p or 4K</span></div>
+        <div style="display:flex;justify-content:flex-end;gap:10px"><button style="height:40px;padding:0 16px;border:1px solid #D0D5DD;border-radius:8px;background:#FFFFFF;color:#344054;cursor:pointer;font:700 14px/1 'Mukta',sans-serif">Save draft</button><button onClick="{{ nextStep }}" style="height:40px;padding:0 16px;border:0;border-radius:8px;background:#7C2D12;color:#FFFFFF;cursor:pointer;font:700 14px/1 'Mukta',sans-serif">Continue</button></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="padding:18px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;display:flex;flex-direction:column;gap:12px"><span style="font:800 15px/1 'Mukta',sans-serif">Preview on VBN OTT</span><div style="border-radius:10px;overflow:hidden;background:#0B0806"><img src="art/16x9/sadanira.jpg" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block"><div style="padding:12px;display:flex;flex-direction:column;gap:4px"><span style="font:700 15px/1.3 'Mukta',sans-serif;color:#FFFFFF">नर्मदा : उद्गम से सागर तक</span><span style="font:500 12.5px/1 'Mukta',sans-serif;color:#A99C88">सदानीरा · Episode 4</span></div></div></div>
+        <div style="padding:18px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;display:flex;flex-direction:column;gap:10px"><span style="font:800 15px/1 'Mukta',sans-serif">Submission checklist</span><sc-for list="{{ checks }}" as="c" hint-placeholder-count="5"><span style="display:flex;align-items:center;gap:10px;font:600 14px/1.3 'Mukta',sans-serif;color:{{ c.col }}"><span style="flex:none;width:20px;height:20px;border-radius:50%;background:{{ c.bg }};display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>{{ c.l }}</span></sc-for></div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isSched }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;align-items:start">
+      <div style="grid-column:span 2;min-width:0;padding:18px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between"><span style="font:800 17px/1 'Mukta',sans-serif">October 2026</span><div style="display:flex;gap:6px;font:700 12.5px/1 'Mukta',sans-serif"><span style="display:flex;align-items:center;gap:6px;color:#475467"><span style="width:9px;height:9px;border-radius:3px;background:#7C2D12"></span>Scheduled</span><span style="display:flex;align-items:center;gap:6px;color:#475467;margin-left:10px"><span style="width:9px;height:9px;border-radius:3px;background:#F79009"></span>In review</span></div></div>
+        <div style="overflow-x:auto"><div style="min-width:620px;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px">
+          <sc-for list="{{ dow }}" as="d" hint-placeholder-count="7"><span style="padding:6px;font:700 12px/1 'Mukta',sans-serif;color:#667085">{{ d.l }}</span></sc-for>
+          <sc-for list="{{ cal }}" as="d" hint-placeholder-count="35"><div style="min-height:86px;padding:6px;border:1px solid {{ d.bd }};border-radius:8px;background:{{ d.bg }};opacity:{{ d.op }};display:flex;flex-direction:column;gap:4px"><span style="font:700 12.5px/1 'Mukta',sans-serif;color:{{ d.dc }}">{{ d.n }}</span><sc-for list="{{ d.items }}" as="i" hint-placeholder-count="1"><span style="padding:3px 6px;border-radius:4px;background:{{ i.bg }};color:#FFFFFF;font:700 11px/1.3 'Mukta',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ i.t }}</span></sc-for></div></sc-for>
+        </div></div>
+      </div>
+      <div style="padding:18px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;display:flex;flex-direction:column;gap:14px">
+        <span style="font:800 16px/1 'Mukta',sans-serif">Plan a release</span>
+        <label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#344054">Episode<select style="height:40px;padding:0 10px;border:1px solid #D0D5DD;border-radius:8px;background:#FFFFFF;font:500 14px/1 'Mukta',sans-serif"><option>सदानीरा · E4 नर्मदा</option><option>सदानीरा · E5 शिप्रा</option></select></label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#344054">Date<input value="17 Oct 2026" style="height:40px;padding:0 10px;border:1px solid #D0D5DD;border-radius:8px;font:500 14px/1 'Mukta',sans-serif"></label><label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#344054">Time (IST)<input value="6:00 PM" style="height:40px;padding:0 10px;border:1px solid #D0D5DD;border-radius:8px;font:500 14px/1 'Mukta',sans-serif"></label></div>
+        <div style="display:flex;flex-direction:column;gap:7px"><span style="font:700 13.5px/1 'Mukta',sans-serif;color:#344054">Repeat</span><div style="display:flex;gap:4px;padding:3px;border:1px solid #E4E7EC;border-radius:9px;align-self:flex-start"><sc-for list="{{ reps }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.go }}" style="height:30px;padding:0 12px;border:0;border-radius:6px;background:{{ t.bg }};color:{{ t.col }};cursor:pointer;font:700 13px/1 'Mukta',sans-serif">{{ t.l }}</button></sc-for></div></div>
+        <label style="display:flex;align-items:center;gap:10px;font:600 14px/1.3 'Mukta',sans-serif;color:#344054"><input type="checkbox" checked="" style="width:16px;height:16px;accent-color:#7C2D12">Notify followers with a reminder</label>
+        <button onClick="{{ addRel }}" style="height:42px;border:0;border-radius:8px;background:#7C2D12;color:#FFFFFF;cursor:pointer;font:700 14.5px/1 'Mukta',sans-serif">Add to schedule</button>
+        <span style="font:500 12.5px/1.5 'Mukta',sans-serif;color:#667085">Releases appear on the public Schedule page once the episode is approved by the editorial team.</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isAnalytics }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+      <div style="padding:18px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;display:flex;flex-direction:column;gap:12px"><span style="font:800 16px/1 'Mukta',sans-serif">Watch time (hours)</span><svg viewBox="0 0 600 200" style="width:100%;height:auto"><polyline points="{{ area }}" fill="rgba(124,45,18,.08)" stroke="none"></polyline><polyline points="{{ line }}" fill="none" stroke="#7C2D12" stroke-width="2.5" stroke-linejoin="round"></polyline><line x1="0" y1="199" x2="600" y2="199" stroke="#E4E7EC"></line></svg></div>
+      <div style="padding:18px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;display:flex;flex-direction:column;gap:12px"><span style="font:800 16px/1 'Mukta',sans-serif">Audience by region</span><sc-for list="{{ regions }}" as="g" hint-placeholder-count="6"><div style="display:grid;grid-template-columns:130px 1fr 48px;gap:12px;align-items:center;font:600 13.5px/1 'Mukta',sans-serif"><span>{{ g.n }}</span><span style="height:10px;border-radius:5px;background:#F2F4F7"><span style="display:block;height:100%;width:{{ g.w }};border-radius:5px;background:#B45309"></span></span><span style="text-align:right;color:#475467">{{ g.w }}</span></div></sc-for></div>
+    </div>
+    <div style="border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;overflow:hidden"><div style="padding:16px 18px;font:800 16px/1 'Mukta',sans-serif">Top content</div><sc-for list="{{ topC }}" as="r" hint-placeholder-count="5"><div style="display:grid;grid-template-columns:28px 72px minmax(0,1fr) 100px 100px;gap:14px;align-items:center;padding:10px 18px;border-top:1px solid #F2F4F7;font:600 14px/1.3 'Mukta',sans-serif"><span style="color:#98A2B3;font-weight:800">{{ r.i }}</span><img src="{{ r.img }}" alt="" style="width:72px;aspect-ratio:16/9;border-radius:5px;object-fit:cover"><span style="font-weight:700">{{ r.t }}</span><span style="text-align:right">{{ r.v }}</span><span style="text-align:right;color:#475467">{{ r.c }} avg</span></div></sc-for></div>
+  </sc-if>
+
+  <sc-if value="{{ isChannel }}" hint-placeholder-val="{{ false }}">
+    <div style="border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;overflow:hidden">
+      <div style="height:160px;background:#1C130C;position:relative"><img src="art/16x9/sadanira.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.7"><button style="position:absolute;right:14px;bottom:14px;height:34px;padding:0 12px;border:0;border-radius:8px;background:#FFFFFF;color:#344054;cursor:pointer;font:700 13px/1 'Mukta',sans-serif">Change banner</button></div>
+      <div style="padding:0 22px 22px;display:flex;flex-direction:column;gap:16px"><span style="margin-top:-36px;width:76px;height:76px;border-radius:50%;border:4px solid #FFFFFF;background:#FFF4ED;color:#9A3412;display:flex;align-items:center;justify-content:center;font:800 26px/1 'Mukta',sans-serif">DC</span>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px">
+          <label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#344054">Channel name<input value="Demo Creator Channel" style="height:42px;padding:0 12px;border:1px solid #D0D5DD;border-radius:8px;font:500 15px/1 'Mukta',sans-serif"></label>
+          <label style="display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#344054">Creator type<select style="height:42px;padding:0 10px;border:1px solid #D0D5DD;border-radius:8px;background:#FFFFFF;font:500 14.5px/1 'Mukta',sans-serif"><option>Independent creator</option><option>Institution</option><option>Nyas fellow</option></select></label>
+          <label style="grid-column:1 / -1;display:flex;flex-direction:column;gap:7px;font:700 13.5px/1 'Mukta',sans-serif;color:#344054">About<textarea rows="3" style="padding:10px 12px;border:1px solid #D0D5DD;border-radius:8px;font:500 15px/1.5 'Mukta',sans-serif;resize:vertical">Documentaries on rivers and pilgrim routes of Madhya Pradesh.</textarea></label>
+        </div>
+        <div style="display:flex;justify-content:flex-end"><button style="height:40px;padding:0 18px;border:0;border-radius:8px;background:#7C2D12;color:#FFFFFF;cursor:pointer;font:700 14px/1 'Mukta',sans-serif">Save changes</button></div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}"><div style="position:fixed;right:24px;bottom:24px;padding:12px 16px;border-radius:10px;background:#101828;color:#FFFFFF;font:700 14px/1 'Mukta',sans-serif;box-shadow:0 12px 30px rgba(16,24,40,.25)">{{ toast }}</div></sc-if>
+  </main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state={page:'dash',ct:'All',step:0,type:'Episode',rep:'Weekly',toast:'',added:false};
+  renderVals(){
+    const s=this.state,set=o=>this.setState(o);
+    const I={dash:'M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z',content:'M4 7h16v13H4zM7 4h10M10 11v5l4-2.5z',upload:'M12 16V4M7 9l5-5 5 5M4 20h16',sched:'M4 6h16v15H4zM4 10h16M8 3v4M16 3v4',analytics:'M4 20V10M10 20V4M16 20v-7M22 20H2',channel:'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0'};
+    const N=[['dash','Dashboard'],['content','Content',2],['upload','Upload'],['sched','Release schedule'],['analytics','Analytics'],['channel','Channel']];
+    const nav=N.map(n=>({key:n[0],l:n[1],ic:I[n[0]],go:()=>set({page:n[0]}),bg:s.page===n[0]?'#FFF4ED':'transparent',col:s.page===n[0]?'#7C2D12':'#344054',ic2:s.page===n[0]?'#9A3412':'#667085',hasB:!!n[2],b:n[2]||''}));
+    const ST={Published:['#ECFDF3','#067647'],'In review':['#FFFAEB','#B54708'],'Changes requested':['#FEF3F2','#B42318'],Scheduled:['#EFF8FF','#175CD3'],Draft:['#F2F4F7','#344054']};
+    const R=[['नर्मदा : उद्गम से सागर तक','Episode','सदानीरा','In review','17 Oct','-','sadanira'],['शिप्रा और उज्जैन','Episode','सदानीरा','Scheduled','24 Oct','-','sadanira'],['गंगा दशहरा विशेष','Short','सदानीरा','Published','8 Oct','12.4K','sadanira'],['मालवा के घाट','Episode','सदानीरा','Published','3 Oct','8.9K','mahajanpad'],['बेतवा की कथा','Episode','सदानीरा','Changes requested','-','-','sadanira'],['ओरछा : एक दिन','Short','-','Published','28 Sep','21.0K','hamare-ram'],['जल और लोक-गीत','Podcast','-','Draft','-','-','podcast'],['अमरकंटक','Short','सदानीरा','Published','20 Sep','6.1K','sadanira']];
+    const row=r=>({key:r[0],t:r[0],k:r[1],sr:r[2],s:r[3],d:r[4],v:r[5],img:'art/16x9/'+r[6]+'.jpg',bg:ST[r[3]][0],c:ST[r[3]][1]});
+    const cts=['All','Published','In review','Scheduled','Draft'];
+    const ctabs=cts.map(t=>({key:t,l:t,n:t==='All'?R.length:R.filter(r=>r[3]===t).length,go:()=>set({ct:t}),col:s.ct===t?'#7C2D12':'#667085',ul:s.ct===t?'#7C2D12':'transparent'}));
+    const bars=Array.from({length:28},(_,i)=>{const v=40+Math.round(30*Math.sin(i/3)+i*1.6+(i%7===5?18:0));return{key:i,h:Math.min(100,v)+'%',c:i===27?'#7C2D12':'#FDBA74'}});
+    const pts=Array.from({length:13},(_,i)=>[i*50,Math.round(170-(40+i*7+25*Math.sin(i/1.7)))]);
+    const line=pts.map(p=>p.join(',')).join(' ');
+    const steps=['Details','Media','Chapters','Schedule','Review'].map((l,i)=>({key:i,n:i<s.step?'✓':i+1,l,go:()=>set({step:i}),bd:i===s.step?'#7C2D12':'#E4E7EC',col:i<=s.step?'#101828':'#667085',nbg:i<s.step?'#067647':i===s.step?'#7C2D12':'#F2F4F7',nc:i<=s.step?'#FFFFFF':'#667085'}));
+    const types=['Episode','Short','Podcast','Audiobook'].map(t=>({key:t,l:t,go:()=>set({type:t}),bg:s.type===t?'#101828':'transparent',col:s.type===t?'#FFFFFF':'#344054'}));
+    const checks=[['Title and description in Hindi',1],['Video uploaded (1080p or higher)',1],['Thumbnail 16:9',1],['Chapters marked',0],['Rights & consent declaration',0]].map((c,i)=>({key:i,l:c[0],bg:c[1]?'#12B76A':'#D0D5DD',col:c[1]?'#101828':'#667085'}));
+    const ms=new Date(2026,9,1),st0=(ms.getDay()+6)%7;
+    const EV={5:[['मालवा के घाट','#7C2D12']],8:[['गंगा दशहरा विशेष','#7C2D12']],17:[['नर्मदा E4','#F79009']],24:[['शिप्रा E5','#7C2D12']],31:[['बेतवा E6','#F79009']]};
+    if(s.added)EV[19]=[['New release','#175CD3']];
+    const cal=Array.from({length:35},(_,i)=>{const d=i-st0+1,inM=d>=1&&d<=31,isT=d===13;return{key:i,n:inM?d:'',op:inM?1:.4,bd:isT?'#7C2D12':'#E4E7EC',bg:isT?'#FFF4ED':'#FFFFFF',dc:isT?'#7C2D12':'#344054',items:(inM&&EV[d]||[]).map((e,k)=>({key:k,t:e[0],bg:e[1]}))}});
+    const titles={dash:'Dashboard',content:'Content',upload:'Upload content',sched:'Release schedule',analytics:'Analytics',channel:'Channel'};
+    return {label:titles[s.page],title:titles[s.page],nav,goUpload:()=>set({page:'upload'}),goContent:()=>set({page:'content'}),
+      isDash:s.page==='dash',isContent:s.page==='content',isUpload:s.page==='upload',isSched:s.page==='sched',isAnalytics:s.page==='analytics',isChannel:s.page==='channel',
+      kpis:[['Views','48.2K','+12.4%','#067647'],['Watch time','3,140 hrs','+8.1%','#067647'],['Followers','2,906','+214','#067647'],['Avg. completion','61%','−2.0%','#B42318']].map((k,i)=>({key:i,l:k[0],v:k[1],d:k[2],dc:k[3]})),
+      bars,feedback:[['Changes requested','बेतवा की कथा','Please add source credits for archival footage at 04:12 and 11:30.','#FEF3F2','#B42318'],['Approved','शिप्रा और उज्जैन','Approved for release on 24 Oct, 7:00 PM.','#ECFDF3','#067647'],['In review','नर्मदा : उद्गम से सागर तक','Assigned to a reviewer. Typical review time is 2 working days.','#FFFAEB','#B54708']].map((f,i)=>({key:i,s:f[0],t:f[1],m:f[2],bg:f[3],c:f[4]})),
+      recent:R.slice(0,4).map(row),ctabs,rows:R.filter(r=>s.ct==='All'||r[3]===s.ct).map(row),
+      steps,types,checks,nextStep:()=>set({step:Math.min(4,s.step+1)}),
+      dow:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(l=>({key:l,l})),cal,reps:['Once','Weekly','Monthly'].map(t=>({key:t,l:t,go:()=>set({rep:t}),bg:s.rep===t?'#101828':'transparent',col:s.rep===t?'#FFFFFF':'#344054'})),
+      addRel:()=>{set({added:true,toast:'Release added, awaiting approval'});setTimeout(()=>this.setState({toast:''}),2200)},
+      line,area:'0,200 '+line+' 600,200',
+      regions:[['Bhopal','34%'],['Indore','22%'],['Ujjain','15%'],['Jabalpur','11%'],['Gwalior','8%'],['Outside MP','10%']].map((g,i)=>({key:i,n:g[0],w:g[1]})),
+      topC:R.filter(r=>r[5]!=='-').map((r,i)=>({key:i,i:i+1,t:r[0],v:r[5],c:['7:40','0:52','5:12','0:48'][i]||'3:10',img:'art/16x9/'+r[6]+'.jpg'})),
+      toast:s.toast,hasToast:!!s.toast};
+  }
+}
+</script>
+</body>
+</html>
